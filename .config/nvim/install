@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+mkdir -p ~/.config/nvim/plugin
+
+mkdir -p ~/.vim/undodir
+
+# Symlink all
+for f in `find . -regex ".*\.vim$"`; do
+    rm -rf ~/.config/nvim/$f
+    ln -s $(pwd)/$f ~/.config/nvim/$f
+done
+
+echo "Installed!"
