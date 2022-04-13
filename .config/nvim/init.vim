@@ -1,5 +1,6 @@
 set exrc
 set number
+set relativenumber
 set hidden
 set noerrorbells
 set tabstop=4 softtabstop=4
@@ -13,6 +14,7 @@ set undodir=~/.vim/undodir
 set undofile
 set incsearch
 set scrolloff=8
+set termguicolors
 
 call plug#begin('~/.vim/plugged')
 
