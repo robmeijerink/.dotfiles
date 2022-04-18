@@ -1,0 +1,5 @@
+require('plugins')
+require('settings')
+require('keymaps')
+require('telescope-config')
+require('vue')

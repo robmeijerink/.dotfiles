@@ -1,10 +1,12 @@
 #!/usr/bin/env bash
-mkdir -p ~/.config/nvim/plugin
+mkdir -p ~/.config/nvim/lua
 
-mkdir -p ~/.vim/undodir
+mkdir -p ~/.vim/tmp/undo
+mkdir -p ~/.vim/tmp/backup
+mkdir -p ~/.vim/tmp/swap
 
 # Symlink all
-for f in `find . -regex ".*\.vim$"`; do
+for f in `find . -regex ".*\.lua$"`; do
     rm -rf ~/.config/nvim/$f
     ln -s $(pwd)/$f ~/.config/nvim/$f
 done
