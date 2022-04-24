@@ -5,4 +5,4 @@
 
 ### Note
 
-Use the install script to setup nvim and its plugins. Just use vim-plugged's :PlugInstall afterwards to install the plugins into nvim.
+Use the install script to setup nvim and its plugins. Use Packer to install and setup the nvim plugins. Sync the Packer config with :PackerSync.

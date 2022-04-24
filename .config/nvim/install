@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 mkdir -p ~/.config/nvim/lua
+mkdir -p ~/.config/nvim/lua/lsp
 
 mkdir -p ~/.vim/tmp/undo
 mkdir -p ~/.vim/tmp/backup

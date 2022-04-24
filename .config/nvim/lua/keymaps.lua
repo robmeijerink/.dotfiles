@@ -73,12 +73,19 @@ keymap('x', '<A-k>', ":move '<-2<CR>gv-gv", opts)
 keymap('n', '<leader>lg', ':LazyGit<CR>', opts)
 
 -- Telescope
-keymap('n', '<C-p>', ":lua require('telescope.builtin').git_files(require('telescope.themes'))<CR>", opts)
-keymap('n', '<leader>f', ":lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{previewer = false})<CR>", opts)
-keymap('n', '<leader>ff', ":lua require('telescope.builtin').find_files(require('telescope.themes'))<CR>", opts)
-keymap('n', '<leader>fg', ":lua require('telescope.builtin').live_grep(require('telescope.themes'))CR>", opts)
-keymap('n', '<leader>bb', ":lua require('telescope.builtin').buffer(require('telescope.themes'))<CR>", opts)
-keymap('n', '<leader>hh', ":lua require('telescope.builtin').help_tags(require('telescope.themes'))<CR>", opts)
+-- keymap('n', '<C-p>', ":lua require('telescope.builtin').git_files(require('telescope.themes'))<CR>", opts)
+-- keymap('n', '<leader>f', ":lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{previewer = false})<CR>", opts)
+-- keymap('n', '<leader>ff', ":lua require('telescope.builtin').find_files(require('telescope.themes'))<CR>", opts)
+-- keymap('n', '<leader>fg', ":lua require('telescope.builtin').live_grep(require('telescope.themes'))CR>", opts)
+-- keymap('n', '<leader>bb', ":lua require('telescope.builtin').buffer(require('telescope.themes'))<CR>", opts)
+-- keymap('n', '<leader>hh', ":lua require('telescope.builtin').help_tags(require('telescope.themes'))<CR>", opts)
 
 -- Undotree
 keymap('n', '<leader>u', ':UndotreeShow<CR>', opts)
+
+-- Nvim Tree
+keymap('n', '<leader>e', ':NvimTreeToggle<CR>', opts)
+
+-- LSP Saga
+keymap("n", "<C-u>", ":lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>", opts)
+keymap("n", "<C-d>", ":lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>", opts)
