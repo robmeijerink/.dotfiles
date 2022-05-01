@@ -27,43 +27,48 @@ local toggle_lazygit = function()
 end
 
 local mappings = {
-  q = {":q<cr>", "Quit"},
-  Q = {":wq<cr>", "Save & Quit"},
-  w = {":w<cr>", "Save"},
-  x = {":bdelete<cr>", "Close"},
-  E = {":e ~/.config/nvim/init.lua<cr>", "Edit config"},
-  f = {":Telescope find_files<cr>", "Telescope Find Files"},
-  r = {":Telescope live_grep<cr>", "Telescope Live Grep"},
+  q = {"<cmd>q<CR>", "Quit"},
+  Q = {"<cmd>wq<CR>", "Save & Quit"},
+  w = {"<cmd>w<CR>", "Save"},
+  x = {"<cmd>bdelete<CR>", "Close"},
+  E = {"<cmd>e ~/.config/nvim/init.lua<CR>", "Edit config"},
+  f = {
+    f = { "<cmd>Telescope find_files hidden=true<CR>", "Telescope Find Files"},
+    g = { "<cmd>Telescope live_grep hidden=true<CR>", "Telescope Live Grep"},
+    r = { "<cmd>Telescope oldfiles<CR>", "Open Recent File"},
+    b = { "<cmd>Telescope buffers({ show_all_buffers = true })<CR>", "Telescope Buffer"},
+    h = { "<cmd>Telescope help_tags<CR>", "Telescope Help Tags" }, 
+  },
   t = {
-    t = {":ToggleTerm<cr>", "Split Below"},
+    t = {"<cmd>ToggleTerm<CR>", "Split Below"},
     f = {toggle_float, "Floating Terminal"},
     l = {toggle_lazygit, "LazyGit"}
   },
   l = {
     name = "LSP",
-    i = {":LspInfo<cr>", "Connected Language Servers"},
-    k = {"<cmd>lua vim.lsp.buf.signature_help()<cr>", "Signature Help"},
-    K = {"<cmd>Lspsaga hover_doc<cr>", "Hover Commands"},
-    w = {'<cmd>lua vim.lsp.buf.add_workspace_folder()<cr>', "Add Workspace Folder"},
-    W = {'<cmd>lua vim.lsp.buf.remove_workspace_folder()<cr>', "Remove Workspace Folder"},
+    i = {"<cmd>LspInfo<CR>", "Connected Language Servers"},
+    k = {"<cmd>lua vim.lsp.buf.signature_help()<CR>", "Signature Help"},
+    K = {"<cmd>Lspsaga hover_doc<CR>", "Hover Commands"},
+    w = {'<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', "Add Workspace Folder"},
+    W = {'<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', "Remove Workspace Folder"},
     l = {
-      '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<cr>',
+      '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>',
       "List Workspace Folders"
     },
-    t = {'<cmd>lua vim.lsp.buf.type_definition()<cr>', "Type Definition"},
-    d = {'<cmd>lua vim.lsp.buf.definition()<cr>', "Go To Definition"},
-    D = {'<cmd>lua vim.lsp.buf.declaration()<cr>', "Go To Declaration"},
-    r = {'<cmd>lua vim.lsp.buf.references()<cr>', "References"},
-    R = {'<cmd>Lspsaga rename<cr>', "Rename"},
-    a = {'<cmd>Lspsaga code_action<cr>', "Code Action"},
-    e = {'<cmd>Lspsaga show_line_diagnostics<cr>', "Show Line Diagnostics"},
-    n = {'<cmd>Lspsaga diagnostic_jump_next<cr>', "Go To Next Diagnostic"},
-    N = {'<cmd>Lspsaga diagnostic_jump_prev<cr>', "Go To Previous Diagnostic"}
+    t = {'<cmd>lua vim.lsp.buf.type_definition()<CR>', "Type Definition"},
+    d = {'<cmd>lua vim.lsp.buf.definition()<CR>', "Go To Definition"},
+    D = {'<cmd>lua vim.lsp.buf.declaration()<CR>', "Go To Declaration"},
+    r = {'<cmd>lua vim.lsp.buf.references()<CR>', "References"},
+    R = {'<cmd>Lspsaga rename<CR>', "Rename"},
+    a = {'<cmd>Lspsaga code_action<CR>', "Code Action"},
+    e = {'<cmd>Lspsaga show_line_diagnostics<CR>', "Show Line Diagnostics"},
+    n = {'<cmd>Lspsaga diagnostic_jump_next<CR>', "Go To Next Diagnostic"},
+    N = {'<cmd>Lspsaga diagnostic_jump_prev<CR>', "Go To Previous Diagnostic"}
   },
   z = {
     name = "Focus",
-    z = {":ZenMode<cr>", "Toggle Zen Mode"},
-    t = {":Twilight<cr>", "Toggle Twilight"}
+    z = {"<cmd>ZenMode<CR>", "Toggle Zen Mode"},
+    t = {"<cmd>Twilight<CR>", "Toggle Twilight"}
   }
 }
 
