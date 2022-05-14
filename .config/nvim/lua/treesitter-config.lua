@@ -6,7 +6,7 @@ vim.lsp.handlers['textDocument/publishDiagnostics'] =
     })
     
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = {"html", "javascript", "lua"},
+  ensure_installed = {"html", "javascript", "lua", "php", "go", "gomod", "rust"},
   highlight = {enable = true, additional_vim_regex_highlighting = false},
   autotag = {enable = true},
   rainbow = {

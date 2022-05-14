@@ -37,7 +37,7 @@ local mappings = {
     g = { "<cmd>Telescope live_grep hidden=true<CR>", "Telescope Live Grep"},
     r = { "<cmd>Telescope oldfiles<CR>", "Open Recent File"},
     b = { "<cmd>Telescope buffers({ show_all_buffers = true })<CR>", "Telescope Buffer"},
-    h = { "<cmd>Telescope help_tags<CR>", "Telescope Help Tags" }, 
+    h = { "<cmd>Telescope help_tags<CR>", "Telescope Help Tags" },
   },
   t = {
     t = {"<cmd>ToggleTerm<CR>", "Split Below"},

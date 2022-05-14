@@ -28,26 +28,30 @@ return require('packer').startup(function(use)
     use {'windwp/nvim-ts-autotag', event = "InsertEnter", after = "nvim-treesitter"}
     use {'p00f/nvim-ts-rainbow', after = "nvim-treesitter"}
     use {'windwp/nvim-autopairs', config = "require('autopairs-config')", after = "nvim-cmp"}
-    use {'folke/which-key.nvim', event = "BufWinEnter", config = "require('whichkey-config')"}
+    use {'folke/which-key.nvim', config = "require('whichkey-config')"}
     use {
       'nvim-telescope/telescope.nvim',
-      requires = {{'nvim-lua/plenary.nvim'}},
+      requires = { {'nvim-lua/plenary.nvim'}, { "kdheepak/lazygit.nvim" } },
       cmd = "Telescope",
-      config = "require('telescope-config')"
+      config = function ()
+        require('telescope-config')
+      end,
     }
     use {'neovim/nvim-lspconfig', config = "require('lsp')"}
     use {'hrsh7th/cmp-nvim-lsp'}
     use {'hrsh7th/cmp-buffer'}
     use {'hrsh7th/nvim-cmp'}
     use {'hrsh7th/cmp-vsnip'}
+    use {'kdheepak/lazygit.nvim', config = "require('lazygit-config')"}
+    use {'folke/todo-comments.nvim', config = "require('todo-config')"}
     use {'hrsh7th/vim-vsnip'}
     use {'onsails/lspkind-nvim'}
     use {'norcalli/nvim-colorizer.lua', config = "require('colorizer-config')", event = "BufRead"}
     use {
       'lewis6991/gitsigns.nvim',
       requires = {'nvim-lua/plenary.nvim'},
-      config = function()
-        require('gitsigns').setup {current_line_blame = true}
+      config = function ()
+        require('gitsigns').setup { current_line_blame = true }
       end
     }
     use {
