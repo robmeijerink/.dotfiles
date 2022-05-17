@@ -14,3 +14,5 @@ set undofile
 set incsearch
 set scrolloff=8
 set termguicolors
+set nocompatible
+set backspace=indent,eol,start
