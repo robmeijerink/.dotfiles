@@ -1,17 +1,17 @@
 local wk = require("which-key")
 wk.setup {
   plugins = {
-    marks = false,
-    registers = false,
+    marks = true,
+    registers = true,
     spelling = {enabled = false, suggestions = 20},
     presets = {
-      operators = false,
-      motions = false,
-      text_objects = false,
-      windows = false,
-      nav = false,
-      z = false,
-      g = false
+      operators = true,
+      motions = true,
+      text_objects = true,
+      windows = true,
+      nav = true,
+      z = true,
+      g = true
     }
   }
 }
