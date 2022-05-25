@@ -25,6 +25,7 @@ return require('packer').startup(function(use)
       cmd = "NvimTreeToggle",
       config = "require('nvim-tree-config')"
     }
+    use {'mbbill/undotree'}
     use {'windwp/nvim-ts-autotag', event = "InsertEnter", after = "nvim-treesitter"}
     use {'p00f/nvim-ts-rainbow', after = "nvim-treesitter"}
     use {'windwp/nvim-autopairs', config = "require('autopairs-config')", after = "nvim-cmp"}
@@ -60,7 +61,6 @@ return require('packer').startup(function(use)
       event = "BufRead"
     }
     use {"akinsho/toggleterm.nvim", config = "require('toggleterm-config')"}
-    use {"terrortylor/nvim-comment", config = "require('comment-config')"}
     use {'tami5/lspsaga.nvim', config = "require('lspsaga-config')"}
     use {'williamboman/nvim-lsp-installer'}
     use {'jose-elias-alvarez/null-ls.nvim', config = "require('null-ls-config')"}

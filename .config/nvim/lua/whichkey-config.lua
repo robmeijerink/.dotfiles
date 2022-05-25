@@ -33,6 +33,7 @@ local mappings = {
   x = {"<cmd>bdelete<CR>", "Close"},
   E = {"<cmd>e ~/.config/nvim/init.lua<CR>", "Edit config"},
   f = {
+    name = "Find",
     f = { "<cmd>Telescope find_files hidden=true<CR>", "Telescope Find Files"},
     g = { "<cmd>Telescope live_grep hidden=true<CR>", "Telescope Live Grep"},
     r = { "<cmd>Telescope oldfiles<CR>", "Open Recent File"},
@@ -40,6 +41,7 @@ local mappings = {
     h = { "<cmd>Telescope help_tags<CR>", "Telescope Help Tags" },
   },
   t = {
+    name = "ToggleTerm",
     t = {"<cmd>ToggleTerm<CR>", "Split Below"},
     f = {toggle_float, "Floating Terminal"},
     l = {toggle_lazygit, "LazyGit"}
