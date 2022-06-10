@@ -16,3 +16,7 @@ set scrolloff=8
 set termguicolors
 set nocompatible
 set backspace=indent,eol,start
+
+" Map jk to <Esc> for easier mode switching
+imap jk <Esc>
+vmap jk <Esc>
