@@ -17,7 +17,7 @@ set termguicolors
 set nocompatible
 set backspace=indent,eol,start
 
-" Map jk to <Esc> for easier mode switching
+" Map nm to <Esc> for easier mode switching
 imap nm <Esc>
 vmap nm <Esc>
 
