@@ -18,5 +18,8 @@ set nocompatible
 set backspace=indent,eol,start
 
 " Map jk to <Esc> for easier mode switching
-imap jk <Esc>
-vmap jk <Esc>
+imap nm <Esc>
+vmap nm <Esc>
+
+" Resave with sudo
+cmap w!! w !sudo tee %

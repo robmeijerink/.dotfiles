@@ -39,9 +39,13 @@ keymap('n', '<S-h>', '<cmd>bprevious<CR>', opts)
 keymap('n', '<A-j>', '<Esc><cmd>m .+1<CR>==gi', opts)
 keymap('n', '<A-k>', '<Esc><cmd>m .-2<CR>==gi', opts)
 
+-- Command --
+-- Resave with sudo
+keymap('c', 'w!!', 'w !sudo tee %', opts)
+
 -- Insert --
--- Press jk fast to enter
-keymap('i', 'jk', '<ESC>', opts)
+-- Press nm fast to exit insert mode
+keymap('i', 'nm', '<ESC>', opts)
 
 -- Visual --
 -- Stay in indent mode
