@@ -17,9 +17,9 @@ set termguicolors
 set nocompatible
 set backspace=indent,eol,start
 
-" Map jk to <Esc> for easier mode switching
-imap nm <Esc>
-vmap nm <Esc>
+" Map zx to <Esc> for easier mode switching
+imap zx <Esc>
+vmap zx <Esc>
 
 " Resave with sudo
 cmap w!! w !sudo tee %

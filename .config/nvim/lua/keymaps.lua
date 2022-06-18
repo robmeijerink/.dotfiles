@@ -44,8 +44,8 @@ keymap('n', '<A-k>', '<Esc><cmd>m .-2<CR>==gi', opts)
 keymap('c', 'w!!', 'w !sudo tee %', opts)
 
 -- Insert --
--- Press nm fast to exit insert mode
-keymap('i', 'nm', '<ESC>', opts)
+-- Press zx fast to exit insert mode
+keymap('i', 'zx', '<ESC>', opts)
 
 -- Visual --
 -- Stay in indent mode
