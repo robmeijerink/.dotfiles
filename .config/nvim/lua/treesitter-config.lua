@@ -1,13 +1,46 @@
-vim.lsp.handlers['textDocument/publishDiagnostics'] =
-    vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
       underline = true,
       virtual_text = {spacing = 5, severity_limit = 'Warning'},
       update_in_insert = true
     })
-    
+
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = {"html", "javascript", "lua", "php", "go", "gomod", "rust"},
-  highlight = {enable = true, additional_vim_regex_highlighting = false},
+  ensure_installed = {
+      "bash",
+      "html",
+      "css",
+      "scss",
+      "javascript",
+      "typescript",
+      "vue",
+      "lua",
+      "php",
+      "go",
+      "gomod",
+      "rust",
+      "dockerfile",
+      "yaml",
+      "toml"
+  },
+  sync_installed = true,
+  highlight = {
+    enable = true,
+    additional_vim_regex_highlighting = {
+      "php"
+    }
+  },
+  indent = {
+    enable = false -- Really breaks stuff if true
+  },
+  incremental_selection = {
+    enable = true,
+    keymaps = {
+      init_selection = "gnn",
+      node_incremental = "grn",
+      scope_incremental = "grc",
+      node_decremental = "grm"
+    },
+  },
   autotag = {enable = true},
   rainbow = {
     enable = true,
@@ -18,3 +51,10 @@ require'nvim-treesitter.configs'.setup {
   },
   autopairs = {enable = true}
 }
+
+-- Enable folds (zc and zo) on functions and classes but not by default
+vim.cmd([[
+  set nofoldenable
+  set foldmethod=expr
+  set foldexpr=nvim_treesitter#foldexpr()
+]])
