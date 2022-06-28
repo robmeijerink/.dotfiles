@@ -46,6 +46,7 @@ return require('packer').startup(function(use)
     use {'hrsh7th/cmp-vsnip'}
     use {'kdheepak/lazygit.nvim', config = "require('lazygit-config')"}
     use {'folke/todo-comments.nvim', config = "require('todo-config')"}
+    use {'numToStr/Comment.nvim', config = "require('comment-config')"}
     use {'hrsh7th/vim-vsnip'}
     use {'onsails/lspkind-nvim'}
     use {'norcalli/nvim-colorizer.lua', config = "require('colorizer-config')", event = "BufRead"}

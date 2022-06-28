@@ -28,8 +28,8 @@ keymap('n', '<C-l>', '<C-w>l', opts)
 -- Resize with arrows
 keymap('n', '<C-Up>', '<cmd>resize -2<CR>', opts)
 keymap('n', '<C-Down>', '<cmd>resize +2<CR>', opts)
-keymap('n', '<C-Left>', '<cmd>vertical resize -2<CR>', opts)
-keymap('n', '<C-Right>', '<cmd>vertical resize +2<CR>', opts)
+keymap('n', '<C-Right>', '<cmd>vertical resize -2<CR>', opts)
+keymap('n', '<C-Left>', '<cmd>vertical resize +2<CR>', opts)
 
 -- Navigate buffers
 keymap('n', '<S-l>', '<cmd>bnext<CR>', opts)
@@ -48,6 +48,8 @@ keymap('c', 'w!!', 'w !sudo tee %', opts)
 keymap('i', 'zx', '<ESC>', opts)
 
 -- Visual --
+-- Press zx fast to exit visual mode
+keymap('v', 'zx', '<ESC>', opts)
 -- Stay in indent mode
 keymap('v', '<', '<gv', opts)
 keymap('v', '>', '>gv', opts)
@@ -66,10 +68,10 @@ keymap('x', '<A-k>', "<cmd>move '<-2<CR>gv-gv", opts)
 
 -- Terminal --
 -- Better terminal navigation
--- keymap('t', '<C-h>', '<C-\\><C-N><C-w>h', term_opts)
--- keymap('t', '<C-j>', '<C-\\><C-N><C-w>j', term_opts)
--- keymap('t', '<C-k>', '<C-\\><C-N><C-w>k', term_opts)
--- keymap('t', '<C-l>', '<C-\\><C-N><C-w>l', term_opts)
+keymap('t', '<C-h>', '<C-\\><C-N><C-w>h', term_opts)
+keymap('t', '<C-j>', '<C-\\><C-N><C-w>j', term_opts)
+keymap('t', '<C-k>', '<C-\\><C-N><C-w>k', term_opts)
+keymap('t', '<C-l>', '<C-\\><C-N><C-w>l', term_opts)
 
 -- PLUGINS --
 
