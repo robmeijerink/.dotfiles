@@ -24,7 +24,8 @@ require('telescope').setup {
         "node_modules",
         "vendor",
         ".git",
-        ".idea"
+        ".idea",
+        ".vscode"
     },
     generic_sorter = require('telescope.sorters').get_generic_fuzzy_sorter,
     path_display = {},
