@@ -59,7 +59,7 @@ local mappings = {
     c = {"<cmd>tabclose<CR>", 'Close tab'},
     o = {"<cmd>tabonly<CR>", 'Close other tabs'}
   },
-  u = {
+  T = {
     name = "UI Terminal",
     t = {"<cmd>ToggleTerm<CR>", "Split Below"},
     f = {toggle_float, "Floating Terminal"},
