@@ -50,8 +50,8 @@ local mappings = {
     n = {"<cmd>enew<CR>", 'New buffer'},
     r = {"<cmd>BufferLineCloseRight<CR>", 'Close buffers to the right'},
     l = {"<cmd>BufferLineCloseLeft<CR>", 'Close buffers to the left'},
-    o = {"<cmd>%bdelete|edit #|normal `<CR>", 'Close other buffers'},
-    O = {'<cmd>%bdelete!|edit #|normal `"<CR>', 'Close other buffers without save'}
+    o = {"<cmd>%bd|e#<CR>", 'Close other buffers'},
+    O = {'<cmd>%bd!|e#"<CR>', 'Close other buffers without save'}
   },
   t = {
     name = "Tabs",
