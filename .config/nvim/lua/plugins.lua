@@ -9,6 +9,10 @@ return require('packer').startup(function(use)
       config = "require('treesitter-config')"
     }
     use {
+        'Pocco81/AutoSave.nvim',
+        config = "require('autosave-config')"
+    }
+    use {
       'nvim-lualine/lualine.nvim',
       config = "require('lualine-config')",
       requires = { 'kyazdani42/nvim-web-devicons', opt = true }

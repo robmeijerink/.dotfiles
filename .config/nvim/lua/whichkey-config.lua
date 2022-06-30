@@ -45,8 +45,22 @@ local mappings = {
     a = { "<cmd>Telescope git_commits<CR>", "Telescope Git Commits" },
     q = { "<cmd>Telescope git_bcommits<CR>", "Telescope Git Buffer Commits" },
   },
+  b = {
+    name = "Buffers",
+    n = {"<cmd>enew<CR>", 'New buffer'},
+    r = {"<cmd>BufferLineCloseRight<CR>", 'Close buffers to the right'},
+    l = {"<cmd>BufferLineCloseLeft<CR>", 'Close buffers to the left'},
+    o = {"<cmd>%bdelete|edit #|normal `<CR>", 'Close other buffers'},
+    O = {'<cmd>%bdelete!|edit #|normal `"<CR>', 'Close other buffers without save'}
+  },
   t = {
-    name = "ToggleTerm",
+    name = "Tabs",
+    n = {"<cmd>tabnew<CR>", 'New tab'},
+    c = {"<cmd>tabclose<CR>", 'Close tab'},
+    o = {"<cmd>tabonly<CR>", 'Close other tabs'}
+  },
+  u = {
+    name = "UI Terminal",
     t = {"<cmd>ToggleTerm<CR>", "Split Below"},
     f = {toggle_float, "Floating Terminal"},
     l = {toggle_lazygit, "LazyGit"}
