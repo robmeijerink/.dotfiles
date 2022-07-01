@@ -43,7 +43,7 @@ vim.opt.showcmd = true -- display command in bottom bar
 vim.opt.incsearch = true -- starts searching as soon as typing, without enter needed
 vim.opt.ignorecase = true -- ignore letter case when searching
 vim.opt.smartcase = true -- case insentive unless capitals used in search
-vim.opt.hlsearch = true -- turns the highlighting back on when you start a new search and off after search
+vim.opt.hlsearch = false -- turns the highlighting back on when you start a new search and off after search
 
 vim.opt.matchtime = 2 -- delay before showing matching paren
 
