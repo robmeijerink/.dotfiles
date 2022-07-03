@@ -42,6 +42,15 @@ return require('packer').startup(function(use)
         require('telescope-config')
       end,
     }
+    use {
+        'ThePrimeagen/harpoon',
+        requires = {
+            { 'nvim-lua/plenary.nvim' }
+        },
+        config = function ()
+            require('harpoon-config')
+        end,
+    }
     use {'neovim/nvim-lspconfig', config = "require('lsp')"}
     use {'hrsh7th/cmp-nvim-lsp'}
     use {'hrsh7th/cmp-buffer'}
