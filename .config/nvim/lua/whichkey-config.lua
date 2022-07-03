@@ -40,6 +40,7 @@ local mappings = {
     r = { "<cmd>Telescope oldfiles<CR>", "Open Recent File"},
     x = { "<cmd>Telescope buffers show_all_buffers=true<CR>", "Telescope Buffer"},
     h = { "<cmd>Telescope help_tags<CR>", "Telescope Help Tags" },
+    m = { "<cmd>Telescope harpoon marks<CR>", "Telescope Harpoon Marks" },
     c = { "<cmd>Telescope commands<CR>", "Telescope Commands" },
     s = { "<cmd>Telescope git_status<CR>", "Telescope Git Status" },
     a = { "<cmd>Telescope git_commits<CR>", "Telescope Git Commits" },
@@ -64,6 +65,11 @@ local mappings = {
     t = {"<cmd>ToggleTerm<CR>", "Split Below"},
     f = {toggle_float, "Floating Terminal"},
     l = {toggle_lazygit, "LazyGit"}
+  },
+  h = {
+    name = "Harpoon",
+    q = {  "<cmd>lua require('harpoon.ui').toggle_quick_menu()<CR>", 'Toggle Quick Menu' },
+    a =  { "<cmd>lua require('harpoon.mark').add_file()<CR>", 'Add Mark' },
   },
   l = {
     name = "LSP",
