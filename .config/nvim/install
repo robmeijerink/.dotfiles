@@ -3,6 +3,9 @@ mkdir -p ~/.config/nvim/lua
 mkdir -p ~/.config/nvim/lua/lsp
 mkdir -p ~/.config/nvim/lua/lsp/server-conf
 
+mkdir -p ~/.config/nvim/after
+mkdir -p ~/.config/nvim/after/plugin
+
 mkdir -p ~/.vim/tmp/undo
 mkdir -p ~/.vim/tmp/backup
 mkdir -p ~/.vim/tmp/swap

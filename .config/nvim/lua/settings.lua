@@ -47,6 +47,10 @@ vim.opt.hlsearch = true -- turns the highlighting back on when you start a new s
 
 vim.opt.matchtime = 2 -- delay before showing matching paren
 
+-- Global Status Bar
+vim.opt.laststatus = 3
+
+
 -- White characters
 vim.opt.autoindent = true
 vim.opt.smartindent = true

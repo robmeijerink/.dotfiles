@@ -1,7 +1,10 @@
 return require('packer').startup(function(use)
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
-    use {'gruvbox-community/gruvbox', config = "vim.cmd('colorscheme gruvbox')"}
+    -- Colorscheme section
+    use("ellisonleao/gruvbox.nvim")
+    use("folke/tokyonight.nvim")
+    -- Plugins
     use {
       'nvim-treesitter/nvim-treesitter',
       run = ":TSUpdate",
