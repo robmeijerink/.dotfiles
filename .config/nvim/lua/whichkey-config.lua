@@ -35,6 +35,7 @@ local mappings = {
   E = {"<cmd>e ~/.config/nvim/init.lua<CR>", "Edit config"},
   f = {
     name = "Find",
+    t = { "<cmd>silent !tmux neww tmux-sessionizer<CR>", 'Find and open in tmux' },
     f = { "<cmd>Telescope find_files hidden=true no_ignore=true<CR>", "Telescope Find Files"},
     g = { "<cmd>Telescope live_grep hidden=true no_ignore=true<CR>", "Telescope Live Grep"},
     r = { "<cmd>Telescope oldfiles<CR>", "Open Recent File"},

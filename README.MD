@@ -2,6 +2,8 @@
 
 - .vimrc with basic settings for regular vim
 - .lua config files for NeoVim with more advanced settings and plugins
+- tmux configuration
+- fzf bindings for fuzzy finding in the terminal
 
 ### Note
 

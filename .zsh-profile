@@ -1,0 +1,4 @@
+# Some bindings to add to the .zsh_profile
+
+# Fuzzy Finder with Ctrl + f
+bindkey -s ^f "tmux-sessionizer\n"
