@@ -2,7 +2,15 @@ return require('packer').startup(function(use)
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
     -- Colorscheme section
-    use("ellisonleao/gruvbox.nvim")
+    use {
+      "ellisonleao/gruvbox.nvim",
+      config = function ()
+        require("gruvbox").setup({
+          italic = false,
+          contrast = "hard"
+        })
+      end
+    }
     use("folke/tokyonight.nvim")
     -- Plugins
     use {
