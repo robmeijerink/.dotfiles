@@ -1,4 +1,7 @@
 # Some bindings to add to the .zsh_profile
+alias vi="nvim"
+alias dep='vendor/bin/deployer.phar'
+alias tmux="TERM=screen-256color-bce tmux"
 
 # Fuzzy Finder with Ctrl + f
 bindkey -s ^f "tmux-sessionizer\n"
