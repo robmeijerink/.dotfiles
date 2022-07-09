@@ -27,9 +27,7 @@ local toggle_lazygit = function()
 end
 
 local mappings = {
-  q = {"<cmd>q<CR>", "Quit"},
-  Q = {"<cmd>wq<CR>", "Save & Quit"},
-  w = {"<cmd>w<CR>", "Save"},
+  w = {"<cmd>set wrap!<CR><CR>", "Toggle soft line wrapping"},
   x = {"<cmd>bdelete<CR>", "Close"},
   X = {"<cmd>bdelete!<CR>", "Close"},
   E = {"<cmd>e ~/.config/nvim/init.lua<CR>", "Edit config"},
@@ -52,8 +50,8 @@ local mappings = {
     n = {"<cmd>enew<CR>", 'New buffer'},
     r = {"<cmd>BufferLineCloseRight<CR>", 'Close buffers to the right'},
     l = {"<cmd>BufferLineCloseLeft<CR>", 'Close buffers to the left'},
-    o = {"<cmd>%bd|e#<CR>", 'Close other buffers'},
-    O = {'<cmd>%bd!|e#"<CR>', 'Close other buffers without save'}
+    o = {"<cmd>%bd|e#|bd#<CR>|'", 'Close other buffers'},
+    O = {"<cmd>%bd!|e#|bd#<CR>|'", 'Close other buffers without save'}
   },
   t = {
     name = "Tabs",
