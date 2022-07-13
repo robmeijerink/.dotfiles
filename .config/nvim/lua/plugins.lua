@@ -62,6 +62,14 @@ return require('packer').startup(function(use)
             require('harpoon-config')
         end,
     }
+    use({
+    "kylechui/nvim-surround",
+        config = function()
+            require("nvim-surround").setup({
+                -- Configuration here, or leave empty to use defaults
+            })
+        end
+    })
     use {'neovim/nvim-lspconfig', config = "require('lsp')"}
     use {'hrsh7th/cmp-nvim-lsp'}
     use {'hrsh7th/cmp-buffer'}

@@ -28,6 +28,7 @@ end
 
 local mappings = {
   w = {"<cmd>set wrap!<CR><CR>", "Toggle soft line wrapping"},
+  p = {':set paste<CR>"*p:set nopaste<CR>', "Paste in Paste Mode"},
   x = {"<cmd>bdelete<CR>", "Close"},
   X = {"<cmd>bdelete!<CR>", "Close"},
   E = {"<cmd>e ~/.config/nvim/init.lua<CR>", "Edit config"},
