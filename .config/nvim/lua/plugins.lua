@@ -100,6 +100,7 @@ return require('packer').startup(function(use)
     use { 'tami5/lspsaga.nvim', config = "require('lspsaga-config')" }
     use { 'williamboman/nvim-lsp-installer' }
     use { 'jose-elias-alvarez/null-ls.nvim', config = "require('null-ls-config')" }
+    use { "jose-elias-alvarez/nvim-lsp-ts-utils"}
     use { "folke/zen-mode.nvim", config = "require('zen-mode-config')" }
     use { "folke/twilight.nvim", config = "require('twilight-config')", after = "nvim-treesitter" }
     use { 'machakann/vim-highlightedyank', config = "vim.cmd('highlight Normal guibg=none')" }
