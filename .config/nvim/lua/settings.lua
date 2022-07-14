@@ -90,3 +90,10 @@ vim.cmd([[
       au InsertLeave * set cursorline
   augroup END
 ]])
+
+vim.cmd([[
+    augroup blade
+    autocmd!
+    autocmd BufNewFile,BufRead *.blade.php set filetype=blade
+    augroup END
+]])

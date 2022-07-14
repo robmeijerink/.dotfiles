@@ -81,6 +81,7 @@ return require('packer').startup(function(use)
     use { 'numToStr/Comment.nvim', config = "require('comment-config')" }
     use { 'hrsh7th/vim-vsnip' }
     use { 'rafamadriz/friendly-snippets' }
+    use { 'jwalton512/vim-blade' }
     use { 'onsails/lspkind-nvim' }
     use { 'norcalli/nvim-colorizer.lua', config = "require('colorizer-config')", event = "BufRead" }
     use {
