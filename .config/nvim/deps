@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# Run this file once to set up some dependencies.
+
+npm i -g intelephense typescript typescript-language-server prettier
+
+echo "Run :checkhealth for additional dependency info"
