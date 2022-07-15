@@ -27,7 +27,8 @@ local toggle_lazygit = function()
 end
 
 local mappings = {
-  w = {"<cmd>set wrap!<CR><CR>", "Toggle soft line wrapping"},
+  w = {"<cmd>w<CR>", "Save"},
+  W = {"<cmd>set wrap!<CR><CR>", "Toggle line wrapping"},
   p = {':set paste<CR>"*p:set nopaste<CR>', "Paste in Paste Mode"},
   x = {"<cmd>bdelete<CR>", "Close"},
   X = {"<cmd>bdelete!<CR>", "Close"},
