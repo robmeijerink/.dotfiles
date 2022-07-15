@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 # Run this file once to set up some dependencies.
 
-npm i -g intelephense typescript typescript-language-server prettier
+npm i -g intelephense typescript typescript-language-server prettier emmet-ls
+
+sudo apt-get install -y unzip
+sudo apt install -y fd-find
+sudo apt install -y fzf
 
 echo "Run :checkhealth for additional dependency info"
