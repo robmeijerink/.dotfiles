@@ -97,3 +97,8 @@ vim.cmd([[
     autocmd BufNewFile,BufRead *.blade.php set filetype=blade
     augroup END
 ]])
+
+vim.cmd([[
+  let g:vsnip_filetypes = {}
+  let g:vsnip_filetypes.blade = ['javascript', 'html', 'php', 'css']
+]])
