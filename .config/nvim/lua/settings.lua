@@ -11,7 +11,7 @@ vim.opt.exrc = false -- vim will look for and use a local .vimrc file
 
 -- Mapping waiting time
 vim.opt.timeout = true
-vim.opt.timeoutlen = 300
+vim.opt.timeoutlen = 200
 vim.opt.ttimeout = true
 vim.opt.ttimeoutlen = 100
 
