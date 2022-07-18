@@ -2,31 +2,24 @@ return require('packer').startup(function(use)
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
     -- Colorscheme section
-    use {
-        "ellisonleao/gruvbox.nvim",
-        config = function()
-            require("gruvbox").setup({
-                italic = false,
-                contrast = "hard"
-            })
-        end
-    }
-    use("folke/tokyonight.nvim")
-    use {
-        "EdenEast/nightfox.nvim",
-        run = ":NightfoxCompile",
-        config = function ()
-            require('nightfox').setup({
-                 options = {
-                        -- Compiled file's destination location
-                        transparent = true,    -- Disable setting background
-                        terminal_colors = true, -- Set terminal colors (vim.g.terminal_color_*) used in `:terminal`
-                        dim_inactive = false 
-                    }
-                }
-            )
-        end
-    }
+    -- use { "ellisonleao/gruvbox.nvim" }
+    -- use("folke/tokyonight.nvim")
+    -- use {
+    --     "EdenEast/nightfox.nvim",
+    --     run = ":NightfoxCompile",
+    --     config = function ()
+    --         require('nightfox').setup({
+    --              options = {
+    --                     -- Compiled file's destination location
+    --                     transparent = true,    -- Disable setting background
+    --                     terminal_colors = true, -- Set terminal colors (vim.g.terminal_color_*) used in `:terminal`
+    --                     dim_inactive = false
+    --                 }
+    --             }
+    --         )
+    --     end
+    -- }
+    use { "tanvirtin/monokai.nvim" }
     -- Plugins
     use {
         'nvim-treesitter/nvim-treesitter',
