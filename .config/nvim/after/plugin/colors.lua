@@ -1,5 +1,7 @@
 -- vim.g.rob_colorscheme = "tokyonight"
-vim.g.rob_colorscheme = "gruvbox"
+-- vim.g.rob_colorscheme = "gruvbox"
+-- vim.g.rob_colorscheme = "nightfox"
+vim.g.rob_colorscheme = "monokai_pro"
 
 function ColorMyPencils()
     vim.g.gruvbox_contrast_dark = 'hard'
@@ -8,10 +10,6 @@ function ColorMyPencils()
     vim.g.tokyonight_transparent = true
     vim.g.gruvbox_invert_selection = '0'
     vim.opt.background = "dark"
-
-    vim.g.tokyonight_colors = {
-
-    }
 
     vim.cmd("colorscheme " .. vim.g.rob_colorscheme)
 
