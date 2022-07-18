@@ -12,6 +12,21 @@ return require('packer').startup(function(use)
         end
     }
     use("folke/tokyonight.nvim")
+    use {
+        "EdenEast/nightfox.nvim",
+        run = ":NightfoxCompile",
+        config = function ()
+            require('nightfox').setup({
+                 options = {
+                        -- Compiled file's destination location
+                        transparent = true,    -- Disable setting background
+                        terminal_colors = true, -- Set terminal colors (vim.g.terminal_color_*) used in `:terminal`
+                        dim_inactive = false 
+                    }
+                }
+            )
+        end
+    }
     -- Plugins
     use {
         'nvim-treesitter/nvim-treesitter',
