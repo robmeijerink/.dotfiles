@@ -65,8 +65,10 @@ local mappings = {
   T = {
     name = "UI Terminal",
     t = {"<cmd>ToggleTerm<CR>", "Split Below (Ctrl + \\)"},
-    f = {toggle_float, "Floating Terminal"},
-    l = {toggle_lazygit, "LazyGit"}
+    f = {toggle_float, "Floating Terminal"}
+  },
+  g = {
+    toggle_lazygit, "LazyGit"
   },
   h = {
     name = "Harpoon",
