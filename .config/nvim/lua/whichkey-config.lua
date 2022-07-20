@@ -51,10 +51,11 @@ local mappings = {
   b = {
     name = "Buffers",
     n = {"<cmd>enew<CR>", 'New buffer'},
+    a = {"<cmd>bufdo bwipeout<CR>", 'Close all buffers'},
     r = {"<cmd>BufferLineCloseRight<CR>", 'Close buffers to the right'},
     l = {"<cmd>BufferLineCloseLeft<CR>", 'Close buffers to the left'},
-    o = {"<cmd>%bd|e#|bd#<CR>|'", 'Close other buffers'},
-    O = {"<cmd>%bd!|e#|bd#<CR>|'", 'Close other buffers without save'}
+    o = {"<cmd>%bd|e#|bd#<CR>|'<CR>", 'Close other buffers'},
+    O = {"<cmd>%bd!|e#|bd#<CR>|'<CR>", 'Close other buffers without save'}
   },
   t = {
     name = "Tabs",
