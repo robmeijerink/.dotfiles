@@ -71,6 +71,13 @@ local mappings = {
   g = {
     name = "Git",
     l = {toggle_lazygit, "LazyGit"},
+    g = {"<cmd>Neogit<CR>", 'Neogit'},
+    d = {"<cmd>DiffviewOpen<CR>", 'Diff with HEAD'},
+    D = {"<cmd>DiffviewOpen master<CR>", 'Diff with master'},
+    h = {"<cmd>DiffviewFileHistory %<CR>", 'History current file'},
+    L = {"<cmd>Neogit log<CR>", 'Neogit log'},
+    p = {"<cmd>Neogit pull<CR>", 'Neogit pull'},
+    P = {"<cmd>Neogit push<CR>", 'Neogit push'},
   },
   h = {
     name = "Harpoon",
