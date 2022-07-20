@@ -68,7 +68,8 @@ local mappings = {
     f = {toggle_float, "Floating Terminal"}
   },
   g = {
-    toggle_lazygit, "LazyGit"
+    name = "Git",
+    l = {toggle_lazygit, "LazyGit"},
   },
   h = {
     name = "Harpoon",
