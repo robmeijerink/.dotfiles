@@ -94,6 +94,7 @@ vim.cmd([[
 vim.cmd([[
     augroup blade
     autocmd!
+    au FileType blade set ts=2 sw=2
     autocmd BufNewFile,BufRead *.blade.php set filetype=blade
     augroup END
 ]])
