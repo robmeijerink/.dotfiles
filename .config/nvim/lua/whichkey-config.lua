@@ -83,6 +83,12 @@ local mappings = {
     name = "Harpoon",
     l = {  "<cmd>lua require('harpoon.ui').toggle_quick_menu()<CR>", 'Toggle Quick Menu' },
     a =  { "<cmd>lua require('harpoon.mark').add_file()<CR>", 'Add Mark' },
+    q =  { "<cmd> lua require('harpoon.ui').nav_file(1)<CR>", 'Go to Mark 1' },
+    w =  { "<cmd> lua require('harpoon.ui').nav_file(2)<CR>", 'Go to Mark 2' },
+    e =  { "<cmd> lua require('harpoon.ui').nav_file(3)<CR>", 'Go to Mark 3' },
+    r =  { "<cmd> lua require('harpoon.ui').nav_file(4)<CR>", 'Go to Mark 4' },
+    t =  { "<cmd> lua require('harpoon.ui').nav_file(5)<CR>", 'Go to Mark 5' },
+    y =  { "<cmd> lua require('harpoon.ui').nav_file(6)<CR>", 'Go to Mark 6' },
   },
   l = {
     name = "LSP",
