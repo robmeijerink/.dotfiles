@@ -42,6 +42,7 @@ keymap('n', '<A-k>', '<Esc><cmd>m .-2<CR>==gi', opts)
 -- Command --
 -- Resave with sudo
 keymap('c', 'w!!', 'w !sudo tee %', opts)
+keymap('c', 'x!!', '<cmd>!chmod +x %<CR>', opts)
 
 -- Insert --
 -- Press zx fast to exit insert mode
@@ -66,6 +67,18 @@ keymap('x', 'K', "<cmd>move '<-2<CR>gv-gv", opts)
 keymap('x', '<A-j>', "<cmd>move '>+1<CR>gv-gv", opts)
 keymap('x', '<A-k>', "<cmd>move '<-2<CR>gv-gv", opts)
 
+-- Replace with paste in Visual Block mode
+keymap('x', '<leader>p', '"_dP', opts)
+
+-- Yank to system's clipboard
+keymap('n', '<leader>y', '"+y', opts)
+keymap('v', '<leader>y', '"+y', opts)
+keymap('n', '<leader>Y', '"+Y', { noremap = false, silent = true })
+
+-- Delete without cut
+keymap('n', '<leader>d', '"_d', opts)
+keymap('v', '<leader>d', '"_d', opts)
+
 -- Terminal --
 -- Better terminal navigation
 keymap('t', '<C-h>', '<C-\\><C-N><C-w>h', term_opts)
@@ -76,10 +89,13 @@ keymap('t', '<C-l>', '<C-\\><C-N><C-w>l', term_opts)
 -- This unsets the "last search pattern" register by hitting return
 keymap('n', '<CR>', '<cmd>noh<CR><CR>', opts)
 
+-- This replaces the current word
+keymap('n', '<leader>s', ':%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>', opts)
+
 -- PLUGINS --
 
 -- Lazygit
-keymap('n', '<leader>lg', '<cmd>LazyGit<CR>', opts)
+-- keymap('n', '<leader>lg', '<cmd>LazyGit<CR>', opts)
 
 -- Telescope
 -- keymap('n', '<C-p>', "<cmd>lua require('telescope.builtin').git_files(require('telescope.themes'))<CR>", opts)
