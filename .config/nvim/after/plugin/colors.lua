@@ -1,4 +1,4 @@
--- vim.g.rob_colorscheme = "tokyonight"
+vim.g.rob_colorscheme = "tokyonight"
 -- vim.g.rob_colorscheme = "nightfox"
 -- vim.g.rob_colorscheme = "gruvbox"
 
@@ -15,13 +15,15 @@ function ColorMyPencils()
     })
 
     -- vim.g.gruvbox_contrast_dark = 'hard'
-    -- vim.g.tokyonight_style = "night"
-    -- vim.g.tokyonight_transparent_sidebar = true
-    -- vim.g.tokyonight_transparent = true
+    vim.g.tokyonight_style = "night"
+    vim.g.tokyonight_transparent_sidebar = true
+    vim.g.tokyonight_italic_variables = false
+    vim.g.tokyonight_italic_keywords = false
+    vim.g.tokyonight_transparent = true
     -- vim.g.gruvbox_invert_selection = '0'
-    -- vim.opt.background = "dark"
+    vim.opt.background = "dark"
 
-    -- vim.cmd("colorscheme " .. vim.g.rob_colorscheme)
+    vim.cmd("colorscheme " .. vim.g.rob_colorscheme)
 
     local hl = function(thing, opts)
         vim.api.nvim_set_hl(0, thing, opts)

@@ -3,7 +3,7 @@ return require('packer').startup(function(use)
     use 'wbthomason/packer.nvim'
     -- Colorscheme section
     -- use { "ellisonleao/gruvbox.nvim" }
-    -- use("folke/tokyonight.nvim")
+    use("folke/tokyonight.nvim")
     -- use {
     --     "EdenEast/nightfox.nvim",
     --     run = ":NightfoxCompile",
