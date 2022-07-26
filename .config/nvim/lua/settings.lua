@@ -50,6 +50,8 @@ vim.opt.matchtime = 2 -- delay before showing matching paren
 -- Global Status Bar
 vim.opt.laststatus = 3
 
+-- Enable mouse wheel scrolling
+vim.opt.mouse = 'a'
 
 -- White characters
 vim.opt.autoindent = true
