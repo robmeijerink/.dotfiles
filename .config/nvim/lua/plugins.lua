@@ -28,7 +28,7 @@ return require('packer').startup(function(use)
         config = "require('treesitter-config')"
     }
     use {
-        'Pocco81/AutoSave.nvim',
+        'pocco81/auto-save.nvim',
         config = "require('autosave-config')"
     }
     use {
@@ -123,6 +123,6 @@ return require('packer').startup(function(use)
     use { 'machakann/vim-highlightedyank', config = "vim.cmd('highlight Normal guibg=none')" }
 
     -- JavaScript
-    use { 'posva/vim-vue', config = "require('vue-config')" }
+    --use { 'posva/vim-vue', config = "require('vue-config')" }
     use { 'othree/javascript-libraries-syntax.vim' }
 end)
