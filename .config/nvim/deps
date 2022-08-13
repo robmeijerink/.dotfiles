@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Run this file once to set up some dependencies.
 
-npm i -g intelephense typescript typescript-language-server prettier emmet-ls
+npm i -g intelephense typescript typescript-language-server prettier emmet-ls vscode-langservers-extracted
 
 sudo apt-get install -y unzip
 sudo apt install -y fd-find
