@@ -4,7 +4,9 @@ require('bufferline').setup {
     },
     highlights = {
         buffer_selected = {
-            gui = "italic"
+            underline = false,
+            undercurl = false,
+            italic = true,
         },
     }
 }
