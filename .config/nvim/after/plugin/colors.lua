@@ -8,11 +8,11 @@ function ColorMyPencils()
     --     contrast = "hard"
     -- })
 
-    local monokai = require('monokai')
-    monokai.setup({
-        palette = monokai.pro,
-        italics = false,
-    })
+    -- local monokai = require('monokai')
+    -- monokai.setup({
+    --     palette = monokai.pro,
+    --     italics = false,
+    -- })
 
     -- vim.g.gruvbox_contrast_dark = 'hard'
     vim.g.tokyonight_style = "night"

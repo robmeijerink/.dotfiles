@@ -19,7 +19,7 @@ return require('packer').startup(function(use)
     --         )
     --     end
     -- }
-    use { "tanvirtin/monokai.nvim" }
+    -- use { "tanvirtin/monokai.nvim" }
     -- Plugins
     use {
         'nvim-treesitter/nvim-treesitter',
