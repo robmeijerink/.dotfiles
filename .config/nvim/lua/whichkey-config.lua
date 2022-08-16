@@ -71,6 +71,7 @@ local mappings = {
   g = {
     name = "Git",
     l = {toggle_lazygit, "LazyGit"},
+    a = {"<cmd>!git fetch --all<CR>", "Fetch all"},
     g = {"<cmd>Neogit<CR>", 'Neogit'},
     d = {"<cmd>DiffviewOpen<CR>", 'Diff with HEAD'},
     D = {"<cmd>DiffviewOpen master<CR>", 'Diff with master'},
