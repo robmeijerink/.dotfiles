@@ -104,6 +104,13 @@ keymap('n', '<leader>s', ':%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>',
 -- keymap('n', '<leader>fg', "<cmd>lua require('telescope.builtin').live_grep(require('telescope.themes'))CR>", opts)
 -- keymap('n', '<leader>bb', "<cmd>lua require('telescope.builtin').buffer(require('telescope.themes'))<CR>", opts)
 -- keymap('n', '<leader>hh', "<cmd>lua require('telescope.builtin').help_tags(require('telescope.themes'))<CR>", opts)
+vim.keymap.set('n', '<leader>/', function()
+    -- You can pass additional configuration to telescope to change theme, layout, etc.
+    require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
+      winblend = 10,
+      previewer = false,
+    })
+end, { desc = '[/] Fuzzily search in current buffer]' })
 
 -- Undotree
 keymap('n', '<leader>u', '<cmd>UndotreeShow<CR>', opts)

@@ -66,9 +66,14 @@ vim.opt.expandtab = true -- expand tab to spaces
 vim.opt.backup = true -- use backup files
 vim.opt.writebackup = false
 vim.opt.swapfile = false -- do not use swap file
+vim.opt.undofile = true -- Save undo history
 vim.opt.undodir = HOME .. '/.vim/tmp/undo//'     -- undo files
 vim.opt.backupdir = HOME .. '/.vim/tmp/backup//' -- backups
 vim.opt.directory = '/.vim/tmp/swap//'           -- swap files
+
+-- Decrease update time
+vim.o.updatetime = 250
+vim.wo.signcolumn = 'yes'
 
 vim.cmd([[
   au FileType python                  set ts=4 sw=4

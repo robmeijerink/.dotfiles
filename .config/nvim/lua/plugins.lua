@@ -1,4 +1,14 @@
-return require('packer').startup(function(use)
+-- Install packer
+local install_path = vim.fn.stdpath 'data' .. '/site/pack/packer/start/packer.nvim'
+local is_bootstrap = false
+if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
+  is_bootstrap = true
+  vim.fn.execute('!git clone https://github.com/wbthomason/packer.nvim ' .. install_path)
+  vim.cmd [[packadd packer.nvim]]
+end
+
+-- stylua: ignore start
+require('packer').startup(function(use)
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
     -- Colorscheme section
@@ -27,6 +37,7 @@ return require('packer').startup(function(use)
         event = "BufWinEnter",
         config = "require('treesitter-config')"
     }
+    use { 'nvim-treesitter/nvim-treesitter-textobjects', after = "nvim-treesitter" } -- Additional textobjects for treesitter
     use {
         'pocco81/auto-save.nvim',
         config = "require('autosave-config')"
@@ -61,6 +72,8 @@ return require('packer').startup(function(use)
             require('telescope-config')
         end,
     }
+    -- Fuzzy Finder Algorithm which requires local dependencies to be built. Only load if `make` is available
+    use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make', cond = vim.fn.executable "make" == 1 }
     use {
         'ThePrimeagen/harpoon',
         requires = {
@@ -83,7 +96,8 @@ return require('packer').startup(function(use)
     use { 'hrsh7th/cmp-buffer' }
     use { 'hrsh7th/cmp-path' }
     use { 'hrsh7th/nvim-cmp' }
-    use { 'hrsh7th/cmp-vsnip' }
+    use { 'L3MON4D3/LuaSnip', requires = { 'saadparwaiz1/cmp_luasnip' } }
+    -- use { 'hrsh7th/cmp-vsnip' }
     use { 'sindrets/diffview.nvim'}
     use { 'kdheepak/lazygit.nvim', config = "require('lazygit-config')" }
     use {
@@ -96,7 +110,7 @@ return require('packer').startup(function(use)
     }
     use { 'folke/todo-comments.nvim', config = "require('todo-config')" }
     use { 'numToStr/Comment.nvim', config = "require('comment-config')" }
-    use { 'hrsh7th/vim-vsnip' }
+    -- use { 'hrsh7th/vim-vsnip' }
     use { 'rafamadriz/friendly-snippets' }
     use { 'sheerun/vim-polyglot' }
     use { 'onsails/lspkind-nvim' }
@@ -121,8 +135,35 @@ return require('packer').startup(function(use)
     use { "folke/zen-mode.nvim", config = "require('zen-mode-config')" }
     use { "folke/twilight.nvim", config = "require('twilight-config')", after = "nvim-treesitter" }
     use { 'machakann/vim-highlightedyank', config = "vim.cmd('highlight Normal guibg=none')" }
+    use { 'tpope/vim-sleuth' } -- Detect tabstop and shiftwidth automatically
 
     -- JavaScript
     --use { 'posva/vim-vue', config = "require('vue-config')" }
     use { 'othree/javascript-libraries-syntax.vim' }
+
+    if is_bootstrap then
+        require('packer').sync()
+    end
 end)
+-- stylua: ignore end
+
+-- When we are bootstrapping a configuration, it doesn't
+-- make sense to execute the rest of the init.lua.
+--
+-- You'll need to restart nvim, and then it will work.
+if is_bootstrap then
+    print '=================================='
+    print '    Plugins are being installed'
+    print '    Wait until Packer completes,'
+    print '       then restart nvim'
+    print '=================================='
+    return
+end
+
+-- Automatically source and re-compile packer whenever you save this init.lua
+local packer_group = vim.api.nvim_create_augroup('Packer', { clear = true })
+vim.api.nvim_create_autocmd('BufWritePost', {
+    command = 'source <afile> | PackerCompile',
+    group = packer_group,
+    pattern = vim.fn.expand '$MYVIMRC',
+})

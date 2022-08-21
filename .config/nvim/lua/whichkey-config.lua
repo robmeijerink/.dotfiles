@@ -38,6 +38,7 @@ local mappings = {
     t = { "<cmd>silent !tmux neww tmux-sessionizer<CR>", 'Find and open in tmux' },
     f = { "<cmd>Telescope find_files hidden=true no_ignore=true<CR>", "Telescope Find Files"},
     g = { "<cmd>Telescope live_grep hidden=true no_ignore=true<CR>", "Telescope Live Grep"},
+    w = { "<cmd>Telescope grep_string<CR>", "Telescope Grep Word"},
     o = { "<cmd>Telescope oldfiles<CR>", "Open Recent File"},
     r = { "<cmd>Telescope resume<CR>", "Resume Search"},
     x = { "<cmd>Telescope buffers show_all_buffers=true<CR>", "Telescope Buffer"},
