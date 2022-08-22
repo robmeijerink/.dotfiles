@@ -1,3 +1,6 @@
+# Set $TERM for Neovim
+export TERM=tmux-256color
+
 # Some bindings to add to the .zsh_profile
 alias vi="nvim"
 alias dep='vendor/bin/deployer.phar'
