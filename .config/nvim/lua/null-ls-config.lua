@@ -37,8 +37,8 @@ null_ls.setup({
         vim.cmd [[
             augroup document_highlight
               autocmd! * <buffer>
-              autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-              autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+              autocmd CursorHold <buffer> silent! lua vim.lsp.buf.document_highlight()
+              autocmd CursorMoved <buffer> silent! lua vim.lsp.buf.clear_references()
             augroup END
           ]]
     end
