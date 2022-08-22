@@ -12,6 +12,7 @@ end
 -- Setup nvim-cmp.
 local cmp = require 'cmp'
 local lspkind = require('lspkind')
+local luasnip = require('luasnip')
 
 cmp.setup({
   snippet = {
@@ -20,7 +21,7 @@ cmp.setup({
       -- vim.fn["vsnip#anonymous"](args.body)
 
       -- For `luasnip` user.
-      require('luasnip').lsp_expand(args.body)
+      luasnip.lsp_expand(args.body)
 
       -- For `ultisnips` user.
       -- vim.fn["UltiSnips#Anon"](args.body)
