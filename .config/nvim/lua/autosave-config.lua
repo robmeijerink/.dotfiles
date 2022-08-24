@@ -7,9 +7,9 @@ require("auto-save").setup({
 			return ("AutoSave: saved at " .. vim.fn.strftime("%H:%M:%S"))
 		end,
 		dim = 0.18, -- dim the color of `message`
-		cleaning_interval = 1250, -- (milliseconds) automatically clean MsgArea after displaying `message`. See :h MsgArea
+		cleaning_interval = 2250, -- (milliseconds) automatically clean MsgArea after displaying `message`. See :h MsgArea
 	},
-    trigger_events = {"InsertLeave", "TextChanged"}, -- vim events that trigger auto-save. See :h events
+    trigger_events = {"FocusLost"}, -- vim events that trigger auto-save. See :h events
 	-- function that determines whether to save the current buffer or not
 	-- return true: if buffer is ok to be saved
 	-- return false: if it's not ok to be saved
@@ -25,7 +25,7 @@ require("auto-save").setup({
 		return false -- can't save
 	end,
     write_all_buffers = false, -- write all buffers when the current one meets `condition`
-    debounce_delay = 635, -- saves the file at most every `debounce_delay` milliseconds
+    debounce_delay = 825, -- saves the file at most every `debounce_delay` milliseconds
 	callbacks = { -- functions to be executed at different intervals
 		enabling = nil, -- ran when enabling auto-save
 		disabling = nil, -- ran when disabling auto-save
