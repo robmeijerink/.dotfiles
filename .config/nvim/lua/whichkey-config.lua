@@ -104,9 +104,9 @@ local mappings = {
       "List Workspace Folders"
     },
     t = {'<cmd>lua vim.lsp.buf.type_definition()<CR>', "Type Definition"},
-    d = {'<cmd>lua vim.lsp.buf.definition()<CR>', "Go To Definition"},
-    D = {'<cmd>lua vim.lsp.buf.declaration()<CR>', "Go To Declaration"},
-    r = {'<cmd>lua vim.lsp.buf.references()<CR>', "References"},
+    -- d = {'<cmd>lua vim.lsp.buf.definition()<CR>', "Go To Definition"},
+    -- D = {'<cmd>lua vim.lsp.buf.declaration()<CR>', "Go To Declaration"},
+    -- r = {'<cmd>lua vim.lsp.buf.references()<CR>', "References"},
     R = {'<cmd>Lspsaga rename<CR>', "Rename"},
     a = {'<cmd>Lspsaga code_action<CR>', "Code Action"},
     e = {'<cmd>Lspsaga show_line_diagnostics<CR>', "Show Line Diagnostics"},
