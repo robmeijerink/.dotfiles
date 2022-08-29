@@ -2,8 +2,8 @@ return function(client, bufnr)
     local opts = { noremap = true, silent = true }
 
     -- Only use null-ls for formatting
-    client.resolved_capabilities.document_formatting = false
-    client.resolved_capabilities.document_range_formatting = false
+    -- client.resolved_capabilities.document_formatting = false
+    -- client.resolved_capabilities.document_range_formatting = false
 
     -- Enable (omnifunc) completion triggered by <c-x><c-o>
     vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
