@@ -2,9 +2,9 @@
 local install_path = vim.fn.stdpath 'data' .. '/site/pack/packer/start/packer.nvim'
 local is_bootstrap = false
 if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
-  is_bootstrap = true
-  vim.fn.execute('!git clone https://github.com/wbthomason/packer.nvim ' .. install_path)
-  vim.cmd [[packadd packer.nvim]]
+    is_bootstrap = true
+    vim.fn.execute('!git clone https://github.com/wbthomason/packer.nvim ' .. install_path)
+    vim.cmd [[packadd packer.nvim]]
 end
 
 -- stylua: ignore start
@@ -99,7 +99,7 @@ require('packer').startup(function(use)
     use { 'hrsh7th/nvim-cmp' }
     use { 'L3MON4D3/LuaSnip', requires = { 'saadparwaiz1/cmp_luasnip' } }
     -- use { 'hrsh7th/cmp-vsnip' }
-    use { 'sindrets/diffview.nvim'}
+    use { 'sindrets/diffview.nvim' }
     use { 'kdheepak/lazygit.nvim', config = "require('lazygit-config')" }
     use {
         'TimUntersberger/neogit',
@@ -108,6 +108,11 @@ require('packer').startup(function(use)
             { 'sindrets/diffview.nvim' }
         },
         config = "require('neogit-config')"
+    }
+    use {
+        "NTBBloodbath/rest.nvim",
+        requires = { "nvim-lua/plenary.nvim" },
+        config = "require('rest-nvim-config')"
     }
     use { 'folke/todo-comments.nvim', config = "require('todo-config')" }
     use { 'numToStr/Comment.nvim', config = "require('comment-config')" }
@@ -132,7 +137,7 @@ require('packer').startup(function(use)
     use { 'tami5/lspsaga.nvim', config = "require('lspsaga-config')" }
     use { 'williamboman/nvim-lsp-installer' }
     use { 'jose-elias-alvarez/null-ls.nvim', config = "require('null-ls-config')" }
-    use { "jose-elias-alvarez/nvim-lsp-ts-utils"}
+    use { "jose-elias-alvarez/nvim-lsp-ts-utils" }
     use { "folke/zen-mode.nvim", config = "require('zen-mode-config')" }
     use { "folke/twilight.nvim", config = "require('twilight-config')", after = "nvim-treesitter" }
     use { 'machakann/vim-highlightedyank', config = "vim.cmd('highlight Normal guibg=none')" }
@@ -168,3 +173,4 @@ vim.api.nvim_create_autocmd('BufWritePost', {
     group = packer_group,
     pattern = vim.fn.expand '$MYVIMRC',
 })
+

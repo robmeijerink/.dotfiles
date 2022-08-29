@@ -1,20 +1,22 @@
-require'nvim-treesitter.configs'.setup {
+require 'nvim-treesitter.configs'.setup {
   ensure_installed = {
-      "bash",
-      "html",
-      "css",
-      "scss",
-      "javascript",
-      "typescript",
-      "vue",
-      "lua",
-      "php",
-      "go",
-      "gomod",
-      "rust",
-      "dockerfile",
-      "yaml",
-      "toml"
+    "bash",
+    "html",
+    "css",
+    "scss",
+    "javascript",
+    "typescript",
+    "vue",
+    "lua",
+    "php",
+    "go",
+    "gomod",
+    "rust",
+    "dockerfile",
+    "yaml",
+    "toml",
+    "http",
+    "json",
   },
   sync_installed = true,
   highlight = {
@@ -35,7 +37,7 @@ require'nvim-treesitter.configs'.setup {
       node_decremental = "grm"
     },
   },
-  autotag = {enable = true},
+  autotag = { enable = true },
   rainbow = {
     enable = true,
     extended_mode = false, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
@@ -43,7 +45,7 @@ require'nvim-treesitter.configs'.setup {
     -- colors = {}, -- table of hex strings
     -- termcolors = {} -- table of colour name strings
   },
-  autopairs = {enable = true},
+  autopairs = { enable = true },
   textobjects = {
     select = {
       enable = true,
