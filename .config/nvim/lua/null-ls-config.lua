@@ -17,7 +17,14 @@ null_ls.setup({
     null_ls.builtins.formatting.phpcbf.with({ -- Use the local installation first
         prefer_local = "vendor/bin",
     }),
-    formatting.prettier,
+    formatting.blade_formatter,
+    formatting.prettier.with({
+        extra_args = {
+          "--no-semi",
+          "--single-quote",
+          "--jsx-single-quote",
+        }
+    }),
     formatting.black,
     formatting.gofmt,
     formatting.shfmt,
