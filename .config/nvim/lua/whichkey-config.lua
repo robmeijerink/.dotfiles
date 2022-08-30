@@ -80,6 +80,7 @@ local mappings = {
     L = {"<cmd>Neogit log<CR>", 'Neogit log'},
     p = {"<cmd>Neogit pull<CR>", 'Neogit pull'},
     P = {"<cmd>Neogit push<CR>", 'Neogit push'},
+    c = {"<cmd>Neogit commit<CR>", 'Neogit commit'},
   },
   h = {
     name = "Harpoon",
