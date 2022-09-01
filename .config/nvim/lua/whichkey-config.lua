@@ -80,6 +80,7 @@ local mappings = {
     L = {"<cmd>Neogit log<CR>", 'Neogit log'},
     p = {"<cmd>Neogit pull<CR>", 'Neogit pull'},
     P = {"<cmd>Neogit push<CR>", 'Neogit push'},
+    c = {"<cmd>Neogit commit<CR>", 'Neogit commit'},
   },
   h = {
     name = "Harpoon",
@@ -95,7 +96,7 @@ local mappings = {
   l = {
     name = "LSP",
     i = {"<cmd>LspInfo<CR>", "Connected Language Servers"},
-    f = {"<cmd>lua vim.lsp.buf.formatting_sync()<CR>", "Format file"},
+    f = {"<cmd>lua vim.lsp.buf.formatting_seq_sync()<CR>", "Format file"},
     k = {"<cmd>lua vim.lsp.buf.signature_help()<CR>", "Signature Help"},
     K = {"<cmd>Lspsaga hover_doc<CR>", "Hover Commands"},
     w = {'<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', "Add Workspace Folder"},
