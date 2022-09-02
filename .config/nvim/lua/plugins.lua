@@ -1,14 +1,45 @@
--- Install packer
-local install_path = vim.fn.stdpath 'data' .. '/site/pack/packer/start/packer.nvim'
-local is_bootstrap = false
-if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
-    is_bootstrap = true
-    vim.fn.execute('!git clone https://github.com/wbthomason/packer.nvim ' .. install_path)
-    vim.cmd [[packadd packer.nvim]]
+local fn = vim.fn
+
+-- Automatically install packer
+local install_path = fn.stdpath "data" .. "/site/pack/packer/start/packer.nvim"
+if fn.empty(fn.glob(install_path)) > 0 then
+  PACKER_BOOTSTRAP = fn.system {
+    "git",
+    "clone",
+    "--depth",
+    "1",
+    "https://github.com/wbthomason/packer.nvim",
+    install_path,
+  }
+  print "Installing packer close and reopen Neovim..."
+  vim.cmd [[packadd packer.nvim]]
 end
 
+-- Autocommand that reloads neovim whenever you save the plugins.lua file
+vim.cmd [[
+  augroup packer_user_config
+    autocmd!
+    autocmd BufWritePost plugins.lua source <afile> | PackerSync
+  augroup end
+]]
+
+-- Use a protected call so we don't error out on first use
+local status_ok, packer = pcall(require, "packer")
+if not status_ok then
+  return
+end
+
+-- Have packer use a popup window
+packer.init {
+  display = {
+    open_fn = function()
+      return require("packer.util").float { border = "rounded" }
+    end,
+  },
+}
+
 -- stylua: ignore start
-require('packer').startup(function(use)
+return packer.startup(function(use)
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
     -- Colorscheme section
@@ -60,6 +91,8 @@ require('packer').startup(function(use)
         cmd = "NvimTreeToggle",
         config = "require('nvim-tree-config')"
     }
+    use { "lewis6991/impatient.nvim", config = "require('impatient-config')" }
+    use { "moll/vim-bbye" }
     use { 'mbbill/undotree' }
     use { 'windwp/nvim-ts-autotag', event = "InsertEnter", after = "nvim-treesitter" }
     use { 'p00f/nvim-ts-rainbow', after = "nvim-treesitter" }
@@ -67,7 +100,7 @@ require('packer').startup(function(use)
     use { 'folke/which-key.nvim', config = "require('whichkey-config')" }
     use {
         'nvim-telescope/telescope.nvim',
-        requires = { { 'nvim-lua/plenary.nvim' }, { "kdheepak/lazygit.nvim" } },
+        requires = { { 'nvim-lua/plenary.nvim' }f, { "kdheepak/lazygit.nvim" } },
         cmd = "Telescope",
         config = function()
             require('telescope-config')
@@ -148,29 +181,10 @@ require('packer').startup(function(use)
     --use { 'posva/vim-vue', config = "require('vue-config')" }
     use { 'othree/javascript-libraries-syntax.vim' }
 
-    if is_bootstrap then
-        require('packer').sync()
+    -- Automatically set up your configuration after cloning packer.nvim
+    -- Put this at the end after all plugins
+    if PACKER_BOOTSTRAP then
+        require("packer").sync()
     end
 end)
 -- stylua: ignore end
-
--- When we are bootstrapping a configuration, it doesn't
--- make sense to execute the rest of the init.lua.
---
--- You'll need to restart nvim, and then it will work.
-if is_bootstrap then
-    print '=================================='
-    print '    Plugins are being installed'
-    print '    Wait until Packer completes,'
-    print '       then restart nvim'
-    print '=================================='
-    return
-end
-
--- Automatically source and re-compile packer whenever you save this init.lua
-local packer_group = vim.api.nvim_create_augroup('Packer', { clear = true })
-vim.api.nvim_create_autocmd('BufWritePost', {
-    command = 'source <afile> | PackerCompile',
-    group = packer_group,
-    pattern = vim.fn.expand '$MYVIMRC',
-})
