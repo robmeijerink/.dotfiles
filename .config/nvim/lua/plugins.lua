@@ -100,7 +100,7 @@ return packer.startup(function(use)
     use { 'folke/which-key.nvim', config = "require('whichkey-config')" }
     use {
         'nvim-telescope/telescope.nvim',
-        requires = { { 'nvim-lua/plenary.nvim' }f, { "kdheepak/lazygit.nvim" } },
+        requires = { { 'nvim-lua/plenary.nvim' }, { "kdheepak/lazygit.nvim" } },
         cmd = "Telescope",
         config = function()
             require('telescope-config')
