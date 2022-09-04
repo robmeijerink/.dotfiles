@@ -121,3 +121,6 @@ keymap('n', '<leader>e', '<cmd>NvimTreeToggle<CR>', opts)
 -- LSP Saga
 keymap("n", "<C-u>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>", opts)
 keymap("n", "<C-d>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>", opts)
+
+-- Tmux Sessionizer
+keymap("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>", opts)
