@@ -1,4 +1,4 @@
-local custom_attach = require('lsp.custom_attach')
+local custom_attach = require('robmeijerink.lsp.custom_attach')
 
 require('lspconfig').intelephense.setup({
     on_attach = custom_attach,

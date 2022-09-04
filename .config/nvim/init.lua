@@ -1,3 +1,2 @@
-require('keymaps')
-require('plugins')
-require('settings')
+require('robmeijerink.plugins')
+require('robmeijerink.settings')

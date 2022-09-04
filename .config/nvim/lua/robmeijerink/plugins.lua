@@ -66,44 +66,44 @@ return packer.startup(function(use)
         'nvim-treesitter/nvim-treesitter',
         run = ":TSUpdate",
         event = "BufWinEnter",
-        config = "require('treesitter-config')"
+        config = "require('robmeijerink.treesitter')"
     }
     use { 'nvim-treesitter/nvim-treesitter-textobjects', after = "nvim-treesitter" } -- Additional textobjects for treesitter
     use { 'nvim-treesitter/nvim-treesitter-context', after = "nvim-treesitter" } -- Sticky header for functions
     use {
         'pocco81/auto-save.nvim',
-        config = "require('autosave-config')"
+        config = "require('robmeijerink.autosave')"
     }
     use {
         'nvim-lualine/lualine.nvim',
-        config = "require('lualine-config')",
+        config = "require('robmeijerink.lualine')",
         requires = { 'kyazdani42/nvim-web-devicons', opt = true }
     }
     use {
         'akinsho/bufferline.nvim',
         requires = 'kyazdani42/nvim-web-devicons',
         event = "BufWinEnter",
-        config = "require('bufferline-config')"
+        config = "require('robmeijerink.bufferline')"
     }
     use {
         'kyazdani42/nvim-tree.lua',
         requires = 'kyazdani42/nvim-web-devicons',
         cmd = "NvimTreeToggle",
-        config = "require('nvim-tree-config')"
+        config = "require('robmeijerink.nvim-tree')"
     }
-    use { "lewis6991/impatient.nvim", config = "require('impatient-config')" }
+    use { "lewis6991/impatient.nvim", config = "require('robmeijerink.impatient')" }
     use { "moll/vim-bbye" }
     use { 'mbbill/undotree' }
     use { 'windwp/nvim-ts-autotag', event = "InsertEnter", after = "nvim-treesitter" }
     use { 'p00f/nvim-ts-rainbow', after = "nvim-treesitter" }
-    use { 'windwp/nvim-autopairs', config = "require('autopairs-config')", after = "nvim-cmp" }
-    use { 'folke/which-key.nvim', config = "require('whichkey-config')" }
+    use { 'windwp/nvim-autopairs', config = "require('robmeijerink.autopairs')", after = "nvim-cmp" }
+    use { 'folke/which-key.nvim' }
     use {
         'nvim-telescope/telescope.nvim',
         requires = { { 'nvim-lua/plenary.nvim' }, { "kdheepak/lazygit.nvim" } },
         cmd = "Telescope",
         config = function()
-            require('telescope-config')
+            require('robmeijerink.telescope')
         end,
     }
     -- Fuzzy Finder Algorithm which requires local dependencies to be built. Only load if `make` is available
@@ -114,7 +114,7 @@ return packer.startup(function(use)
             { 'nvim-lua/plenary.nvim' }
         },
         config = function()
-            require('harpoon-config')
+            require('robmeijerink.harpoon')
         end,
     }
     use({
@@ -125,7 +125,7 @@ return packer.startup(function(use)
             })
         end
     })
-    use { 'neovim/nvim-lspconfig', config = "require('lsp')" }
+    use { 'neovim/nvim-lspconfig', config = "require('robmeijerink.lsp')" }
     use { 'hrsh7th/cmp-nvim-lsp' }
     use { 'hrsh7th/cmp-buffer' }
     use { 'hrsh7th/cmp-path' }
@@ -134,27 +134,27 @@ return packer.startup(function(use)
     use { 'L3MON4D3/LuaSnip', requires = { 'saadparwaiz1/cmp_luasnip' } }
     -- use { 'hrsh7th/cmp-vsnip' }
     use { 'sindrets/diffview.nvim' }
-    use { 'kdheepak/lazygit.nvim', config = "require('lazygit-config')" }
+    use { 'kdheepak/lazygit.nvim', config = "require('robmeijerink.lazygit')" }
     use {
         'TimUntersberger/neogit',
         requires = {
             { 'nvim-lua/plenary.nvim' },
             { 'sindrets/diffview.nvim' }
         },
-        config = "require('neogit-config')"
+        config = "require('robmeijerink.neogit')"
     }
     use {
         "NTBBloodbath/rest.nvim",
         requires = { "nvim-lua/plenary.nvim" },
-        config = "require('rest-nvim-config')"
+        config = "require('robmeijerink.rest-nvim')"
     }
-    use { 'folke/todo-comments.nvim', config = "require('todo-config')" }
-    use { 'numToStr/Comment.nvim', config = "require('comment-config')" }
+    use { 'folke/todo-comments.nvim', config = "require('robmeijerink.todo')" }
+    use { 'numToStr/Comment.nvim', config = "require('robmeijerink.comment')" }
     -- use { 'hrsh7th/vim-vsnip' }
     use { 'rafamadriz/friendly-snippets' }
     use { 'sheerun/vim-polyglot' }
     use { 'onsails/lspkind-nvim' }
-    use { 'norcalli/nvim-colorizer.lua', config = "require('colorizer-config')", event = "BufRead" }
+    use { 'norcalli/nvim-colorizer.lua', config = "require('robmeijerink.colorizer')", event = "BufRead" }
     use {
         'lewis6991/gitsigns.nvim',
         requires = { 'nvim-lua/plenary.nvim' },
@@ -164,21 +164,21 @@ return packer.startup(function(use)
     }
     use {
         "lukas-reineke/indent-blankline.nvim",
-        config = "require('blankline-config')",
+        config = "require('robmeijerink.blankline')",
         event = "BufRead"
     }
-    use { "akinsho/toggleterm.nvim", config = "require('toggleterm-config')" }
-    use { 'tami5/lspsaga.nvim', config = "require('lspsaga-config')" }
+    use { "akinsho/toggleterm.nvim", config = "require('robmeijerink.toggleterm')" }
+    use { 'tami5/lspsaga.nvim', config = "require('robmeijerink.lspsaga')" }
     use { 'williamboman/nvim-lsp-installer' }
-    use { 'jose-elias-alvarez/null-ls.nvim', config = "require('null-ls-config')" }
+    use { 'jose-elias-alvarez/null-ls.nvim', config = "require('robmeijerink.null-ls')" }
     use { "jose-elias-alvarez/nvim-lsp-ts-utils" }
-    use { "folke/zen-mode.nvim", config = "require('zen-mode-config')" }
-    use { "folke/twilight.nvim", config = "require('twilight-config')", after = "nvim-treesitter" }
+    use { "folke/zen-mode.nvim", config = "require('robmeijerink.zen-mode')" }
+    use { "folke/twilight.nvim", config = "require('robmeijerink.twilight')", after = "nvim-treesitter" }
     use { 'machakann/vim-highlightedyank', config = "vim.cmd('highlight Normal guibg=none')" }
     use { 'tpope/vim-sleuth' } -- Detect tabstop and shiftwidth automatically
 
     -- JavaScript
-    --use { 'posva/vim-vue', config = "require('vue-config')" }
+    --use { 'posva/vim-vue', config = "require('robmeijerink.vue')" }
     use { 'othree/javascript-libraries-syntax.vim' }
 
     -- Automatically set up your configuration after cloning packer.nvim

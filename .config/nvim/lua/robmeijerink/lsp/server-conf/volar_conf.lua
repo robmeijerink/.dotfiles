@@ -1,6 +1,6 @@
-local custom_attach = require('lsp.custom_attach')
+local custom_attach = require('robmeijerink.lsp.custom_attach')
 
-require'lspconfig'.volar.setup{
+require('lspconfig').volar.setup{
   init_options = {
     typescript = {
       serverPath = '~/.npm/lib/node_modules/typescript/lib/tsserverlib.js'
