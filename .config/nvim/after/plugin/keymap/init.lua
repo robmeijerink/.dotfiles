@@ -87,6 +87,9 @@ nnoremap('<leader>Y', '"+Y', { noremap = false, silent = true })
 nnoremap('<leader>d', '"_d')
 vnoremap('<leader>d', '"_d')
 
+-- Reselect last pasted text
+nnoremap('gp', '`[v`]')
+
 -- Terminal --
 -- Better terminal navigation
 keymap('t', '<C-h>', '<C-\\><C-N><C-w>h', term_opts)
