@@ -116,11 +116,11 @@ nnoremap('<leader>s', ':%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>')
 -- nnoremap('<leader>bb', "<cmd>lua require('telescope.builtin').buffer(require('telescope.themes'))<CR>")
 -- nnoremap('<leader>hh', "<cmd>lua require('telescope.builtin').help_tags(require('telescope.themes'))<CR>")
 vim.keymap.set('n', '<leader>/', function()
-    -- You can pass additional configuration to telescope to change theme, layout, etc.
-    require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
-      winblend = 10,
-      previewer = false,
-    })
+  -- You can pass additional configuration to telescope to change theme, layout, etc.
+  require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
+    winblend = 10,
+    previewer = false,
+  })
 end, { desc = '[/] Fuzzily search in current buffer]' })
 
 -- Undotree
@@ -128,6 +128,9 @@ nnoremap('<leader>u', '<cmd>UndotreeShow<CR>')
 
 -- Nvim Tree
 nnoremap('<leader>e', '<cmd>NvimTreeToggle<CR>')
+
+-- ToggleTerm
+nnoremap("<C-\\>", "<cmd>ToggleTerm direction=float<CR>")
 
 -- LSP Saga
 nnoremap("<C-u>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>")

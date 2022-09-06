@@ -97,7 +97,6 @@ return packer.startup(function(use)
     use { 'windwp/nvim-ts-autotag', event = "InsertEnter", after = "nvim-treesitter" }
     use { 'p00f/nvim-ts-rainbow', after = "nvim-treesitter" }
     use { 'windwp/nvim-autopairs', config = "require('robmeijerink.autopairs')", after = "nvim-cmp" }
-    -- TIJDELIJK: ZIE https://github.com/folke/which-key.nvim/issues/330, test null-ls format en leaderkey na update
     use { 'folke/which-key.nvim' }
     use {
         'nvim-telescope/telescope.nvim',
@@ -167,6 +166,14 @@ return packer.startup(function(use)
         "lukas-reineke/indent-blankline.nvim",
         config = "require('robmeijerink.blankline')",
         event = "BufRead"
+    }
+    use {
+        "folke/trouble.nvim",
+        requires = {
+            { "kyazdani42/nvim-web-devicons" },
+            { "nvim-telescope/telescope.nvim" },
+        },
+        config = "require('robmeijerink.trouble')"
     }
     use { "akinsho/toggleterm.nvim", config = "require('robmeijerink.toggleterm')" }
     use { 'tami5/lspsaga.nvim', config = "require('robmeijerink.lspsaga')" }
