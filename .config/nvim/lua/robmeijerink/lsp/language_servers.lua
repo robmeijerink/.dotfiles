@@ -1,4 +1,4 @@
-local custom_formatting = require('robmeijerink.lsp.custom_formatting')
+local custom_attach = require('robmeijerink.lsp.custom_attach')
 
 local lsp_defaults = {
   flags = {
@@ -37,7 +37,7 @@ local on_attach = function(client, bufnr)
     vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
   end
 
-  custom_formatting(client, bufnr)
+  custom_attach(client, bufnr)
 
   -- nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
   -- nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
@@ -76,7 +76,7 @@ local servers = {
   'tsserver',
   'sumneko_lua',
   'volar',
-  'tailwindcss'
+  'tailwindcss',
 }
 
 -- Ensure the servers above are installed

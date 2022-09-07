@@ -1,10 +1,11 @@
 local null_ls = require('null-ls')
 local utils = require('null-ls.utils')
-local custom_formatting require('robmeijerink.lsp.custom_formatting')
+local custom_attach = require('robmeijerink.lsp.custom_attach')
 
 local formatting = null_ls.builtins.formatting
 
 null_ls.setup({
+  debug = true,
   debounce = 3000,
   root_dir = utils.root_pattern("composer.json", "package.json", "Makefile", ".git"), -- Add composer
   diagnostics_format = "#{m} (#{c}) [#{s}]",    -- Makes PHPCS errors more readeable
@@ -39,6 +40,6 @@ null_ls.setup({
     }), formatting.isort, formatting.codespell.with({filetypes = {'markdown'}})
   },
   on_attach = function(client, bufnr)
-    custom_formatting(client, bufnr)
+    custom_attach(client, bufnr)
   end
 })
