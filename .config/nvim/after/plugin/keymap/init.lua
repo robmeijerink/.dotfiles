@@ -64,16 +64,15 @@ vnoremap('<', '<gv')
 vnoremap('>', '>gv')
 
 -- Move text up and down
-vnoremap('<A-j>', '<cmd>m .+1<CR>==')
-vnoremap('<A-k>', '<cmd>m .-2<CR>==')
+vnoremap("J", ":m '>+1<CR>gv=gv")
+vnoremap("K", ":m '<-2<CR>gv=gv")
+
 vnoremap('p', '"_dP')
 
 -- Visual Block --
 -- Move text up and down
-xnoremap('J', "<cmd>move '>+1<CR>gv-gv")
-xnoremap('K', "<cmd>move '<-2<CR>gv-gv")
-xnoremap('<A-j>', "<cmd>move '>+1<CR>gv-gv")
-xnoremap('<A-k>', "<cmd>move '<-2<CR>gv-gv")
+xnoremap('J', "<cmd>move '>+1<CR>gv=gv")
+xnoremap('K', "<cmd>move '<-2<CR>gv=gv")
 
 -- Replace with paste in Visual Block mode
 xnoremap('<leader>p', '"_dP')
