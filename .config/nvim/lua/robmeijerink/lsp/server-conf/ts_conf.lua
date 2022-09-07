@@ -1,3 +1,5 @@
+local custom_formatting = require('robmeijerink.lsp.custom_formatting')
+
 local lspconfig = require("lspconfig")
 local null_ls = require("null-ls")
 local buf_map = function(bufnr, mode, lhs, rhs, opts)
@@ -27,9 +29,7 @@ local on_attach = function(client, bufnr)
     buf_map(bufnr, "n", "ga", ":LspCodeAction<CR>")
     buf_map(bufnr, "n", "<Leader>a", ":LspDiagLine<CR>")
     buf_map(bufnr, "i", "<C-x><C-x>", "<cmd> LspSignatureHelp<CR>")
-    if client.resolved_capabilities.document_formatting then
-        vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_seq_sync()")
-    end
+    custom_formatting(client, bufnr)
 end
 lspconfig.tsserver.setup({
     on_attach = function(client, bufnr)
