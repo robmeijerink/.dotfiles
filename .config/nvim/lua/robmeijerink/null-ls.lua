@@ -6,7 +6,7 @@ local formatting = null_ls.builtins.formatting
 
 null_ls.setup({
   debug = true,
-  debounce = 3000,
+  debounce = 150,
   root_dir = utils.root_pattern("composer.json", "package.json", "Makefile", ".git"), -- Add composer
   diagnostics_format = "#{m} (#{c}) [#{s}]",    -- Makes PHPCS errors more readeable
   sources = {
