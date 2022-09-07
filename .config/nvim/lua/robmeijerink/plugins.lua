@@ -62,6 +62,7 @@ return packer.startup(function(use)
     -- }
     -- use { "tanvirtin/monokai.nvim" }
     -- Plugins
+    use { 'kyazdani42/nvim-web-devicons' }
     use {
         'nvim-treesitter/nvim-treesitter',
         run = ":TSUpdate",
