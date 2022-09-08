@@ -96,8 +96,8 @@ local mappings = {
     name = "LSP",
     i = { "<cmd>LspInfo<CR>", "Connected Language Servers" },
     f = { "<cmd>lua vim.lsp.buf.formatting_seq_sync()<CR>", "Format file" },
-    k = { "<cmd>lua vim.lsp.buf.signature_help()<CR>", "Signature Help" },
-    K = { "<cmd>Lspsaga hover_doc<CR>", "Hover Commands" },
+    h = { "<cmd>lua vim.lsp.buf.signature_help()<CR>", "Signature Help" },
+    k = { "<cmd>Lspsaga hover_doc<CR>", "Hover Commands" },
     w = { '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', "Add Workspace Folder" },
     W = { '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', "Remove Workspace Folder" },
     l = {
@@ -105,9 +105,9 @@ local mappings = {
       "List Workspace Folders"
     },
     t = { '<cmd>lua vim.lsp.buf.type_definition()<CR>', "Type Definition" },
-    -- d = {'<cmd>lua vim.lsp.buf.definition()<CR>', "Go To Definition"},
-    -- D = {'<cmd>lua vim.lsp.buf.declaration()<CR>', "Go To Declaration"},
-    -- r = {'<cmd>lua vim.lsp.buf.references()<CR>', "References"},
+    d = {'<cmd>lua vim.lsp.buf.definition()<CR>', "Go To Definition"},
+    D = {'<cmd>lua vim.lsp.buf.declaration()<CR>', "Go To Declaration"},
+    r = {'<cmd>lua vim.lsp.buf.references()<CR>', "References"},
     R = { '<cmd>Lspsaga rename<CR>', "Rename" },
     a = { '<cmd>Lspsaga code_action<CR>', "Code Action" },
     e = { '<cmd>Lspsaga show_line_diagnostics<CR>', "Show Line Diagnostics" },

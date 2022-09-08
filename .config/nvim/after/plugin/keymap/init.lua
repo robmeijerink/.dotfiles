@@ -33,6 +33,10 @@ nnoremap('<C-j>', '<C-w>j')
 nnoremap('<C-k>', '<C-w>k')
 nnoremap('<C-l>', '<C-w>l')
 
+-- Scroll and center
+nnoremap("<C-d>", "<C-d>zz")
+nnoremap("<C-u>", "<C-u>zz")
+
 -- Resize with arrows
 nnoremap('<C-Up>', '<cmd>resize -2<CR>')
 nnoremap('<C-Down>', '<cmd>resize +2<CR>')
@@ -77,6 +81,9 @@ xnoremap('K', "<cmd>move '<-2<CR>gv=gv")
 -- Replace with paste in Visual Block mode
 xnoremap('<leader>p', '"_dP')
 
+-- Yank till end of line
+nnoremap("Y", "yg$")
+
 -- Yank to system's clipboard
 nnoremap('<leader>y', '"+y')
 vnoremap('<leader>y', '"+y')
@@ -101,11 +108,6 @@ nnoremap('<CR>', '<cmd>noh<CR><CR>')
 
 -- This replaces the current word
 nnoremap('<leader>s', ':%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>')
-
--- PLUGINS --
-
--- Lazygit
--- nnoremap('<leader>lg', '<cmd>LazyGit<CR>')
 
 -- Telescope
 -- nnoremap('<C-p>', "<cmd>lua require('telescope.builtin').git_files(require('telescope.themes'))<CR>")
