@@ -8,5 +8,11 @@ require('lspconfig').volar.setup{
       -- serverPath = '/usr/local/lib/node_modules/typescript/lib/tsserverlibrary.js'
     }
   },
-  on_attach = custom_attach
+  on_attach = function(client, bufnr)
+    -- Only use null-ls for formatting
+    -- client.resolved_capabilities.document_formatting = false
+    -- client.resolved_capabilities.document_range_formatting = false
+
+    custom_attach(client, bufnr)
+  end
 }

@@ -3,10 +3,6 @@ local custom_formatting = require('robmeijerink.lsp.custom_formatting')
 return function(client, bufnr)
     local opts = { noremap = true, silent = true }
 
-    -- Only use null-ls for formatting
-    -- client.resolved_capabilities.document_formatting = false
-    -- client.resolved_capabilities.document_range_formatting = false
-
     custom_formatting(client, bufnr)
 
     -- Enable (omnifunc) completion triggered by <c-x><c-o>
