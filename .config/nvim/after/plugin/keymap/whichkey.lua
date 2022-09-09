@@ -105,14 +105,20 @@ local mappings = {
       "List Workspace Folders"
     },
     t = { '<cmd>lua vim.lsp.buf.type_definition()<CR>', "Type Definition" },
-    d = {'<cmd>lua vim.lsp.buf.definition()<CR>', "Go To Definition"},
-    D = {'<cmd>lua vim.lsp.buf.declaration()<CR>', "Go To Declaration"},
-    r = {'<cmd>lua vim.lsp.buf.references()<CR>', "References"},
+    d = { '<cmd>lua vim.lsp.buf.definition()<CR>', "Go To Definition" },
+    D = { '<cmd>lua vim.lsp.buf.declaration()<CR>', "Go To Declaration" },
+    r = { '<cmd>lua vim.lsp.buf.references()<CR>', "References" },
     R = { '<cmd>Lspsaga rename<CR>', "Rename" },
     a = { '<cmd>Lspsaga code_action<CR>', "Code Action" },
     e = { '<cmd>Lspsaga show_line_diagnostics<CR>', "Show Line Diagnostics" },
     n = { '<cmd>Lspsaga diagnostic_jump_next<CR>', "Go To Next Diagnostic" },
     N = { '<cmd>Lspsaga diagnostic_jump_prev<CR>', "Go To Previous Diagnostic" }
+  },
+  R = {
+    name = "REST Client",
+    r = { "<Plug>RestNvim", "Run the request under cursor" },
+    p = { "<Plug>RestNvimPreview", "Preview the request cURL command" },
+    l = { "<Plug>RestNvimLast", "Re-run the last request" },
   },
   z = {
     name = "Focus",
