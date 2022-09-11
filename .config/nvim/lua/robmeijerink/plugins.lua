@@ -45,24 +45,9 @@ return packer.startup(function(use)
     -- Colorscheme section
     -- use { "ellisonleao/gruvbox.nvim" }
     use("folke/tokyonight.nvim")
-    -- use {
-    --     "EdenEast/nightfox.nvim",
-    --     run = ":NightfoxCompile",
-    --     config = function ()
-    --         require('nightfox').setup({
-    --              options = {
-    --                     -- Compiled file's destination location
-    --                     transparent = true,    -- Disable setting background
-    --                     terminal_colors = true, -- Set terminal colors (vim.g.terminal_color_*) used in `:terminal`
-    --                     dim_inactive = false
-    --                 }
-    --             }
-    --         )
-    --     end
-    -- }
     -- use { "tanvirtin/monokai.nvim" }
     -- Plugins
-    use { 'kyazdani42/nvim-web-devicons' }
+    use { 'kyazdani42/nvim-web-devicons', opt = true }
     use {
         'nvim-treesitter/nvim-treesitter',
         run = ":TSUpdate",

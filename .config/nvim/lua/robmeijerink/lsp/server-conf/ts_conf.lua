@@ -1,7 +1,5 @@
-local custom_formatting = require('robmeijerink.lsp.custom_formatting')
-
 local lspconfig = require("lspconfig")
-local null_ls = require("null-ls")
+
 local buf_map = function(bufnr, mode, lhs, rhs, opts)
     vim.api.nvim_buf_set_keymap(bufnr, mode, lhs, rhs, opts or {
         silent = true,
