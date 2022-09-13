@@ -21,7 +21,7 @@ function ColorMyPencils()
         transparent_background = true,
         term_colors = false,
         compile = {
-            enabled = false,
+            enabled = true,
             path = vim.fn.stdpath("cache") .. "/catppuccin",
         },
         dim_inactive = {
