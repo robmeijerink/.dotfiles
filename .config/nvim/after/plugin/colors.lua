@@ -1,12 +1,12 @@
-vim.g.rob_colorscheme = "tokyonight"
--- vim.g.rob_colorscheme = "gruvbox"
+-- vim.g.rob_colorscheme = "tokyonight"
+vim.g.rob_colorscheme = "gruvbox"
 
 function ColorMyPencils()
-    -- require("gruvbox").setup({
-    --     italic = false,
-    --     contrast = "hard",
-    --     invert_selection = false,
-    -- })
+    require("gruvbox").setup({
+        italic = false,
+        contrast = "hard",
+        invert_selection = false,
+    })
 
     -- local monokai = require('monokai')
     -- monokai.setup({
@@ -14,13 +14,13 @@ function ColorMyPencils()
     --     italics = false,
     -- })
 
-    vim.g.tokyonight_style = "night"
-    vim.g.tokyonight_transparent_sidebar = true
-    vim.g.tokyonight_italic_variables = false
-    vim.g.tokyonight_italic_keywords = false
-    vim.g.tokyonight_transparent = true
-    -- vim.g.gruvbox_contrast_dark = 'hard'
-    -- vim.g.gruvbox_invert_selection = '0'
+    -- vim.g.tokyonight_style = "night"
+    -- vim.g.tokyonight_transparent_sidebar = true
+    -- vim.g.tokyonight_italic_variables = false
+    -- vim.g.tokyonight_italic_keywords = false
+    -- vim.g.tokyonight_transparent = true
+    vim.g.gruvbox_contrast_dark = 'hard'
+    vim.g.gruvbox_invert_selection = '0'
     vim.opt.background = "dark"
 
     vim.cmd("colorscheme " .. vim.g.rob_colorscheme)
@@ -59,4 +59,5 @@ function ColorMyPencils()
     })
 
 end
+
 ColorMyPencils()

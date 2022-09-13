@@ -43,8 +43,8 @@ return packer.startup(function(use)
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
     -- Colorscheme section
-    -- use { "ellisonleao/gruvbox.nvim" }
-    use("folke/tokyonight.nvim")
+    use { "ellisonleao/gruvbox.nvim" }
+    -- use("folke/tokyonight.nvim")
     -- use { "tanvirtin/monokai.nvim" }
     -- Plugins
     use { 'kyazdani42/nvim-web-devicons', opt = true }
