@@ -58,11 +58,15 @@ cnoremap('x!!', '<cmd>!chmod +x %<CR>')
 
 -- Insert --
 -- Press zx fast to exit insert mode
-inoremap('zx', '<ESC>')
+-- inoremap('zx', '<ESC>')
+
+-- This is going to get me cancelled
+inoremap("<C-c>", "<Esc>")
 
 -- Visual --
 -- Press zx fast to exit visual mode
-vnoremap('zx', '<ESC>')
+-- vnoremap('zx', '<ESC>')
+
 -- Stay in indent mode
 vnoremap('<', '<gv')
 vnoremap('>', '>gv')
