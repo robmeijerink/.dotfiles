@@ -27,7 +27,6 @@ local on_attach = function(client, bufnr)
     buf_map(bufnr, "n", "ga", ":LspCodeAction<CR>")
     buf_map(bufnr, "n", "<Leader>a", ":LspDiagLine<CR>")
     buf_map(bufnr, "i", "<C-x><C-x>", "<cmd> LspSignatureHelp<CR>")
-    custom_formatting(client, bufnr)
 end
 lspconfig.tsserver.setup({
     on_attach = function(client, bufnr)
