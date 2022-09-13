@@ -119,7 +119,7 @@ return packer.startup(function(use)
     use { 'hrsh7th/nvim-cmp' }
     use { 'L3MON4D3/LuaSnip', requires = { 'saadparwaiz1/cmp_luasnip' } }
     -- use { 'hrsh7th/cmp-vsnip' }
-    use { 'sindrets/diffview.nvim' }
+    use { 'sindrets/diffview.nvim', requires = { "kyazdani42/nvim-web-devicons" } }
     use { 'kdheepak/lazygit.nvim', config = "require('robmeijerink.lazygit')" }
     use {
         'TimUntersberger/neogit',
