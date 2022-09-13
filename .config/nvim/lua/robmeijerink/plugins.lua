@@ -43,7 +43,12 @@ return packer.startup(function(use)
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
     -- Colorscheme section
-    use { "ellisonleao/gruvbox.nvim" }
+    -- use { "ellisonleao/gruvbox.nvim" }
+    use {
+        "catppuccin/nvim",
+        as = "catppuccin",
+        run = ":CatppuccinCompile"
+    }
     -- use("folke/tokyonight.nvim")
     -- use { "tanvirtin/monokai.nvim" }
     -- Plugins

@@ -1,12 +1,13 @@
 -- vim.g.rob_colorscheme = "tokyonight"
-vim.g.rob_colorscheme = "gruvbox"
+-- vim.g.rob_colorscheme = "gruvbox"
+vim.g.rob_colorscheme = "catppuccin"
 
 function ColorMyPencils()
-    require("gruvbox").setup({
-        italic = false,
-        contrast = "hard",
-        invert_selection = false,
-    })
+    -- require("gruvbox").setup({
+    --     italic = false,
+    --     contrast = "hard",
+    --     invert_selection = false,
+    -- })
 
     -- local monokai = require('monokai')
     -- monokai.setup({
@@ -14,16 +15,51 @@ function ColorMyPencils()
     --     italics = false,
     -- })
 
+    vim.g.catppuccin_flavour = "mocha"
+
     -- vim.g.tokyonight_style = "night"
     -- vim.g.tokyonight_transparent_sidebar = true
     -- vim.g.tokyonight_italic_variables = false
     -- vim.g.tokyonight_italic_keywords = false
     -- vim.g.tokyonight_transparent = true
-    vim.g.gruvbox_contrast_dark = 'hard'
-    vim.g.gruvbox_invert_selection = '0'
+    -- vim.g.gruvbox_contrast_dark = 'hard'
+    -- vim.g.gruvbox_invert_selection = '0'
     vim.opt.background = "dark"
 
     vim.cmd("colorscheme " .. vim.g.rob_colorscheme)
+
+    require("catppuccin").setup({
+        transparent_background = true,
+        term_colors = false,
+        compile = {
+            enabled = false,
+            path = vim.fn.stdpath("cache") .. "/catppuccin",
+        },
+        dim_inactive = {
+            enabled = false,
+            shade = "dark",
+            percentage = 0.15,
+        },
+        styles = {
+            comments = {},
+            conditionals = {},
+            loops = {},
+            functions = {},
+            keywords = {},
+            strings = {},
+            variables = {},
+            numbers = {},
+            booleans = {},
+            properties = {},
+            types = {},
+            operators = {},
+        },
+        integrations = {
+            -- For various plugins integrations see https://github.com/catppuccin/nvim#integrations
+        },
+        color_overrides = {},
+        highlight_overrides = {},
+    })
 
     local hl = function(thing, opts)
         vim.api.nvim_set_hl(0, thing, opts)
