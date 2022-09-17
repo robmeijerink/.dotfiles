@@ -28,7 +28,6 @@ local mappings = {
   p = { ':set paste<CR>"*p:set nopaste<CR>', "Paste in Paste Mode" },
   x = { "<cmd>Bdelete<CR>", "Close" },
   X = { "<cmd>Bdelete!<CR>", "Close" },
-  E = { "<cmd>e ~/.config/nvim/init.lua<CR>", "Edit config" },
   F =  { "<cmd>lua vim.lsp.buf.formatting_seq_sync()<CR>", "Format File" },
   f = {
     name = "Find",

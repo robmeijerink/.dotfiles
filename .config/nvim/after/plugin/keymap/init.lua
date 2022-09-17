@@ -118,6 +118,7 @@ nnoremap('<leader>u', '<cmd>UndotreeShow<CR>')
 
 -- Nvim Tree
 nnoremap('<leader>e', '<cmd>NvimTreeToggle<CR>')
+nnoremap('<leader>E', '<cmd>Ex<CR>')
 
 -- ToggleTerm
 nnoremap("<C-\\>", "<cmd>ToggleTerm direction=float<CR>")
