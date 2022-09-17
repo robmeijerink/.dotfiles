@@ -113,21 +113,6 @@ nnoremap('<CR>', '<cmd>noh<CR><CR>')
 -- This replaces the current word
 nnoremap('<leader>s', ':%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>')
 
--- Telescope
--- nnoremap('<C-p>', "<cmd>lua require('telescope.builtin').git_files(require('telescope.themes'))<CR>")
--- nnoremap('<leader>f', "<cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{previewer = false})<CR>")
--- nnoremap('<leader>ff', "<cmd>lua require('telescope.builtin').find_files(require('telescope.themes'))<CR>")
--- nnoremap('<leader>fg', "<cmd>lua require('telescope.builtin').live_grep(require('telescope.themes'))CR>")
--- nnoremap('<leader>bb', "<cmd>lua require('telescope.builtin').buffer(require('telescope.themes'))<CR>")
--- nnoremap('<leader>hh', "<cmd>lua require('telescope.builtin').help_tags(require('telescope.themes'))<CR>")
-vim.keymap.set('n', '<leader>/', function()
-  -- You can pass additional configuration to telescope to change theme, layout, etc.
-  require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
-    winblend = 10,
-    previewer = false,
-  })
-end, { desc = '[/] Fuzzily search in current buffer]' })
-
 -- Undotree
 nnoremap('<leader>u', '<cmd>UndotreeShow<CR>')
 
