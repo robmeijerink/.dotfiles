@@ -111,7 +111,7 @@ nnoremap('<CR>', '<cmd>noh<CR><CR>')
 nnoremap('<leader>s', ':%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>')
 
 -- Undotree
-nnoremap('<leader>u', '<cmd>UndotreeShow<CR>')
+nnoremap('<leader>U', '<cmd>UndotreeShow<CR>')
 
 -- Nvim Tree
 nnoremap('<leader>e', '<cmd>NvimTreeToggle<CR>')
