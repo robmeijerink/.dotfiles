@@ -71,9 +71,6 @@ vnoremap('>', '>gv')
 -- Move text up and down
 vnoremap("J", ":m '>+1<CR>gv=gv")
 vnoremap("K", ":m '<-2<CR>gv=gv")
--- vim-unimpaired works a bit nicer
--- vnoremap("<C-k>", "[egv")
--- vnoremap("<C-j>", "]egv")
 
 vnoremap('p', '"_dP')
 
