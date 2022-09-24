@@ -28,7 +28,10 @@ local mappings = {
   p = { ':set paste<CR>"*p:set nopaste<CR>', "Paste in Paste Mode" },
   x = { "<cmd>Bdelete<CR>", "Close" },
   X = { "<cmd>Bdelete!<CR>", "Close" },
-  F =  { "<cmd>lua vim.lsp.buf.formatting_seq_sync()<CR>", "Format File" },
+  F = { "<cmd>lua vim.lsp.buf.formatting_seq_sync()<CR>", "Format File" },
+  c = {
+    e = { "<cmd>NvimTreeCollapse<CR>", "Collapse NvimTree" }
+  },
   f = {
     name = "Find",
     t = { "<cmd>silent !tmux neww tmux-sessionizer<CR>", 'Find and open in tmux' },
