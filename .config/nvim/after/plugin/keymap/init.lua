@@ -25,6 +25,7 @@ local inoremap = Remap.inoremap
 local xnoremap = Remap.xnoremap
 local cnoremap = Remap.cnoremap
 local nmap = Remap.nmap
+local vmap = Remap.vmap
 
 -- Normal --
 -- Better window navigation
@@ -47,10 +48,6 @@ nnoremap('<C-Left>', '<cmd>vertical resize +2<CR>')
 nnoremap('<S-l>', '<cmd>bnext<CR>')
 nnoremap('<S-h>', '<cmd>bprevious<CR>')
 
--- Move text up and down
-nnoremap('<A-j>', '<Esc><cmd>m .+1<CR>==gi')
-nnoremap('<A-k>', '<Esc><cmd>m .-2<CR>==gi')
-
 -- Command --
 -- Resave with sudo
 cnoremap('w!!', 'w !sudo tee %')
@@ -72,15 +69,15 @@ vnoremap('<', '<gv')
 vnoremap('>', '>gv')
 
 -- Move text up and down
-vnoremap("J", ":m '>+1<CR>gv=gv")
-vnoremap("K", ":m '<-2<CR>gv=gv")
+vnoremap("J", "<cmd>move '>+1<CR>gv=gv")
+vnoremap("K", "<cmd>move '<-2<CR>gv=gv")
+-- vim-unimpaired works a bit nicer
+-- vnoremap("<C-k>", "[egv")
+-- vnoremap("<C-j>", "]egv")
 
 vnoremap('p', '"_dP')
 
 -- Visual Block --
--- Move text up and down
-xnoremap('J', "<cmd>move '>+1<CR>gv=gv")
-xnoremap('K', "<cmd>move '<-2<CR>gv=gv")
 
 -- Replace with paste in Visual Block mode
 xnoremap('<leader>p', '"_dP')
