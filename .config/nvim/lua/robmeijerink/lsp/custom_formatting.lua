@@ -7,14 +7,12 @@ return function(client, bufnr)
     --         group = augroup,
     --         buffer = bufnr,
     --         callback = function()
-    --             -- on 0.8, you should use vim.lsp.buf.format({ bufnr = bufnr }) instead
-    --             vim.lsp.buf.formatting_sync()
-    --             -- vim.lsp.buf.formatting_seq_sync()
+    --             vim.lsp.buf.format({ bufnr = bufnr })
     --         end,
     --     })
     -- end
-    --   if client.resolved_capabilities.document_formatting then
-    --     vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_seq_sync()")
+    --   if client.resolved_capabilities.documentFormattingProvider then
+    --     vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.format()")
     --   end
     -- if client.resolved_capabilities.document_highlight then
     --     vim.cmd [[

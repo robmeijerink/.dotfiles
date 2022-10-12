@@ -28,7 +28,7 @@ local mappings = {
   p = { ':set paste<CR>"*p:set nopaste<CR>', "Paste in Paste Mode" },
   x = { "<cmd>Bdelete<CR>", "Close" },
   X = { "<cmd>Bdelete!<CR>", "Close" },
-  F = { "<cmd>lua vim.lsp.buf.formatting_seq_sync()<CR>", "Format File" },
+  F = { "<cmd>lua vim.lsp.buf.format()<CR>", "Format File" },
   c = {
     e = { "<cmd>NvimTreeCollapse<CR>", "Collapse NvimTree" }
   },
@@ -100,7 +100,7 @@ local mappings = {
   l = {
     name = "LSP",
     i = { "<cmd>LspInfo<CR>", "Connected Language Servers" },
-    f = { "<cmd>lua vim.lsp.buf.formatting_seq_sync()<CR>", "Format file" },
+    f = { "<cmd>lua vim.lsp.buf.format()<CR>", "Format file" },
     h = { "<cmd>lua vim.lsp.buf.signature_help()<CR>", "Signature Help" },
     k = { "<cmd>Lspsaga hover_doc<CR>", "Hover Commands" },
     w = { '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', "Add Workspace Folder" },
