@@ -14,7 +14,7 @@ fi
 selected_name=$(basename "$selected" | tr . _)
 
 selected_name_t=${selected_name:0:8} # Makes the name in the range of 0 to 8 characters.
-                                     # Done only because if you pass a certain threshold the final ']' doesn't display
+                                     # Done only so it doesn't display the final ']' if you pass a certain threshold
 
 # This works in all situations.
 # If you are in a tmux session, and the selected session does exist, switch to it; if not, create a new one and then switch to it.
