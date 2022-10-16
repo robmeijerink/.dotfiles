@@ -29,6 +29,9 @@ if not status_ok then
     return
 end
 
+-- Performance
+pcall(require, "impatient")
+
 -- Have packer use a popup window
 packer.init {
     display = {
@@ -82,7 +85,7 @@ return packer.startup(function(use)
         cmd = { 'NvimTreeToggle', 'NvimTreeCollapse' },
         config = "require('robmeijerink.nvim-tree')"
     }
-    -- use { "lewis6991/impatient.nvim", config = "require('robmeijerink.impatient')" }
+    use { "lewis6991/impatient.nvim", config = "require('robmeijerink.impatient')" }
     use { "moll/vim-bbye" }
     use { 'mbbill/undotree', cmd = 'UndotreeToggle' }
     use { 'windwp/nvim-ts-autotag', event = "InsertEnter", after = "nvim-treesitter" }
