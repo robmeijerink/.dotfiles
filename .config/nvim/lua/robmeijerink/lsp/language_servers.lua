@@ -4,9 +4,7 @@ local lsp_defaults = {
   flags = {
     debounce_text_changes = 150,
   },
-  capabilities = require('cmp_nvim_lsp').update_capabilities(
-    vim.lsp.protocol.make_client_capabilities()
-  ),
+  capabilities = require('cmp_nvim_lsp').default_capabilities(),
   on_attach = function(client, bufnr)
     vim.api.nvim_exec_autocmds('User', {pattern = 'LspAttached'})
   end
@@ -21,7 +19,7 @@ lspconfig.util.default_config = vim.tbl_deep_extend(
 )
 
 -- nvim-cmp supports additional completion capabilities
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 -- Enable the following language servers
 local servers = {
