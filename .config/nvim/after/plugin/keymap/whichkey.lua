@@ -49,6 +49,8 @@ local mappings = {
     s = { "<cmd>Telescope git_status<CR>", "Telescope Git Status" },
     a = { "<cmd>Telescope git_commits<CR>", "Telescope Git Commits" },
     q = { "<cmd>Telescope git_bcommits<CR>", "Telescope Git Buffer Commits" },
+    d = { "<cmd>Telescope diagnostics<CR>", "Telescope Diagostics" },
+    k = { "<cmd>Telescope keymaps<CR>", "Telescope Keymaps" },
   },
   b = {
     name = "Buffers",
@@ -109,7 +111,7 @@ local mappings = {
       '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>',
       "List Workspace Folders"
     },
-    t = { '<cmd>lua vim.lsp.buf.type_definition()<CR>', "Type Definition" },
+    T = { '<cmd>lua vim.lsp.buf.type_definition()<CR>', "Type Definition" },
     d = { '<cmd>lua vim.lsp.buf.definition()<CR>', "Go To Definition" },
     D = { '<cmd>lua vim.lsp.buf.declaration()<CR>', "Go To Declaration" },
     r = { '<cmd>lua vim.lsp.buf.references()<CR>', "References" },

@@ -24,8 +24,8 @@ local vnoremap = Remap.vnoremap
 local inoremap = Remap.inoremap
 local xnoremap = Remap.xnoremap
 local cnoremap = Remap.cnoremap
-local nmap = Remap.nmap
-local vmap = Remap.vmap
+-- local nmap = Remap.nmap
+-- local vmap = Remap.vmap
 
 -- Normal --
 -- Better window navigation
@@ -108,7 +108,7 @@ nnoremap('<CR>', '<cmd>noh<CR><CR>')
 nnoremap('<leader>s', ':%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>')
 
 -- Undotree
-nnoremap('<leader>U', '<cmd>UndotreeShow<CR>')
+nnoremap('<leader>U', '<cmd>UndotreeToggle<CR>')
 
 -- Nvim Tree
 nnoremap('<leader>e', '<cmd>NvimTreeToggle<CR>')

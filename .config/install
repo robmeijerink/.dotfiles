@@ -2,6 +2,7 @@
 mkdir -p ~/.config/nvim/lua/robmeijerink
 mkdir -p ~/.config/nvim/lua/robmeijerink/lsp
 mkdir -p ~/.config/nvim/lua/robmeijerink/lsp/server-conf
+mkdir -p ~/.config/nvim/lua/robmeijerink/debugger
 
 mkdir -p ~/.config/nvim/after
 mkdir -p ~/.config/nvim/after/plugin
