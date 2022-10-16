@@ -79,12 +79,12 @@ return packer.startup(function(use)
     use {
         'kyazdani42/nvim-tree.lua',
         requires = 'kyazdani42/nvim-web-devicons',
-        cmd = "NvimTreeToggle",
+        cmd = { 'NvimTreeToggle', 'NvimTreeCollapse' },
         config = "require('robmeijerink.nvim-tree')"
     }
-    use { "lewis6991/impatient.nvim", config = "require('robmeijerink.impatient')" }
+    -- use { "lewis6991/impatient.nvim", config = "require('robmeijerink.impatient')" }
     use { "moll/vim-bbye" }
-    use { 'mbbill/undotree' }
+    use { 'mbbill/undotree', cmd = 'UndotreeToggle' }
     use { 'windwp/nvim-ts-autotag', event = "InsertEnter", after = "nvim-treesitter" }
     use { 'p00f/nvim-ts-rainbow', after = "nvim-treesitter" }
     use { 'windwp/nvim-autopairs', config = "require('robmeijerink.autopairs')", after = "nvim-cmp" }
@@ -92,7 +92,7 @@ return packer.startup(function(use)
     use {
         'nvim-telescope/telescope.nvim',
         requires = { { 'nvim-lua/plenary.nvim' }, { "kdheepak/lazygit.nvim" } },
-        cmd = "Telescope",
+        -- cmd = "Telescope",
         config = function()
             require('robmeijerink.telescope')
         end,
@@ -124,10 +124,19 @@ return packer.startup(function(use)
     use { 'hrsh7th/nvim-cmp' }
     use { 'L3MON4D3/LuaSnip', requires = { 'saadparwaiz1/cmp_luasnip' } }
     -- use { 'hrsh7th/cmp-vsnip' }
-    use { 'sindrets/diffview.nvim', requires = { "kyazdani42/nvim-web-devicons" } }
-    use { 'kdheepak/lazygit.nvim', config = "require('robmeijerink.lazygit')" }
+    use {
+        'sindrets/diffview.nvim',
+        requires = { "kyazdani42/nvim-web-devicons" },
+        -- cmd = { 'DiffviewOpen', 'DiffviewFileHistory' }
+    }
+    use {
+        'kdheepak/lazygit.nvim',
+        cmd = 'LazyGit',
+        config = "require('robmeijerink.lazygit')"
+    }
     use {
         'TimUntersberger/neogit',
+        cmd = 'Neogit',
         requires = {
             { 'nvim-lua/plenary.nvim' },
             { 'sindrets/diffview.nvim' }
@@ -137,7 +146,8 @@ return packer.startup(function(use)
     use {
         "NTBBloodbath/rest.nvim",
         requires = { "nvim-lua/plenary.nvim" },
-        config = "require('robmeijerink.rest-nvim')"
+        config = "require('robmeijerink.rest-nvim')",
+        cmd = { 'RestNvim', 'RestNvimPreview', 'RestNvimLast' }
     }
     use { 'folke/todo-comments.nvim', config = "require('robmeijerink.todo')" }
     use { 'numToStr/Comment.nvim', config = "require('robmeijerink.comment')" }
@@ -167,18 +177,24 @@ return packer.startup(function(use)
         config = "require('robmeijerink.trouble')"
     }
     use { "akinsho/toggleterm.nvim", config = "require('robmeijerink.toggleterm')" }
-    use { 'tami5/lspsaga.nvim', config = "require('robmeijerink.lspsaga')" }
+    use { 'tami5/lspsaga.nvim', cmd = 'Lspsaga', config = "require('robmeijerink.lspsaga')" }
     use { 'williamboman/nvim-lsp-installer' }
     use { 'jose-elias-alvarez/null-ls.nvim', config = "require('robmeijerink.null-ls')" }
     use { "jose-elias-alvarez/nvim-lsp-ts-utils" }
-    use { "folke/zen-mode.nvim", config = "require('robmeijerink.zen-mode')" }
-    use { "folke/twilight.nvim", config = "require('robmeijerink.twilight')", after = "nvim-treesitter" }
+    use { "folke/zen-mode.nvim", cmd = 'ZenMode', config = "require('robmeijerink.zen-mode')" }
+    use { "folke/twilight.nvim", cmd = 'Twilight', config = "require('robmeijerink.twilight')", after = "nvim-treesitter" }
     use { 'machakann/vim-highlightedyank', config = "vim.cmd('highlight Normal guibg=none')" }
     use { 'tpope/vim-sleuth' } -- Detect tabstop and shiftwidth automatically
 
     -- JavaScript
     --use { 'posva/vim-vue', config = "require('robmeijerink.vue')" }
     use { 'othree/javascript-libraries-syntax.vim' }
+
+    -- Debugger
+    -- use { 'mfussenegger/nvim-dap' }
+    -- use { 'rcarriga/nvim-dap-ui' }
+    -- use { 'theHamsta/nvim-dap-virtual-text' }
+    -- use { 'nvim-telescope/telescope-dap.nvim' }
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
