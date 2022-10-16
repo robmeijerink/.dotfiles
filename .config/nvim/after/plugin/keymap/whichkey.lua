@@ -28,7 +28,6 @@ local mappings = {
   p = { ':set paste<CR>"*p:set nopaste<CR>', "Paste in Paste Mode" },
   x = { "<cmd>Bdelete<CR>", "Close" },
   X = { "<cmd>Bdelete!<CR>", "Close" },
-  F = { "<cmd>lua vim.lsp.buf.format({ timeout_ms = 2000 })<CR>", "Format File" },
   c = {
     e = { "<cmd>NvimTreeCollapse<CR>", "Collapse NvimTree" }
   },

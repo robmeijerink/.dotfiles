@@ -107,6 +107,18 @@ nnoremap('<CR>', '<cmd>noh<CR><CR>')
 -- This replaces the current word
 nnoremap('<leader>s', ':%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>')
 
+-- Formatting
+nnoremap('<leader>F', function()
+    vim.lsp.buf.format({
+        timeout_ms = 2000,
+        filter = function(client)
+            return client.name == "null-ls"
+        end
+    })
+end, { desc = 'Format File' })
+
+nnoremap('<leader>s', ':%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>')
+
 -- Undotree
 nnoremap('<leader>U', '<cmd>UndotreeToggle<CR>')
 

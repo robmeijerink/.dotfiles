@@ -39,7 +39,7 @@ null_ls.setup({
       }
     }), formatting.isort, formatting.codespell.with({ filetypes = { 'markdown' } })
   },
-  on_attach = function(client, bufnr)
-    custom_formatting(client, bufnr)
-  end
+  -- on_attach = function(client, bufnr)
+  --   custom_formatting(client, bufnr)
+  -- end
 })
