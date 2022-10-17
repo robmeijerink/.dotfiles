@@ -44,6 +44,16 @@ function ColorMyPencils()
             operators = {},
         },
         integrations = {
+            gitsigns = true,
+            harpoon = true,
+            lsp_saga = true,
+            lsp_trouble = true,
+            neogit = true,
+            telescope = true,
+            treesitter = true,
+            treesitter_context = true,
+            ts_rainbow = true,
+            which_key = true,
             -- For various plugins integrations see https://github.com/catppuccin/nvim#integrations
         },
         color_overrides = {},
