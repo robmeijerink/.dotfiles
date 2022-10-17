@@ -13,17 +13,14 @@ fi
 
 selected_name=$(basename "$selected" | tr . _)
 
-selected_name_t=${selected_name:0:8} # Makes the name in the range of 0 to 8 characters.
-                                     # Done only so it doesn't display the final ']' if you pass a certain threshold
-
 # This works in all situations.
 # If you are in a tmux session, and the selected session does exist, switch to it; if not, create a new one and then switch to it.
 if [[ -n $TMUX ]]; then
-  tmux switch-client -t "$selected_name_t" \
-  || tmux new-session -ds "$selected_name_t" -c "$selected" \
-  && tmux switch-client -t "$selected_name_t"
+  tmux switch-client -t "$selected_name" \
+  || tmux new-session -ds "$selected_name" -c "$selected" \
+  && tmux switch-client -t "$selected_name"
 # If outside of a tmux session, try to create a new session; if it fails, it attaches to the selected session
 elif [[ -z $TMUX ]]; then
-  tmux new-session -s "$selected_name_t" -c "$selected" \
-  || tmux attach -t "$selected_name_t"
+  tmux new-session -s "$selected_name" -c "$selected" \
+  || tmux attach -t "$selected_name"
 fi
