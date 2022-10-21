@@ -81,7 +81,7 @@ return packer.startup(function(use)
     use {
         'kyazdani42/nvim-tree.lua',
         requires = { 'kyazdani42/nvim-web-devicons' },
-        cmd = { 'NvimTreeToggle', 'NvimTreeCollapse' },
+        cmd = { 'NvimTreeToggle' },
         config = "require('robmeijerink.nvim-tree')"
     }
     use { "lewis6991/impatient.nvim", config = "require('robmeijerink.impatient')" }

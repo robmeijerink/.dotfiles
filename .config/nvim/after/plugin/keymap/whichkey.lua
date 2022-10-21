@@ -28,9 +28,6 @@ local mappings = {
   p = { ':set paste<CR>"*p:set nopaste<CR>', "Paste in Paste Mode" },
   x = { "<cmd>Bdelete<CR>", "Close" },
   X = { "<cmd>Bdelete!<CR>", "Close" },
-  c = {
-    e = { "<cmd>NvimTreeCollapse<CR>", "Collapse NvimTree" }
-  },
   f = {
     name = "Find",
     t = { "<cmd>silent !tmux neww tmux-sessionizer<CR>", 'Find and open in tmux' },
