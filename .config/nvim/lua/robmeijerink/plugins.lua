@@ -55,7 +55,6 @@ return packer.startup(function(use)
     -- use("folke/tokyonight.nvim")
     -- use { "tanvirtin/monokai.nvim" }
     -- Plugins
-    use { 'kyazdani42/nvim-web-devicons', opt = true }
     use {
         'nvim-treesitter/nvim-treesitter',
         run = ":TSUpdate",
@@ -71,17 +70,17 @@ return packer.startup(function(use)
     use {
         'nvim-lualine/lualine.nvim',
         config = "require('robmeijerink.lualine')",
-        requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+        requires = { 'kyazdani42/nvim-web-devicons' }
     }
     use {
         'akinsho/bufferline.nvim',
-        requires = 'kyazdani42/nvim-web-devicons',
+        requires = { 'kyazdani42/nvim-web-devicons' },
         event = "BufWinEnter",
         config = "require('robmeijerink.bufferline')"
     }
     use {
         'kyazdani42/nvim-tree.lua',
-        requires = 'kyazdani42/nvim-web-devicons',
+        requires = { 'kyazdani42/nvim-web-devicons' },
         cmd = { 'NvimTreeToggle', 'NvimTreeCollapse' },
         config = "require('robmeijerink.nvim-tree')"
     }
@@ -94,7 +93,7 @@ return packer.startup(function(use)
     use { 'folke/which-key.nvim' }
     use {
         'nvim-telescope/telescope.nvim',
-        requires = { { 'nvim-lua/plenary.nvim' }, { "kdheepak/lazygit.nvim" } },
+        requires = { { 'nvim-lua/plenary.nvim' }, { "kdheepak/lazygit.nvim" }, { "kyazdani42/nvim-web-devicons" } },
         -- cmd = "Telescope",
         config = function()
             require('robmeijerink.telescope')
