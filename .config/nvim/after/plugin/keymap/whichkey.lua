@@ -87,13 +87,27 @@ local mappings = {
     ["5"] = { "<cmd> lua require('harpoon.ui').nav_file(5)<CR>", 'Go to Mark 5' },
     ["6"] = { "<cmd> lua require('harpoon.ui').nav_file(6)<CR>", 'Go to Mark 6' },
   },
-  T = {
+  ["<F1>"] = {
     name = "Trouble",
     t = { "<cmd>TroubleToggle<CR>", 'Toggle Trouble' },
     w = { "<cmd>TroubleToggle workspace_diagnostics<CR>", 'Workplace Diagnostics' },
     d = { "<cmd>TroubleToggle document_diagnostics<CR>", "Document Diagnostics" },
     l = { "<cmd>TroubleToggle loclist<CR>", "Window Location List" },
     r = { "<cmd>TroubleToggle lsp_references<CR>", "LSP References" },
+  },
+  T = {
+    name = "Neotest",
+    a = { "<cmd>lua require('neotest').run.attach({ suite = true })<cr>", "All suite" },
+    A = { "<cmd>lua require('neotest').run.attach()<cr>", "Attach" },
+    f = { "<cmd>lua require('neotest').run.run(vim.fn.expand('%'))<cr>", "Run File" },
+    F = { "<cmd>lua require('neotest').run.run({vim.fn.expand('%'), strategy = 'dap'})<cr>", "Debug File" },
+    l = { "<cmd>lua require('neotest').run.run_last()<cr>", "Run Last" },
+    L = { "<cmd>lua require('neotest').run.run_last({ strategy = 'dap' })<cr>", "Debug Last" },
+    n = { "<cmd>lua require('neotest').run.run()<cr>", "Run Nearest" },
+    N = { "<cmd>lua require('neotest').run.run({strategy = 'dap'})<cr>", "Debug Nearest" },
+    o = { "<cmd>lua require('neotest').output.open({ enter = true })<cr>", "Output" },
+    S = { "<cmd>lua require('neotest').run.stop()<cr>", "Stop" },
+    s = { "<cmd>lua require('neotest').summary.toggle()<cr>", "Summary" },
   },
   l = {
     name = "LSP",
