@@ -77,17 +77,15 @@ vim.opt.scrolloff = 8
 vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
 
--- Give more space for displaying messages.
+-- -- Give more space for displaying messages.
 vim.opt.cmdheight = 1
 
--- Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
--- delays and poor user experience.
+-- -- Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
+-- -- delays and poor user experience.
 vim.opt.updatetime = 50
 
--- Don't pass messages to |ins-completion-menu|.
+-- -- Don't pass messages to |ins-completion-menu|.
 vim.opt.shortmess:append("c")
-
-vim.opt.colorcolumn = "80"
 
 vim.cmd([[
   au FileType python                  set ts=4 sw=4
