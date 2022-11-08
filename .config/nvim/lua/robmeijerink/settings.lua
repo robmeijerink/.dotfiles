@@ -99,8 +99,13 @@ vim.cmd([[
 vim.opt.wildmenu = true -- on TAB, complete options for system command
 vim.opt.wildignore = 'deps,.svn,CVS,.git,.hg,*.o,*.a,*.class,*.mo,*.la,*.so,*.obj,*.swp,*.jpg,*.png,*.xpm,*.gif,.DS_Store,*.aux,*.out,*.toc'
 
+-- WSL Only Settings
+if (string.find(vim.loop.os_uname().release, 'WSL')) then
+
 -- Fixes copy to clipboard in Windows WSL2
 vim.opt.clipboard = 'unnamed'
+
+end
 
 -- Only show cursorline in the current window and in normal mode.
 vim.cmd([[
