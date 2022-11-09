@@ -5,5 +5,6 @@ capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 lspconfig.emmet_ls.setup({
     capabilities = capabilities,
-    filetypes = { 'html', 'typescriptreact', 'javascriptreact', 'css', 'sass', 'scss', 'less', 'php', 'blade', 'vue' },
+    -- filetypes = { 'html', 'typescriptreact', 'javascriptreact', 'css', 'php', 'sass', 'scss', 'less', 'blade', 'vue' },
+    filetypes = { 'html', 'typescriptreact', 'javascriptreact', 'blade', 'vue' },
 })

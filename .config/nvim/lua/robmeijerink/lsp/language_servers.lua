@@ -25,11 +25,11 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities()
 local servers = {
   'intelephense',
   -- 'rust_analyzer',
-  'emmet_ls',
   'tsserver',
   'sumneko_lua',
   'volar',
   'tailwindcss',
+  'emmet_ls',
 }
 
 -- Ensure the servers above are installed
