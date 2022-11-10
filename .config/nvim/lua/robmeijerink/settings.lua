@@ -106,13 +106,6 @@ if (string.find(vim.loop.os_uname().release, 'WSL')) then
     -- vim.opt.clipboard = 'unnamed'
   vim.opt.clipboard = "unnamedplus"
 
-  vim.api.nvim_create_autocmd('TextYankPost', {
-      group = vim.api.nvim_create_augroup('Yank', { clear = true }),
-
-      callback = function()
-          vim.fn.system('clip.exe', vim.fn.getreg('"'))
-      end,
-  })
 end
 
 -- Only show cursorline in the current window and in normal mode.
