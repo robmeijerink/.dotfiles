@@ -64,10 +64,6 @@ return packer.startup(function(use)
     use { 'nvim-treesitter/nvim-treesitter-textobjects', after = "nvim-treesitter" } -- Additional textobjects for treesitter
     use { 'nvim-treesitter/nvim-treesitter-context', after = "nvim-treesitter" } -- Sticky header for functions
     use {
-        'pocco81/auto-save.nvim',
-        config = "require('robmeijerink.autosave')"
-    }
-    use {
         'nvim-lualine/lualine.nvim',
         config = "require('robmeijerink.lualine')",
         requires = { 'kyazdani42/nvim-web-devicons' }
