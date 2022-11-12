@@ -24,7 +24,7 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities()
 -- Enable the following language servers
 local servers = {
   'intelephense',
-  -- 'rust_analyzer',
+  'rust_analyzer',
   'tsserver',
   'sumneko_lua',
   'volar',

@@ -4,6 +4,7 @@ require('robmeijerink.lsp.language_servers')
 
 -- Server config
 require('robmeijerink.lsp.server-conf.intelephense_conf')
+require('robmeijerink.lsp.server-conf.rust_analyzer')
 require('robmeijerink.lsp.server-conf.tailwindcss_conf')
 require('robmeijerink.lsp.server-conf.ts_conf')
 require('robmeijerink.lsp.server-conf.volar_conf')
