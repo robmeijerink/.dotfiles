@@ -8,7 +8,7 @@ local dapui = require("dapui")
 -- theHamsta/nvim-dap-virtual-text
 local daptext = require("nvim-dap-virtual-text")
 
-daptext.setup()
+daptext.setup({})
 dapui.setup({
     layouts = {
         {
@@ -70,6 +70,6 @@ nnoremap('<leader>0r', ':lua require"dap".repl.toggle({}, "vsplit")<CR><C-w>l')
 
 -- nvim-telescope/telescope-dap.nvim
 
-nnoremap('<leader>Ds', ':Telescope dap frames<CR>')
+nnoremap('<leader>0fd', ':Telescope dap frames<CR>')
 -- nnoremap('<leader>dc', ':Telescope dap commands<CR>')
-nnoremap('<leader>Db', ':Telescope dap list_breakpoints<CR>')
+nnoremap('<leader>0fb', ':Telescope dap list_breakpoints<CR>')
