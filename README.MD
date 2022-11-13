@@ -3,7 +3,12 @@
 - .vimrc with basic settings for regular vim
 - .lua config files for NeoVim with more advanced settings and plugins
 - tmux configuration
+- tmux-sessionizer
+- Terminal profile
 - fzf bindings for fuzzy finding in the terminal
+
+# Other
+- My Font: FiraCode Nerd Font Regular: https://www.nerdfonts.com/font-downloads
 
 ### Note
 

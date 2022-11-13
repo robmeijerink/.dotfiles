@@ -1,10 +1,12 @@
 #!/usr/bin/env bash
 # Run this file once to set up some dependencies.
 
-npm i -g intelephense typescript typescript-language-server prettier emmet-ls vscode-langservers-extracted blade-formatter
+npm i -g neovim intelephense typescript typescript-language-server prettier emmet-ls vscode-langservers-extracted blade-formatter
 
 sudo apt-get install -y unzip
+sudo apt-get install -y ripgrep
 sudo apt install -y fd-find
 sudo apt install -y fzf
+sudo apt-get -y install php-codesniffer
 
 echo "Run :checkhealth for additional dependency info"
