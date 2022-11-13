@@ -49,9 +49,9 @@ vim.fn.sign_define('DapBreakpoint', {text='🟥', texthl='', linehl='', numhl=''
 vim.fn.sign_define('DapBreakpointRejected', {text='🟦', texthl='', linehl='', numhl=''})
 vim.fn.sign_define('DapStopped', {text='⭐️', texthl='', linehl='', numhl=''})
 
-nnoremap('<leader>0', ':lua require"dap".set_breakpoint()<CR>')
-nnoremap('<leader>0h', function() require"dap".toggle_breakpoint() end)
-nnoremap('<leader>0H', ":lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>")
+nnoremap('<leader>0b', ':lua require"dap".set_breakpoint()<CR>')
+nnoremap('<leader>0b', function() require"dap".toggle_breakpoint() end)
+nnoremap('<leader>0B', ":lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>")
 nnoremap('<A-k>', function() require"dap".step_out() end)
 nnoremap("<A-l>", function() require"dap".step_into() end)
 nnoremap('<A-j>', function() require"dap".step_over() end)
