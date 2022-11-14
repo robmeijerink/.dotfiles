@@ -64,9 +64,8 @@ cmp.setup({
     { name = 'luasnip' }, -- For luasnip user.
     { name = 'nvim_lsp' },
     { name = "nvim_lsp_signature_help" },
+    { name = 'buffer' },
     { name = "path" },
-  }, {
-      { name = 'buffer', keyword_length = 3 }
   }),
   formatting = {format = lspkind.cmp_format({with_text = true, maxwidth = 50})}
 })
