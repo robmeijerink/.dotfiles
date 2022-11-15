@@ -88,7 +88,8 @@ vnoremap('>', '>gv')
 vnoremap("J", ":m '>+1<CR>gv=gv")
 vnoremap("K", ":m '<-2<CR>gv=gv")
 
-vnoremap('p', '"_dP')
+-- Don't yank paste target
+-- vnoremap('p', '"_dP')
 
 -- Visual Block --
 
@@ -116,6 +117,12 @@ nnoremap("Q", "<nop>")
 
 -- This unsets the "last search pattern" register by hitting return
 nnoremap('<CR>', '<cmd>noh<CR><CR>')
+
+-- Quickfix list
+nnoremap("<C-k>", "<cmd>cnext<CR>zz")
+nnoremap("<C-j>", "<cmd>cprev<CR>zz")
+nnoremap("<leader>k", "<cmd>lnext<CR>zz")
+nnoremap("<leader>j", "<cmd>lprev<CR>zz")
 
 -- This replaces the current word
 nnoremap('<leader>s', ':%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>')
