@@ -21,5 +21,8 @@ set backspace=indent,eol,start
 imap <C-c> <Esc>
 vmap <C-c> <Esc>
 
+" Let Y act same as D and C: Yank till end of line.
+map Y yg$
+
 " Resave with sudo
 cmap w!! w !sudo tee %

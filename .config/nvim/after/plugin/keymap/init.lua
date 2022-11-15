@@ -1,4 +1,4 @@
-local opts = { noremap = true, silent = true }
+-- local opts = { noremap = true, silent = true }
 
 local term_opts = { silent = true }
 
@@ -27,7 +27,20 @@ local cnoremap = Remap.cnoremap
 -- local nmap = Remap.nmap
 -- local vmap = Remap.vmap
 
+-- Terminal --
+-- Better terminal navigation
+keymap('t', '<C-h>', '<C-\\><C-N><C-w>h', term_opts)
+keymap('t', '<C-j>', '<C-\\><C-N><C-w>j', term_opts)
+keymap('t', '<C-k>', '<C-\\><C-N><C-w>k', term_opts)
+keymap('t', '<C-l>', '<C-\\><C-N><C-w>l', term_opts)
+
 -- Normal --
+-- Let Y act same as D and C, Yank till end of line.
+nnoremap("Y", "yg$")
+
+-- Better join lower line into current
+nnoremap("J", "mzJ`z")
+
 -- Better window navigation
 nnoremap('<C-h>', '<C-w>h')
 nnoremap('<C-j>', '<C-w>j')
@@ -37,6 +50,9 @@ nnoremap('<C-l>', '<C-w>l')
 -- Scroll and center
 nnoremap("<C-d>", "<C-d>zz")
 nnoremap("<C-u>", "<C-u>zz")
+
+nnoremap("n", "nzzzv")
+nnoremap("N", "Nzzzv")
 
 -- Resize with arrows
 nnoremap('<C-Up>', '<cmd>resize -2<CR>')
@@ -79,6 +95,7 @@ vnoremap('p', '"_dP')
 -- Replace with paste in Visual Block mode
 xnoremap('<leader>p', '"_dP')
 
+-- Other
 -- Yank till end of line
 nnoremap("Y", "yg$")
 
@@ -94,12 +111,8 @@ vnoremap('<leader>d', '"_d')
 -- Reselect last pasted text
 nnoremap('gp', '`[v`]')
 
--- Terminal --
--- Better terminal navigation
-keymap('t', '<C-h>', '<C-\\><C-N><C-w>h', term_opts)
-keymap('t', '<C-j>', '<C-\\><C-N><C-w>j', term_opts)
-keymap('t', '<C-k>', '<C-\\><C-N><C-w>k', term_opts)
-keymap('t', '<C-l>', '<C-\\><C-N><C-w>l', term_opts)
+-- No operation: cancel
+nnoremap("Q", "<nop>")
 
 -- This unsets the "last search pattern" register by hitting return
 nnoremap('<CR>', '<cmd>noh<CR><CR>')
@@ -128,10 +141,6 @@ nnoremap('<leader>E', '<cmd>Ex<CR>')
 
 -- ToggleTerm
 nnoremap("<C-\\>", "<cmd>ToggleTerm direction=float<CR>")
-
--- LSP Saga
-nnoremap("<C-u>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>")
-nnoremap("<C-d>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>")
 
 -- Tmux Sessionizer
 nnoremap("<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
