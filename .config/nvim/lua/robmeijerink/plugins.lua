@@ -209,6 +209,9 @@ return packer.startup(function(use)
     -- Enable dd in quickfix list
     use { 'TamaMcGlinn/quickfixdd' }
 
+    -- Better Search & Replace
+    use { 'windwp/nvim-spectre' }
+
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
     if PACKER_BOOTSTRAP then
