@@ -205,6 +205,9 @@ return packer.startup(function(use)
         },
         config = "require('robmeijerink.neotest')"
     }
+    
+    -- Enable dd in quickfix list
+    use { 'TamaMcGlinn/quickfixdd' }
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
