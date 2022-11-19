@@ -130,10 +130,10 @@ nnoremap('<leader>s', ':%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>')
 -- Formatting
 nnoremap('<leader>F', function()
     vim.lsp.buf.format({
-        timeout_ms = 2000,
-        filter = function(client)
-            return client.name == "null-ls"
-        end
+        timeout_ms = 10000,
+        -- filter = function(client)
+        --     return client.name == "null-ls"
+        -- end
     })
 end, { desc = 'Format File' })
 
