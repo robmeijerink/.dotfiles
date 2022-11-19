@@ -137,7 +137,11 @@ nnoremap('<leader>F', function()
     })
 end, { desc = 'Format File' })
 
+-- Substitute current word
 nnoremap('<leader>s', ':%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>')
+
+-- Generate docblock
+nnoremap("<Leader>**", ":lua require('neogen').generate()<CR>")
 
 -- Undotree
 nnoremap('<leader>U', '<cmd>UndotreeToggle<CR>')

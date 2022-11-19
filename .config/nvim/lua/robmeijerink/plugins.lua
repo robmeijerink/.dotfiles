@@ -211,6 +211,19 @@ return packer.startup(function(use)
 
     -- Better Search & Replace
     use { 'windwp/nvim-spectre' }
+    
+    -- Docblock generator
+    use {
+        "danymat/neogen",
+        config = function()
+            require('neogen').setup({
+                snippet_engine = "luasnip"
+            })
+        end,
+        requires = "nvim-treesitter/nvim-treesitter",
+        -- Uncomment next line if you want to follow only stable versions
+        tag = "*"
+    }
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
