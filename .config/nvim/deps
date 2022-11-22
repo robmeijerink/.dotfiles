@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Run this file once to set up some dependencies.
+# Run this file once to set up some dependencies the neovim config needs.
 
 npm i -g neovim intelephense typescript typescript-language-server prettier emmet-ls vscode-langservers-extracted blade-formatter
 
