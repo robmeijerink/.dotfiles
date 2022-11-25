@@ -40,6 +40,7 @@ nnoremap("Y", "yg$")
 
 -- Better join lower line into current
 nnoremap("J", "mzJ`z")
+nnoremap("<leader>J", ":TSJToggle<CR>")
 
 -- Better window navigation
 nnoremap('<C-h>', '<C-w>h')

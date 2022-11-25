@@ -205,13 +205,13 @@ return packer.startup(function(use)
         },
         config = "require('robmeijerink.neotest')"
     }
-    
+
     -- Enable dd in quickfix list
     use { 'TamaMcGlinn/quickfixdd' }
 
     -- Better Search & Replace
     use { 'windwp/nvim-spectre' }
-    
+
     -- Docblock generator
     use {
         "danymat/neogen",
@@ -224,6 +224,13 @@ return packer.startup(function(use)
         -- Uncomment next line if you want to follow only stable versions
         tag = "*"
     }
+
+    -- Better split and join blocks of code.
+    use({
+        'Wansmer/treesj',
+        requires = { 'nvim-treesitter' },
+        config = "require('robmeijerink.treesj')",
+    })
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
