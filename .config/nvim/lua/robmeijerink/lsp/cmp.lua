@@ -14,6 +14,15 @@ local cmp = require 'cmp'
 local lspkind = require('lspkind')
 local luasnip = require('luasnip')
 
+local source_mapping = {
+  luasnip = "[Snippet]",
+	buffer = "[Buffer]",
+	nvim_lsp = "[LSP]",
+	nvim_lua = "[Lua]",
+	cmp_tabnine = "[TN]",
+	path = "[Path]",
+}
+
 cmp.setup({
   snippet = {
     expand = function(args)
@@ -61,12 +70,38 @@ cmp.setup({
     -- {name = 'vsnip'}, -- For vsnip user.
     -- For ultisnips user.
     -- { name = 'ultisnips' },
+    { name = 'cmp_tabnine' },
     { name = 'luasnip' }, -- For luasnip user.
     { name = 'nvim_lsp' },
     { name = "nvim_lsp_signature_help" },
     { name = 'buffer' },
     { name = "path" },
   }),
-  formatting = {format = lspkind.cmp_format({with_text = true, maxwidth = 50})}
+  formatting = {
+    -- format = lspkind.cmp_format({
+    --   with_text = true,
+    --   maxwidth = 50,
+    -- }),
+    format = function(entry, vim_item)
+        vim_item.kind = lspkind.presets.default[vim_item.kind]
+        local menu = source_mapping[entry.source.name]
+        if entry.source.name == "cmp_tabnine" then
+            if entry.completion_item.data ~= nil and entry.completion_item.data.detail ~= nil then
+                menu = entry.completion_item.data.detail .. " " .. menu
+            end
+            vim_item.kind = ""
+        end
+        vim_item.menu = menu
+        return vim_item
+    end,
+  }
 })
 
+local tabnine = require("cmp_tabnine.config")
+tabnine:setup({
+	max_lines = 1200,
+	max_num_results = 20,
+	sort = true,
+	run_on_every_keystroke = true,
+	snippet_placeholder = "..",
+})

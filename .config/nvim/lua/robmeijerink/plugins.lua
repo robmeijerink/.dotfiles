@@ -232,6 +232,9 @@ return packer.startup(function(use)
         config = "require('robmeijerink.treesj')",
     })
 
+    -- Tabnine
+    use {'tzachar/cmp-tabnine', run='./install.sh', requires = 'hrsh7th/nvim-cmp'}
+
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
     if PACKER_BOOTSTRAP then
