@@ -21,9 +21,10 @@ require('nvim-treesitter.configs').setup {
   sync_installed = true,
   highlight = {
     enable = true,
-    additional_vim_regex_highlighting = {
-      "php"
-    }
+    additional_vim_regex_highlighting = false,
+    -- additional_vim_regex_highlighting = {
+    --   "php"
+    -- }
   },
   indent = {
     enable = true,

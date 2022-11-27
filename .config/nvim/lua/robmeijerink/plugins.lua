@@ -59,7 +59,8 @@ return packer.startup(function(use)
         'nvim-treesitter/nvim-treesitter',
         run = ":TSUpdate",
         event = "BufWinEnter",
-        config = "require('robmeijerink.treesitter')"
+        config = "require('robmeijerink.treesitter')",
+        -- commit = "c32abac525257723879f1cfe5cc59528105d29c6"
     }
     use { 'nvim-treesitter/nvim-treesitter-textobjects', after = "nvim-treesitter" } -- Additional textobjects for treesitter
     use { 'nvim-treesitter/nvim-treesitter-context', after = "nvim-treesitter" } -- Sticky header for functions
