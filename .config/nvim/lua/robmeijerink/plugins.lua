@@ -130,7 +130,11 @@ return packer.startup(function(use)
     }
     use {
         'kdheepak/lazygit.nvim',
-        -- cmd = 'LazyGit',
+        cmd = {
+            'LazyGit',
+            'LazyGitFilter',
+            'LazyGitFilterCurrentFile',
+        },
         config = "require('robmeijerink.lazygit')"
     }
     use {
@@ -216,6 +220,7 @@ return packer.startup(function(use)
     -- Docblock generator
     use {
         "danymat/neogen",
+        cmd = "Neogen",
         config = function()
             require('neogen').setup({
                 snippet_engine = "luasnip"
@@ -229,6 +234,7 @@ return packer.startup(function(use)
     -- Better split and join blocks of code.
     use({
         'Wansmer/treesj',
+        cmd = "TSJToggle",
         requires = { 'nvim-treesitter' },
         config = "require('robmeijerink.treesj')",
     })

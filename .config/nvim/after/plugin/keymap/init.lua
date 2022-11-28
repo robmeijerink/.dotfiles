@@ -142,7 +142,7 @@ end, { desc = 'Format File' })
 nnoremap('<leader>s', ':%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>')
 
 -- Generate docblock
-nnoremap("<Leader>**", ":lua require('neogen').generate()<CR>")
+nnoremap("<Leader>**", ":Neogen<CR>")
 
 -- Undotree
 nnoremap('<leader>U', '<cmd>UndotreeToggle<CR>')
