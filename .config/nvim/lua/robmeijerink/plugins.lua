@@ -130,7 +130,7 @@ return packer.startup(function(use)
     }
     use {
         'kdheepak/lazygit.nvim',
-        cmd = 'LazyGit',
+        -- cmd = 'LazyGit',
         config = "require('robmeijerink.lazygit')"
     }
     use {
