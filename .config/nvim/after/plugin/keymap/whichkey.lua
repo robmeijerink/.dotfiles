@@ -61,13 +61,15 @@ local mappings = {
     name = "Tabs",
     n = { "<cmd>tabnew<CR>", 'New tab' },
     c = { "<cmd>tabclose<CR>", 'Close tab' },
-    o = { "<cmd>tabonly<CR>", 'Close other tabs' }
+    o = { "<cmd>tabonly<CR>", 'Close other tabs' },
+    a = { "<cmd>only<CR>", 'Close other tabs & windows' }
   },
   g = {
     name = "Git",
     l = { toggle_lazygit, "LazyGit" },
-    a = { "<cmd>!git fetch --all<CR>", "Fetch all" },
+    f = { "<cmd>!git fetch --all<CR>", "Fetch all" },
     g = { "<cmd>Neogit<CR>", 'Neogit' },
+    q = { "<cmd>DiffviewClose<CR>", 'Close Diffview' },
     d = { "<cmd>DiffviewOpen<CR>", 'Diff with HEAD' },
     D = { "<cmd>DiffviewOpen master<CR>", 'Diff with master' },
     h = { "<cmd>DiffviewFileHistory %<CR>", 'History current file' },
