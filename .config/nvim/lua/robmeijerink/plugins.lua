@@ -241,6 +241,13 @@ return packer.startup(function(use)
         tag = "*"
     }
 
+    -- SymbolsOutline
+    use {
+        'simrat39/symbols-outline.nvim',
+        config = "require('robmeijerink.symbols-outline')",
+        cmd = "SymbolsOutline",
+    }
+
     -- Better split and join blocks of code.
     use({
         'Wansmer/treesj',
