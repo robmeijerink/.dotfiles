@@ -193,6 +193,16 @@ return packer.startup(function(use)
     --use { 'posva/vim-vue', config = "require('robmeijerink.vue')" }
     use { 'othree/javascript-libraries-syntax.vim' }
 
+    -- Easier installing of LSP, DAP, Linters, Formatters etc.
+    use { "williamboman/mason.nvim", config = "require('robmeijerink.mason')" }
+    use {
+        "williamboman/mason-lspconfig.nvim",
+        requires = {
+            "neovim/nvim-lspconfig",
+            "williamboman/mason.nvim",
+        },
+    }
+
     -- Debugger
     use { 'mfussenegger/nvim-dap' }
     use { 'rcarriga/nvim-dap-ui' }
