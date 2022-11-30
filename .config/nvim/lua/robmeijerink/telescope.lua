@@ -1,5 +1,6 @@
 local actions = require('telescope.actions')
 local trouble = require("trouble.providers.telescope")
+local lga_actions = require("telescope-live-grep-args.actions")
 
 require('telescope').setup {
   defaults = {
@@ -23,10 +24,11 @@ require('telescope').setup {
     file_sorter = require('telescope.sorters').get_fuzzy_file,
     file_ignore_patterns = {
         "node_modules",
-        "vendor",
+        -- "vendor",
         ".git",
         ".idea",
-        ".vscode"
+        ".vscode",
+        "htdocs",
     },
     generic_sorter = require('telescope.sorters').get_generic_fuzzy_sorter,
     path_display = {},
@@ -55,6 +57,22 @@ require('telescope').setup {
         ["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
         ["<C-t>"] = trouble.open_with_trouble
       }
+    }
+  },
+  extensions = {
+    live_grep_args = {
+      auto_quoting = true, -- enable/disable auto-quoting
+      -- define mappings, e.g.
+      mappings = { -- extend mappings
+        i = {
+          ["<C-k>"] = lga_actions.quote_prompt({ postfix = " --hidden --no-ignore" }),
+          ["<C-i>"] = lga_actions.quote_prompt({ postfix = " --iglob --hidden --no-ignore" }),
+        },
+      },
+      -- ... also accepts theme settings, for example:
+      -- theme = "dropdown", -- use dropdown theme
+      -- theme = { }, -- use own theme spec
+      -- layout_config = { mirror=true }, -- mirror preview pane
     }
   }
 }

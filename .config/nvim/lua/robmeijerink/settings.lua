@@ -11,9 +11,9 @@ vim.opt.exrc = false -- vim will look for and use a local .vimrc file
 
 -- Mapping waiting time
 vim.opt.timeout = true
-vim.opt.timeoutlen = 450
+vim.opt.timeoutlen = 850
 vim.opt.ttimeout = true
-vim.opt.ttimeoutlen = 250
+vim.opt.ttimeoutlen = 800
 
 -- Display
 vim.opt.showmatch  = true -- show matching brackets

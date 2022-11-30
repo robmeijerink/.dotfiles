@@ -97,7 +97,8 @@ return packer.startup(function(use)
         end,
     }
     -- Fuzzy Finder Algorithm which requires local dependencies to be built. Only load if `make` is available
-    use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make', cond = vim.fn.executable "make" == 1 }
+    use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make', cond = vim.fn.executable "make" == 1, requires = 'nvim-telescope/telescope.nvim' }
+    use { 'nvim-telescope/telescope-live-grep-args.nvim', requires = 'nvim-telescope/telescope.nvim' }
     use {
         'ThePrimeagen/harpoon',
         requires = {

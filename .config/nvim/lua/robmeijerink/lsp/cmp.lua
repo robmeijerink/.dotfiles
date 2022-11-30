@@ -70,9 +70,9 @@ cmp.setup({
     -- {name = 'vsnip'}, -- For vsnip user.
     -- For ultisnips user.
     -- { name = 'ultisnips' },
-    { name = 'cmp_tabnine' },
     { name = 'luasnip' }, -- For luasnip user.
     { name = 'nvim_lsp' },
+    { name = 'cmp_tabnine' },
     { name = "nvim_lsp_signature_help" },
     { name = 'buffer' },
     { name = "path" },
