@@ -1,56 +1,40 @@
-# Colors (One Darker)
+# Colors (Taerminal)
 colors:
-  # Default colors
+  # Default colors (Tomorrow Night Bright)
   primary:
-    # background: "#232731"
-    background: "#1f2227"
-    foreground: "#abb2bf"
+    background: '0x000000'
+    foreground: '0xeaeaea'
+
+  cursor:
+    background: '0xf0f0f0'
+    foreground: '0x26282a'
 
   # Normal colors
-  # Nord
   normal:
-    black: "#4C566A"
-    red: "#bf616a"
-    green: "#A3BE8C"
-    yellow: "#D7BA7D"
-    blue: "#5e81ac"
-    magenta: "#B48EAD"
-    cyan: "#88c0d0"
-    white: "#abb2bf"
+    black:   '0x26282a'
+    red:     '0xff8878'
+    green:   '0xb4fb73'
+    yellow:  '0xfffcb7'
+    blue:    '0x8bbce5'
+    magenta: '0xffb2fe'
+    cyan:    '0xa2e1f8'
+    white:   '0xf1f1f1'
 
   # Bright colors
   bright:
-    black: "#4C566A"
-    red: "#bf616a"
-    green: "#A3BE8C"
-    yellow: "#D7BA7D"
-    blue: "#5e81ac"
-    magenta: "#B48EAD"
-    cyan: "#88c0d0"
-    white: "#abb2bf"
+    black:   '0x6f6f6f'
+    red:     '0xfe978b'
+    green:   '0xd6fcba'
+    yellow:  '0xfffed5'
+    blue:    '0xc2e3ff'
+    magenta: '0xffc6ff'
+    cyan:    '0xc0e9f8'
+    white:   '0xffffff'
 
-#   normal:
-#     black: "#4b5263"
-#     red: "#e06c75"
-#     green: "#98C379"
-#     yellow: "#E5C07B"
-#     blue: "#61AFEF"
-#     magenta: "#C678DD"
-#     cyan: "#56B6C2"
-#     white: "#abb2bf"
-#
-#   # Bright colors
-#   bright:
-#     black: "#4b5263"
-#     red: "#e06c75"
-#     green: "#98C379"
-#     yellow: "#E5C07B"
-#     blue: "#61AFEF"
-#     magenta: "#C678DD"
-#     cyan: "#56B6C2"
-#     white: "#abb2bf"
-
-  # background_opacity: 1.0
+  # Change cursor colors
+  cursor:
+    text: "#3B4252"
+    cursor: "#ECEFF4"
 
   # Change cursor colors
   cursor:
