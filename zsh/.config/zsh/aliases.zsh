@@ -3,6 +3,12 @@ alias vi="nvim"
 alias g='lazygit'
 alias nvimrc='nvim ~/.config/nvim/'
 
+# Devilbox
+alias dup="cd ~/devilbox && docker-compose up -d && cd -"
+alias dhalt="cd ~/devilbox && docker-compose down && cd -"
+alias dreload="cd ~/devilbox && docker-compose down && docker-compose up -d && cd -"
+alias dssh="cd ~/devilbox/ && ./shell.sh"
+
 # ls, the common ones I use a lot shortened for rapid fire usage
 alias l='ls -lFh'     #size,show type,human readable
 alias la='ls -lAFh'   #long list,show almost all,show type,human readable
