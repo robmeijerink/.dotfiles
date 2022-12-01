@@ -1,5 +1,7 @@
+# This file only contains snippets to be easily copy pasted.
+# This is not a full file and is ignored by stow.
+
 alias vi="nvim"
-alias tmux="TERM=screen-256color-bce tmux"
 
 # PHP
 alias dep='vendor/bin/deployer.phar'
