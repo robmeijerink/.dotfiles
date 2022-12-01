@@ -24,7 +24,7 @@ plug "zsh-users/zsh-syntax-highlighting"
 bindkey '^ ' autosuggest-accept
 
 # Fuzzy Finder with Ctrl + f
-bindkey -s ^f "tmux-sessionizer\n"
+bindkey -s '^f' "tmux-sessionizer\n"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 

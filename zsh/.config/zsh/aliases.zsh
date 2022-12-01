@@ -1,9 +1,6 @@
 #!/bin/sh
 alias vi="nvim"
-alias j='z'
-alias f='zi'
 alias g='lazygit'
-alias zsh-update-plugins="find "$ZDOTDIR/plugins" -type d -exec test -e '{}/.git' ';' -print0 | xargs -I {} -0 git -C {} pull -q"
 alias nvimrc='nvim ~/.config/nvim/'
 
 # ls, the common ones I use a lot shortened for rapid fire usage
@@ -44,9 +41,6 @@ alias psmem='ps auxf | sort -nr -k 4 | head -5'
 alias pscpu='ps auxf | sort -nr -k 3 | head -5'
 
 # Changing/making/removing directory
-setopt auto_pushd
-setopt pushd_ignore_dups
-setopt pushdminus
 
 alias -g ...='../..'
 alias -g ....='../../..'
@@ -65,16 +59,7 @@ alias 8='cd -8'
 alias 9='cd -9'
 
 alias md='mkdir -p'
-alias rd=rmdir
-
-function d () {
-  if [[ -n $1 ]]; then
-    dirs "$@"
-  else
-    dirs -v | head -n 10
-  fi
-}
-compdef _dirs d
+alias rd='rmdir'
 
 case "$(uname -s)" in
 
