@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-# Run this file once to set up some dependencies the neovim config needs.
+
+# Run this file once to set up some dependencies and folders the neovim config needs.
 
 npm i -g neovim intelephense typescript typescript-language-server prettier emmet-ls vscode-langservers-extracted blade-formatter
 
@@ -7,8 +8,17 @@ sudo apt-get install -y unzip
 sudo apt-get install -y ripgrep
 sudo apt install -y fd-find
 sudo apt install -y fzf
-sudo apt install -y bat
-sudo apt install -y exa
 sudo apt-get -y install php-codesniffer
 
+mkdir -p ~/.vim/tmp/undo
+mkdir -p ~/.vim/tmp/backup
+mkdir -p ~/.vim/tmp/swap
+
 echo "Run :checkhealth for additional dependency info"
+
+# Shell
+sudo apt install -y bat
+sudo apt install -y exa
+
+# Use stow after installation to setup all config files.
+echo "Installed!"
