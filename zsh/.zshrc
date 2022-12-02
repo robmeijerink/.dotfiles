@@ -1,7 +1,6 @@
 #!/bin/sh
 [ -f "$HOME/.local/share/zap/zap.zsh" ] && source "$HOME/.local/share/zap/zap.zsh"
 
-
 # history
 HISTFILE=~/.zsh_history
 
@@ -33,6 +32,10 @@ if command -v bat &> /dev/null; then
   alias catt="bat --theme \"Visual Studio Dark+\""
 fi
 
+# File with custom aliases specific to your PC.
+[ -r "$HOME/.aliases" ] && source "$HOME/.aliases"
+
+# Other
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
