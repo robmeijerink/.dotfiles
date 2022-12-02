@@ -20,5 +20,5 @@ echo "Run :checkhealth for additional dependency info"
 sudo apt install -y bat
 sudo apt install -y exa
 
-# Use stow after installation to setup all config files.
+# Use stow after installation to setup all config files, example: stow zsh.
 echo "Installed!"

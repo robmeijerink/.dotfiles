@@ -18,7 +18,8 @@ _darcs
 \.git
 \.gitignore
 
-\.bash_aliases # Only contains snippets of aliases.
+\.bash_aliases # Only contains snippets of aliases; I use this in my (devilbox) docker setup.
+setup\.sh      # Setup scripts to setup some dependencies and directories.
 
 .+~          # emacs backup files
 \#.*\#       # emacs autosave files

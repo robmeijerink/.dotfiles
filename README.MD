@@ -1,8 +1,8 @@
 # Dotfiles
 
-- Snippets of my Terminal profile / aliases
 - ZSH configuration
 - Alacritty Terminal configuration
+- Snippets of my Terminal profile / aliases for usage in Docker containers
 - .vimrc with basic settings for regular vim
 - NeoVim .lua config files with more advanced settings and plugins
 - tmux configuration
