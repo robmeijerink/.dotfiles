@@ -77,8 +77,8 @@ selection:
   live_config_reload: true
 
 key_bindings:
-  # Use the Ctrl-Insert keybinding below to easily insert your Github Auth key.
+  # Use the Ctrl-/ keybinding below to easily insert your Github Auth key.
+  # - { key: Slash, mods: Control, chars: "ghp_YOUR_KEY" }
   - { key: Key0, mods: Control, action: ResetFontSize }
   - { key: Equals, mods: Control, action: IncreaseFontSize }
   - { key: Minus, mods: Control, action: DecreaseFontSize }
-  # - { key: Slash, mods: Control, chars: "ghp_YOUR_KEY" }
