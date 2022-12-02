@@ -4,11 +4,11 @@
 
 npm i -g neovim intelephense typescript typescript-language-server prettier emmet-ls vscode-langservers-extracted blade-formatter
 
-sudo apt-get install -y unzip
-sudo apt-get install -y ripgrep
+sudo apt install -y unzip
+sudo apt install -y ripgrep
 sudo apt install -y fd-find
 sudo apt install -y fzf
-sudo apt-get -y install php-codesniffer
+sudo apt install -y php-codesniffer
 
 mkdir -p ~/.vim/tmp/undo
 mkdir -p ~/.vim/tmp/backup
