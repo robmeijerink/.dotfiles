@@ -257,6 +257,12 @@ return packer.startup(function(use)
         config = "require('robmeijerink.treesj')",
     })
 
+    -- Better LSP signature with parameter hints.
+    use({
+        "ray-x/lsp_signature.nvim",
+        config = "require('robmeijerink.lsp-signature')",
+    })
+
     -- Tabnine
     use {'tzachar/cmp-tabnine', run='./install.sh', requires = 'hrsh7th/nvim-cmp'}
 
