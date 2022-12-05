@@ -29,8 +29,17 @@ A special thanks to [ThePrimeagen](https://github.com/ThePrimeagen/) for getting
 
 ### ZSH
 
-I stopped using OhMyZSH, because I wanted something leaner and snappier. I don't use most of the stuff OhMyZSH offers, so I started using this simple ZSH configuration. This config also supports plugins and has the zsh aliases I use most. It is much less code and has all the things I wanted from OhMyZSH. The performance of this setup in my Alacritty terminal is great!
+I stopped using OhMyZSH, because I wanted something leaner and snappier. I don't use most of the stuff OhMyZSH offers, so I started using this simple ZSH configuration. This config also supports plugins and has the zsh aliases I use most. It is much less code and has all the things I wanted from OhMyZSH. It supports auto-complete, syntax highlighting and better formatting. The performance of this setup in my Alacritty terminal is great!
 
 - Install zsh with your package manager of choice, like Homebrew or apt.
+- Install bat and exa with your package manager.
 - [Install Zap](https://github.com/zap-zsh/zap) by running the command on the install command from the docs. Zap is a simple zsh plugin manager made by the great [ChristianChiarulli](https://github.com/ChristianChiarulli).
 - Stow the zsh folder.
+
+##### Workflow
+
+- Launch Alacritty or your preferred terminal.
+- Press Ctrl-F to fuzzy find your workspace folder.
+- Press enter to launch a new tmux session in your selected folder.
+- Launch nvim
+- Build something great!
