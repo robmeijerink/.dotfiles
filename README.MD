@@ -19,10 +19,10 @@ The configuration can be installed with GNU stow.
 I use NeoVim daily for web development at work and side-projects in PHP, Rust, Go, Javascript / Typescript, CSS / scss etc.
 
 - The nvim setup needs nodejs and npm installed.
-- The nvim and zsh setup needs some dependencies. If you use Linux or WSL, you can run the setup.sh script to install these dependencies.
+- The nvim and zsh setup need some dependencies. If you use Linux or WSL, you can run the setup.sh script to install these dependencies. If you use MacOs, you can easily install the dependencies by using Homebrew.
 - Stow the nvim folder.
-- Use Packer to install and setup the nvim plugins. If you use MacOs, you can easily install the dependencies by using Homebrew.
-- Install the plugins: Sync the Packer config with :PackerSync.
+- Use Packer to install and setup the nvim plugins.
+- Install the nvim plugins: Sync the Packer config with :PackerSync.
 - The after/plugin folder contains the customizations you will need most, like: theme, snippets and keymaps.
 
 A special thanks to [ThePrimeagen](https://github.com/ThePrimeagen/) for getting me into Vim, improving my terminal workflow and boosting my productivity!
