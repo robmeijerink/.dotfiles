@@ -10,16 +10,14 @@ alias dreload="cd ~/devilbox && docker-compose down && docker-compose up -d && c
 alias dssh="cd ~/devilbox/ && ./shell.sh"
 
 # ls, the common ones I use exa for ls
-alias l='ls -lFh'     #size,show type,human readable
 alias la='ls -lAFh'   #long list,show almost all,show type,human readable
-alias lsa='ls -lah'
-alias lr='ls -tRFh'   #sorted by date,recursive,show type,human readable
-alias lt='ls -ltFh'   #long list,sorted by date,show type,human readable
-alias ll='ls -l'      #long list
+alias lt='ls -la --sort=modified'   #sorted by date,recursive,show type,human readable
+alias lr='ls -la --sort=modified --reverse'   #sorted by date,recursive,show type,human readable
 alias ldot='ls -ld .*'
 alias lst='ls -T'     #ls with tree
 alias llt='ls -lT'    #ls -l with tree
 alias lat='ls -laT'   #ls -la with tree
+alias latr='ls -laT --sort=modified --reverse'   #ls -la with tree
 
 # Colorize grep output (good for log files)
 alias grep='grep --color=auto'
