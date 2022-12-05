@@ -25,7 +25,7 @@ local cfg = {
   hint_scheme = "Comment",
   -- hint_prefix = "🐼 ",  -- Panda for parameter, NOTE: for the terminal not support emoji, might crash
   hint_prefix = '',
-  use_lspsaga = true, -- set to true if you want to use lspsaga popup
+  use_lspsaga = false, -- set to true if you want to use lspsaga popup
   hi_parameter = "LspSignatureActiveParameter", -- how your parameter will be highlight
   max_height = 12, -- max height of signature floating_window, if content is more than max_height, you can scroll down
   -- to view the hiding contents
@@ -49,10 +49,9 @@ local cfg = {
   toggle_key = nil, -- toggle signature on and off in insert mode,  e.g. toggle_key = '<M-x>'
 }
 
--- recommanded:
+-- recommended:
 signature.setup(cfg) -- no need to specify bufnr if you don't use toggle_key
 
 -- You can also do this inside lsp on_attach
 -- note: on_attach deprecated
--- require("lsp_signature").on_attach(cfg, bufnr) -- no need to specify bufnr if you don't use toggle_key
 signature.on_attach(cfg) -- no need to specify bufnr if you don't use toggle_key
