@@ -16,12 +16,12 @@ if fn.empty(fn.glob(install_path)) > 0 then
 end
 
 -- Autocommand that reloads neovim whenever you save the plugins.lua file
-vim.cmd [[
-  augroup packer_user_config
-    autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerSync
-  augroup end
-]]
+-- vim.cmd [[
+--   augroup packer_user_config
+--     autocmd!
+--     autocmd BufWritePost plugins.lua source <afile> | PackerSync
+--   augroup end
+-- ]]
 
 -- Use a protected call so we don't error out on first use
 local status_ok, packer = pcall(require, "packer")
@@ -138,15 +138,16 @@ return packer.startup(function(use)
         },
         config = "require('robmeijerink.lazygit')"
     }
-    use {
-        'TimUntersberger/neogit',
-        cmd = 'Neogit',
-        requires = {
-            { 'nvim-lua/plenary.nvim' },
-            { 'sindrets/diffview.nvim' }
-        },
-        config = "require('robmeijerink.neogit')"
-    }
+    -- use {
+    --     'TimUntersberger/neogit',
+    --     cmd = 'Neogit',
+    --     requires = {
+    --         { 'nvim-lua/plenary.nvim' },
+    --         { 'sindrets/diffview.nvim' }
+    --     },
+    --     config = "require('robmeijerink.neogit')"
+    -- }
+    use("tpope/vim-fugitive")
     use {
         "NTBBloodbath/rest.nvim",
         requires = { "nvim-lua/plenary.nvim" },

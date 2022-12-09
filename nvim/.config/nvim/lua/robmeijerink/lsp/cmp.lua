@@ -37,10 +37,11 @@ cmp.setup({
     end
   },
   mapping = {
-    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
-    ['<C-f>'] = cmp.mapping.scroll_docs(4),
+    ['<C-y>'] = cmp.mapping.confirm({ select = true }),
+    ['<C-u>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-d>'] = cmp.mapping.scroll_docs(4),
     ['<C-Space>'] = cmp.mapping.complete(),
-    ['<C-e>'] = cmp.mapping.close(),
+    ['<C-q>'] = cmp.mapping.close(),
     ['<CR>'] = cmp.mapping.confirm({select = false}),
     ["<Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then

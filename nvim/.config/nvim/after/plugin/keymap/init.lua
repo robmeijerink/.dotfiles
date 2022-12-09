@@ -24,7 +24,7 @@ local vnoremap = Remap.vnoremap
 local inoremap = Remap.inoremap
 local xnoremap = Remap.xnoremap
 local cnoremap = Remap.cnoremap
--- local nmap = Remap.nmap
+local nmap = Remap.nmap
 -- local vmap = Remap.vmap
 
 -- Terminal --
@@ -102,9 +102,9 @@ xnoremap('<leader>p', '"_dP')
 nnoremap("Y", "yg$")
 
 -- Yank to system's clipboard
-nnoremap('<leader>y', '"+y')
-vnoremap('<leader>y', '"+y')
-nnoremap('<leader>Y', '"+Y', { noremap = false, silent = true })
+nnoremap("<leader>y", "\"+y")
+vnoremap("<leader>y", "\"+y")
+nmap("<leader>Y", "\"+Y")
 
 -- Delete without cut
 nnoremap('<leader>d', '"_d')
@@ -114,14 +114,17 @@ vnoremap('<leader>d', '"_d')
 nnoremap('gp', '`[v`]')
 
 -- No operation: cancel
+nnoremap("<leader>q", "<cmd>quit<CR>")
+
+-- No operation: cancel
 nnoremap("Q", "<nop>")
 
 -- This unsets the "last search pattern" register by hitting return
 nnoremap('<CR>', '<cmd>noh<CR><CR>')
 
 -- Quickfix list
-nnoremap("<C-k>", "<cmd>cnext<CR>zz")
-nnoremap("<C-j>", "<cmd>cprev<CR>zz")
+-- nnoremap("<C-k>", "<cmd>cnext<CR>zz")
+-- nnoremap("<C-j>", "<cmd>cprev<CR>zz")
 nnoremap("<leader>k", "<cmd>lnext<CR>zz")
 nnoremap("<leader>j", "<cmd>lprev<CR>zz")
 
