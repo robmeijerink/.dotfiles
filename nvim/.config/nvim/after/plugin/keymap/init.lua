@@ -114,7 +114,7 @@ vnoremap('<leader>d', '"_d')
 nnoremap('gp', '`[v`]')
 
 -- No operation: cancel
-nnoremap("<leader>q", "<cmd>quit<CR>")
+nnoremap("<leader>Q", "<cmd>quit<CR>")
 
 -- No operation: cancel
 nnoremap("Q", "<nop>")
