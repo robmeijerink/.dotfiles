@@ -1,6 +1,5 @@
 local null_ls = require('null-ls')
 local utils = require('null-ls.utils')
-local custom_formatting = require('robmeijerink.lsp.custom_formatting')
 
 local formatting = null_ls.builtins.formatting
 
@@ -39,7 +38,4 @@ null_ls.setup({
       }
     }), formatting.isort, formatting.codespell.with({ filetypes = { 'markdown' } })
   },
-  -- on_attach = function(client, bufnr)
-  --   custom_formatting(client, bufnr)
-  -- end
 })
