@@ -196,7 +196,7 @@ return packer.startup(function(use)
     use { 'othree/javascript-libraries-syntax.vim' }
 
     -- Easier installing of LSP, DAP, Linters, Formatters etc.
-    use { "williamboman/mason.nvim", config = "require('robmeijerink.mason')" }
+    -- use { "williamboman/mason.nvim", config = "require('robmeijerink.mason')" }
     use {
         "williamboman/mason-lspconfig.nvim",
         requires = {
