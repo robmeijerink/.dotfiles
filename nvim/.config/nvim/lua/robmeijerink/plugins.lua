@@ -197,13 +197,13 @@ return packer.startup(function(use)
 
     -- Easier installing of LSP, DAP, Linters, Formatters etc.
     -- use { "williamboman/mason.nvim", config = "require('robmeijerink.mason')" }
-    use {
-        "williamboman/mason-lspconfig.nvim",
-        requires = {
-            "neovim/nvim-lspconfig",
-            "williamboman/mason.nvim",
-        },
-    }
+    -- use {
+    --     "williamboman/mason-lspconfig.nvim",
+    --     requires = {
+    --         "neovim/nvim-lspconfig",
+    --         "williamboman/mason.nvim",
+    --     },
+    -- }
 
     -- Debugger
     use { 'mfussenegger/nvim-dap' }
