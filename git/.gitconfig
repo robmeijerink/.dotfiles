@@ -6,8 +6,6 @@
 	autocrlf = input
 	# Don't paginate output by default
 	pager = cat
-	# Global ignore file (not shared)
-	excludesfile = ~/.gitignore_global
 	# Use text editor
 	editor = nvim
 	# Don't consider trailing space change as a cause for merge conflicts
