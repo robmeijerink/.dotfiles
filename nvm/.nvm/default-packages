@@ -1,0 +1,15 @@
+yarn
+neovim
+@fsouza/prettierd
+@tailwindcss/language-server
+@volar/vue-language-server
+tree-sitter-cli
+bash-language-server
+eslint_d
+intelephense
+typescript
+typescript-language-server
+prettier
+emmet-ls
+vscode-langservers-extracted
+blade-formatter
