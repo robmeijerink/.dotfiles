@@ -18,6 +18,8 @@
 [pull]
 	# Rebase when pulling
 	rebase = true
+	# Fast Forward on Pull to prevent a merge commit.
+	ff = true
 [fetch]
 	# Clean up local branches on fetch
 	prune = true
@@ -27,7 +29,7 @@
 [merge]
 	# Disable fast-forward merges as default merge strategy.
 	# Force explicit call of `git merge --ff …`.
-	# ff = false
+	ff = false
 [rebase]
 	autoStash = true
 [push]
