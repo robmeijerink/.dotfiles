@@ -1,0 +1,45 @@
+[user]
+	name = Rob Meijerink
+	email = rob.meijerink@gmail.com
+[core]
+	# Setting for macOS / Linux
+	autocrlf = input
+	# Don't paginate output by default
+	pager = cat
+	# Global ignore file (not shared)
+	excludesfile = ~/.gitignore_global
+	# Use text editor
+	editor = nvim
+	# Don't consider trailing space change as a cause for merge conflicts
+	whitespace = -trailing-space
+[credential]
+	# Credential store
+	helper = store
+[pull]
+	# Rebase when pulling
+	rebase = true
+[fetch]
+	# Clean up local branches on fetch
+	prune = true
+[diff]
+	# Show moved code in diff
+	colorMoved = zebra
+[merge]
+	# Disable fast-forward merges as default merge strategy.
+	# Force explicit call of `git merge --ff …`.
+	ff = false
+[rebase]
+	autoStash = true
+[push]
+	# Default push should only push the current branch to its push target, regardless of its remote name
+	default = upstream
+	# When pushing, also push tags whose commit-ishs are now reachable upstream
+	followTags = true
+[status]
+	# Display submodule rev change summaries in status
+	submoduleSummary = true
+	# Recursively traverse untracked directories to display all contents
+	showUntrackedFiles = all
+[color "branch"]
+	# Blue on black is hard to read in git branch -vv: use cyan instead
+	upstream = cyan
