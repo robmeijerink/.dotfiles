@@ -38,6 +38,8 @@
 	# When pushing, also push tags whose commit-ishs are now reachable upstream
 	followTags = true
 [status]
+	# Show a short status message by default.
+	short = true
 	# Display submodule rev change summaries in status
 	submoduleSummary = true
 	# Recursively traverse untracked directories to display all contents
