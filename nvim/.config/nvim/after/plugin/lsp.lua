@@ -140,6 +140,7 @@ lsp.on_attach(function(client, bufnr)
 
   -- nnoremap('omnifunc', 'v:lua.vim.lsp.omnifunc')
   nnoremap("gd", function() vim.lsp.buf.definition() end, opts)
+  nnoremap("gr", require('telescope.builtin').lsp_references, opts)
   nnoremap('gD', function() vim.lsp.buf.declaration() end, opts)
   nnoremap('gT', function() vim.lsp.buf.type_definition() end, opts)
   nnoremap('gi', function() vim.lsp.buf.implementation() end, opts)
@@ -168,6 +169,8 @@ lsp.on_attach(function(client, bufnr)
   -- nnoremap('<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
   -- nnoremap('<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
   -- nnoremap('<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
+  -- nnoremap('<leader>ds', require('telescope.builtin').lsp_document_symbols, opts)
+  -- nnoremap('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, opts)
 end)
 
 lsp.configure('emmet_ls', {
