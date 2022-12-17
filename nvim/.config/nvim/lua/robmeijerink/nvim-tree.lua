@@ -1,8 +1,4 @@
--- disable netrw at the very start of your init.lua (strongly advised)
-vim.g.loaded = 1
-vim.g.loaded_netrwPlugin = 1
-
--- OR setup with some options
+-- setup with some options
 require("nvim-tree").setup({
   sort_by = "case_sensitive",
   sync_root_with_cwd = true,
