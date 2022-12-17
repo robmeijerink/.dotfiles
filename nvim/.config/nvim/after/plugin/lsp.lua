@@ -1,3 +1,22 @@
+local Remap = require("robmeijerink.keymap")
+local nnoremap = Remap.nnoremap
+local inoremap = Remap.inoremap
+
+local lsp = require("lsp-zero")
+
+lsp.preset("recommended")
+
+lsp.ensure_installed({
+  'intelephense',
+  'rust_analyzer',
+  'tsserver',
+  'sumneko_lua',
+  'volar',
+  'tailwindcss',
+  'emmet_ls',
+})
+
+-- hrsh7th/nvim-cmp
 vim.g.completeopt = "menu,menuone,noselect,noinsert"
 local has_words_before = function()
   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
@@ -23,19 +42,7 @@ local source_mapping = {
 	path = "[Path]",
 }
 
-cmp.setup({
-  snippet = {
-    expand = function(args)
-      -- For `vsnip` user.
-      -- vim.fn["vsnip#anonymous"](args.body)
-
-      -- For `luasnip` user.
-      luasnip.lsp_expand(args.body)
-
-      -- For `ultisnips` user.
-      -- vim.fn["UltiSnips#Anon"](args.body)
-    end
-  },
+local cmp_setup = {
   mapping = {
     ['<C-y>'] = cmp.mapping.confirm({ select = true }),
     ['<C-u>'] = cmp.mapping.scroll_docs(-4),
@@ -96,7 +103,7 @@ cmp.setup({
         return vim_item
     end,
   }
-})
+}
 
 local tabnine = require("cmp_tabnine.config")
 tabnine:setup({
@@ -106,3 +113,65 @@ tabnine:setup({
 	run_on_every_keystroke = true,
 	snippet_placeholder = "..",
 })
+
+lsp.setup_nvim_cmp(cmp_setup)
+
+lsp.set_preferences({
+    suggest_lsp_servers = false,
+    sign_icons = {
+        error = " ",
+        warn = " ",
+        hint = " ",
+        info = " "
+    }
+})
+
+vim.diagnostic.config({
+    virtual_text = true,
+})
+
+lsp.on_attach(function(client, bufnr)
+  local opts = {buffer = bufnr, remap = false}
+
+  if client.name == "eslint" then
+      vim.cmd [[ LspStop eslint ]]
+      return
+  end
+
+  -- nnoremap('omnifunc', 'v:lua.vim.lsp.omnifunc')
+  nnoremap("gd", function() vim.lsp.buf.definition() end, opts)
+  nnoremap('gD', function() vim.lsp.buf.declaration() end, opts)
+  nnoremap('gT', function() vim.lsp.buf.type_definition() end, opts)
+  nnoremap('gi', function() vim.lsp.buf.implementation() end, opts)
+  nnoremap("K", function() vim.lsp.buf.hover() end, opts)
+  nnoremap("<leader>vws", function() vim.lsp.buf.workspace_symbol() end, opts)
+  nnoremap("<leader>vd", function() vim.diagnostic.open_float() end, opts)
+  nnoremap("[d", function() vim.diagnostic.goto_next() end, opts)
+  nnoremap("]d", function() vim.diagnostic.goto_prev() end, opts)
+  nnoremap("<leader>vca", function() vim.lsp.buf.code_action() end, opts)
+  nnoremap("<leader>vco", function() vim.lsp.buf.code_action({
+      filter = function(code_action)
+        if not code_action or not code_action.data then
+          return false
+        end
+
+        local data = code_action.data.id
+        return string.sub(data, #data - 1, #data) == ":0"
+      end,
+      apply = true
+    })
+  end, opts)
+  nnoremap("<leader>vrr", function() vim.lsp.buf.references() end, opts)
+  nnoremap("<leader>vrn", function() vim.lsp.buf.rename() end, opts)
+  inoremap("<C-h>", function() vim.lsp.buf.signature_help() end, opts)
+
+  -- nnoremap('<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
+  -- nnoremap('<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
+  -- nnoremap('<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
+end)
+
+lsp.configure('emmet_ls', {
+  filetypes = { 'html', 'typescriptreact', 'javascriptreact', 'blade', 'vue' },
+})
+
+lsp.setup()

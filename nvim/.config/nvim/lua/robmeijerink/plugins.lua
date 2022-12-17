@@ -116,14 +116,6 @@ return packer.startup(function(use)
             })
         end
     })
-    use { 'neovim/nvim-lspconfig', config = "require('robmeijerink.lsp')" }
-    use { 'hrsh7th/cmp-nvim-lsp' }
-    use { 'hrsh7th/cmp-buffer' }
-    use { 'hrsh7th/cmp-path' }
-    use { 'hrsh7th/cmp-cmdline' }
-    use { 'hrsh7th/nvim-cmp' }
-    use { 'L3MON4D3/LuaSnip', requires = { 'saadparwaiz1/cmp_luasnip' } }
-    -- use { 'hrsh7th/cmp-vsnip' }
     use {
         'sindrets/diffview.nvim',
         requires = { "kyazdani42/nvim-web-devicons" },
@@ -157,7 +149,6 @@ return packer.startup(function(use)
     use { 'folke/todo-comments.nvim', config = "require('robmeijerink.todo')" }
     use { 'numToStr/Comment.nvim', config = "require('robmeijerink.comment')" }
     -- use { 'hrsh7th/vim-vsnip' }
-    use { 'rafamadriz/friendly-snippets' }
     use { 'sheerun/vim-polyglot' }
     use { 'onsails/lspkind-nvim' }
     use { 'norcalli/nvim-colorizer.lua', config = "require('robmeijerink.colorizer')", event = "BufRead" }
@@ -183,12 +174,9 @@ return packer.startup(function(use)
     }
     use { "akinsho/toggleterm.nvim", config = "require('robmeijerink.toggleterm')" }
     use { 'tami5/lspsaga.nvim', cmd = 'Lspsaga', config = "require('robmeijerink.lspsaga')" }
-    use { 'williamboman/nvim-lsp-installer' }
     use { 'jose-elias-alvarez/null-ls.nvim', config = "require('robmeijerink.null-ls')" }
-    use { "jose-elias-alvarez/nvim-lsp-ts-utils" }
     use { "folke/zen-mode.nvim", cmd = 'ZenMode', config = "require('robmeijerink.zen-mode')" }
     use { "folke/twilight.nvim", cmd = 'Twilight', config = "require('robmeijerink.twilight')", after = "nvim-treesitter" }
-    use { 'machakann/vim-highlightedyank', config = "vim.cmd('highlight Normal guibg=none')" }
     use { 'tpope/vim-sleuth' } -- Detect tabstop and shiftwidth automatically
 
     -- JavaScript
@@ -196,20 +184,36 @@ return packer.startup(function(use)
     use { 'othree/javascript-libraries-syntax.vim' }
 
     -- Easier installing of LSP, DAP, Linters, Formatters etc.
-    -- use { "williamboman/mason.nvim", config = "require('robmeijerink.mason')" }
-    -- use {
-    --     "williamboman/mason-lspconfig.nvim",
-    --     requires = {
-    --         "neovim/nvim-lspconfig",
-    --         "williamboman/mason.nvim",
-    --     },
-    -- }
+    use {
+        'VonHeikemen/lsp-zero.nvim',
+        requires = {
+            -- LSP Support
+            {'neovim/nvim-lspconfig'},
+            {'williamboman/mason.nvim'},
+            {'williamboman/mason-lspconfig.nvim'},
+
+            -- Autocompletion
+            {'hrsh7th/nvim-cmp'},
+            {'hrsh7th/cmp-buffer'},
+            {'hrsh7th/cmp-path'},
+            {'saadparwaiz1/cmp_luasnip'},
+            {'hrsh7th/cmp-nvim-lsp'},
+            {'hrsh7th/cmp-nvim-lua'},
+
+            -- Snippets
+            {'L3MON4D3/LuaSnip'},
+            {'rafamadriz/friendly-snippets'},
+        }
+    }
+
+    -- Tabnine
+    use {'tzachar/cmp-tabnine', run='./install.sh', requires = 'hrsh7th/nvim-cmp'}
 
     -- Debugger
-    use { 'mfussenegger/nvim-dap' }
-    use { 'rcarriga/nvim-dap-ui' }
-    use { 'theHamsta/nvim-dap-virtual-text' }
-    use { 'nvim-telescope/telescope-dap.nvim' }
+    -- use { 'mfussenegger/nvim-dap' }
+    -- use { 'rcarriga/nvim-dap-ui' }
+    -- use { 'theHamsta/nvim-dap-virtual-text' }
+    -- use { 'nvim-telescope/telescope-dap.nvim' }
 
     -- Testing
     use {
@@ -263,9 +267,6 @@ return packer.startup(function(use)
         "ray-x/lsp_signature.nvim",
         config = "require('robmeijerink.lsp-signature')",
     })
-
-    -- Tabnine
-    use {'tzachar/cmp-tabnine', run='./install.sh', requires = 'hrsh7th/nvim-cmp'}
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
