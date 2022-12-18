@@ -45,6 +45,8 @@ local mappings = {
     c = { "<cmd>Telescope commands<CR>", "Telescope Commands" },
     d = { "<cmd>Telescope diagnostics<CR>", "Telescope Diagostics" },
     k = { "<cmd>Telescope keymaps<CR>", "Telescope Keymaps" },
+    s = { "<cmd>Telescope lsp_document_symbols<CR>", "Telescope Document Symbols" },
+    S = { "<cmd>Telescope lsp_dynamic_workspace_symbols<CR>", "Telescope Dynamic Workspace Symbols" },
   },
   b = {
     name = "Buffers",
