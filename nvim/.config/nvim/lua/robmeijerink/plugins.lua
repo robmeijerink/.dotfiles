@@ -108,14 +108,15 @@ return packer.startup(function(use)
             require('robmeijerink.harpoon')
         end,
     }
-    use({
-        "kylechui/nvim-surround",
-        config = function()
-            require("nvim-surround").setup({
-                -- Configuration here, or leave empty to use defaults
-            })
-        end
-    })
+    -- use({
+    --     "kylechui/nvim-surround",
+    --     config = function()
+    --         require("nvim-surround").setup({
+    --             -- Configuration here, or leave empty to use defaults
+    --         })
+    --     end
+    -- })
+    use { "tpope/vim-surround" }
     use {
         'sindrets/diffview.nvim',
         requires = { "kyazdani42/nvim-web-devicons" },
