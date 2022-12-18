@@ -179,6 +179,7 @@ return packer.startup(function(use)
     use { "folke/zen-mode.nvim", cmd = 'ZenMode', config = "require('robmeijerink.zen-mode')" }
     use { "folke/twilight.nvim", cmd = 'Twilight', config = "require('robmeijerink.twilight')", after = "nvim-treesitter" }
     use { 'tpope/vim-sleuth' } -- Detect tabstop and shiftwidth automatically
+    use { 'tpope/vim-repeat' } -- Better repeat with plugin keymaps.
 
     -- JavaScript
     --use { 'posva/vim-vue', config = "require('robmeijerink.vue')" }
