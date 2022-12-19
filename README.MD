@@ -33,7 +33,7 @@ I stopped using OhMyZSH, because I wanted something leaner and snappier. I don't
 
 - Install zsh with your package manager of choice, like Homebrew or apt.
 - Install bat and exa with your package manager.
-- [Install Zap](https://github.com/zap-zsh/zap) by running the command on the install command from the docs. Zap is a simple zsh plugin manager made by the great [ChristianChiarulli](https://github.com/ChristianChiarulli).
+- [Install Zap](https://github.com/zap-zsh/zap) by running the the install command from the docs. Zap is a simple zsh plugin manager made by the great [ChristianChiarulli](https://github.com/ChristianChiarulli).
 - Stow the zsh folder.
 
 ##### Workflow
