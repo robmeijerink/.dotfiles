@@ -126,10 +126,6 @@ lsp.set_preferences({
     }
 })
 
-vim.diagnostic.config({
-    virtual_text = true,
-})
-
 lsp.on_attach(function(client, bufnr)
   local opts = {buffer = bufnr, remap = false}
 
@@ -177,8 +173,7 @@ lsp.configure('emmet_ls', {
   filetypes = { 'html', 'typescriptreact', 'javascriptreact', 'blade', 'vue' },
 })
 
-lsp.setup()
-
+-- jose-elias-alvarez/null-ls.nvim
 local null_ls = require('null-ls')
 local null_opts = lsp.build_options('null-ls', {})
 local utils = require('null-ls.utils')
@@ -186,7 +181,7 @@ local utils = require('null-ls.utils')
 local formatting = null_ls.builtins.formatting
 
 null_ls.setup({
-  debug = true,
+  -- debug = true,
   debounce = 150,
   root_dir = utils.root_pattern("composer.json", "package.json", "Makefile", ".git"), -- Add composer
   diagnostics_format = "#{m} (#{c}) [#{s}]", -- Makes PHPCS errors more readeable
@@ -224,4 +219,11 @@ null_ls.setup({
     null_opts.on_attach(client, bufnr)
     --- you can add other stuff here....
   end,
+})
+
+-- Setup LSP
+lsp.setup()
+
+vim.diagnostic.config({
+    virtual_text = true,
 })
