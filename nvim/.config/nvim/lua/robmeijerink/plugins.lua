@@ -65,6 +65,32 @@ return packer.startup(function(use)
     }
     use { 'nvim-treesitter/nvim-treesitter-textobjects', after = "nvim-treesitter" } -- Additional textobjects for treesitter
     use { 'nvim-treesitter/nvim-treesitter-context', after = "nvim-treesitter" } -- Sticky header for functions
+
+    -- Easier installing of LSP, DAP, Linters, Formatters etc.
+    use {
+        'VonHeikemen/lsp-zero.nvim',
+        requires = {
+            -- LSP Support
+            {'neovim/nvim-lspconfig'},
+            {'williamboman/mason.nvim'},
+            {'williamboman/mason-lspconfig.nvim'},
+
+            -- Diagnostics and Formatting
+            { 'jose-elias-alvarez/null-ls.nvim' },
+
+            -- Autocompletion
+            {'hrsh7th/nvim-cmp'},
+            {'hrsh7th/cmp-buffer'},
+            {'hrsh7th/cmp-path'},
+            {'saadparwaiz1/cmp_luasnip'},
+            {'hrsh7th/cmp-nvim-lsp'},
+            {'hrsh7th/cmp-nvim-lua'},
+
+            -- Snippets
+            {'L3MON4D3/LuaSnip'},
+            {'rafamadriz/friendly-snippets'},
+        }
+    }
     use {
         'nvim-lualine/lualine.nvim',
         config = "require('robmeijerink.lualine')",
@@ -176,7 +202,6 @@ return packer.startup(function(use)
     }
     use { "akinsho/toggleterm.nvim", config = "require('robmeijerink.toggleterm')" }
     use { 'tami5/lspsaga.nvim', cmd = 'Lspsaga', config = "require('robmeijerink.lspsaga')" }
-    use { 'jose-elias-alvarez/null-ls.nvim', config = "require('robmeijerink.null-ls')" }
     use { "folke/zen-mode.nvim", cmd = 'ZenMode', config = "require('robmeijerink.zen-mode')" }
     use { "folke/twilight.nvim", cmd = 'Twilight', config = "require('robmeijerink.twilight')", after = "nvim-treesitter" }
     use { 'tpope/vim-sleuth' } -- Detect tabstop and shiftwidth automatically
@@ -186,28 +211,7 @@ return packer.startup(function(use)
     --use { 'posva/vim-vue', config = "require('robmeijerink.vue')" }
     use { 'othree/javascript-libraries-syntax.vim' }
 
-    -- Easier installing of LSP, DAP, Linters, Formatters etc.
-    use {
-        'VonHeikemen/lsp-zero.nvim',
-        requires = {
-            -- LSP Support
-            {'neovim/nvim-lspconfig'},
-            {'williamboman/mason.nvim'},
-            {'williamboman/mason-lspconfig.nvim'},
 
-            -- Autocompletion
-            {'hrsh7th/nvim-cmp'},
-            {'hrsh7th/cmp-buffer'},
-            {'hrsh7th/cmp-path'},
-            {'saadparwaiz1/cmp_luasnip'},
-            {'hrsh7th/cmp-nvim-lsp'},
-            {'hrsh7th/cmp-nvim-lua'},
-
-            -- Snippets
-            {'L3MON4D3/LuaSnip'},
-            {'rafamadriz/friendly-snippets'},
-        }
-    }
 
     -- Tabnine
     use {'tzachar/cmp-tabnine', run='./install.sh', requires = 'hrsh7th/nvim-cmp'}
