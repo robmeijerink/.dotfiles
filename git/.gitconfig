@@ -1,6 +1,13 @@
 [user]
 	name = Rob Meijerink
 	email = rob.meijerink@gmail.com
+[alias]
+	s  = status
+	c  = commit
+	p  = pull
+	ms = merge --ff --squash
+	uncommit = reset --soft HEAD~1
+	unmerge  = reset --hard ORIG_HEAD
 [core]
 	# Setting for macOS / Linux
 	autocrlf = input
