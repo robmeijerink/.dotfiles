@@ -282,6 +282,7 @@ return packer.startup(function(use)
         "nvim-lua/plenary.nvim",
         "m00qek/baleia.nvim"
       },
+      config = "require('robmeijerink.chafa')",
     }
 
     use({
