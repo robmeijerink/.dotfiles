@@ -9,6 +9,7 @@ sudo apt install -y ripgrep
 sudo apt install -y fd-find
 sudo apt install -y fzf
 sudo apt install -y php-codesniffer
+sudo apt install -y chafa
 
 mkdir -p ~/.vim/tmp/undo
 mkdir -p ~/.vim/tmp/backup

@@ -275,6 +275,26 @@ return packer.startup(function(use)
         config = "require('robmeijerink.lsp-signature')",
     })
 
+    -- Simple image viewer: cmd :ViewImage
+    use {
+      "princejoogie/chafa.nvim",
+      requires = {
+        "nvim-lua/plenary.nvim",
+        "m00qek/baleia.nvim"
+      },
+    }
+
+    use({
+        "roobert/search-replace.nvim",
+        config = function()
+            require("search-replace").setup({
+              -- optionally override defaults
+              -- default_replace_single_buffer_options = "gcI",
+              -- default_replace_multi_buffer_options = "egcI",
+            })
+        end,
+    })
+
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
     if PACKER_BOOTSTRAP then
