@@ -187,7 +187,9 @@ null_ls.setup({
   diagnostics_format = "#{m} (#{c}) [#{s}]", -- Makes PHPCS errors more readeable
   sources = {
     null_ls.builtins.completion.spell, -- You still need to execute `:set spell`
-    -- null_ls.builtins.diagnostics.eslint,      -- Add eslint to js projects
+    null_ls.builtins.diagnostics.psalm.with({ -- PHP Static analyzer
+      prefer_local = "vendor/bin"
+    }),
     null_ls.builtins.diagnostics.phpcs.with({ -- Change how the php linting will work
       prefer_local = "vendor/bin"
     }),
@@ -196,6 +198,7 @@ null_ls.setup({
       prefer_local = "vendor/bin"
     }),
     formatting.blade_formatter,
+    -- null_ls.builtins.diagnostics.eslint,    -- Add eslint to js projects
     formatting.prettier.with({
       extra_args = {
         "--no-semi",
