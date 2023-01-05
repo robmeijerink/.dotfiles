@@ -110,6 +110,9 @@ nmap("<leader>Y", "\"+Y")
 nnoremap('<leader>d', '"_d')
 vnoremap('<leader>d', '"_d')
 
+-- Show diff of unsaved changes compared to last saved version.
+nnoremap('<leader>D%', ':w !diff % -<CR>')
+
 -- Reselect last pasted text
 nnoremap('gp', '`[v`]')
 
