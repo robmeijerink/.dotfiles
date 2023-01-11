@@ -43,6 +43,10 @@ local source_mapping = {
 }
 
 local cmp_setup = {
+  preselect = 'none',
+  completion = {
+    completeopt = 'menu,menuone,noinsert,noselect'
+  },
   mapping = {
     ['<C-y>'] = cmp.mapping.confirm({ select = true }),
     ['<C-u>'] = cmp.mapping.scroll_docs(-4),
