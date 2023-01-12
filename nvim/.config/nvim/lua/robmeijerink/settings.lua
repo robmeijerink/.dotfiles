@@ -87,6 +87,12 @@ vim.opt.errorbells = false
 -- -- Don't pass messages to |ins-completion-menu|.
 vim.opt.shortmess:append("c")
 
+-- Allow long redrawtime for opening large files.
+vim.opt.redrawtime = 10000
+
+-- Ask for confirmation instead of erroring.
+vim.opt.confirm = true
+
 vim.cmd([[
   au FileType python                  set ts=4 sw=4
   au BufRead,BufNewFile *.md          set ft=mkd tw=80 syntax=markdown
