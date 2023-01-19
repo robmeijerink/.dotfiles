@@ -1,6 +1,7 @@
 -- vim.g.rob_colorscheme = "tokyonight"
 -- vim.g.rob_colorscheme = "gruvbox"
-vim.g.rob_colorscheme = "catppuccin"
+-- vim.g.rob_colorscheme = "catppuccin"
+vim.g.rob_colorscheme = "dracula"
 
 function ColorMyPencils()
     -- require("gruvbox").setup({
@@ -14,55 +15,63 @@ function ColorMyPencils()
     --     palette = monokai.pro,
     --     italics = false,
     -- })
-
-    vim.g.catppuccin_flavour = "mocha"
-
-    require("catppuccin").setup({
-        transparent_background = true,
-        term_colors = false,
-        compile = {
-            enabled = true,
-            path = vim.fn.stdpath("cache") .. "/catppuccin",
+    --
+    require("dracula").setup({
+        colors = {
+            bg = "none",
         },
-        dim_inactive = {
-            enabled = true,
-            shade = "dark",
-            percentage = 0.25,
-        },
-        styles = {
-            comments = {},
-            conditionals = {},
-            loops = {},
-            functions = {},
-            keywords = {},
-            strings = {},
-            variables = {},
-            numbers = {},
-            booleans = {},
-            properties = {},
-            types = {},
-            operators = {},
-        },
-        integrations = {
-            cmp = true,
-            dap = true,
-            gitsigns = true,
-            harpoon = true,
-            lsp_saga = true,
-            lsp_trouble = true,
-            neogit = true,
-            neotest = true,
-            mason = true,
-            telescope = true,
-            treesitter = true,
-            treesitter_context = true,
-            ts_rainbow = true,
-            which_key = true,
-            -- For various plugins integrations see https://github.com/catppuccin/nvim#integrations
-        },
-        color_overrides = {},
-        highlight_overrides = {},
+        transparent_bg = true,
+        show_end_of_buffer = true
     })
+
+    -- vim.g.catppuccin_flavour = "mocha"
+    --
+    -- require("catppuccin").setup({
+    --     transparent_background = true,
+    --     term_colors = false,
+    --     compile = {
+    --         enabled = true,
+    --         path = vim.fn.stdpath("cache") .. "/catppuccin",
+    --     },
+    --     dim_inactive = {
+    --         enabled = true,
+    --         shade = "dark",
+    --         percentage = 0.25,
+    --     },
+    --     styles = {
+    --         comments = {},
+    --         conditionals = {},
+    --         loops = {},
+    --         functions = {},
+    --         keywords = {},
+    --         strings = {},
+    --         variables = {},
+    --         numbers = {},
+    --         booleans = {},
+    --         properties = {},
+    --         types = {},
+    --         operators = {},
+    --     },
+    --     integrations = {
+    --         cmp = true,
+    --         dap = true,
+    --         gitsigns = true,
+    --         harpoon = true,
+    --         lsp_saga = true,
+    --         lsp_trouble = true,
+    --         neogit = true,
+    --         neotest = true,
+    --         mason = true,
+    --         telescope = true,
+    --         treesitter = true,
+    --         treesitter_context = true,
+    --         ts_rainbow = true,
+    --         which_key = true,
+    --         -- For various plugins integrations see https://github.com/catppuccin/nvim#integrations
+    --     },
+    --     color_overrides = {},
+    --     highlight_overrides = {},
+    -- })
 
     -- vim.g.tokyonight_style = "night"
     -- vim.g.tokyonight_transparent_sidebar = true

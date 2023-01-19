@@ -53,6 +53,7 @@ return packer.startup(function(use)
         as = "catppuccin",
         run = ":CatppuccinCompile"
     }
+    use 'Mofiqul/dracula.nvim'
     -- use("folke/tokyonight.nvim")
     -- use { "tanvirtin/monokai.nvim" }
     -- Plugins
