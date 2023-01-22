@@ -139,7 +139,7 @@ local mappings = {
     r = { '<cmd>lua vim.lsp.buf.references()<CR>', "References" },
     R = { '<cmd>Lspsaga rename<CR>', "Rename" },
     a = { '<cmd>Lspsaga code_action<CR>', "Code Action" },
-    e = { '<cmd>Lspsaga show_line_diagnostics<CR>', "Show Line Diagnostics" },
+    d = { '<cmd>Lspsaga show_line_diagnostics<CR>', "Show Line Diagnostics" },
     n = { '<cmd>Lspsaga diagnostic_jump_next<CR>', "Go To Next Diagnostic" },
     N = { '<cmd>Lspsaga diagnostic_jump_prev<CR>', "Go To Previous Diagnostic" }
   },
