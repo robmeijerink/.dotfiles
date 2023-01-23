@@ -10,6 +10,7 @@ sudo apt install -y fd-find
 sudo apt install -y fzf
 sudo apt install -y php-codesniffer
 sudo apt install -y chafa
+sudo apt install -y jq
 
 mkdir -p ~/.vim/tmp/undo
 mkdir -p ~/.vim/tmp/backup
