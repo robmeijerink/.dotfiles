@@ -14,6 +14,7 @@ lsp.preset("recommended")
 lsp.ensure_installed({
   'intelephense',
   'rust_analyzer',
+  'gopls',
   'tsserver',
   'sumneko_lua',
   'volar',
