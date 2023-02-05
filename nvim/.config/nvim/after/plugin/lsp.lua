@@ -198,14 +198,16 @@ null_ls.setup({
   sources = {
     null_ls.builtins.completion.spell, -- You still need to execute `:set spell`
     null_ls.builtins.diagnostics.psalm.with({ -- PHP Static analyzer
-      prefer_local = "vendor/bin"
+      prefer_local = "vendor/bin",
+      method = null_ls.methods.DIAGNOSTICS_ON_SAVE,
     }),
     null_ls.builtins.diagnostics.phpcs.with({ -- Change how the php linting will work
-      prefer_local = "vendor/bin"
+      prefer_local = "vendor/bin",
+      method = null_ls.methods.DIAGNOSTICS_ON_SAVE,
     }),
     -- null_ls.builtins.formatting.stylua,       -- You need to install stylua first: `brew install stylua`
     formatting.phpcbf.with({ -- Use the local installation first
-      prefer_local = "vendor/bin"
+      prefer_local = "vendor/bin",
     }),
     formatting.blade_formatter,
     -- null_ls.builtins.diagnostics.eslint,    -- Add eslint to js projects
