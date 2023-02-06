@@ -117,6 +117,14 @@ function ColorMyPencils()
         bg = "None",
     })
 
+    -- DiffView better readable in Dracula theme
+    hl("DiffAdd", {
+        bg = "#375c41",
+    })
+    hl("diffAdded", {
+        bg = "#375c41",
+    })
+
 end
 
 ColorMyPencils()
