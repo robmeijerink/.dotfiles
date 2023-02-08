@@ -201,6 +201,22 @@ lsp.on_attach(function(client, bufnr)
   -- nnoremap('<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
   -- nnoremap('<leader>fs', require('telescope.builtin').lsp_document_symbols, opts)
   -- nnoremap('<leader>fS', require('telescope.builtin').lsp_dynamic_workspace_symbols, opts)
+
+  -- You will likely want to reduce updatetime which affects CursorHold
+  vim.api.nvim_create_autocmd("CursorHold", {
+    buffer = bufnr,
+    callback = function()
+      local opts = {
+        focusable = false,
+        close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
+        border = 'rounded',
+        source = 'always',
+        prefix = ' ',
+        scope = 'cursor',
+      }
+      vim.diagnostic.open_float(nil, opts)
+    end
+  })
 end)
 
 lsp.configure('emmet_ls', {
@@ -264,5 +280,9 @@ null_ls.setup({
 lsp.setup()
 
 vim.diagnostic.config({
-    virtual_text = true,
+  virtual_text = true,
+  signs = true,
+  underline = true,
+  update_in_insert = false,
+  severity_sort = false,
 })
