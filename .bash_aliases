@@ -5,3 +5,4 @@
 alias dep='vendor/bin/deployer.phar'
 alias art='php artisan'
 alias p="vendor/bin/pestphp"
+alias psalm="vendor/bin/psalm"
