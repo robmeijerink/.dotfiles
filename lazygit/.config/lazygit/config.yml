@@ -1,6 +1,7 @@
 gui:
   showIcons: true
 git:
+  disableForcePushing: true
   parseEmoji: true
 os:
   editCommand: 'nvim'

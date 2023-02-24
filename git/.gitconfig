@@ -1,6 +1,8 @@
 [user]
 	name = Rob Meijerink
 	email = rob.meijerink@gmail.com
+	# Generate a key with gpg.
+	signingkey = rob.meijerink@gmail.com
 [alias]
 	s  = status
 	c  = commit
@@ -54,3 +56,18 @@
 [color "branch"]
 	# Blue on black is hard to read in git branch -vv: use cyan instead
 	upstream = cyan
+[commit]
+	gpgsign = true
+[gpg]
+	program = gpg
+
+[include]
+
+	# Load local configs.
+	# https://git-scm.com/docs/git-config#_includes
+	#
+	# [!] The following needs to remain at the end of this file in
+	#     order to allow any of the above configs to be overwritten
+	#     by the local one. For example the signingkey.
+
+	path = ~/.gitconfig.local
