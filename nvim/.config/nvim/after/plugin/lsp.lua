@@ -224,7 +224,10 @@ null_ls.setup({
       method = null_ls.methods.DIAGNOSTICS_ON_SAVE,
     }),
     -- null_ls.builtins.formatting.stylua,       -- You need to install stylua first: `brew install stylua`
-    formatting.phpcbf.with({ -- Use the local installation first
+    -- formatting.phpcbf.with({ -- Use the local installation first
+    --   prefer_local = "vendor/bin",
+    -- }),
+    formatting.pint.with({
       prefer_local = "vendor/bin",
     }),
     formatting.blade_formatter,
