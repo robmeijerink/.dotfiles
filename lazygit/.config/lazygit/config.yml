@@ -7,4 +7,3 @@ os:
   editCommand: 'nvim'
   editCommandTemplate: '{{editor}} +{{line}} -- {{filename}}'
   openCommand: 'nvim {{filename}}'
-confirmOnQuit: true
