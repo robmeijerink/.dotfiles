@@ -14,7 +14,7 @@
 	# Setting for macOS / Linux
 	autocrlf = input
 	# Don't paginate output by default
-	pager = cat
+	pager = delta
 	# Use text editor
 	editor = nvim
 	# Don't consider trailing space change as a cause for merge conflicts
@@ -24,6 +24,29 @@
 [credential]
 	# Credential store
 	helper = store
+[diff]
+	# Show moved code in diff
+	colorMoved = zebra
+	algorithm = patience
+	compactionHeuristic = true
+	tool = nvimdiff
+[difftool "nvimdiff"]
+	cmd = nvim -d \"$LOCAL\" \"$REMOTE\" -c \"wincmd w\" -c \"wincmd L\"
+[merge]
+	tool = nvimdiff4
+	prompt = false
+[mergetool "nvimdiff4"]
+	cmd = nvim -d $LOCAL $BASE $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
+[delta]
+	features = side-by-side line-numbers decorations
+	navigate = true
+	whitespace-error-style = 22 reverse
+[delta "decorations"]
+	commit-decoration-style = bold yellow box ul
+	file-style = bold yellow ul
+	file-decoration-style = none
+[interactive]
+	diffFilter = delta --color-only
 [pull]
 	# Rebase when pulling
 	rebase = true
@@ -32,9 +55,6 @@
 [fetch]
 	# Clean up local branches on fetch
 	prune = true
-[diff]
-	# Show moved code in diff
-	colorMoved = zebra
 [merge]
 	# Disable fast-forward merges as default merge strategy.
 	# Force explicit call of `git merge --ff …`.
@@ -58,6 +78,8 @@
 	upstream = cyan
 [commit]
 	gpgsign = true
+[tag]
+	gpgSign = true
 [gpg]
 	program = gpg
 
