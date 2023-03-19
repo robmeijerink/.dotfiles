@@ -118,12 +118,12 @@ require('lazy').setup({
             require('robmeijerink.nvim-tree')
         end,
     },
-    {
-        "lewis6991/impatient.nvim",
-        config = function()
-            require('robmeijerink.impatient')
-        end,
-    },
+    -- {
+    --     "lewis6991/impatient.nvim",
+    --     config = function()
+    --         require('robmeijerink.impatient')
+    --     end,
+    -- },
     "moll/vim-bbye",
     { 'mbbill/undotree', cmd = 'UndotreeToggle' },
 
