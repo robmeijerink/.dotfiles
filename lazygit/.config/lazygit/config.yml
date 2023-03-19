@@ -3,7 +3,10 @@ gui:
 git:
   disableForcePushing: true
   parseEmoji: true
+  paging:
+    colorArg: always
+    pager: delta --dark --paging=never
 os:
-  editCommand: 'nvim'
+  editCommand: 'floaterm'
   editCommandTemplate: '{{editor}} +{{line}} -- {{filename}}'
   openCommand: 'nvim {{filename}}'

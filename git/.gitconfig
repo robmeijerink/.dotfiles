@@ -13,7 +13,7 @@
 [core]
 	# Setting for macOS / Linux
 	autocrlf = input
-	# Don't paginate output by default
+	# Use delta for git diff by default
 	pager = delta
 	# Use text editor
 	editor = nvim
@@ -41,12 +41,15 @@
 	features = side-by-side line-numbers decorations
 	navigate = true
 	whitespace-error-style = 22 reverse
+	line-numbers = true
 [delta "decorations"]
 	commit-decoration-style = bold yellow box ul
 	file-style = bold yellow ul
 	file-decoration-style = none
+[delta "interactive"]
+    keep-plus-minus-markers = true
 [interactive]
-	diffFilter = delta --color-only
+	diffFilter = delta --color-only --features=interactive
 [pull]
 	# Rebase when pulling
 	rebase = true
@@ -59,6 +62,7 @@
 	# Disable fast-forward merges as default merge strategy.
 	# Force explicit call of `git merge --ff …`.
 	ff = false
+	conflictstyle = diff3
 [rebase]
 	autoStash = true
 [push]
