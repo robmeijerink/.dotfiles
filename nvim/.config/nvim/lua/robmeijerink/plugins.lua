@@ -204,7 +204,7 @@ require('lazy').setup({
         end,
     },
     -- use { 'hrsh7th/vim-vsnip' }
-    -- { 'sheerun/vim-polyglot' },
+    { 'sheerun/vim-polyglot' },
     'onsails/lspkind-nvim',
     {
         'norcalli/nvim-colorizer.lua',
