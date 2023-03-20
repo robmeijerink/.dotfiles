@@ -28,8 +28,8 @@ bindkey -s '^f' "tmux-sessionizer\n"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 if command -v bat &> /dev/null; then
-  alias cat="bat -pp --theme \"Visual Studio Dark+\""
-  alias catt="bat --theme \"Visual Studio Dark+\""
+  alias cat="bat -pp --theme \"Dracula\""
+  alias catt="bat --theme \"Dracula\""
 fi
 
 # File with custom aliases specific to your PC.
