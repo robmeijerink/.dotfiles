@@ -303,15 +303,6 @@ require('lazy').setup({
         -- Uncomment next line if you want to follow only stable versions
     },
 
-    -- SymbolsOutline
-    {
-        'simrat39/symbols-outline.nvim',
-        config = function()
-            require('robmeijerink.symbols-outline')
-        end,
-        cmd = "SymbolsOutline",
-    },
-
     -- Better split and join blocks of code.
     {
         'Wansmer/treesj',

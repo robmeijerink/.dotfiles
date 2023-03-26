@@ -127,7 +127,6 @@ local mappings = {
     k = { "<cmd>Lspsaga hover_doc<CR>", "Hover Commands" },
     w = { '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', "Add Workspace Folder" },
     W = { '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', "Remove Workspace Folder" },
-    l = { '<cmd>SymbolsOutline<CR>', "SymbolsOutline" },
     -- l = {
     --   '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>',
     --   "List Workspace Folders"
