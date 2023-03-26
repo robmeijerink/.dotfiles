@@ -7,6 +7,6 @@ git:
     colorArg: always
     pager: delta --dark --paging=never
 os:
-  editCommand: 'floaterm'
+  openCommand: 'nvim {{filename}}'
   editCommandTemplate: '{{editor}} +{{line}} -- {{filename}}'
   openCommand: 'nvim {{filename}}'
