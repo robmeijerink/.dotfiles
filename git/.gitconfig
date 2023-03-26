@@ -33,10 +33,18 @@
 [difftool "nvimdiff"]
 	cmd = nvim -d \"$LOCAL\" \"$REMOTE\" -c \"wincmd w\" -c \"wincmd L\"
 [merge]
+	# Disable fast-forward merges as default merge strategy.
+	# Force explicit call of `git merge --ff …`.
+	ff = false
+	conflictstyle = diff3
 	tool = nvimdiff4
 	prompt = false
+[mergetool]
+	keepBackup = false
 [mergetool "nvimdiff4"]
 	cmd = nvim -d $LOCAL $BASE $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
+[rebase]
+	autoStash = true
 [delta]
 	features = side-by-side line-numbers decorations
 	navigate = true
@@ -47,7 +55,7 @@
 	file-style = bold yellow ul
 	file-decoration-style = none
 [delta "interactive"]
-    keep-plus-minus-markers = true
+	keep-plus-minus-markers = true
 [interactive]
 	diffFilter = delta --color-only --features=interactive
 [pull]
@@ -58,15 +66,6 @@
 [fetch]
 	# Clean up local branches on fetch
 	prune = true
-[merge]
-	# Disable fast-forward merges as default merge strategy.
-	# Force explicit call of `git merge --ff …`.
-	ff = false
-	conflictstyle = diff3
-[rebase]
-	autoStash = true
-[mergetool]
-	keepBackup = false
 [push]
 	# Default push should only push the current branch to its push target, regardless of its remote name
 	default = upstream
