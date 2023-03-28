@@ -35,6 +35,10 @@ fi
 # File with custom aliases specific to your PC.
 [ -r "$HOME/.aliases" ] && source "$HOME/.aliases"
 
+# Tree overwrite
+unalias tree
+alias tree='ls -laT'   #ls -la with tree
+
 # Other
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
