@@ -257,7 +257,7 @@ require('lazy').setup({
             require('robmeijerink.zen-mode')
         end,
     },
-    'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
+    -- 'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
     'tpope/vim-repeat', -- Better repeat with plugin keymaps.
 
     -- JavaScript
