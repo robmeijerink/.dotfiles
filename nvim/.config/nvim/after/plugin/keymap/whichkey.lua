@@ -74,6 +74,7 @@ local mappings = {
     f = { "<cmd>Git fetch --all<CR>", "Fetch all" },
     p = { "<cmd>Git pull<CR>", 'Git pull' },
     P = { "<cmd>Git push<CR>", 'Git push' },
+    h = { "<cmd>Gitsigns preview_hunk<CR>", 'Git preview hunk' },
     -- q = { "<cmd>DiffviewClose<CR>", 'Close Diffview' },
     -- d = { "<cmd>DiffviewOpen<CR>", 'Diff with HEAD' },
     -- D = { "<cmd>DiffviewOpen master<CR>", 'Diff with master' },

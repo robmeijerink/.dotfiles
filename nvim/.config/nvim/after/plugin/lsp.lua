@@ -170,8 +170,8 @@ lsp.on_attach(function(client, bufnr)
       apply = true
     })
   end, opts)
-  nnoremap("<leader>vrr", function() vim.lsp.buf.references() end, opts)
-  nnoremap("<leader>vrn", function() vim.lsp.buf.rename() end, opts)
+  nnoremap("<leader>rr", function() vim.lsp.buf.references() end, opts)
+  nnoremap("<leader>rn", function() vim.lsp.buf.rename() end, opts)
   inoremap("<C-h>", function() vim.lsp.buf.signature_help() end, opts)
 
   -- nnoremap('<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
@@ -214,11 +214,13 @@ null_ls.setup({
   root_dir = utils.root_pattern("composer.json", "package.json", "Makefile", ".git"), -- Add composer
   diagnostics_format = "#{m} (#{c}) [#{s}]", -- Makes PHPCS errors more readeable
   sources = {
+    null_ls.builtins.code_actions.gitsigns,
     null_ls.builtins.completion.spell, -- You still need to execute `:set spell`
     null_ls.builtins.diagnostics.psalm.with({ -- PHP Static analyzer
       prefer_local = "vendor/bin",
       method = null_ls.methods.DIAGNOSTICS_ON_SAVE,
     }),
+    -- require("null-ls").builtins.diagnostics.phpstan,
     null_ls.builtins.diagnostics.phpcs.with({ -- Change how the php linting will work
       prefer_local = "vendor/bin",
       method = null_ls.methods.DIAGNOSTICS_ON_SAVE,
@@ -242,6 +244,8 @@ null_ls.setup({
     formatting.black,
     formatting.gofmt,
     formatting.shfmt,
+    formatting.jq,
+    formatting.rustywind,
     formatting.clang_format, formatting.cmake_format,
     formatting.dart_format,
     formatting.lua_format.with({
@@ -266,4 +270,7 @@ vim.diagnostic.config({
   underline = true,
   update_in_insert = false,
   severity_sort = false,
+    float = {
+        source = true,
+    }
 })

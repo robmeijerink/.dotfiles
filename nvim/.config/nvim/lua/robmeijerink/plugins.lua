@@ -40,6 +40,7 @@ require('lazy').setup({
         dependencies = {
             'nvim-treesitter/nvim-treesitter-textobjects', -- Additional textobjects for treesitter
             'nvim-treesitter/nvim-treesitter-context',     -- Sticky header for functions
+            'JoosepAlviste/nvim-ts-context-commentstring', -- Solves comment issue in multi lang files
             { 'windwp/nvim-ts-autotag', event = "InsertEnter" },
             'p00f/nvim-ts-rainbow',
             {
@@ -83,7 +84,9 @@ require('lazy').setup({
                     {'hrsh7th/cmp-path'},
                     {'saadparwaiz1/cmp_luasnip'},
                     {'hrsh7th/cmp-nvim-lsp'},
+                    {'hrsh7th/cmp-nvim-lsp-signature-help'},
                     {'hrsh7th/cmp-nvim-lua'},
+                    {'onsnails/lspkind-nvim'},
                 },
             },
 
@@ -183,7 +186,16 @@ require('lazy').setup({
     --     },
     --     config = "require('robmeijerink.neogit')"
     -- }
-    "tpope/vim-fugitive",
+    {
+        "tpope/vim-fugitive",
+        cmd = {
+            'Git',
+            'G'
+        },
+        dependencies = {
+            'tpope/vim-rhubarb',
+        },
+    },
     {
         "NTBBloodbath/rest.nvim",
         dependencies = { "nvim-lua/plenary.nvim" },
@@ -204,9 +216,7 @@ require('lazy').setup({
             require('robmeijerink.comment')
         end,
     },
-    -- use { 'hrsh7th/vim-vsnip' }
     { 'sheerun/vim-polyglot' },
-    'onsails/lspkind-nvim',
     {
         'norcalli/nvim-colorizer.lua',
         config = function()
@@ -218,7 +228,14 @@ require('lazy').setup({
         'lewis6991/gitsigns.nvim',
         dependencies = { 'nvim-lua/plenary.nvim' },
         config = function()
-            require('gitsigns').setup { current_line_blame = true }
+            require('gitsigns').setup {
+                current_line_blame = true,
+                sign_priority = 20,
+                on_attach = function(bufnr)
+                    vim.keymap.set('n', ']h', "&diff ? ']c' : '<cmd>Gitsigns next_hunk<CR>'", { expr = true, buffer = bufnr })
+                    vim.keymap.set('n', '[h', "&diff ? '[c' : '<cmd>Gitsigns prev_hunk<CR>'", { expr = true, buffer = bufnr })
+                end,
+            }
         end
     },
     {
@@ -323,6 +340,22 @@ require('lazy').setup({
         config = function()
             require('robmeijerink.neotest')
         end,
+    },
+
+    {
+   'phpactor/phpactor',
+      branch = 'master',
+      ft = 'php',
+      run = 'composer install --no-dev -o',
+      config = function()
+        vim.cmd([[
+            augroup PhpactorMappings
+                au!
+                au FileType php nmap <buffer> <Leader>Pm :PhpactorContextMenu<CR>
+                au FileType php nmap <buffer> <Leader>Pn :PhpactorClassNew<CR>
+           augroup END
+        ]])
+      end,
     },
 
     -- Enable dd in quickfix list

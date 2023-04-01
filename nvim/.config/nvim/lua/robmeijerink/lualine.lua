@@ -17,10 +17,17 @@
 require("lualine").setup({
     options = {
         icons_enabled = true,
-        theme = 'auto',
+        -- theme = 'auto',
         section_separators = { left = "", right = "" },
         component_separators = { left = "│", right = "│" },
         globalstatus = true,
+        theme = {
+          normal = {
+            a = 'StatusLine',
+            b = 'StatusLine',
+            c = 'StatusLine',
+        },
+    },
     },
     sections = {
         lualine_a = { "mode" },
@@ -58,9 +65,9 @@ require("lualine").setup({
             },
             "filename",
         },
-        lualine_x = { 'encoding', 'fileformat', '(vim.bo.expandtab and "␠" or "⇥") .. " " .. vim.bo.shiftwidth' },
-        lualine_z = { "location" },
-        lualine_y = { "progress" },
+        lualine_x = { 'encoding', 'fileformat', '(vim.bo.expandtab and "·" or "⇥") .. " " .. vim.bo.shiftwidth' },
+        lualine_y = { "location" },
+        lualine_z = { "progress" },
     },
     extensions = {
         "nvim-tree",

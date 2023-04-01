@@ -23,26 +23,26 @@ local nmap = Remap.nmap
 -- local vmap = Remap.vmap
 
 -- When text is wrapped, move by terminal rows, not lines, unless a count is provided
-vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true })
-vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true })
+nnoremap('k', "v:count == 0 ? 'gk' : 'k'", { expr = true })
+nnoremap('j', "v:count == 0 ? 'gj' : 'j'", { expr = true })
 
 -- Maintain the cursor position when yanking a visual selection
 -- http://ddrscott.github.io/blog/2016/yank-without-jank/
-vim.keymap.set('v', 'y', 'myy`y')
-vim.keymap.set('v', 'Y', 'myY`y')
+vnoremap('y', 'myy`y')
+vnoremap('Y', 'myY`y')
 
 -- Disable annoying command line thing
-vim.keymap.set('n', 'q:', ':q<CR>')
+nnoremap('q:', ':q<CR>')
 
 -- Easy insertion of a trailing ; or , from insert mode
-vim.keymap.set('i', ';;', '<Esc>A;<Esc>')
-vim.keymap.set('i', ',,', '<Esc>A,<Esc>')
+inoremap(';;', '<Esc>A;<Esc>')
+inoremap(',,', '<Esc>A,<Esc>')
 
 -- Move text up and down
-vim.keymap.set('i', '<A-j>', '<Esc>:move .+1<CR>==gi')
-vim.keymap.set('i', '<A-k>', '<Esc>:move .-2<CR>==gi')
-vim.keymap.set('x', '<A-j>', ":move '>+1<CR>gv-gv")
-vim.keymap.set('x', '<A-k>', ":move '<-2<CR>gv-gv")
+inoremap('<A-j>', '<Esc>:move .+1<CR>==gi')
+inoremap('<A-k>', '<Esc>:move .-2<CR>==gi')
+xnoremap('<A-j>', ":move '>+1<CR>gv-gv")
+xnoremap('<A-k>', ":move '<-2<CR>gv-gv")
 
 -- Terminal --
 -- Better terminal navigation

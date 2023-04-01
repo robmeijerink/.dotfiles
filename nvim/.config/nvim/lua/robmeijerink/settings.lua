@@ -3,7 +3,7 @@ HOME = os.getenv('HOME')
 -- basic settings
 vim.opt.encoding = 'utf-8'
 vim.opt.backspace = 'indent,eol,start' -- backspace works on every char in insert mode
-vim.opt.completeopt = 'menuone,noselect'
+vim.opt.completeopt = 'menuone,noselect,longest,preview'
 vim.opt.history = 1000
 vim.opt.dictionary = '/usr/share/dict/words'
 vim.opt.startofline = true
