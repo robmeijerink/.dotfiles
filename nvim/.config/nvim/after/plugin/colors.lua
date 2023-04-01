@@ -97,6 +97,10 @@ function ColorMyPencils()
         bg = "#555555",
     })
 
+    hl("CursorLine", {
+        bg = "#1C1C1C"
+    })
+
     hl("CursorLineNR", {
         bg = "None"
     })

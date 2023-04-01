@@ -113,7 +113,7 @@ require('lazy').setup({
     {
         'kyazdani42/nvim-tree.lua',
         dependencies = { 'kyazdani42/nvim-web-devicons' },
-        cmd = { 'NvimTreeToggle' },
+        cmd = { 'NvimTreeToggle', 'NvimTreeFindFileToggle' },
         config = function()
             require('robmeijerink.nvim-tree')
         end,
@@ -156,6 +156,7 @@ require('lazy').setup({
     --         })
     --     end
     -- })
+    'tpope/vim-eunuch', -- Adds :Rename, :SudoWrite
     "tpope/vim-surround",
     -- {
     --     'sindrets/diffview.nvim',
@@ -257,12 +258,52 @@ require('lazy').setup({
             require('robmeijerink.zen-mode')
         end,
     },
-    -- 'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
+    'tpope/vim-unimpaired', -- Adds [b and other handy mappings
+    { 'tpope/vim-sleuth', lazy = true }, -- Detect tabstop and shiftwidth automatically
     'tpope/vim-repeat', -- Better repeat with plugin keymaps.
+
+    'christoomey/vim-tmux-navigator', -- Use splits in vim as if tmux splits when navigating
+
+    'nelstrom/vim-visual-star-search', -- use * in visual mode too
 
     -- JavaScript
     --use { 'posva/vim-vue', config = "require('robmeijerink.vue')" }
     'othree/javascript-libraries-syntax.vim',
+
+    'jessarcher/vim-heritage', -- Automatically create parent dirs when saving
+
+    -- Text objects for HTML attributes.
+    {
+      'whatyouhide/vim-textobj-xmlattr',
+      dependencies = { 'kana/vim-textobj-user' },
+    },
+
+    {
+      'karb94/neoscroll.nvim',
+      config = function()
+        require('neoscroll').setup()
+        require('neoscroll.config').set_mappings({
+          ['<C-u>'] = { 'scroll', { '-vim.wo.scroll', 'true', '50' } },
+          ['<C-d>'] = { 'scroll', { 'vim.wo.scroll', 'true', '50' } },
+        })
+      end,
+    },
+
+    {
+      'AndrewRadev/splitjoin.vim',
+      config = function()
+        vim.g.splitjoin_html_attributes_bracket_on_new_line = 1
+        vim.g.splitjoin_trailing_comma = 1
+        vim.g.splitjoin_php_method_chain_full = 1
+      end,
+    },
+
+    {
+      'sickill/vim-pasta',
+      config = function()
+        vim.g.pasta_disabled_filetypes = { 'fugitive' }
+      end,
+    },
 
     -- Debugger
     -- use { 'mfussenegger/nvim-dap' }

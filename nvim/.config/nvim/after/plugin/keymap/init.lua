@@ -22,6 +22,28 @@ local cnoremap = Remap.cnoremap
 local nmap = Remap.nmap
 -- local vmap = Remap.vmap
 
+-- When text is wrapped, move by terminal rows, not lines, unless a count is provided
+vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true })
+vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true })
+
+-- Maintain the cursor position when yanking a visual selection
+-- http://ddrscott.github.io/blog/2016/yank-without-jank/
+vim.keymap.set('v', 'y', 'myy`y')
+vim.keymap.set('v', 'Y', 'myY`y')
+
+-- Disable annoying command line thing
+vim.keymap.set('n', 'q:', ':q<CR>')
+
+-- Easy insertion of a trailing ; or , from insert mode
+vim.keymap.set('i', ';;', '<Esc>A;<Esc>')
+vim.keymap.set('i', ',,', '<Esc>A,<Esc>')
+
+-- Move text up and down
+vim.keymap.set('i', '<A-j>', '<Esc>:move .+1<CR>==gi')
+vim.keymap.set('i', '<A-k>', '<Esc>:move .-2<CR>==gi')
+vim.keymap.set('x', '<A-j>', ":move '>+1<CR>gv-gv")
+vim.keymap.set('x', '<A-k>', ":move '<-2<CR>gv-gv")
+
 -- Terminal --
 -- Better terminal navigation
 keymap('t', '<C-h>', '<C-\\><C-N><C-w>h', term_opts)
@@ -149,7 +171,7 @@ nnoremap("<Leader>**", ":Neogen<CR>")
 nnoremap('<leader>U', '<cmd>UndotreeToggle<CR>')
 
 -- Nvim Tree
-nnoremap('<leader>e', '<cmd>NvimTreeToggle<CR>')
+nnoremap('<leader>e', '<cmd>NvimTreeFindFileToggle<CR>')
 nnoremap('<leader>E', '<cmd>Ex<CR>')
 
 -- ToggleTerm
@@ -157,3 +179,7 @@ nnoremap("<C-\\>", "<cmd>ToggleTerm direction=float<CR>")
 
 -- Tmux Sessionizer
 nnoremap("<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
+
+-- Git
+nnoremap("gh", "<cmd>diffget //2<CR>")
+nnoremap("gl", "<cmd>diffget //3<CR>")

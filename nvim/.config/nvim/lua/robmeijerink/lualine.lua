@@ -58,9 +58,9 @@ require("lualine").setup({
             },
             "filename",
         },
-        lualine_x = { 'encoding', 'fileformat', word_count, char_count },
-        lualine_y = { "progress" },
+        lualine_x = { 'encoding', 'fileformat', word_count, char_count, '(vim.bo.expandtab and "␠" or "⇥") .. " " .. vim.bo.shiftwidth' },
         lualine_z = { "location" },
+        lualine_y = { "progress" },
     },
     extensions = {
         "nvim-tree",

@@ -22,7 +22,8 @@ vim.opt.synmaxcol = 300 -- stop syntax highlight after x lines for performance
 vim.opt.laststatus = 2 -- always show status line
 vim.opt.hidden = true -- enable background buffers / windows
 
-vim.opt.list = false -- do not display white characters
+vim.opt.list = true -- enable the below listchars
+vim.opt.listchars = { tab = '▸ ', trail = '·' }
 vim.opt.foldenable = false
 vim.opt.foldlevel = 4 -- limit folding to 4 levels
 vim.opt.foldmethod = 'syntax' -- use language syntax to generate folds
@@ -30,6 +31,9 @@ vim.opt.wrap = false --do not wrap lines even if very long
 vim.opt.eol = false -- show if there's no eol char
 vim.opt.showbreak= '↪' -- character to show when line is broken
 vim.opt.termguicolors = true
+
+vim.opt.splitbelow = true
+vim.opt.splitright = true
 
 -- Sidebar
 vim.opt.number = true -- line number on the left
@@ -49,6 +53,8 @@ vim.opt.matchtime = 2 -- delay before showing matching paren
 
 -- Global Status Bar
 vim.opt.laststatus = 3
+
+vim.opt.title = true -- Show more info in the bottom left
 
 -- Enable mouse wheel scrolling
 vim.opt.mouse = 'a'
@@ -87,6 +93,8 @@ vim.opt.errorbells = false
 -- -- Don't pass messages to |ins-completion-menu|.
 vim.opt.shortmess:append("c")
 
+vim.opt.wildmode = 'longest:full,full' -- complete the longest common match, and allow tabbing the results to fully complete them
+
 -- Allow long redrawtime for opening large files.
 vim.opt.redrawtime = 10000
 
@@ -106,7 +114,7 @@ vim.opt.wildmenu = true -- on TAB, complete options for system command
 vim.opt.wildignore = 'deps,.svn,CVS,.git,.hg,*.o,*.a,*.class,*.mo,*.la,*.so,*.obj,*.swp,*.jpg,*.png,*.xpm,*.gif,.DS_Store,*.aux,*.out,*.toc'
 
 -- WSL Only Settings
-if (string.find(vim.loop.os_uname().release, 'WSL')) then
+-- if (string.find(vim.loop.os_uname().release, 'WSL')) then
 
     -- Changed this snippet to use win32yank instead of xclip
 
@@ -121,7 +129,7 @@ if (string.find(vim.loop.os_uname().release, 'WSL')) then
   --         vim.fn.system('clip.exe', vim.fn.getreg('"'))
   --     end,
   -- })
-end
+-- end
 
 -- Only show cursorline in the current window and in normal mode.
 vim.cmd([[

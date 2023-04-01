@@ -31,7 +31,8 @@ local mappings = {
   f = {
     name = "Find",
     t = { "<cmd>silent !tmux neww tmux-sessionizer<CR>", 'Find and open in tmux' },
-    f = { "<cmd>Telescope find_files hidden=true no_ignore=true<CR>", "Telescope Find Files" },
+    f = { "<cmd>Telescope find_files<CR>", "Find Files" },
+    a = { "<cmd>lua require('telescope.builtin').find_files({ no_ignore = true, hidden = true, prompt_title = 'All Files' })<CR>", "All Files" },
     -- G = { "<cmd>Telescope live_grep hidden=true no_ignore=false<CR>", "Telescope Live Grep" },
     G = { "<cmd>lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>", "Telescope Live Grep (args)" },
     g = { "<cmd>lua require('telescope.builtin').grep_string({ search = vim.fn.input('Grep For > ') })<CR>", "Telescope Live Grep in Word" },
@@ -57,13 +58,13 @@ local mappings = {
     o = { "<cmd>%Bdelete|e#|Bdelete#<CR>|'<CR>", 'Close other buffers' },
     O = { "<cmd>%Bdelete!|e#|Bdelete#<CR>|'<CR>", 'Close other buffers without save' }
   },
-  t = {
-    name = "Tabs",
-    n = { "<cmd>tabnew<CR>", 'New tab' },
-    c = { "<cmd>tabclose<CR>", 'Close tab' },
-    o = { "<cmd>tabonly<CR>", 'Close other tabs' },
-    a = { "<cmd>only<CR>", 'Close other tabs & windows' }
-  },
+  -- t = {
+  --   name = "Tabs",
+  --   n = { "<cmd>tabnew<CR>", 'New tab' },
+  --   c = { "<cmd>tabclose<CR>", 'Close tab' },
+  --   o = { "<cmd>tabonly<CR>", 'Close other tabs' },
+  --   a = { "<cmd>only<CR>", 'Close other tabs & windows' }
+  -- },
   g = {
     name = "Git",
     g = { toggle_lazygit, "LazyGit" },

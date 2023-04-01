@@ -16,11 +16,12 @@ mkdir -p ~/.vim/tmp/undo
 mkdir -p ~/.vim/tmp/backup
 mkdir -p ~/.vim/tmp/swap
 
-echo "Run :checkhealth for additional dependency info"
-
 # Shell
+brew install zoxide
 brew install bat
-brew install -y exa
+brew install exa
+
+echo "Run :checkhealth for additional dependency info"
 
 # Use stow after installation to setup all config files, example: stow zsh.
 echo "Installed!"

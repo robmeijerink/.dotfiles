@@ -23,7 +23,7 @@ require('telescope').setup {
     layout_strategy = "horizontal",
     file_sorter = require('telescope.sorters').get_fuzzy_file,
     file_ignore_patterns = {
-        "node_modules",
+        -- "node_modules",
         -- "vendor",
         ".git",
         ".idea",
