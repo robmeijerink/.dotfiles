@@ -1,18 +1,18 @@
-local char_count = function()
-    if vim.fn.mode() == "v" or vim.fn.mode() == "V" then
-        return string.format("%sC", vim.fn.wordcount().visual_chars)
-    else
-        return string.format("%sC", vim.fn.wordcount().chars)
-    end
-end
-
-local word_count = function()
-    if vim.fn.mode() == "v" or vim.fn.mode() == "V" then
-        return string.format("%sW", vim.fn.wordcount().visual_words)
-    else
-        return string.format("%sW", vim.fn.wordcount().words)
-    end
-end
+-- local char_count = function()
+--     if vim.fn.mode() == "v" or vim.fn.mode() == "V" then
+--         return string.format("%sC", vim.fn.wordcount().visual_chars)
+--     else
+--         return string.format("%sC", vim.fn.wordcount().chars)
+--     end
+-- end
+--
+-- local word_count = function()
+--     if vim.fn.mode() == "v" or vim.fn.mode() == "V" then
+--         return string.format("%sW", vim.fn.wordcount().visual_words)
+--     else
+--         return string.format("%sW", vim.fn.wordcount().words)
+--     end
+-- end
 
 require("lualine").setup({
     options = {
@@ -58,7 +58,7 @@ require("lualine").setup({
             },
             "filename",
         },
-        lualine_x = { 'encoding', 'fileformat', word_count, char_count, '(vim.bo.expandtab and "␠" or "⇥") .. " " .. vim.bo.shiftwidth' },
+        lualine_x = { 'encoding', 'fileformat', '(vim.bo.expandtab and "␠" or "⇥") .. " " .. vim.bo.shiftwidth' },
         lualine_z = { "location" },
         lualine_y = { "progress" },
     },
