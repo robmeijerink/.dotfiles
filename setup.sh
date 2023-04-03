@@ -4,9 +4,10 @@
 
 npm i -g neovim intelephense typescript typescript-language-server prettier emmet-ls vscode-langservers-extracted blade-formatter
 
-brew install unzip
+apt install fd-find
+apt install unzip
+
 brew install ripgrep
-brew install fd-find
 brew install fzf
 brew install php-codesniffer
 brew install chafa
