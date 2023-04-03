@@ -82,3 +82,5 @@ key_bindings:
   - { key: Key0, mods: Control, action: ResetFontSize }
   - { key: Equals, mods: Control, action: IncreaseFontSize }
   - { key: Minus, mods: Control, action: DecreaseFontSize }
+  # Fixes tmux C-Space in Windows
+  # - { key: Space, mods: Control, chars: "\x00" }
