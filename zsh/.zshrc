@@ -1,6 +1,9 @@
 #!/bin/sh
 [ -f "$HOME/.local/share/zap/zap.zsh" ] && source "$HOME/.local/share/zap/zap.zsh"
 
+# Zoxide
+eval "$(zoxide init zsh)"
+
 # history
 HISTFILE=~/.zsh_history
 
