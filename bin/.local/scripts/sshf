@@ -1,0 +1,45 @@
+#!/bin/bash
+
+# Script to easily search SSH connections.
+
+# Set the path to the SSH connections file
+ssh_file=~/.sshf
+
+# Check if the SSH connections file exists, and create it if it doesn't
+if [[ ! -f "$ssh_file" ]]; then
+  touch "$ssh_file"
+fi
+
+# Add a new SSH connection to the file
+if [[ "$1" == "add" && -n "$2" ]]; then
+  # Extract the hostname and port number from the input if present
+  ssh_connection="${*:2}"
+  # Prompt for a name for the new connection
+  read -p "Enter a name for the new SSH connection: " name
+  # Add the new connection to the file
+  echo "ssh $ssh_connection ## $name" >> "$ssh_file"
+  echo "Added $ssh_connection to $ssh_file with name: $name"
+  exit 0
+fi
+
+# Display help information
+if [[ "$1" == "help" ]]; then
+  echo "Usage: sshf [add <username@hostname> [-p <port>]] | [help]"
+  echo "  add <username@hostname> - Add a new SSH connection to the list"
+  echo "  help - Display this help information"
+  echo ""
+  echo "Running sshf will search for saved SSH connections using FZF."
+  exit 0
+fi
+
+# Search for an SSH connection using FZF
+if [[ "$#" -eq 0 ]]; then
+  # Use awk to extract the SSH command and the extra string
+  selection=$(cat "$ssh_file" | awk -F " ## " '{printf "%-80s %s\n", $1, $2}' | fzf)
+  if [[ -n "$selection" ]]; then
+    # Get the SSH command from the selected line and run it
+    ssh_command=$(echo "$selection" | awk -F ' {3,}' '{print $1}')
+    eval "$ssh_command"
+  fi
+fi
+
