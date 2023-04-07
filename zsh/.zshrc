@@ -35,6 +35,19 @@ if command -v bat &> /dev/null; then
   alias catt="bat --theme \"Dracula\""
 fi
 
+# CTRL-Z to fg back in suspended process
+fancy-ctrl-z () {
+  if [[ $#BUFFER -eq 0 ]]; then
+    BUFFER="fg"
+    zle accept-line
+  else
+    zle push-input
+    zle clear-screen
+  fi
+}
+zle -N fancy-ctrl-z
+bindkey '^Z' fancy-ctrl-z
+
 # File with custom aliases specific to your PC.
 [ -r "$HOME/.aliases" ] && source "$HOME/.aliases"
 
