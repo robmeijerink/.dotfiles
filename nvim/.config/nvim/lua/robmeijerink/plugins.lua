@@ -276,7 +276,7 @@ require('lazy').setup({
         end,
     },
     'tpope/vim-unimpaired', -- Adds [b and other handy mappings
-    { 'tpope/vim-sleuth', lazy = true }, -- Detect tabstop and shiftwidth automatically
+    -- { 'tpope/vim-sleuth', lazy = true }, -- Detect tabstop and shiftwidth automatically
     'tpope/vim-repeat', -- Better repeat with plugin keymaps.
 
     'christoomey/vim-tmux-navigator', -- Use splits in vim as if tmux splits when navigating

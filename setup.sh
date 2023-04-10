@@ -4,8 +4,8 @@
 
 npm i -g neovim intelephense typescript typescript-language-server prettier emmet-ls vscode-langservers-extracted blade-formatter
 
-apt install fd-find
-apt install unzip
+sudo apt install -y fd-find
+sudo apt install -y unzip
 
 brew install ripgrep
 brew install fzf
