@@ -86,7 +86,7 @@ require('lazy').setup({
                     {'hrsh7th/cmp-nvim-lsp'},
                     {'hrsh7th/cmp-nvim-lsp-signature-help'},
                     {'hrsh7th/cmp-nvim-lua'},
-                    {'onsnails/lspkind-nvim'},
+                    {'onsnails/lspkind.nvim'},
                 },
             },
 
