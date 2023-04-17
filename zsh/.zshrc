@@ -1,9 +1,6 @@
 #!/bin/sh
 [ -f "$HOME/.local/share/zap/zap.zsh" ] && source "$HOME/.local/share/zap/zap.zsh"
 
-# Zoxide
-eval "$(zoxide init zsh)"
-
 # history
 HISTFILE=~/.zsh_history
 
@@ -54,6 +51,9 @@ bindkey '^Z' fancy-ctrl-z
 # Tree overwrite
 unalias tree
 alias tree='ls -laT'   #ls -la with tree
+
+# Zoxide
+eval "$(zoxide init zsh)"
 
 # Other
 export NVM_DIR="$HOME/.nvm"
