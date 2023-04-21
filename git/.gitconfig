@@ -10,6 +10,7 @@
 	ms = merge --ff --squash
 	uncommit = reset --soft HEAD~1
 	unmerge  = reset --hard ORIG_HEAD
+	gone = ! git fetch -p && git for-each-ref --format '%(refname:short) %(upstream:track)' | awk '$2 == \"[gone]\" {print $1}' | xargs -r git branch -D
 [core]
 	# Setting for macOS / Linux
 	autocrlf = input
