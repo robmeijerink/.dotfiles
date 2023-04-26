@@ -9,7 +9,7 @@ sudo apt install -y unzip
 
 brew install ripgrep
 brew install fzf
-brew install php-codesniffer
+brew install php-code-sniffer
 brew install chafa
 brew install jq
 
