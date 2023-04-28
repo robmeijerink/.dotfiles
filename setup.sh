@@ -2,6 +2,10 @@
 
 # Run this file once to set up some dependencies and folders the neovim config needs.
 
+mkdir -p ~/.vim/tmp/undo
+mkdir -p ~/.vim/tmp/backup
+mkdir -p ~/.vim/tmp/swap
+
 npm i -g neovim intelephense typescript typescript-language-server prettier emmet-ls vscode-langservers-extracted blade-formatter
 
 sudo apt install -y fd-find
@@ -13,14 +17,11 @@ brew install php-code-sniffer
 brew install chafa
 brew install jq
 
-mkdir -p ~/.vim/tmp/undo
-mkdir -p ~/.vim/tmp/backup
-mkdir -p ~/.vim/tmp/swap
-
 # Shell
 brew install zoxide
 brew install bat
 brew install exa
+brew install git-delta
 
 echo "Run :checkhealth for additional dependency info"
 

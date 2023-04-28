@@ -46,10 +46,9 @@ zle -N fancy-ctrl-z
 bindkey '^Z' fancy-ctrl-z
 
 # File with custom aliases specific to your PC.
-[ -r "$HOME/.aliases" ] && source "$HOME/.aliases"
+[ -r "$HOME/.profile" ] && source "$HOME/.profile"
 
 # Tree overwrite
-unalias tree
 alias tree='ls -laT'   #ls -la with tree
 
 # Zoxide

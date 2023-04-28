@@ -15,4 +15,5 @@ export PATH=$HOME/.local/scripts:$PATH
 export PATH=$HOME/.composer/vendor/bin:$PATH # MacOS
 export PATH=$HOME/.config/composer/vendor/bin:$PATH # Linux
 export PATH=$HOME/go/bin:$PATH
+export PATH=$PATH:/usr/local/go/bin
 export GOPATH=$HOME/go
