@@ -13,6 +13,7 @@
 
 require('bufferline').setup({
     options = {
+      buffer_close_icon = "", -- This icon will be deprecated: Replace when Nerd Font is patched.
       indicator = {
         icon = ' ',
       },
