@@ -117,11 +117,11 @@ xnoremap('<leader>p', '"_dP')
 -- Other
 -- Yank till end of line
 nnoremap("Y", "yg$")
+nnoremap("<leader>Y", "\"+yg$")
 
 -- Yank to system's clipboard
 nnoremap("<leader>y", "\"+y")
 vnoremap("<leader>y", "\"+y")
-nmap("<leader>Y", "\"+Y")
 
 -- Delete without cut
 nnoremap('<leader>d', '"_d')
@@ -179,6 +179,8 @@ nnoremap("<C-\\>", "<cmd>ToggleTerm direction=float<CR>")
 
 -- Tmux Sessionizer
 nnoremap("<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
+-- Ctrl+Shift+F - t
+nnoremap("\x74\r", "<cmd>silent !tmux neww t<CR>")
 
 -- Git
 nnoremap("gh", "<cmd>diffget //2<CR>")
