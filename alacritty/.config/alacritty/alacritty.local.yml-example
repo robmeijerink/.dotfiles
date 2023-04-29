@@ -7,10 +7,7 @@ font:
 
 # Mac-only
 window:
-  decorations: Transparent
-  padding:
-    x: 5
-    y: 30
+  decorations: Buttonless
 
 key_bindings:
   # Use the Ctrl-Insert keybinding below to easily insert your Github Auth key.
