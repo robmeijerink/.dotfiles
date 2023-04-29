@@ -87,6 +87,7 @@ require('lazy').setup({
                     {'hrsh7th/cmp-nvim-lsp-signature-help'},
                     {'hrsh7th/cmp-nvim-lua'},
                     {'onsails/lspkind.nvim'},
+                    { "roobert/tailwindcss-colorizer-cmp.nvim", config = true },
                 },
             },
 
