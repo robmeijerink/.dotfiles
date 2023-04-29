@@ -9,7 +9,6 @@ mkdir -p ~/.vim/tmp/swap
 npm i -g neovim intelephense typescript typescript-language-server prettier emmet-ls vscode-langservers-extracted blade-formatter
 
 sudo apt install -y fd-find
-sudo apt install -y unzip
 
 brew install ripgrep
 brew install fzf
@@ -25,5 +24,5 @@ brew install git-delta
 
 echo "Run :checkhealth for additional dependency info"
 
-# Use stow after installation to setup all config files, example: stow zsh.
+# Use stow after installation to setup all config files, or set them seperately with this example: stow zsh.
 echo "Installed!"

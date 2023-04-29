@@ -24,9 +24,14 @@ vim.opt.hidden = true -- enable background buffers / windows
 
 vim.opt.list = true -- enable the below listchars
 vim.opt.listchars = { tab = '▸ ', trail = '·' }
-vim.opt.foldenable = false
-vim.opt.foldlevel = 4 -- limit folding to 4 levels
-vim.opt.foldmethod = 'syntax' -- use language syntax to generate folds
+
+-- vim.opt.foldenable = false
+-- vim.opt.foldlevel = 4 -- limit folding to 4 levels
+-- vim.opt.foldmethod = 'syntax' -- use language syntax to generate folds
+-- folding
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+
 vim.opt.wrap = false --do not wrap lines even if very long
 vim.opt.eol = false -- show if there's no eol char
 vim.opt.showbreak= '↪' -- character to show when line is broken

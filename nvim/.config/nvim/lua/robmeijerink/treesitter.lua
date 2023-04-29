@@ -99,8 +99,14 @@ require('nvim-treesitter.configs').setup {
 }
 
 -- Enable folds (zc and zo) on functions and classes but not by default
-vim.cmd([[
-  set nofoldenable
-  set foldmethod=expr
-  set foldexpr=nvim_treesitter#foldexpr()
-]])
+-- vim.cmd([[
+--   set nofoldenable
+--   set foldmethod=expr
+--   set foldexpr=nvim_treesitter#foldexpr()
+-- ]])
+
+-- Ensure everything is unfolded when opening a buffer
+vim.api.nvim_create_autocmd({ "BufReadPost", "FileReadPost" }, {
+    pattern = {"*"},
+    command = "set foldlevel=99",
+})

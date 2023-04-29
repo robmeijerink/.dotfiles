@@ -1,0 +1,17 @@
+font:
+  normal:
+    family: FiraCode Nerd Font
+    # Mac-only
+    style: Retina
+  size: 11.5
+
+# Mac-only
+window:
+  decorations: Transparent
+  padding:
+    x: 5
+    y: 30
+
+key_bindings:
+  # Use the Ctrl-Insert keybinding below to easily insert your Github Auth key.
+  - { key: Slash, mods: Control, chars: "ghp_YOUR_KEY" }
