@@ -4,7 +4,12 @@ if [[ $# -eq 1 ]]; then
     # Adding support for simply passing the current working directory or a specified path
     selected="$1" && [[ "$selected" == '.' ]] && selected="$PWD"
 else
-    selected=$(find ~/projects ~/ -mindepth 1 -maxdepth 1 -type d | fzf)
+    selected=$(echo -e "./\n$(find ~/projects ~/ -mindepth 1 -maxdepth 1 -type d)" | fzf)
+fi
+
+if [[ $selected == './' ]]; then
+    # Adding support for simply passing the current working directory or a specified path
+    selected="$(pwd)"
 fi
 
 if [[ -z $selected ]]; then
