@@ -61,9 +61,9 @@ window:
   padding:
     x: 5
     y: 5
-  dimensions:
-    columns: 200
-    lines: 55
+  # dimensions:
+  #   columns: 200
+  #   lines: 55
   # scrolling:
   #   # Maximum number of lines in the scrollback buffer.
   #   # Specifying '0' will disable scrolling.
