@@ -22,6 +22,9 @@ brew install bat
 brew install exa
 brew install git-delta
 
+brew install gum
+brew install ms-jpq/sad/sad
+
 echo "Run :checkhealth for additional dependency info"
 
 # Use stow after installation to setup all config files, or set them seperately with this example: stow zsh.
