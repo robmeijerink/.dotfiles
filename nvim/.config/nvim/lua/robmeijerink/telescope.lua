@@ -1,6 +1,7 @@
 local actions = require('telescope.actions')
 local trouble = require("trouble.providers.telescope")
 local lga_actions = require("telescope-live-grep-args.actions")
+local grep_args = { '--hidden', '--glob', '!**/.git/*' }
 
 require('telescope').setup {
   defaults = {
@@ -58,6 +59,21 @@ require('telescope').setup {
         ["<C-t>"] = trouble.open_with_trouble
       }
     }
+  },
+  pickers = {
+    find_files = {
+      find_command = { 'fd', '--type', 'f', '--hidden', '--exclude', '.git' }
+    },
+    live_grep = {
+      additional_args = function(opts)
+        return grep_args
+      end
+    },
+    grep_string = {
+      additional_args = function(opts)
+        return grep_args
+      end
+    },
   },
   extensions = {
     live_grep_args = {
