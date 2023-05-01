@@ -138,6 +138,14 @@ lsp.set_preferences({
     }
 })
 
+-- These signs show on the left, next to the line number
+local signs = {Error = " ", Warn = " ", Hint = " ", Info = " "}
+
+for type, icon in pairs(signs) do
+  local hl = "DiagnosticSign" .. type
+  vim.fn.sign_define(hl, {text = icon, texthl = hl, numhl = ""})
+end
+
 lsp.on_attach(function(client, bufnr)
   local opts = {buffer = bufnr, remap = false}
 
