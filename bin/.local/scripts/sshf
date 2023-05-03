@@ -38,7 +38,8 @@ if [[ "$#" -eq 0 ]]; then
   selection=$(cat "$ssh_file" | awk -F " ## " '{printf "%-80s %s\n", $1, $2}' | fzf)
   if [[ -n "$selection" ]]; then
     # Get the SSH command from the selected line and run it
-    ssh_command=$(echo "$selection" | awk -F ' {3,}' '{print $1}')
+    ssh_command=$(echo "$selection" | sed 's/\([[:space:]]\{3,\}\).*//')
+
     eval "$ssh_command"
   fi
 fi
