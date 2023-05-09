@@ -336,7 +336,8 @@ require('lazy').setup({
             "nvim-lua/plenary.nvim",
             "nvim-treesitter/nvim-treesitter",
             -- "antoinemadec/FixCursorHold.nvim",
-            'olimorris/neotest-phpunit',
+            -- 'olimorris/neotest-phpunit',
+            'theutz/neotest-pest',
         },
         config = function()
             require('robmeijerink.neotest')
