@@ -31,7 +31,7 @@
   "neogen": { "branch": "main", "commit": "9c17225aac94bdbf93baf16e1b2d2c6dcffb0901" },
   "neoscroll.nvim": { "branch": "master", "commit": "d7601c26c8a183fa8994ed339e70c2d841253e93" },
   "neotest": { "branch": "master", "commit": "972a7dc9dfe860649edaf89e08c514a98d3a2a09" },
-  "neotest-phpunit": { "branch": "main", "commit": "0614bf2cd38d5e9febff9b11b2d182953375c96a" },
+  "neotest-pest": { "branch": "main", "commit": "a50582719267a847c84e1564e97c698d994f883c" },
   "null-ls.nvim": { "branch": "main", "commit": "33b853a3933eed3137cd055aac4e539e69832ad0" },
   "nvim-autopairs": { "branch": "master", "commit": "7747bbae60074acf0b9e3a4c13950be7a2dff444" },
   "nvim-cmp": { "branch": "main", "commit": "11102d3db12c7f8b35265ad0e17a21511e5b1e68" },
