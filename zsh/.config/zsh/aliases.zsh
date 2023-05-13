@@ -9,6 +9,11 @@ alias dhalt="cd ~/devilbox && docker-compose down && cd -"
 alias dreload="cd ~/devilbox && docker-compose down && docker-compose up -d && cd -"
 alias dssh="cd ~/devilbox/ && ./shell.sh"
 
+if command -v bat &> /dev/null; then
+  alias cat="bat -pp --theme \"Dracula\""
+  alias catt="bat --theme \"Dracula\""
+fi
+
 # ls, the common ones I use exa for ls
 alias la='ls -lAFh'   #long list,show almost all,show type,human readable
 alias lt='ls -la --sort=modified'   #sorted by date,recursive,show type,human readable
@@ -18,6 +23,9 @@ alias lst='ls -T'     #ls with tree
 alias llt='ls -lT'    #ls -l with tree
 alias lat='ls -laT'   #ls -la with tree
 alias latr='ls -laT --sort=modified --reverse'   #ls -la with tree
+
+# Tree overwrite
+alias tree='ls -laT'   #ls -la with tree
 
 # Colorize grep output (good for log files)
 alias grep='grep --color=auto'
