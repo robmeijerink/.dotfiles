@@ -162,11 +162,11 @@ require('lazy').setup({
     -- })
     'tpope/vim-eunuch', -- Adds :Rename, :SudoWrite
     "tpope/vim-surround",
-    -- {
-    --     'sindrets/diffview.nvim',
-    --     dependencies = { "kyazdani42/nvim-web-devicons" },
-    --     -- cmd = { 'DiffviewOpen', 'DiffviewFileHistory' }
-    -- },
+    {
+        'sindrets/diffview.nvim',
+        dependencies = { "kyazdani42/nvim-web-devicons" },
+        cmd = { 'DiffviewOpen', 'DiffviewFileHistory' }
+    },
     {
         'kdheepak/lazygit.nvim',
         cmd = {

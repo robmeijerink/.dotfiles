@@ -17,3 +17,5 @@ export PATH=$HOME/.config/composer/vendor/bin:$PATH # Linux
 export PATH=$HOME/go/bin:$PATH
 export PATH=$PATH:/usr/local/go/bin
 export GOPATH=$HOME/go
+# Zoxide
+eval "$(zoxide init zsh)"

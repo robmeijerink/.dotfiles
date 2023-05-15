@@ -48,12 +48,6 @@ bindkey '^Z' fancy-ctrl-z
 # File with custom aliases specific to your PC.
 [ -r "$HOME/.profile" ] && source "$HOME/.profile"
 
-# Tree overwrite
-alias tree='ls -laT'   #ls -la with tree
-
-# Zoxide
-eval "$(zoxide init zsh)"
-
 # Other
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
