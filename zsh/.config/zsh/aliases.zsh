@@ -71,6 +71,10 @@ alias 9='cd -9'
 alias md='mkdir -p'
 alias rd='rmdir'
 
+# Helper utilities
+alias myip='dig +short myip.opendns.com @resolver1.opendns.com'
+alias pwgen="openssl rand -base64 256 | tr -d '\n' | head -c 32"
+
 case "$(uname -s)" in
 
 Darwin)
