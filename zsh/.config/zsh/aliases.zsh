@@ -51,6 +51,10 @@ alias psmem='ps auxf | sort -nr -k 4 | head -5'
 alias pscpu='ps auxf | sort -nr -k 3 | head -5'
 
 # Changing/making/removing directory
+setopt auto_cd
+setopt auto_pushd
+setopt pushd_ignore_dups
+setopt pushdminus
 
 alias -g ...='../..'
 alias -g ....='../../..'
@@ -69,7 +73,7 @@ alias 8='cd -8'
 alias 9='cd -9'
 
 alias md='mkdir -p'
-alias rd='rmdir'
+alias rd=rmdir
 
 # Helper utilities
 alias myip='dig +short myip.opendns.com @resolver1.opendns.com'
