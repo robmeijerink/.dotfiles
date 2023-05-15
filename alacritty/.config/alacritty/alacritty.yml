@@ -12,9 +12,6 @@ key_bindings:
   # Ctrl+Shift+F - t
   - { key: F, mods: Control|Shift, chars: "\x74\r" }
 
-  # Fixes tmux C-Space in Windows
-  # - { key: Space, mods: Control, chars: "\x00" }
-
 # You can only override the settings in these import files.
 import:
   - ~/.config/alacritty/appearance.yml
