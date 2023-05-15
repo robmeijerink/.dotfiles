@@ -9,6 +9,8 @@ plug "$HOME/.config/zsh/aliases.zsh"
 plug "$HOME/.config/zsh/exports.zsh"
 
 # plugins
+plug "$HOME/.config/zsh/plugins/dirpersist.zsh"
+
 # plug "esc/conda-zsh-completion"
 plug "zsh-users/zsh-autosuggestions"
 plug "hlissner/zsh-autopair"
