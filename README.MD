@@ -1,4 +1,4 @@
-# Dotfiles
+# .dotfiles
 
 - ZSH configuration
 - Alacritty Terminal configuration
@@ -11,7 +11,7 @@
 
 The configuration can be installed with GNU stow.
 
-# Other
+## Description
 - My Font: Fira Code Nerd Font: https://www.nerdfonts.com/font-downloads
 
 ### NeoVim
