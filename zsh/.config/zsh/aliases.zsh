@@ -40,6 +40,10 @@ alias rm='rm -i'
 # find & grep
 alias ff='find . -type f -name'
 
+# ansible
+alias av='ansible-vault'
+alias avv='ansible-vault view'
+
 # easier to read disk
 alias df='df -h'     # human-readable sizes
 alias free='free -m' # show sizes in MB
