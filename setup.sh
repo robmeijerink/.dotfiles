@@ -1,6 +1,26 @@
 #!/usr/bin/env bash
 
-# Run this file once to set up some dependencies and folders the neovim config needs.
+# Stow configuration by looping through the stowable folders (for more control of what to stow).
+
+STOW_FOLDERS=(
+    "alacritty"
+    "bin"
+    "git"
+    "lazygit"
+    "nvim"
+    "nvm"
+    "php"
+    "tmux"
+    "vim"
+    "zsh"
+)
+
+for f in "${STOW_FOLDERS[@]}"; do
+	stow "${f}"
+	echo "Stow complete: ${f}"
+done
+
+# Set up some dependencies and folders the neovim config needs.
 
 mkdir -p ~/.vim/tmp/undo
 mkdir -p ~/.vim/tmp/backup
@@ -16,7 +36,7 @@ brew install php-code-sniffer
 brew install chafa
 brew install jq
 
-# Shell
+# # Shell
 brew install zoxide
 brew install bat
 brew install exa
