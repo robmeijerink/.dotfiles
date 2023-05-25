@@ -45,6 +45,7 @@ local source_mapping = {
   nvim_lsp = "[LSP]",
   nvim_lua = "[Lua]",
   cmp_tabnine = "[TN]",
+  copilot = "[Copilot]",
   path = "[Path]",
 }
 
@@ -64,7 +65,8 @@ local cmp_setup = {
 
     ["<Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
-        cmp.select_next_item()
+        -- cmp.select_next_item()
+        cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
       elseif luasnip.expand_or_jumpable() then
         luasnip.expand_or_jump()
       -- elseif vim.fn["vsnip#available"]() == 1 then
@@ -92,6 +94,7 @@ local cmp_setup = {
     -- { name = 'ultisnips' },
     { name = 'luasnip' }, -- For luasnip user.
     { name = 'nvim_lsp' },
+    { name = 'copilot' },
     { name = 'cmp_tabnine' },
     { name = "nvim_lsp_signature_help" },
     { name = 'buffer' },
@@ -114,7 +117,25 @@ local cmp_setup = {
         vim_item.menu = menu
         return vim_item
     end,
-  }
+  },
+  sorting = {
+    priority_weight = 2,
+    comparators = {
+      require("copilot_cmp.comparators").prioritize,
+
+      -- Below is the default comparitor list and order for nvim-cmp
+      cmp.config.compare.offset,
+      -- cmp.config.compare.scopes, --this is commented in nvim-cmp too
+      cmp.config.compare.exact,
+      cmp.config.compare.score,
+      cmp.config.compare.recently_used,
+      cmp.config.compare.locality,
+      cmp.config.compare.kind,
+      cmp.config.compare.sort_text,
+      cmp.config.compare.length,
+      cmp.config.compare.order,
+    },
+  },
 }
 
 local tabnine = require("cmp_tabnine.config")

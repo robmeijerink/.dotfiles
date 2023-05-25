@@ -73,6 +73,21 @@ require('lazy').setup({
                     -- Snippets
                     {'L3MON4D3/LuaSnip'},
                     {'rafamadriz/friendly-snippets'},
+                    {
+                        "zbirenbaum/copilot.lua",
+                        config = function()
+                            require("copilot").setup({
+                              suggestion = { enabled = false },
+                              panel = { enabled = false },
+                            })
+                        end,
+                    },
+                    {
+                      "zbirenbaum/copilot-cmp",
+                      config = function ()
+                        require("copilot_cmp").setup()
+                      end
+                    },
                     { 'tzachar/cmp-tabnine', build = './install.sh' },
                     {
                         'windwp/nvim-autopairs',
