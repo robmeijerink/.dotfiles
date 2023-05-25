@@ -81,7 +81,10 @@ alias rd=rmdir
 
 # Helper utilities
 alias myip='dig +short myip.opendns.com @resolver1.opendns.com'
-alias pwgen="openssl rand -base64 256 | tr -d '\n' | head -c 32"
+# Random password with any character
+alias pwgen="openssl rand -base64 256 | tr -dc '[:print:]' | head -c 32"
+# Random password with only alphanumeric characters
+alias pwgena="openssl rand -base64 256 | tr -d '\n' | head -c 32"
 
 case "$(uname -s)" in
 
