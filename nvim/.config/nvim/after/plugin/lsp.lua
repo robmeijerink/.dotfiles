@@ -38,23 +38,23 @@ end
 local lspkind = require('lspkind')
 local luasnip = require('luasnip')
 
-lsp.set_preferences({
-    suggest_lsp_servers = false,
-    sign_icons = {
-        error = " ",
-        warn = " ",
-        hint = " ",
-        info = " "
-    }
-})
+-- lsp.set_preferences({
+--     suggest_lsp_servers = false,
+--     sign_icons = {
+--         error = " ",
+--         warn = " ",
+--         hint = " ",
+--         info = " "
+--     }
+-- })
 
 -- These signs show on the left, next to the line number
-local signs = {Error = " ", Warn = " ", Hint = " ", Info = " "}
+-- local signs = {Error = " ", Warn = " ", Hint = " ", Info = " "}
 
-for type, icon in pairs(signs) do
-  local hl = "DiagnosticSign" .. type
-  vim.fn.sign_define(hl, {text = icon, texthl = hl, numhl = ""})
-end
+-- for type, icon in pairs(signs) do
+--   local hl = "DiagnosticSign" .. type
+--   vim.fn.sign_define(hl, {text = icon, texthl = hl, numhl = ""})
+-- end
 
 lsp.on_attach(function(client, bufnr)
   local opts = {buffer = bufnr, remap = false}
@@ -220,7 +220,7 @@ vim.diagnostic.config({
 local cmp = require('cmp')
 
 local source_mapping = {
-    copilot = "[Co-pilot]",
+    copilot = "[Copilot]",
     luasnip = "[Snippet]",
     buffer = "[Buffer]",
     nvim_lsp = "[LSP]",
