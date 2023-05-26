@@ -16,7 +16,7 @@ STOW_FOLDERS=(
 )
 
 for f in "${STOW_FOLDERS[@]}"; do
-	stow "${f}"
+	stow --restow "${f}"
 	echo "Stow complete: ${f}"
 done
 
