@@ -19,7 +19,7 @@ local vnoremap = Remap.vnoremap
 local inoremap = Remap.inoremap
 local xnoremap = Remap.xnoremap
 local cnoremap = Remap.cnoremap
-local nmap = Remap.nmap
+-- local nmap = Remap.nmap
 -- local vmap = Remap.vmap
 
 -- When text is wrapped, move by terminal rows, not lines, unless a count is provided
@@ -172,7 +172,9 @@ nnoremap('<leader>U', '<cmd>UndotreeToggle<CR>')
 
 -- Nvim Tree
 nnoremap('<leader>ew', '<cmd>NvimTreeFindFileToggle<CR>')
-nnoremap('<leader>ee', vim.cmd.Ex)
+
+-- Explorer
+nnoremap('<leader>ee', vim.cmd.Ex, { desc = "Ex" })
 
 -- ToggleTerm
 nnoremap("<C-\\>", "<cmd>ToggleTerm direction=float<CR>")
