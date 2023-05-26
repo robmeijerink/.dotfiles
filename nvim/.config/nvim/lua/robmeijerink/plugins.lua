@@ -164,7 +164,7 @@ require('lazy').setup({
             { 'nvim-lua/plenary.nvim' }
         },
         config = function()
-            require('robmeijerink.harpoon')
+            require("harpoon").setup({})
         end,
     },
     -- use({
@@ -236,7 +236,7 @@ require('lazy').setup({
     {
         'norcalli/nvim-colorizer.lua',
         config = function()
-            require('robmeijerink.colorizer')
+            require('colorizer').setup({})
         end,
         event = "BufRead"
     },
@@ -268,7 +268,10 @@ require('lazy').setup({
             { "nvim-telescope/telescope.nvim" },
         },
         config = function()
-            require('robmeijerink.trouble')
+            require("trouble").setup {
+                -- your configuration comes here
+                -- or leave it empty to use the default settings
+            }
         end,
     },
     {
