@@ -38,23 +38,23 @@ end
 local lspkind = require('lspkind')
 local luasnip = require('luasnip')
 
--- lsp.set_preferences({
---     suggest_lsp_servers = false,
---     sign_icons = {
---         error = " ",
---         warn = " ",
---         hint = " ",
---         info = " "
---     }
--- })
+lsp.set_preferences({
+    suggest_lsp_servers = false,
+    sign_icons = {
+        error = ' ',
+        warn = ' ',
+        info = ' ',
+        hint = '󰌶 ',
+    }}
+)
 
 -- These signs show on the left, next to the line number
--- local signs = {Error = " ", Warn = " ", Hint = " ", Info = " "}
+local signs = {Error = " ", Warn = " ", Info = " ", Hint = "󰌶" }
 
--- for type, icon in pairs(signs) do
---   local hl = "DiagnosticSign" .. type
---   vim.fn.sign_define(hl, {text = icon, texthl = hl, numhl = ""})
--- end
+for type, icon in pairs(signs) do
+  local hl = "DiagnosticSign" .. type
+  vim.fn.sign_define(hl, {text = icon, texthl = hl, numhl = ""})
+end
 
 lsp.on_attach(function(client, bufnr)
   local opts = {buffer = bufnr, remap = false}
@@ -305,6 +305,12 @@ local cmp_setup = {
                 menu = entry.completion_item.data.detail .. " " .. menu
             end
             vim_item.kind = ""
+        end
+        if entry.source.name == "copilot" then
+            if entry.completion_item.data ~= nil and entry.completion_item.data.detail ~= nil then
+                menu = entry.completion_item.data.detail .. " " .. menu
+            end
+            vim_item.kind = ""
         end
         vim_item.menu = menu
         return vim_item
