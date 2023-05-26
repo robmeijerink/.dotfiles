@@ -9,7 +9,8 @@ require('neodev').setup()
 -- Turn on lsp status information
 require('fidget').setup()
 
-lsp.preset("recommended")
+-- Preset enables customization of nvim-cmp settings.
+lsp.preset('lsp-compe')
 
 lsp.ensure_installed({
   'intelephense',
@@ -22,8 +23,6 @@ lsp.ensure_installed({
   'emmet_ls',
 })
 
--- hrsh7th/nvim-cmp
-vim.g.completeopt = "menu,menuone,noselect,noinsert"
 local has_words_before = function()
   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
   return col ~= 0
@@ -31,123 +30,13 @@ local has_words_before = function()
              == nil
 end
 
-local feedkey = function(key, mode)
-  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
-end
+-- local feedkey = function(key, mode)
+--   vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
+-- end
+
 -- Setup nvim-cmp.
-local cmp = require 'cmp'
 local lspkind = require('lspkind')
 local luasnip = require('luasnip')
-
-local source_mapping = {
-  luasnip = "[Snippet]",
-  buffer = "[Buffer]",
-  nvim_lsp = "[LSP]",
-  nvim_lua = "[Lua]",
-  cmp_tabnine = "[TN]",
-  copilot = "[Copilot]",
-  path = "[Path]",
-}
-
-local cmp_setup = {
-  preselect = 'none',
-  completion = {
-    completeopt = 'menu,menuone,noinsert,noselect'
-  },
-  mapping = {
-    ['<C-y>'] = cmp.mapping.confirm({ select = true }),
-    ['<C-u>'] = cmp.mapping.scroll_docs(-4),
-    ['<C-d>'] = cmp.mapping.scroll_docs(4),
-    ['<C-Space>'] = cmp.mapping.complete(),
-    ['<C-e>'] = cmp.mapping.abort(),
-    ['<C-q>'] = cmp.mapping.close(),
-    ['<CR>'] = cmp.mapping.confirm({select = false}),
-
-    ["<Tab>"] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        -- cmp.select_next_item()
-        cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
-      elseif luasnip.expand_or_jumpable() then
-        luasnip.expand_or_jump()
-      -- elseif vim.fn["vsnip#available"]() == 1 then
-      --   feedkey("<Plug>(vsnip-expand-or-jump)", "")
-      elseif has_words_before() then
-        cmp.complete()
-      else
-        fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
-      end
-    end, {"i", "s"}),
-
-    ["<S-Tab>"] = cmp.mapping(function()
-      if cmp.visible() then
-        cmp.select_prev_item()
-      elseif luasnip.jumpable(-1) then
-        luasnip.jump(-1)
-      -- elseif vim.fn["vsnip#jumpable"](-1) == 1 then
-      --   feedkey("<Plug>(vsnip-jump-prev)", "")
-      end
-    end, {"i", "s"})
-  },
-  sources = cmp.config.sources({
-    -- {name = 'vsnip'}, -- For vsnip user.
-    -- For ultisnips user.
-    -- { name = 'ultisnips' },
-    { name = 'luasnip' }, -- For luasnip user.
-    { name = 'nvim_lsp' },
-    { name = 'copilot' },
-    { name = 'cmp_tabnine' },
-    { name = "nvim_lsp_signature_help" },
-    { name = 'buffer' },
-    { name = "path" },
-  }),
-  formatting = {
-    -- format = lspkind.cmp_format({
-    --   with_text = true,
-    --   maxwidth = 50,
-    -- }),
-    format = function(entry, vim_item)
-        vim_item.kind = lspkind.presets.default[vim_item.kind]
-        local menu = source_mapping[entry.source.name]
-        if entry.source.name == "cmp_tabnine" then
-            if entry.completion_item.data ~= nil and entry.completion_item.data.detail ~= nil then
-                menu = entry.completion_item.data.detail .. " " .. menu
-            end
-            vim_item.kind = ""
-        end
-        vim_item.menu = menu
-        return vim_item
-    end,
-  },
-  sorting = {
-    priority_weight = 2,
-    comparators = {
-      require("copilot_cmp.comparators").prioritize,
-
-      -- Below is the default comparitor list and order for nvim-cmp
-      cmp.config.compare.offset,
-      -- cmp.config.compare.scopes, --this is commented in nvim-cmp too
-      cmp.config.compare.exact,
-      cmp.config.compare.score,
-      cmp.config.compare.recently_used,
-      cmp.config.compare.locality,
-      cmp.config.compare.kind,
-      cmp.config.compare.sort_text,
-      cmp.config.compare.length,
-      cmp.config.compare.order,
-    },
-  },
-}
-
-local tabnine = require("cmp_tabnine.config")
-tabnine:setup({
-	max_lines = 1200,
-	max_num_results = 20,
-	sort = true,
-	run_on_every_keystroke = true,
-	snippet_placeholder = "..",
-})
-
-lsp.setup_nvim_cmp(cmp_setup)
 
 lsp.set_preferences({
     suggest_lsp_servers = false,
@@ -213,15 +102,14 @@ lsp.on_attach(function(client, bufnr)
   vim.api.nvim_create_autocmd("CursorHold", {
     buffer = bufnr,
     callback = function()
-      local opts = {
+      vim.diagnostic.open_float(nil, {
         focusable = false,
         close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
         border = 'rounded',
         source = 'always',
         prefix = ' ',
         scope = 'cursor',
-      }
-      vim.diagnostic.open_float(nil, opts)
+      })
     end
   })
 end)
@@ -327,3 +215,123 @@ vim.diagnostic.config({
         source = true,
     }
 })
+
+-- Configure nvim-cmp
+local cmp = require('cmp')
+
+local source_mapping = {
+    copilot = "[Co-pilot]",
+    luasnip = "[Snippet]",
+    buffer = "[Buffer]",
+    nvim_lsp = "[LSP]",
+    nvim_lua = "[Lua]",
+    cmp_tabnine = "[TN]",
+    path = "[Path]",
+}
+
+local tabnine = require("cmp_tabnine.config")
+tabnine:setup({
+    max_lines = 1200,
+    max_num_results = 20,
+    sort = true,
+    run_on_every_keystroke = true,
+    snippet_placeholder = "..",
+})
+
+vim.opt.completeopt = 'menu,menuone,noinsert,noselect'
+-- vim.g.completeopt = 'menu,menuone,noinsert,noselect'
+
+local cmp_setup = {
+  preselect = 'none',
+  completion = {
+    completeopt = 'menu,menuone,noinsert,noselect'
+  },
+  mapping = {
+    ['<C-y>'] = cmp.mapping.confirm({ select = true }),
+    ['<C-u>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-d>'] = cmp.mapping.scroll_docs(4),
+    ['<C-Space>'] = cmp.mapping.complete(),
+    ['<C-e>'] = cmp.mapping.abort(),
+    ['<C-q>'] = cmp.mapping.close(),
+    ['<CR>'] = cmp.mapping.confirm({select = false}),
+
+    ["<Tab>"] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        -- cmp.select_next_item()
+        cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
+      elseif luasnip.expand_or_jumpable() then
+        luasnip.expand_or_jump()
+      -- elseif vim.fn["vsnip#available"]() == 1 then
+      --   feedkey("<Plug>(vsnip-expand-or-jump)", "")
+      elseif has_words_before() then
+        cmp.complete()
+      else
+        fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
+      end
+    end, {"i", "s"}),
+
+    ["<S-Tab>"] = cmp.mapping(function()
+      if cmp.visible() then
+        cmp.select_prev_item()
+      elseif luasnip.jumpable(-1) then
+        luasnip.jump(-1)
+      -- elseif vim.fn["vsnip#jumpable"](-1) == 1 then
+      --   feedkey("<Plug>(vsnip-jump-prev)", "")
+      end
+    end, {"i", "s"})
+  },
+  sources = cmp.config.sources({
+    -- {name = 'vsnip'}, -- For vsnip user.
+    -- For ultisnips user.
+    -- { name = 'ultisnips' },
+        { name = 'copilot' },
+        { name = 'luasnip' }, -- For luasnip user.
+        { name = 'nvim_lsp' },
+        { name = 'cmp_tabnine' },
+        { name = "nvim_lsp_signature_help" },
+        { name = 'buffer' },
+        { name = "path" },
+  }),
+  formatting = {
+    -- format = lspkind.cmp_format({
+    --   with_text = true,
+    --   maxwidth = 50,
+    -- }),
+    format = function(entry, vim_item)
+        vim_item.kind = lspkind.presets.default[vim_item.kind]
+        local menu = source_mapping[entry.source.name]
+        if entry.source.name == "cmp_tabnine" then
+            if entry.completion_item.data ~= nil and entry.completion_item.data.detail ~= nil then
+                menu = entry.completion_item.data.detail .. " " .. menu
+            end
+            vim_item.kind = ""
+        end
+        vim_item.menu = menu
+        return vim_item
+    end,
+  },
+  sorting = {
+    priority_weight = 2,
+    comparators = {
+      require("copilot_cmp.comparators").prioritize,
+
+      -- Below is the default comparitor list and order for nvim-cmp
+      cmp.config.compare.offset,
+      -- cmp.config.compare.scopes, --this is commented in nvim-cmp too
+      cmp.config.compare.exact,
+      cmp.config.compare.score,
+      cmp.config.compare.recently_used,
+      cmp.config.compare.locality,
+      cmp.config.compare.kind,
+      cmp.config.compare.sort_text,
+      cmp.config.compare.length,
+      cmp.config.compare.order,
+    },
+  },
+    experimental = {
+        ghost_text = true,
+    },
+}
+
+-- Setup cmp
+cmp.setup(cmp_setup)
