@@ -171,8 +171,8 @@ nnoremap("<Leader>**", ":Neogen<CR>")
 nnoremap('<leader>U', '<cmd>UndotreeToggle<CR>')
 
 -- Nvim Tree
-nnoremap('<leader>e', '<cmd>NvimTreeFindFileToggle<CR>')
-nnoremap('<leader>E', '<cmd>Ex<CR>')
+nnoremap('<leader>E', '<cmd>NvimTreeFindFileToggle<CR>')
+nnoremap('<leader>e', '<cmd>Ex<CR>')
 
 -- ToggleTerm
 nnoremap("<C-\\>", "<cmd>ToggleTerm direction=float<CR>")
