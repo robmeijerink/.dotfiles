@@ -29,6 +29,7 @@ mkdir -p ~/.vim/tmp/swap
 npm i -g neovim intelephense typescript typescript-language-server prettier emmet-ls vscode-langservers-extracted blade-formatter
 
 sudo apt install -y fd-find
+sudo apt install -y xdotool # Used for keyboard shortcuts in Ubuntu, e.g.: xdotool search --onlyvisible --class "firefox" windowactivate
 
 brew install ripgrep
 brew install fzf
