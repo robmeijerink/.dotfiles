@@ -4,19 +4,19 @@
 - Alacritty Terminal configuration
 - Snippets of my Terminal profile / aliases for usage in Docker containers
 - .vimrc with basic settings for regular vim
-- NeoVim .lua config files with more advanced settings and plugins
+- Neovim .lua config files with more advanced settings and plugins
 - tmux configuration
 - tmux-sessionizer
 - fzf bindings for fuzzy finding in the terminal
 
-The configuration can be installed with GNU stow.
+The configuration can be installed with GNU stow. I made a script to install the dependencies on MacOs, Linux and WSL. The script is called setup.sh and is located in the root of this repository. You can run it with `./setup.sh`. You can also install the dependencies manually. The dependencies are listed in the setup.sh script. To make it easier I decided to use brew to install the dependencies, so it works with both Linux and MacOs, but you can use any package manager you want, like: apt, yum, pacman etc.
 
 ## Description
 - My Font: Fira Code Nerd Font: https://www.nerdfonts.com/font-downloads
 
-### NeoVim
+### Neovim
 
-I use NeoVim daily for web development at work and side-projects in PHP, Rust, Go, Javascript / Typescript, CSS / scss etc.
+I use Neovim daily for web development at work and side-projects in PHP, Rust, Go, Javascript / Typescript, CSS / scss etc.
 
 - The nvim setup needs nodejs and npm installed.
 - The nvim and zsh setup need some dependencies. If you use Linux or WSL, you can run the setup.sh script to install these dependencies. If you use MacOs, you can easily install the dependencies by using Homebrew.
