@@ -24,6 +24,7 @@ lsp.ensure_installed({
 })
 
 local has_words_before = function()
+  unpack = unpack or table.unpack
   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
   return col ~= 0
              and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s")
@@ -241,10 +242,22 @@ tabnine:setup({
 vim.opt.completeopt = 'menu,menuone,noinsert,noselect'
 -- vim.g.completeopt = 'menu,menuone,noinsert,noselect'
 
+-- Needed for friendly-snippets
+require('luasnip.loaders.from_vscode').lazy_load()
+
+luasnip.config.setup {}
+
+local cmp_action = require('lsp-zero').cmp_action()
+
 local cmp_setup = {
   preselect = 'none',
   completion = {
     completeopt = 'menu,menuone,noinsert,noselect'
+  },
+  snippet = {
+    expand = function(args)
+      luasnip.lsp_expand(args.body)
+    end,
   },
   mapping = {
     ['<C-y>'] = cmp.mapping.confirm({ select = true }),
@@ -253,7 +266,12 @@ local cmp_setup = {
     ['<C-Space>'] = cmp.mapping.complete(),
     ['<C-e>'] = cmp.mapping.abort(),
     ['<C-q>'] = cmp.mapping.close(),
-    ['<CR>'] = cmp.mapping.confirm({select = false}),
+    ['<C-f>'] = cmp_action.luasnip_jump_forward(),
+    ['<C-b>'] = cmp_action.luasnip_jump_backward(),
+    ['<CR>'] = cmp.mapping.confirm({
+        -- behavior = cmp.ConfirmBehavior.Replace,
+        select = false,
+    }),
 
     ["<Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
@@ -270,13 +288,15 @@ local cmp_setup = {
       end
     end, {"i", "s"}),
 
-    ["<S-Tab>"] = cmp.mapping(function()
+    ["<S-Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
       elseif luasnip.jumpable(-1) then
         luasnip.jump(-1)
       -- elseif vim.fn["vsnip#jumpable"](-1) == 1 then
       --   feedkey("<Plug>(vsnip-jump-prev)", "")
+      else
+        fallback()
       end
     end, {"i", "s"})
   },
@@ -285,12 +305,12 @@ local cmp_setup = {
     -- For ultisnips user.
     -- { name = 'ultisnips' },
         { name = 'copilot' },
-        { name = 'luasnip' }, -- For luasnip user.
+        { name = 'luasnip', keyword_length = 2 }, -- For luasnip user.
         { name = 'nvim_lsp' },
         { name = 'cmp_tabnine' },
         { name = "nvim_lsp_signature_help" },
-        { name = 'buffer' },
-        { name = "path" },
+        { name = 'buffer', keyword_length = 3 },
+        { name = "path", keyword_length = 2 },
   }),
   formatting = {
     -- format = lspkind.cmp_format({
