@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 # Stow configuration by looping through the stowable folders (for more control of what to stow).
-
 STOW_FOLDERS=(
     "alacritty"
     "bin"
@@ -20,8 +19,7 @@ for f in "${STOW_FOLDERS[@]}"; do
 	echo "Stow complete: ${f}"
 done
 
-# Set up some dependencies and folders the neovim config needs.
-
+# Set up some dependencies and folders the neovim and vim configs need.
 mkdir -p ~/.vim/tmp/undo
 mkdir -p ~/.vim/tmp/backup
 mkdir -p ~/.vim/tmp/swap
@@ -41,6 +39,7 @@ brew install jq
 brew install zoxide
 brew install bat
 brew install exa
+brew install lazygit
 brew install git-delta
 
 brew install gum
