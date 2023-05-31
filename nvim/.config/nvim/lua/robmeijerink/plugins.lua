@@ -167,6 +167,13 @@ require('lazy').setup({
             require("harpoon").setup({})
         end,
     },
+    {
+        "ThePrimeagen/refactoring.nvim",
+        dependencies = {
+            {"nvim-lua/plenary.nvim"},
+            {"nvim-treesitter/nvim-treesitter"},
+        },
+    },
     -- use({
     --     "kylechui/nvim-surround",
     --     config = function()
