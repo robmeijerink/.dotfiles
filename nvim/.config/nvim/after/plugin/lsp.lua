@@ -305,7 +305,7 @@ local cmp_setup = {
     -- For ultisnips user.
     -- { name = 'ultisnips' },
         { name = 'copilot' },
-        { name = 'luasnip', keyword_length = 2 }, -- For luasnip user.
+        { name = 'luasnip' }, -- For luasnip user.
         { name = 'nvim_lsp' },
         { name = 'cmp_tabnine' },
         { name = "nvim_lsp_signature_help" },
