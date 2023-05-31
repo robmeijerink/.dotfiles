@@ -14,6 +14,8 @@ STOW_FOLDERS=(
     "zsh"
 )
 
+brew install stow
+
 for f in "${STOW_FOLDERS[@]}"; do
 	stow --restow "${f}"
 	echo "Stow complete: ${f}"
@@ -26,9 +28,17 @@ mkdir -p ~/.vim/tmp/swap
 
 npm i -g neovim intelephense typescript typescript-language-server prettier emmet-ls vscode-langservers-extracted blade-formatter
 
-sudo apt install -y fd-find
-sudo apt install -y xdotool # Used for keyboard shortcuts in Ubuntu, e.g.: xdotool search --onlyvisible --class "firefox" windowactivate
+# Check if it's macOS
+if [[ "$os" == "Darwin" ]]; then
+    echo "Running on macOS"
+else
+    echo "Running on Linux"
+    # Linux only
+    sudo apt install -y fd-find
+    sudo apt install -y xdotool # Used for keyboard shortcuts in Ubuntu, e.g.: xdotool search --onlyvisible --class "firefox" windowactivate
+fi
 
+brew install tmux
 brew install ripgrep
 brew install fzf
 brew install php-code-sniffer
