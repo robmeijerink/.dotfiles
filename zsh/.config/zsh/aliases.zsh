@@ -86,6 +86,9 @@ alias pwgen="openssl rand -base64 256 | tr -dc '[:print:]' | head -c 32"
 # Random password with only alphanumeric characters
 alias pwgena="openssl rand -base64 256 | tr -d '\n' | head -c 32"
 
+# Gets the directory of this file.
+current_dir=$(dirname "$0")
+
 case "$(uname -s)" in
 
 Darwin)
@@ -95,8 +98,9 @@ Darwin)
 
 Linux)
 	alias ls='ls --color=auto'
+    source "$current_dir/fzf/completion.zsh"
+    source "$current_dir/fzf/key-bindings.zsh"
 	;;
-
 CYGWIN* | MINGW32* | MSYS* | MINGW*)
 	# echo 'MS Windows'
 	;;
