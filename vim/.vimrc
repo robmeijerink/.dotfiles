@@ -18,11 +18,19 @@ set termguicolors
 set nocompatible
 set backspace=indent,eol,start
 
+" Set <leader> key
+let mapleader=" "
+
+" Yank to system's clipboard
+nnoremap <leader>Y "\"+yg$"
+nnoremap <leader>y "\"+y"
+vnoremap <leader>y "\"+y"
+
 " Map Ctrl-c to <Esc> for easier mode switching
 imap <C-c> <Esc>
 vmap <C-c> <Esc>
 
-" Let Y act same as D and C: Yank till end of line.
+" Same behavior of Y as D and C: Yank till end of line.
 map Y yg$
 
 " Resave with sudo
