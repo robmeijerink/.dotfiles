@@ -14,6 +14,9 @@ dap.configurations.php = {
         name = 'Listen for xdebug',
         port = 9003,
         log = true,
+        pathMappings = {
+            ["/var/www/html"] = "${workspaceFolder}"
+        },
         -- serverSourceRoot = '/srv/www/',
         -- localSourceRoot = '/home/www/VVV/www/',
     },

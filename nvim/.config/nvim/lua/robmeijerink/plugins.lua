@@ -352,10 +352,10 @@ require('lazy').setup({
     },
 
     -- Debugger
-    -- use { 'mfussenegger/nvim-dap' }
-    -- use { 'rcarriga/nvim-dap-ui' }
-    -- use { 'theHamsta/nvim-dap-virtual-text' }
-    -- use { 'nvim-telescope/telescope-dap.nvim' }
+    { 'mfussenegger/nvim-dap' },
+    { 'rcarriga/nvim-dap-ui' },
+    { 'theHamsta/nvim-dap-virtual-text' },
+    { 'nvim-telescope/telescope-dap.nvim' },
 
     -- Testing
     {
@@ -373,19 +373,19 @@ require('lazy').setup({
     },
 
     {
-   'phpactor/phpactor',
-      branch = 'master',
-      ft = 'php',
-      run = 'composer install --no-dev -o',
-      config = function()
-        vim.cmd([[
+       'phpactor/phpactor',
+        branch = 'master',
+        ft = 'php',
+        run = 'composer install --no-dev -o',
+        config = function()
+            vim.cmd([[
             augroup PhpactorMappings
-                au!
-                au FileType php nmap <buffer> <Leader>Pm :PhpactorContextMenu<CR>
-                au FileType php nmap <buffer> <Leader>Pn :PhpactorClassNew<CR>
-           augroup END
-        ]])
-      end,
+            au!
+            au FileType php nmap <buffer> <Leader>Pm :PhpactorContextMenu<CR>
+            au FileType php nmap <buffer> <Leader>Pn :PhpactorClassNew<CR>
+            augroup END
+            ]])
+        end,
     },
 
     -- Enable dd in quickfix list

@@ -9,6 +9,9 @@ alias dhalt="cd ~/devilbox && docker-compose down && cd -"
 alias dreload="cd ~/devilbox && docker-compose down && docker-compose up -d && cd -"
 alias dssh="cd ~/devilbox/ && ./shell.sh"
 
+# Docker compose
+alias drun="docker-compose run --rm"
+
 if command -v bat &> /dev/null; then
   alias cat="bat -pp --theme \"Dracula\""
   alias catt="bat --theme \"Dracula\""
