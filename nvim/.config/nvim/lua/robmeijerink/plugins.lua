@@ -27,7 +27,7 @@ require('lazy').setup({
     -- },
     {
         'Mofiqul/dracula.nvim',
-        commit = '26d04c8ced02f02207e7aec1d5730c3a9ebadeeb'
+        -- commit = '26d04c8ced02f02207e7aec1d5730c3a9ebadeeb'
     },
     -- use("folke/tokyonight.nvim")
     -- use { "tanvirtin/monokai.nvim" }
