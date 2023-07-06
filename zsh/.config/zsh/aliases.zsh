@@ -10,6 +10,7 @@ alias dreload="cd ~/devilbox && docker-compose down && docker-compose up -d && c
 alias dssh="cd ~/devilbox/ && ./shell.sh"
 
 # Docker compose
+alias dexec="docker exec -it"
 alias drun="docker-compose run --rm"
 
 if command -v bat &> /dev/null; then
