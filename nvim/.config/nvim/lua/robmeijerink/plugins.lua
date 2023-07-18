@@ -66,7 +66,7 @@ require('lazy').setup({
             {'williamboman/mason-lspconfig.nvim'},
 
             -- Diagnostics and Formatting
-            { 'jose-elias-alvarez/null-ls.nvim' },
+            -- { 'jose-elias-alvarez/null-ls.nvim' }, // Archived / Deprecated
 
             -- Autocompletion
             {
