@@ -22,9 +22,9 @@
 	whitespace = -trailing-space
 	# Use a gitignore file to always ignore certain files
 	excludesfile = ~/.gitignore_global
-[credential]
-	# Credential store
-	helper = store
+# [credential]
+ 	# Credential store
+    # helper = store
 [diff]
 	# Show moved code in diff
 	colorMoved = zebra
