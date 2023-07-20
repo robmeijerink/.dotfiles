@@ -45,7 +45,7 @@ require('lazy').setup({
             'nvim-treesitter/nvim-treesitter-context',     -- Sticky header for functions
             'JoosepAlviste/nvim-ts-context-commentstring', -- Solves comment issue in multi lang files
             { 'windwp/nvim-ts-autotag', event = "InsertEnter" },
-            'p00f/nvim-ts-rainbow',
+            -- 'p00f/nvim-ts-rainbow', // No longer Maintained
             {
                 "folke/twilight.nvim",
                 cmd = 'Twilight',
@@ -111,7 +111,7 @@ require('lazy').setup({
 
             -- OTHERS
             -- Useful status updates for LSP
-            'j-hui/fidget.nvim',
+            { 'j-hui/fidget.nvim', tag = "legacy", event = "LspAttach" },
 
             -- Additional lua configuration, makes nvim stuff amazing
             'folke/neodev.nvim',
