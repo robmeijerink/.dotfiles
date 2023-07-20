@@ -67,6 +67,10 @@ require('lazy').setup({
 
             -- Diagnostics and Formatting
             -- { 'jose-elias-alvarez/null-ls.nvim' }, // Archived / Deprecated
+            --
+            -- @todo: Replacements
+            -- { 'mhartington/formatter.nvim' },
+            -- { 'mfussenegger/nvim-lint' },
 
             -- Autocompletion
             {
