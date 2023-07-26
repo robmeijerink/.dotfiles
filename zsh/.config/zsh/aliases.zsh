@@ -3,15 +3,19 @@ alias vi="nvim"
 alias g='lazygit'
 alias nvimrc='nvim ~/.config/nvim/'
 
-# Devilbox
-alias dup="cd ~/devilbox && docker-compose up -d && cd -"
-alias dhalt="cd ~/devilbox && docker-compose down && cd -"
-alias dreload="cd ~/devilbox && docker-compose down && docker-compose up -d && cd -"
-alias dssh="cd ~/devilbox/ && ./shell.sh"
-
-# Docker compose
+# Docker
 alias dexec="docker exec -it"
 alias drun="docker-compose run --rm"
+alias dup="docker-compose up -d webserver"
+alias dhalt="docker-compose down"
+alias dreload="docker-compose down && docker-compose up -d webserver"
+alias dssh="docker-compose exec php bash"
+
+# Devilbox
+alias devup="cd ~/devilbox && docker-compose up -d && cd -"
+alias devhalt="cd ~/devilbox && docker-compose down && cd -"
+alias devreload="cd ~/devilbox && docker-compose down && docker-compose up -d && cd -"
+alias devssh="cd ~/devilbox/ && ./shell.sh"
 
 if command -v bat &> /dev/null; then
   alias cat="bat -pp --theme \"Dracula\""
