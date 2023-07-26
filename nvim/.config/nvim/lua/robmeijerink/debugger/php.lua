@@ -4,8 +4,7 @@ local dap = require('dap')
 dap.adapters.php = {
     type = 'executable',
     command = 'node',
-    -- args = { "/opt/vscode-php-debug/out/phpDebug.js"},
-    args = { os.getenv("HOME") .. "/build/vscode-php-debug/out/phpDebug.js" }
+    args = { os.getenv("HOME") .. "/.vscode/extensions/xdebug.php-debug-1.32.1/out/phpDebug.js" }
 }
 
 dap.configurations.php = {
