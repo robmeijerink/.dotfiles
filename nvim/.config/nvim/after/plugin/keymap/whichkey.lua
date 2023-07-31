@@ -24,7 +24,7 @@ end
 
 local mappings = {
   w = { "<cmd>w<CR>", "Save" },
-  W = { "<cmd>set wrap!<CR><CR>", "Toggle line wrapping" },
+  -- W = { "<cmd>set wrap!<CR><CR>", "Toggle line wrapping" }, -- Duplicate mapping use [ow and ]ow instead
   p = { ':set paste<CR>"*p:set nopaste<CR>', "Paste in Paste Mode" },
   x = { "<cmd>Bdelete<CR>", "Close" },
   X = { "<cmd>Bdelete!<CR>", "Close" },
