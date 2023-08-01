@@ -10,6 +10,7 @@ alias dup="docker-compose up -d webserver"
 alias dhalt="docker-compose down"
 alias dreload="docker-compose down && docker-compose up -d webserver"
 alias dssh="docker-compose exec php bash"
+alias drmall="docker rm -f $(docker ps -a -q)"
 
 # Devilbox
 alias devup="cd ~/devilbox && docker-compose up -d && cd -"
