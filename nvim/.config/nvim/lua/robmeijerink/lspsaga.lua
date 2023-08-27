@@ -6,7 +6,7 @@ lspsaga.setup {
   -- diagnostic sign
   error_sign = "",
   warn_sign = "",
-  info_sign = "",
+  -- info_sign = "", -- deprecated
   hint_sign = "󰌶",
   diagnostic_header_icon = "   ",
   -- code action title icon
