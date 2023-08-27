@@ -12,6 +12,9 @@ alias dreload="docker-compose down && docker-compose up -d webserver"
 alias dssh="docker-compose exec php bash"
 alias drmall="docker rm -f $(docker ps -a -q)"
 
+# Usage: dgetip <container_id>
+alias dgetip="docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}'"
+
 # Devilbox
 alias devup="cd ~/devilbox && docker-compose up -d && cd -"
 alias devhalt="cd ~/devilbox && docker-compose down && cd -"
