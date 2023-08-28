@@ -44,6 +44,7 @@ brew install fzf
 brew install php-code-sniffer
 brew install chafa
 brew install jq
+brew install yq
 
 # # Shell
 brew install zoxide
