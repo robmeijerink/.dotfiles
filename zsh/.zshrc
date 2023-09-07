@@ -4,6 +4,9 @@
 # history
 HISTFILE=~/.zsh_history
 
+# File with custom aliases specific to your PC.
+[ -r "$HOME/.profile" ] && source "$HOME/.profile"
+
 # source
 plug "$HOME/.config/zsh/aliases.zsh"
 plug "$HOME/.config/zsh/exports.zsh"
@@ -46,9 +49,6 @@ fancy-ctrl-z () {
 }
 zle -N fancy-ctrl-z
 bindkey '^Z' fancy-ctrl-z
-
-# File with custom aliases specific to your PC.
-[ -r "$HOME/.profile" ] && source "$HOME/.profile"
 
 # Other
 export NVM_DIR="$HOME/.nvm"
