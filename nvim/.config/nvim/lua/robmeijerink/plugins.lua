@@ -294,13 +294,13 @@ require('lazy').setup({
             require('robmeijerink.toggleterm')
         end,
     },
-    {
-        'tami5/lspsaga.nvim',
-        cmd = 'Lspsaga',
-        config = function()
-            require('robmeijerink.lspsaga')
-        end,
-    },
+    -- {
+    --     'tami5/lspsaga.nvim',
+    --     cmd = 'Lspsaga',
+    --     config = function()
+    --         require('robmeijerink.lspsaga')
+    --     end,
+    -- },
     {
         "folke/zen-mode.nvim",
         cmd = 'ZenMode',

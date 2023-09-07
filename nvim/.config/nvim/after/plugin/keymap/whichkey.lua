@@ -126,7 +126,7 @@ local mappings = {
     i = { "<cmd>LspInfo<CR>", "Connected Language Servers" },
     f = { "<cmd>lua vim.lsp.buf.format({ timeout_ms = 10000 })<CR>", "Format file" },
     h = { "<cmd>lua vim.lsp.buf.signature_help()<CR>", "Signature Help" },
-    k = { "<cmd>Lspsaga hover_doc<CR>", "Hover Commands" },
+    -- k = { "<cmd>Lspsaga hover_doc<CR>", "Hover Commands" },
     w = { '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', "Add Workspace Folder" },
     W = { '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', "Remove Workspace Folder" },
     -- l = {
@@ -137,11 +137,11 @@ local mappings = {
     -- d = { '<cmd>lua vim.lsp.buf.definition()<CR>', "Go To Definition" },
     -- D = { '<cmd>lua vim.lsp.buf.declaration()<CR>', "Go To Declaration" },
     r = { '<cmd>lua vim.lsp.buf.references()<CR>', "References" },
-    R = { '<cmd>Lspsaga rename<CR>', "Rename" },
-    a = { '<cmd>Lspsaga code_action<CR>', "Code Action" },
-    d = { '<cmd>Lspsaga show_line_diagnostics<CR>', "Show Line Diagnostics" },
-    n = { '<cmd>Lspsaga diagnostic_jump_next<CR>', "Go To Next Diagnostic" },
-    N = { '<cmd>Lspsaga diagnostic_jump_prev<CR>', "Go To Previous Diagnostic" }
+    -- R = { '<cmd>Lspsaga rename<CR>', "Rename" },
+    -- a = { '<cmd>Lspsaga code_action<CR>', "Code Action" },
+    -- d = { '<cmd>Lspsaga show_line_diagnostics<CR>', "Show Line Diagnostics" },
+    -- n = { '<cmd>Lspsaga diagnostic_jump_next<CR>', "Go To Next Diagnostic" },
+    -- N = { '<cmd>Lspsaga diagnostic_jump_prev<CR>', "Go To Previous Diagnostic" }
   },
   R = {
     name = "REST Client",
