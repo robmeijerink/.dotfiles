@@ -1,6 +1,7 @@
 require('nvim-treesitter.configs').setup {
     ensure_installed = {
         "bash",
+        -- "blade", Coming Soon!! https://github.com/EmranMR/tree-sitter-blade
         "html",
         "css",
         "scss",
