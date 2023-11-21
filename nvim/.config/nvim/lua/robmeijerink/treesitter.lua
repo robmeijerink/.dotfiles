@@ -94,10 +94,10 @@ require('nvim-treesitter.configs').setup {
             },
         },
     },
-    context_commentstring = {
-        enable = true,
-    },
 }
+
+require('ts_context_commentstring').setup({})
+vim.g.skip_ts_context_commentstring_module = true
 
 -- Enable folds (zc and zo) on functions and classes but not by default
 -- vim.cmd([[
