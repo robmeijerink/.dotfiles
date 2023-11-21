@@ -97,3 +97,4 @@ require('telescope').setup {
 pcall(require('telescope').load_extension, 'fzf')
 pcall(require('telescope').load_extension, 'lazygit')
 pcall(require('telescope').load_extension, 'dap')
+pcall(require("telescope").load_extension("package_info"), 'package_info')
