@@ -5,20 +5,20 @@ alias nvimrc='nvim ~/.config/nvim/'
 
 # Docker
 alias dexec="docker exec -it"
-alias drun="docker-compose run --rm"
-alias dup="docker-compose up -d webserver"
-alias dhalt="docker-compose down"
-alias dreload="docker-compose down && docker-compose up -d webserver"
-alias dssh="docker-compose exec php bash"
+alias drun="docker compose run --rm"
+alias dup="docker compose up -d webserver"
+alias dhalt="docker compose down"
+alias dreload="docker compose down && docker compose up -d webserver"
+alias dssh="docker compose exec php bash"
 alias drmall="docker rm -f $(docker ps -a -q)"
 
 # Usage: dgetip <container_id>
 alias dgetip="docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}'"
 
 # Devilbox
-alias devup="cd ~/devilbox && docker-compose up -d && cd -"
-alias devhalt="cd ~/devilbox && docker-compose down && cd -"
-alias devreload="cd ~/devilbox && docker-compose down && docker-compose up -d && cd -"
+alias devup="cd ~/devilbox && docker compose up -d && cd -"
+alias devhalt="cd ~/devilbox && docker compose down && cd -"
+alias devreload="cd ~/devilbox && docker compose down && docker compose up -d && cd -"
 alias devssh="cd ~/devilbox/ && ./shell.sh"
 
 if command -v bat &> /dev/null; then
