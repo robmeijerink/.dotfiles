@@ -23,6 +23,9 @@ lsp.ensure_installed({
   'emmet_ls',
 })
 
+-- Fix Undefined global 'vim'
+-- lsp.nvim_workspace()
+
 local has_words_before = function()
   unpack = unpack or table.unpack
   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
@@ -268,33 +271,51 @@ local cmp_setup = {
     ['<C-q>'] = cmp.mapping.close(),
     ['<C-f>'] = cmp_action.luasnip_jump_forward(),
     ['<C-b>'] = cmp_action.luasnip_jump_backward(),
-    ['<CR>'] = cmp.mapping.confirm({
-        -- behavior = cmp.ConfirmBehavior.Replace,
-        select = false,
-    }),
+     ["<CR>"] = cmp.mapping({
+       i = function(fallback)
+         if cmp.visible() and cmp.get_active_entry() then
+           cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false })
+         else
+           fallback()
+         end
+       end,
+       s = cmp.mapping.confirm({ select = true }),
+       c = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }),
+     }),
 
-    ["<Tab>"] = cmp.mapping(function(fallback)
+    ['<Tab>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
-        -- cmp.select_next_item()
-        cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
+        if #cmp.get_entries() == 1 then
+          cmp.confirm({ select = true })
+        else
+          cmp.select_next_item()
+        end
       elseif luasnip.expand_or_jumpable() then
         luasnip.expand_or_jump()
-      -- elseif vim.fn["vsnip#available"]() == 1 then
-      --   feedkey("<Plug>(vsnip-expand-or-jump)", "")
-      elseif has_words_before() then
-        cmp.complete()
+      -- elseif has_words_before() then
+      --   cmp.complete()
+      --   if #cmp.get_entries() == 1 then
+      --     cmp.confirm({ select = true })
+      --   end
       else
-        fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
+        fallback()
       end
-    end, {"i", "s"}),
+    end, { "i", "s" }),
 
     ["<S-Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
-        cmp.select_prev_item()
+        if #cmp.get_entries() == 1 then
+          cmp.confirm({ select = true })
+        else
+          cmp.select_prev_item()
+        end
       elseif luasnip.jumpable(-1) then
         luasnip.jump(-1)
-      -- elseif vim.fn["vsnip#jumpable"](-1) == 1 then
-      --   feedkey("<Plug>(vsnip-jump-prev)", "")
+      -- elseif has_words_before() then
+      --   cmp.complete()
+      --   if #cmp.get_entries() == 1 then
+      --     cmp.confirm({ select = true })
+      --   end
       else
         fallback()
       end

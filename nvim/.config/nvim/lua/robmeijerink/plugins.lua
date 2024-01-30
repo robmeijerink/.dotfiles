@@ -162,7 +162,7 @@ require('lazy').setup({
     "moll/vim-bbye",
     { 'mbbill/undotree', cmd = 'UndotreeToggle' },
 
-    'folke/which-key.nvim',
+    -- 'folke/which-key.nvim',
     {
         'nvim-telescope/telescope.nvim',
         dependencies = { { 'nvim-lua/plenary.nvim' }, { "kdheepak/lazygit.nvim" }, { "kyazdani42/nvim-web-devicons" } },
