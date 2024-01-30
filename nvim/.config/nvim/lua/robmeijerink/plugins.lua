@@ -245,9 +245,10 @@ require('lazy').setup({
     },
     {
         'folke/todo-comments.nvim',
-        config = function()
-            require('robmeijerink.todo')
-        end,
+        dependencies = { "nvim-lua/plenary.nvim" },
+        -- config = function()
+        --     require('robmeijerink.todo')
+        -- end,
     },
     {
         'numToStr/Comment.nvim',
