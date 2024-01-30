@@ -26,4 +26,10 @@ require("nvim-tree").setup({
     ignore = false,
     timeout = 400,
   },
+  filesystem_watchers = {
+    ignore_dirs = {
+      "node_modules",
+      "vendor",
+    },
+  },
 })
