@@ -1,14 +1,12 @@
 #!/bin/bash
 
+# Author: Rob Meijerink
+# Source: https://github.com/robmeijerink/.dotfiles/blob/master/bin/.local/scripts/sshf
+
 # Script to easily search SSH connections.
 
-# Set the path to the SSH connections file
-ssh_file=~/.sshf
-
-# Check if the SSH connections file exists, and create it if it doesn't
-if [[ ! -f "$ssh_file" ]]; then
-  touch "$ssh_file"
-fi
+# Set the paths to the SSH connection files
+ssh_files=(~/.sshf ~/.sshf.local)
 
 # Add a new SSH connection to the file
 if [[ "$1" == "add" && -n "$2" ]]; then
@@ -16,9 +14,18 @@ if [[ "$1" == "add" && -n "$2" ]]; then
   ssh_connection="${*:2}"
   # Prompt for a name for the new connection
   read -p "Enter a name for the new SSH connection: " name
-  # Add the new connection to the file
-  echo "ssh $ssh_connection ## $name" >> "$ssh_file"
-  echo "Added $ssh_connection to $ssh_file with name: $name"
+
+  for ssh_file in "${ssh_files[@]}"; do
+    if [[ -f "$ssh_file" ]]; then
+      read -p "Do you want to add $ssh_connection to $ssh_file with name: $name? (y/N): " confirm
+      if [[ "$confirm" =~ ^[Yy]$ ]]; then
+        echo "ssh $ssh_connection ## $name" >> "$ssh_file"
+        echo "Added $ssh_connection to $ssh_file with name: $name"
+      else
+        echo "Skipped adding $ssh_connection to $ssh_file."
+      fi
+    fi
+  done
   exit 0
 fi
 
@@ -35,12 +42,14 @@ fi
 # Search for an SSH connection using FZF
 if [[ "$#" -eq 0 ]]; then
   # Use awk to extract the SSH command and the extra string
-  selection=$(cat "$ssh_file" | awk -F " ## " '{printf "%-80s %s\n", $1, $2}' | fzf)
-  if [[ -n "$selection" ]]; then
-    # Get the SSH command from the selected line and run it
-    ssh_command=$(echo "$selection" | sed 's/\([[:space:]]\{3,\}\).*//')
-
-    eval "$ssh_command"
-  fi
+  for ssh_file in "${ssh_files[@]}"; do
+    if [[ -f "$ssh_file" ]]; then
+      selection=$(cat "$ssh_file" | awk -F " ## " '{printf "%-80s %s\n", $1, $2}' | fzf --exit-0)
+      if [[ -n "$selection" ]]; then
+        # Get the SSH command from the selected line and run it
+        ssh_command=$(echo "$selection" | sed 's/\([[:space:]]\{3,\}\).*//')
+        eval "$ssh_command"
+      fi
+    fi
+  done
 fi
-
