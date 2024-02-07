@@ -285,11 +285,7 @@ local cmp_setup = {
 
     ['<Tab>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
-        if #cmp.get_entries() == 1 then
-          cmp.confirm({ select = true })
-        else
-          cmp.select_next_item()
-        end
+        cmp.select_next_item()
       elseif luasnip.expand_or_jumpable() then
         luasnip.expand_or_jump()
       -- elseif has_words_before() then
@@ -304,11 +300,7 @@ local cmp_setup = {
 
     ["<S-Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
-        if #cmp.get_entries() == 1 then
-          cmp.confirm({ select = true })
-        else
-          cmp.select_prev_item()
-        end
+        cmp.select_prev_item()
       elseif luasnip.jumpable(-1) then
         luasnip.jump(-1)
       -- elseif has_words_before() then
