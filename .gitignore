@@ -1,7 +1,7 @@
 alacritty/.config/alacritty/*
-!alacritty/.config/alacritty/alacritty.yml
-!alacritty/.config/alacritty/appearance.yml
-!alacritty/.config/alacritty/alacritty.local.yml-example
+!alacritty/.config/alacritty/alacritty.toml
+!alacritty/.config/alacritty/appearance.toml
+!alacritty/.config/alacritty/alacritty.local.toml-example
 
 lazygit/.config/lazygit/*
 !lazygit/.config/lazygit/config.yml

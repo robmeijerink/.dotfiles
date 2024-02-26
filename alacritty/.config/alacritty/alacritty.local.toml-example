@@ -1,0 +1,20 @@
+[font]
+family = "FiraCode Nerd Font"
+# Mac-only
+style = "Retina"
+size = 11.5
+
+# Mac-only
+[window]
+decorations = Buttonless
+
+[[keyboard.bindings]]
+# Use the Ctrl-Insert keybinding below to easily insert your Github Auth key.
+# chars = "ghp_YOUR_KEY"
+# key = "Slash"
+# mods = "Control"
+
+# Fixes tmux C-Space in MS Windows
+# chars = "\x00"
+# key = "Space"
+# mods = "Control"
