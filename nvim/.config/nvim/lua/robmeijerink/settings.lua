@@ -165,6 +165,7 @@ function R(name)
     require("plenary.reload").reload_module(name)
 end
 
+-- Hightlight the text when yanking
 autocmd('TextYankPost', {
     group = yank_group,
     pattern = '*',
@@ -176,6 +177,7 @@ autocmd('TextYankPost', {
     end,
 })
 
+-- Remove whitespace on saving a file
 autocmd({"BufWritePre"}, {
     group = RobMeijerinkGroup,
     pattern = "*",
@@ -191,6 +193,14 @@ vim.api.nvim_create_autocmd('BufReadPost', {
       pcall(vim.api.nvim_win_set_cursor, 0, mark)
     end
   end,
+})
+
+-- Indent with tabs in Makefiles
+vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
+  pattern = {"Makefile","*.make"}, -- Specify the file pattern for Makefiles
+  callback = function()
+    vim.opt_local.expandtab = false -- Set local option to use tab characters
+  end
 })
 
 vim.g.netrw_browse_split = 0
