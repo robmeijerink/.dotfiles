@@ -8,3 +8,5 @@ lazygit/.config/lazygit/*
 
 nvm/.nvm/*
 !nvm/.nvm/default-packages
+
+nvim/.config/nvim/init_local.lua
