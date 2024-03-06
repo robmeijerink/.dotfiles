@@ -12,15 +12,25 @@ require('fidget').setup()
 -- Preset enables customization of nvim-cmp settings.
 lsp.preset('lsp-compe')
 
-lsp.ensure_installed({
-  'intelephense',
-  'rust_analyzer',
-  'gopls',
-  'tsserver',
-  'lua_ls',
-  'volar',
-  'tailwindcss',
-  'emmet_ls',
+require('mason').setup({})
+require('mason-lspconfig').setup({
+    ensure_installed = {
+        'intelephense',
+        'rust_analyzer',
+        'gopls',
+        'tsserver',
+        'lua_ls',
+        'volar',
+        'tailwindcss',
+        'emmet_ls',
+    },
+  handlers = {
+    lsp.default_setup,
+    lua_ls = function()
+      local lua_opts = lsp.nvim_lua_ls()
+      require('lspconfig').lua_ls.setup(lua_opts)
+    end,
+  },
 })
 
 -- Fix Undefined global 'vim'
@@ -118,29 +128,29 @@ lsp.on_attach(function(client, bufnr)
   })
 end)
 
-require('lspconfig').lua_ls.setup {
-  settings = {
-    Lua = {
-      runtime = {
-        -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-        version = 'LuaJIT',
-      },
-      diagnostics = {
-        -- Get the language server to recognize the `vim` global
-        globals = {'vim'},
-      },
-      workspace = {
-        -- Make the server aware of Neovim runtime files
-        library = vim.api.nvim_get_runtime_file("", true),
-        checkThirdParty = false,
-      },
-      -- Do not send telemetry data containing a randomized but unique identifier
-      telemetry = {
-        enable = false,
-      },
-    },
-  },
-}
+-- require('lspconfig').lua_ls.setup {
+--   settings = {
+--     Lua = {
+--       runtime = {
+--         -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+--         version = 'LuaJIT',
+--       },
+--       diagnostics = {
+--         -- Get the language server to recognize the `vim` global
+--         globals = {'vim'},
+--       },
+--       workspace = {
+--         -- Make the server aware of Neovim runtime files
+--         library = vim.api.nvim_get_runtime_file("", true),
+--         checkThirdParty = false,
+--       },
+--       -- Do not send telemetry data containing a randomized but unique identifier
+--       telemetry = {
+--         enable = false,
+--       },
+--     },
+--   },
+-- }
 
 lsp.configure('emmet_ls', {
   filetypes = { 'html', 'typescriptreact', 'javascriptreact', 'blade', 'vue' },
@@ -207,7 +217,7 @@ lsp.configure('emmet_ls', {
 -- })
 
 -- Setup LSP
-lsp.setup()
+-- lsp.setup()
 
 vim.diagnostic.config({
   virtual_text = true,
