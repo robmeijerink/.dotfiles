@@ -30,19 +30,26 @@ require('mason-lspconfig').setup({
       local lua_opts = lsp.nvim_lua_ls()
       require('lspconfig').lua_ls.setup(lua_opts)
     end,
+    emmet_ls = function()
+        local capabilities = vim.lsp.protocol.make_client_capabilities()
+        require('lspconfig').emmet_ls.setup({
+            capabilities = capabilities,
+            filetypes = { 'html', 'typescriptreact', 'javascriptreact', 'blade', 'vue' },
+        })
+    end,
   },
 })
 
 -- Fix Undefined global 'vim'
 -- lsp.nvim_workspace()
 
-local has_words_before = function()
-  unpack = unpack or table.unpack
-  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-  return col ~= 0
-             and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s")
-             == nil
-end
+-- local has_words_before = function()
+--   unpack = unpack or table.unpack
+--   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+--   return col ~= 0
+--              and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s")
+--              == nil
+-- end
 
 -- local feedkey = function(key, mode)
 --   vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
@@ -52,7 +59,7 @@ end
 local lspkind = require('lspkind')
 local luasnip = require('luasnip')
 
-lsp.set_preferences({
+lsp.preset({
     suggest_lsp_servers = false,
     sign_icons = {
         error = ' ',
@@ -151,10 +158,6 @@ end)
 --     },
 --   },
 -- }
-
-lsp.configure('emmet_ls', {
-  filetypes = { 'html', 'typescriptreact', 'javascriptreact', 'blade', 'vue' },
-})
 
 -- jose-elias-alvarez/null-ls.nvim
 -- local null_ls = require('null-ls')
