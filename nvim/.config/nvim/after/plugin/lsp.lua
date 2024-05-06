@@ -3,6 +3,7 @@ local nnoremap = Remap.nnoremap
 local inoremap = Remap.inoremap
 
 local lsp = require("lsp-zero")
+lsp.extend_lspconfig()
 
 -- Setup neovim lua configuration
 require('neodev').setup()
@@ -10,7 +11,7 @@ require('neodev').setup()
 require('fidget').setup()
 
 -- Preset enables customization of nvim-cmp settings.
-lsp.preset('lsp-compe')
+-- lsp.preset('lsp-compe')
 
 require('mason').setup({})
 require('mason-lspconfig').setup({
@@ -59,16 +60,6 @@ require('mason-lspconfig').setup({
 local lspkind = require('lspkind')
 local luasnip = require('luasnip')
 
-lsp.preset({
-    suggest_lsp_servers = false,
-    sign_icons = {
-        error = ' ',
-        warn = ' ',
-        info = ' ',
-        hint = '󰌶 ',
-    }}
-)
-
 -- These signs show on the left, next to the line number
 local signs = {Error = " ", Warn = " ", Info = " ", Hint = "󰌶" }
 
@@ -92,7 +83,7 @@ lsp.on_attach(function(client, bufnr)
   nnoremap('gT', function() vim.lsp.buf.type_definition() end, opts)
   nnoremap('gi', function() vim.lsp.buf.implementation() end, opts)
   nnoremap("K", function() vim.lsp.buf.hover() end, opts)
-  nnoremap("<leader>vws", function() vim.lsp.buf.workspace_symbol() end, opts)
+  nnoremap("<leader>vws", function() vim.lsp.buf.workspace_symbol("") end, opts)
   nnoremap("<leader>vd", function() vim.diagnostic.open_float() end, opts)
   nnoremap("[d", function() vim.diagnostic.goto_next() end, opts)
   nnoremap("]d", function() vim.diagnostic.goto_prev() end, opts)

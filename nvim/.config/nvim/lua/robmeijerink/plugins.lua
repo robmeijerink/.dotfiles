@@ -115,7 +115,7 @@ require('lazy').setup({
 
             -- OTHERS
             -- Useful status updates for LSP
-            { 'j-hui/fidget.nvim', tag = "legacy", event = "LspAttach" },
+            { 'j-hui/fidget.nvim', tag = "v1.0.0", event = "LspAttach" },
 
             -- Additional lua configuration, makes nvim stuff amazing
             'folke/neodev.nvim',
@@ -236,19 +236,20 @@ require('lazy').setup({
         },
     },
     {
-        "NTBBloodbath/rest.nvim",
-        dependencies = { "nvim-lua/plenary.nvim" },
+        "vhyrro/luarocks.nvim",
+        priority = 1000,
+        config = true,
+        opts = {
+            rocks = { "lua-curl", "nvim-nio", "mimetypes", "xml2lua" }
+        }
+    },
+    {
+        "rest-nvim/rest.nvim",
+        ft = "http",
+        dependencies = { "luarocks.nvim" },
         config = function()
             require('robmeijerink.rest-nvim')
         end,
-        cmd = { 'RestNvim', 'RestNvimPreview', 'RestNvimLast' }
-    },
-    {
-        'folke/todo-comments.nvim',
-        dependencies = { "nvim-lua/plenary.nvim" },
-        -- config = function()
-        --     require('robmeijerink.todo')
-        -- end,
     },
     {
         'numToStr/Comment.nvim',
@@ -376,32 +377,32 @@ require('lazy').setup({
     {
         "nvim-neotest/neotest",
         dependencies = {
+            "nvim-neotest/nvim-nio",
             "nvim-lua/plenary.nvim",
+            "antoinemadec/FixCursorHold.nvim",
             "nvim-treesitter/nvim-treesitter",
-            -- "antoinemadec/FixCursorHold.nvim",
-            -- 'olimorris/neotest-phpunit',
-            'theutz/neotest-pest',
+            'theutz/neotest-pest'
         },
         config = function()
             require('robmeijerink.neotest')
         end,
     },
 
-    {
-       'phpactor/phpactor',
-        branch = 'master',
-        ft = 'php',
-        run = 'composer install --no-dev -o',
-        config = function()
-            vim.cmd([[
-            augroup PhpactorMappings
-            au!
-            au FileType php nmap <buffer> <Leader>Pm :PhpactorContextMenu<CR>
-            au FileType php nmap <buffer> <Leader>Pn :PhpactorClassNew<CR>
-            augroup END
-            ]])
-        end,
-    },
+    -- Error: [lsp-zero] Some language servers have been configured before lsp-zero could finish its initial setup. Some features may fail.
+    -- {
+    --     "gbprod/phpactor.nvim",
+    --     build = function()
+    --         require("phpactor.handler.update")()
+    --     end,
+    --     dependencies = {
+    --         "nvim-lua/plenary.nvim",
+    --         "nvim-lua/plenary.nvim",
+    --         "neovim/nvim-lspconfig"
+    --     },
+    --     opts = {
+    --         -- you're options coes here
+    --     },
+    -- },
 
     -- Enable dd in quickfix list
     'TamaMcGlinn/quickfixdd',
