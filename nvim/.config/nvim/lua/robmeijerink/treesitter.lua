@@ -9,6 +9,7 @@ require('nvim-treesitter.configs').setup {
         "typescript",
         "vue",
         "lua",
+        "luadoc",
         "php",
         "go",
         "gomod",
@@ -18,6 +19,9 @@ require('nvim-treesitter.configs').setup {
         "toml",
         "http",
         "json",
+        "diff",
+        "vim",
+        "vimdoc",
     },
     sync_installed = true,
     highlight = {

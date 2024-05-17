@@ -251,12 +251,12 @@ require('lazy').setup({
             require('robmeijerink.rest-nvim')
         end,
     },
-    {
-        'numToStr/Comment.nvim',
-        config = function()
-            require('robmeijerink.comment')
-        end,
-    },
+    -- {
+    --     'numToStr/Comment.nvim',
+    --     config = function()
+    --         require('robmeijerink.comment')
+    --     end,
+    -- },
     { 'sheerun/vim-polyglot' },
     {
         'norcalli/nvim-colorizer.lua',

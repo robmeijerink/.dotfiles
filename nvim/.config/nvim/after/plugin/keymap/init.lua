@@ -290,3 +290,5 @@ nnoremap('<leader>Rl', "<Plug>RestNvimLast", { desc = "Re-run the last request" 
 nnoremap('<leader>zz', "<cmd>ZenMode<CR>", { desc = "Toggle Zen Mode" })
 nnoremap('<leader>zt', "<cmd>Twilight<CR>", { desc = "Toggle Twilight" })
 
+-- LSP inlay hints
+nnoremap('<leader>lh', function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({})) end, { desc = "Toggle Inlay Hints" })
