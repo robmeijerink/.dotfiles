@@ -1,5 +1,5 @@
 local actions = require('telescope.actions')
-local trouble = require("trouble.providers.telescope")
+local trouble = require("trouble.sources.telescope")
 local lga_actions = require("telescope-live-grep-args.actions")
 local grep_args = { '--hidden', '--glob', '!**/.git/*' }
 
@@ -50,13 +50,13 @@ require('telescope').setup {
         ["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
         ["<esc>"] = actions.close,
         ["<CR>"] = actions.select_default + actions.center,
-        ["<C-t>"] = trouble.open_with_trouble,
+        ["<C-t>"] = trouble.open,
       },
       n = {
         ["<C-j>"] = actions.move_selection_next,
         ["<C-k>"] = actions.move_selection_previous,
         ["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
-        ["<C-t>"] = trouble.open_with_trouble
+        ["<C-t>"] = trouble.open,
       }
     }
   },
@@ -97,4 +97,3 @@ require('telescope').setup {
 pcall(require('telescope').load_extension, 'fzf')
 pcall(require('telescope').load_extension, 'lazygit')
 pcall(require('telescope').load_extension, 'dap')
-pcall(require("telescope").load_extension("package_info"), 'package_info')

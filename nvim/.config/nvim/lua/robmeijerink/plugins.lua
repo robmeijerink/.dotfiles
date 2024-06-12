@@ -150,15 +150,6 @@ require('lazy').setup({
     --         require('robmeijerink.impatient')
     --     end,
     -- },
-    {
-        'vuki656/package-info.nvim',
-        dependencies = {
-            'MunifTanjim/nui.nvim'
-        },
-        config = function()
-            require('package-info').setup()
-        end,
-    },
     "moll/vim-bbye",
     { 'mbbill/undotree', cmd = 'UndotreeToggle' },
 
