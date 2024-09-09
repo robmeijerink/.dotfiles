@@ -5,7 +5,7 @@ git:
   parseEmoji: true
   paging:
     colorArg: always
-    pager: delta --dark --paging=never
+    pager: delta --paging=never --hyperlinks --line-numbers
 os:
   Open: 'nvim {{filename}}'
   OS.Edit,EditAtLine: '{{editor}} +{{line}} -- {{filename}}'
