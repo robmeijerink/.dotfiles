@@ -19,7 +19,7 @@ require('mason-lspconfig').setup({
         'intelephense',
         'rust_analyzer',
         'gopls',
-        'tsserver',
+        'ts_ls',
         'lua_ls',
         'volar',
         'tailwindcss',
