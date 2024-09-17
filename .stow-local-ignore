@@ -28,3 +28,5 @@ setup\.sh      # Setup scripts to setup some dependencies and directories.
 ^/README.*
 ^/LICENSE.*
 ^/COPYING
+
+codestyle # Contains my personal code style settings
