@@ -38,6 +38,9 @@ else
     sudo apt install -y xdotool # Used for keyboard shortcuts in Ubuntu, e.g.: xdotool search --onlyvisible --class "firefox" windowactivate
 fi
 
+# Needed for rest.nvim: Lua5.1
+# sudo apt install -y lua5.1
+
 brew install tmux
 brew install ripgrep
 brew install fzf
