@@ -1,4 +1,3 @@
-import = ["/home/rob/.config/alacritty/appearance.toml", "/home/rob/.config/alacritty/alacritty.local.toml"]
 
 [[keyboard.bindings]]
 action = "ResetFontSize"
@@ -28,3 +27,6 @@ mods = "Control|Shift"
 [selection]
 save_to_clipboard = true
 semantic_escape_chars = ",│`|:\"' ()[]{}<>"
+
+[general]
+import = ["/home/rob/.config/alacritty/appearance.toml", "/home/rob/.config/alacritty/alacritty.local.toml"]
