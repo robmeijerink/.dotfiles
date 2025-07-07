@@ -21,7 +21,7 @@ require('mason-lspconfig').setup({
         'gopls',
         'ts_ls',
         'lua_ls',
-        'volar',
+        -- 'volar',
         'tailwindcss',
         'emmet_ls',
     },

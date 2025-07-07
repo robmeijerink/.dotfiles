@@ -28,7 +28,7 @@ fi
 
 # ls, the common ones I use exa for ls
 alias la='ls -lAFh'   #long list,show almost all,show type,human readable
-alias lt='ls -la --sort=modified'   #sorted by date,recursive,show type,human readable
+# alias lt='ls -la --sort=modified'   #sorted by date,recursive,show type,human readable
 alias lr='ls -la --sort=modified --reverse'   #sorted by date,recursive,show type,human readable
 alias ldot='ls -ld .*'
 alias lst='ls -T'     #ls with tree
