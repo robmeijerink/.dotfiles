@@ -9,10 +9,17 @@ size = 11.5
 decorations = Buttonless
 
 [[keyboard.bindings]]
-# Use the Ctrl-Insert keybinding below to easily insert your Github Auth key.
-# chars = "ghp_YOUR_KEY"
+# --- OPTION 1: UBUNTU (Wayland) ---
 # key = "Slash"
 # mods = "Control"
+# action = "Spawn"
+# command = { program = "sh", args = ["-c", "bw get password 'GitHub Vault PAT' | wl-copy"] }
+
+# --- OPTION 2: MACOS (pbcopy) ---
+# key = "Slash"
+# mods = "Control"
+# action = "Spawn"
+# command = { program = "sh", args = ["-c", "bw get password 'GitHub Vault PAT' | pbcopy"] }
 
 # Fixes tmux C-Space in MS Windows
 # chars = "\x00"
