@@ -13,6 +13,7 @@ plug "$HOME/.config/zsh/exports.zsh"
 
 # plugins
 plug "$HOME/.config/zsh/plugins/dirpersist.zsh"
+plug "$HOME/.config/zsh/plugins/ssh-load.zsh"
 
 # plug "esc/conda-zsh-completion"
 plug "zsh-users/zsh-autosuggestions"
