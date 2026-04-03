@@ -26,7 +26,7 @@ if command -v bat &> /dev/null; then
   alias catt="bat --theme \"Dracula\""
 fi
 
-# ls, the common ones I use exa for ls
+# ls, the common ones I use eza for ls
 alias la='ls -lAFh'   #long list,show almost all,show type,human readable
 # alias lt='ls -la --sort=modified'   #sorted by date,recursive,show type,human readable
 alias lr='ls -la --sort=modified --reverse'   #sorted by date,recursive,show type,human readable

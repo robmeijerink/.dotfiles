@@ -3,9 +3,9 @@ gui:
 git:
   disableForcePushing: true
   parseEmoji: true
-  paging:
-    colorArg: always
-    pager: delta --paging=never --hyperlinks --line-numbers
+  pagers:
+    - colorArg: always
+      pager: delta --paging=never --hyperlinks --line-numbers
 os:
   Open: 'nvim {{filename}}'
   OS.Edit,EditAtLine: '{{editor}} +{{line}} -- {{filename}}'
