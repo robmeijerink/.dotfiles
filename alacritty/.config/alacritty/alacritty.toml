@@ -1,30 +1,70 @@
-import = ["/home/rob/.config/alacritty/appearance.toml", "/home/rob/.config/alacritty/alacritty.local.toml"]
+# =========================================================
+# Alacritty Configuration - Rob Meijerink
+# =========================================================
 
-[[keyboard.bindings]]
-action = "ResetFontSize"
-key = "Key0"
-mods = "Control"
+# Gebruik relatieve paden voor cross-platform compatibiliteit
+import = [
+    "~/.config/alacritty/appearance.toml",
+    "~/.config/alacritty/alacritty.local.toml"
+]
 
-[[keyboard.bindings]]
-action = "IncreaseFontSize"
-key = "Equals"
-mods = "Control"
+[window]
+# Nuchtere window instellingen
+padding = { x = 10, y = 10 }
+dynamic_padding = true
+decorations = "full"
+startup_mode = "Maximized"
 
-[[keyboard.bindings]]
-action = "DecreaseFontSize"
-key = "Minus"
-mods = "Control"
-
-[[keyboard.bindings]]
-action = "SpawnNewInstance"
-key = "N"
-mods = "Shift|Control"
-
-[[keyboard.bindings]]
-chars = "t\r"
-key = "F"
-mods = "Control|Shift"
+[scrolling]
+history = 10000
+multiplier = 3
 
 [selection]
 save_to_clipboard = true
 semantic_escape_chars = ",│`|:\"' ()[]{}<>"
+
+[cursor]
+style = { shape = "Block", blinking = "On" }
+unfocused_hollow = true
+
+# =========================================================
+# KEYBINDINGS
+# =========================================================
+
+[[keyboard.bindings]]
+key = "Key0"
+mods = "Control"
+action = "ResetFontSize"
+
+[[keyboard.bindings]]
+key = "Equals"
+mods = "Control"
+action = "IncreaseFontSize"
+
+[[keyboard.bindings]]
+key = "Minus"
+mods = "Control"
+action = "DecreaseFontSize"
+
+[[keyboard.bindings]]
+key = "N"
+mods = "Control|Shift"
+action = "SpawnNewInstance"
+
+# De "Rob Meijerink Special": Directe tunnel naar je sessionizer
+[[keyboard.bindings]]
+key = "F"
+mods = "Control|Shift"
+chars = "t\r"
+
+# =========================================================
+# HINTS (URL & Path opener)
+# =========================================================
+# Ctrl+Shift+U to open URL in browser
+[[hints.enabled]]
+command = "xdg-open" # Gebruik "open" op macOS (regel dit via alacritty.local.toml)
+hyperlinks = true
+post_processing = true
+regex = "(ipfs:|ipns:|magnet:|mailto:|gemini:|gopher:|https:|http:|news:|file:|git:|ssh:|ftp:)[^\u0000-\u001F\u007F-\u009F<>\"\\s{-}\\^⟨⟩`]+"
+binding = { key = "U", mods = "Control|Shift" }
+mouse = { enabled = true, mods = "None" }

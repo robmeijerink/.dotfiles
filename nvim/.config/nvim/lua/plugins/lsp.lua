@@ -22,8 +22,11 @@ return {
         config = function()
             local lsp_zero = require('lsp-zero')
 
+            -- CRUCIAAL: Herstelt communicatie tussen lspconfig en mason-lspconfig.
+            -- Lost de "attempt to call field 'enable' (a nil value)" error op.
+            lsp_zero.extend_lspconfig()
+
             -- 1. LSP Handlers & Diagnostics Configuration
-            -- Taken from legacy twilight.lua and lsp.lua
             vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
                 vim.lsp.diagnostic.on_publish_diagnostics, {
                     underline = true,
@@ -75,7 +78,6 @@ return {
                     vim.keymap.set(mode, lhs, rhs, { buffer = bufnr, remap = false, desc = desc })
                 end
 
-                -- Disable eslint if other tools are preferred
                 if client.name == "eslint" then
                     vim.cmd [[ LspStop eslint ]]
                     return
@@ -94,39 +96,11 @@ return {
                 map("n", "]d", function() vim.diagnostic.goto_prev() end, "Previous Diagnostic")
                 map("n", "<leader>vca", function() vim.lsp.buf.code_action() end, "Code Actions")
 
-                -- Specialized Code Action Filter (from your legacy config)
-                map("n", "<leader>vco", function()
-                    vim.lsp.buf.code_action({
-                        filter = function(code_action)
-                            if not code_action or not code_action.data then return false end
-                            local data = code_action.data.id
-                            return string.sub(data, #data - 1, #data) == ":0"
-                        end,
-                        apply = true
-                    })
-                end, "Code Actions (Filter :0)")
-
                 map("n", "<leader>rr", function() vim.lsp.buf.references() end, "LSP References")
                 map("n", "<leader>rn", function() vim.lsp.buf.rename() end, "Rename")
                 map("i", "<C-h>", function() vim.lsp.buf.signature_help() end, "Signature Help")
 
-                -- Initialize LSP Signature
                 require("lsp_signature").on_attach(signature_cfg, bufnr)
-
-                -- Diagnostics on CursorHold
-                vim.api.nvim_create_autocmd("CursorHold", {
-                    buffer = bufnr,
-                    callback = function()
-                        vim.diagnostic.open_float(nil, {
-                            focusable = false,
-                            close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
-                            border = 'rounded',
-                            source = 'always',
-                            prefix = ' ',
-                            scope = 'cursor',
-                        })
-                    end
-                })
             end)
 
             -- 4. Server Management (Mason)
@@ -134,46 +108,23 @@ return {
             require('mason').setup({})
             require('mason-lspconfig').setup({
                 ensure_installed = {
-                    'intelephense', 'rust_analyzer', 'gopls', 'ts_ls',
+                    'intelephense', 'rust_analyzer', 'gopls', 'tsserver',
                     'lua_ls', 'tailwindcss', 'emmet_ls',
                 },
                 handlers = {
                     lsp_zero.default_setup,
                     lua_ls = function()
-                        local lua_opts = lsp_zero.nvim_lua_ls()
-                        require('lspconfig').lua_ls.setup(lua_opts)
-                    end,
-                    emmet_ls = function()
-                        require('lspconfig').emmet_ls.setup({
-                            filetypes = { 'html', 'typescriptreact', 'javascriptreact', 'blade', 'vue' },
-                        })
+                        -- Gebruik de stabiele v3 helper voor Lua development
+                        require('lspconfig').lua_ls.setup(lsp_zero.nvim_lua_ls())
                     end,
                 },
             })
 
             -- 5. LSPSaga Setup
             require('lspsaga').setup({
-                debug = false,
-                use_saga_diagnostic_sign = true,
-                error_sign = "",
-                warn_sign = "",
-                hint_sign = "󰌶",
-                diagnostic_header_icon = "   ",
-                code_action_icon = " ",
-                code_action_prompt = { enable = true, sign = true, sign_priority = 40, virtual_text = true },
-                finder_definition_icon = "  ",
-                finder_reference_icon = "  ",
-                max_preview_lines = 10,
-                finder_action_keys = {
-                    open = "o", vsplit = "s", split = "i", quit = "q",
-                    scroll_down = "<C-f>", scroll_up = "<C-b>"
-                },
-                code_action_keys = { quit = "q", exec = "<CR>" },
-                rename_action_keys = { quit = "<C-c>", exec = "<CR>" },
-                definition_preview_icon = "󱡴  ",
                 border_style = "single",
-                rename_prompt_prefix = "➤",
-                diagnostic_prefix_format = "%d. "
+                code_action_icon = " ",
+                diagnostic_header_icon = "   ",
             })
         end
     },
