@@ -1,11 +1,37 @@
 gui:
   nerdFontsVersion: "3"
+  showIcons: true
+  theme:
+    activeBorderColor:
+      - "#5eacd3"
+      - bold
+    inactiveBorderColor:
+      - "#333333"
+    searchingActiveBorderColor:
+      - "#ffb86c" # Dracula orange
 git:
   disableForcePushing: true
   parseEmoji: true
-  pagers:
-    - colorArg: always
-      pager: delta --paging=never --hyperlinks --line-numbers
+  paging:
+    colorArg: always
+    pager: delta --dark --paging=never --hyperlinks --line-numbers --syntax-theme=Dracula
+  commit:
+    signOff: false # Set true if clients require DCO (Developer Certificate of Origin)
+  allBranchesLogCmd: "git log --graph --all --color=always --abbrev-commit --date=relative --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'"
+
 os:
-  Open: 'nvim {{filename}}'
-  OS.Edit,EditAtLine: '{{editor}} +{{line}} -- {{filename}}'
+  edit: 'nvim {{filename}}'
+  editAtLine: 'nvim +{{line}} -- {{filename}}'
+  editAtLineWait: 'nvim +{{line}} -- {{filename}}'
+
+customCommands:
+  - key: 'F'
+    command: "git commit --fixup {{.SelectedLocalCommit.Hash}}"
+    context: 'commits'
+    description: 'Fixup commit (auto-squash ready)'
+    loadingText: 'Fixing up...'
+  - key: 'L'
+    command: "git push --force-with-lease"
+    context: 'global'
+    description: 'Safe force push (with lease)'
+    loadingText: 'Pushing safely...'
