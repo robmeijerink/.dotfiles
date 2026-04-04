@@ -1,10 +1,34 @@
-#!/bin/sh
+#!/usr/bin/env bash
+# =========================================================
+# Tool: sd - Interactive Search & Replace
+# Author: Rob Meijerink (Solvalutions)
+# Performance: O(n) file discovery, O(m) replacement
+# =========================================================
 
-gum style "Find and replace"
-FIND=$(gum input --placeholder "find")
-gum style "Find: $FIND"
-REPLACE=$(gum input --placeholder "replace with")
-gum style "Replace: $REPLACE"
-WHERE=$(gum input --placeholder ".")
+# Check for dependencies
+for tool in gum fd sad rg; do
+    if ! command -v "$tool" >/dev/null; then
+        echo "Error: $tool is not installed."
+        exit 1
+    fi
+done
 
-fd "$WHERE" | sad "$FIND" "$REPLACE"
+gum style --foreground 4 "--- Solvalutions Global Search & Replace ---"
+
+# 1. Inputs with validation
+FIND=$(gum input --placeholder "String to find (regex supported)")
+[[ -z "$FIND" ]] && exit 0
+
+REPLACE=$(gum input --placeholder "Replace with")
+# REPLACE kan leeg zijn (verwijderen), dus we checken alleen op afbreken (Ctrl+C)
+[[ $? -ne 0 ]] && exit 0
+
+WHERE=$(gum input --placeholder "Directory to search (default: .)")
+WHERE=${WHERE:-.}
+
+# 2. Execution Logic
+# We use ripgrep (rg) to find files containing the pattern first.
+# This is significantly faster than piping every file in the system to sad.
+echo "Scanning $WHERE for '$FIND'..."
+
+rg --files-with-matches "$FIND" "$WHERE" | sad "$FIND" "$REPLACE"

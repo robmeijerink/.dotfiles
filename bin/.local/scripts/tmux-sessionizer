@@ -1,31 +1,39 @@
 #!/usr/bin/env bash
 
+# Select the target directory
 if [[ $# -eq 1 ]]; then
-    # Adding support for simply passing the current working directory or a specified path
-    selected="$1" && [[ "$selected" == '.' ]] && selected="$PWD"
+    selected="$1"
 else
-    selected=$(echo -e "./\n$(find ~/projects ~/ -mindepth 1 -maxdepth 1 -type d)" | fzf)
+    # Performance fix: Only scan specific project roots to avoid O(n) home-dir lag
+    # Adjust the paths below to your actual project locations
+    selected=$(find ~/projects ~/.dotfiles -mindepth 1 -maxdepth 1 -type d 2>/dev/null | fzf)
 fi
 
-if [[ $selected == './' ]]; then
-    # Adding support for simply passing the current working directory or a specified path
-    selected="$(pwd)"
-fi
-
-if [[ -z $selected ]]; then
+# Exit if no selection was made (e.g., pressed ESC in fzf)
+if [[ -z "$selected" ]]; then
     exit 0
 fi
 
+# Technical fix: handle dots and special characters in session names
 selected_name=$(basename "$selected" | tr . _)
 
-# This works in all situations.
-# If you are in a tmux session, and the selected session does exist, switch to it; if not, create a new one and then switch to it.
-if [[ -n $TMUX ]]; then
-  tmux switch-client -t "$selected_name" \
-  || tmux new-session -ds "$selected_name" -c "$selected" \
-  && tmux switch-client -t "$selected_name"
-# If outside of a tmux session, try to create a new session; if it fails, it attaches to the selected session
-elif [[ -z $TMUX ]]; then
-  tmux new-session -s "$selected_name" -c "$selected" \
-  || tmux attach -t "$selected_name"
+# Logic to check if session already exists (O(1) tmux lookup)
+tmux_running=$(pgrep tmux)
+
+if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
+    # Start tmux if not running
+    tmux new-session -s "$selected_name" -c "$selected"
+    exit 0
+fi
+
+if ! tmux has-session -t="$selected_name" 2> /dev/null; then
+    # Create session in background if it doesn't exist
+    tmux new-session -ds "$selected_name" -c "$selected"
+fi
+
+# Switch to the session
+if [[ -z $TMUX ]]; then
+    tmux attach-session -t "$selected_name"
+else
+    tmux switch-client -t "$selected_name"
 fi

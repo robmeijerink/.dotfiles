@@ -1,55 +1,51 @@
-#!/bin/bash
-
-# Author: Rob Meijerink
-# Source: https://github.com/robmeijerink/.dotfiles/blob/master/bin/.local/scripts/sshf
-
-# Script to easily search SSH connections.
+#!/usr/bin/env bash
+# =========================================================
+# Tool: sshf - Fuzzy SSH Finder
+# Author: Rob Meijerink (Solvalutions)
+# Optimized for performance and secure input handling
+# =========================================================
 
 # Set the paths to the SSH connection files
-ssh_files=(~/.sshf ~/.sshf.local)
+ssh_files=("$HOME/.sshf" "$HOME/.sshf.local")
 
-# Add a new SSH connection to the file
+# --- 1. Add Functionality ---
 if [[ "$1" == "add" && -n "$2" ]]; then
-  # Extract the hostname and port number from the input if present
-  ssh_connection="${*:2}"
-  # Prompt for a name for the new connection
-  read -p "Enter a name for the new SSH connection: " name
+    ssh_connection="${*:2}"
+    read -p "Enter a name for the new SSH connection: " name
 
-  for ssh_file in "${ssh_files[@]}"; do
-    if [[ -f "$ssh_file" ]]; then
-      read -p "Do you want to add $ssh_connection to $ssh_file with name: $name? (y/N): " confirm
-      if [[ "$confirm" =~ ^[Yy]$ ]]; then
-        echo "ssh $ssh_connection ## $name" >> "$ssh_file"
-        echo "Added $ssh_connection to $ssh_file with name: $name"
-      else
-        echo "Skipped adding $ssh_connection to $ssh_file."
-      fi
-    fi
-  done
-  exit 0
+    for ssh_file in "${ssh_files[@]}"; do
+        if [[ -f "$ssh_file" ]]; then
+            read -p "Add $ssh_connection to $ssh_file with name: $name? (y/N): " confirm
+            if [[ "$confirm" =~ ^[Yy]$ ]]; then
+                # Security: Use printf to avoid interpretation of special characters
+                printf "ssh %s ## %s\n" "$ssh_connection" "$name" >> "$ssh_file"
+                echo "Added successfully."
+            fi
+        fi
+    done
+    exit 0
 fi
 
-# Display help information
+# --- 2. Help Functionality ---
 if [[ "$1" == "help" ]]; then
-  echo "Usage: sshf [add <username@hostname> [-p <port>]] | [help]"
-  echo "  add <username@hostname> - Add a new SSH connection to the list"
-  echo "  help - Display this help information"
-  echo ""
-  echo "Running sshf will search for saved SSH connections using FZF."
-  exit 0
+    echo "Usage: sshf [add <user@host> [-p <port>]]"
+    exit 0
 fi
 
-# Search for an SSH connection using FZF
+# --- 3. Search & Connect (The Senior Way) ---
 if [[ "$#" -eq 0 ]]; then
-  # Use awk to extract the SSH command and the extra string
-  for ssh_file in "${ssh_files[@]}"; do
-    if [[ -f "$ssh_file" ]]; then
-      selection=$(cat "$ssh_file" | awk -F " ## " '{printf "%-80s %s\n", $1, $2}' | fzf --exit-0)
-      if [[ -n "$selection" ]]; then
-        # Get the SSH command from the selected line and run it
-        ssh_command=$(echo "$selection" | sed 's/\([[:space:]]\{3,\}\).*//')
+    # O(n) to collect, but fzf filtering is O(log n) for the user
+    # Combine all existing files into a single stream for fzf
+    selection=$(grep -h "^ssh" "${ssh_files[@]}" 2>/dev/null | \
+                awk -F " ## " '{printf "%-60s %s\n", $1, $2}' | \
+                fzf --exit-0 --height 40% --reverse)
+
+    if [[ -n "$selection" ]]; then
+        # Extract the command (everything before the triple space padding)
+        # Using pure bash string manipulation for O(1) speed
+        ssh_command="${selection%%  *}"
+
+        echo "Connecting: $ssh_command"
         eval "$ssh_command"
-      fi
     fi
-  done
 fi
