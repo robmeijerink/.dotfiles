@@ -8,7 +8,9 @@ return {
     keys = {
         {
             "<leader>lf",
-            function() require("conform").format({ async = true, lsp_fallback = true }) end,
+            function()
+                require("conform").format({ async = true, lsp_fallback = true })
+            end,
             mode = "",
             desc = "Format buffer",
         },
@@ -16,7 +18,8 @@ return {
     opts = {
         formatters_by_ft = {
             lua = { "stylua" },
-            php = { "pint", "phpcbf" }, -- Uses Laravel Pint if available, else phpcbf
+            -- Sequence: Try Laravel Pint first. If it fails/not found, use phpcbf with custom ruleset.
+            php = { "pint", "phpcbf" },
             blade = { "blade-formatter" },
             javascript = { "prettierd", "prettier", stop_after_first = true },
             typescript = { "prettierd", "prettier", stop_after_first = true },
@@ -27,6 +30,12 @@ return {
             css = { "prettier" },
             html = { "prettier" },
             json = { "prettierd", "prettier", stop_after_first = true },
+        },
+        formatters = {
+            phpcbf = {
+                -- Pointing to the Solvalutions standard defined in your dotfiles
+                args = { "--standard=" .. vim.fn.expand("~/.config/php/phpcs.xml"), "-" },
+            },
         },
         format_on_save = {
             timeout_ms = 1000,

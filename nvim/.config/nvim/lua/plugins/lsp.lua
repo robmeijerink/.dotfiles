@@ -22,8 +22,6 @@ return {
         config = function()
             local lsp_zero = require('lsp-zero')
 
-            -- CRUCIAAL: Herstelt communicatie tussen lspconfig en mason-lspconfig.
-            -- Lost de "attempt to call field 'enable' (a nil value)" error op.
             lsp_zero.extend_lspconfig()
 
             -- 1. LSP Handlers & Diagnostics Configuration
@@ -109,12 +107,14 @@ return {
             require('mason-lspconfig').setup({
                 ensure_installed = {
                     'intelephense',    -- PHP/Laravel
+                    'phpcs',           -- The linter
+                    'phpcbf',          -- The formatter
                     'gopls',           -- Go
                     'tsserver',        -- JS/TS/Vue
-                    'lua_ls',          -- Neovim config zelf
+                    'lua_ls',          -- Neovim config and lua
                     'tailwindcss',     -- Tailwind
                     'emmet_ls',        -- HTML/CSS shortcuts
-                    'rust_analyzer',   -- Rust (indien nodig)
+                    'rust_analyzer',   -- Rust
                 },
                 handlers = {
                     lsp_zero.default_setup,
