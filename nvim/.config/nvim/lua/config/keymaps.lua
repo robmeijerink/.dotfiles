@@ -98,3 +98,9 @@ map('n', '<leader>w', '<cmd>w<CR>', { desc = "Save" })
 map('n', '<leader>x', '<cmd>Bdelete<CR>', { desc = "Close Buffer" })
 map('n', '<leader>ee', vim.cmd.Ex, { desc = "Netrw" })
 map('n', '<C-f>', '<cmd>silent !tmux neww tmux-sessionizer<CR>', opts) -- Tmux magic
+
+map('n', '<leader>u', vim.cmd.UndotreeToggle, { desc = "Toggle Undotree" })
+
+map("n", "<leader>cf", function()
+    require("conform").format({ async = true, lsp_fallback = true })
+end, { desc = "Code Format" })
