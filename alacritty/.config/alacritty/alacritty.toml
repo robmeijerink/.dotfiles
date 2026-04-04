@@ -57,11 +57,6 @@ key = "N"
 mods = "Control|Shift"
 action = "SpawnNewInstance"
 
-[[keyboard.bindings]]
-key = "F"
-mods = "Control|Shift"
-chars = "tmux-sessionizer\r"
-
 # =========================================================
 # HINTS
 # =========================================================

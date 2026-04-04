@@ -2,12 +2,10 @@
 -- Plugin: Theme Manager (Rob Meijerink)
 -- =========================================================
 return {
-    -- 1. Dracula (Currently Active)
     {
         "Mofiqul/dracula.nvim",
         lazy = false,
         priority = 1000,
-        enabled = true,
         config = function()
             local dracula = require("dracula")
 
@@ -22,24 +20,33 @@ return {
             vim.opt.background = "dark"
             vim.cmd.colorscheme("dracula")
 
-            -- Custom Highlight Overrides (Rob Meijerink Baseline)
+            -- Custom Highlight Overrides
             local hl = vim.api.nvim_set_hl
+            local bar_bg = "#111111"
+
+            -- O(1) Color Overrides
+            hl(0, "Normal", { bg = "none", fg = "#bcbcbc" })
+            hl(0, "EndOfBuffer", { fg = "#3b4252" })
+
+            -- UI Elements
+            hl(0, "StatusLine", { bg = bar_bg, fg = "#f8f8f2" })
+            hl(0, "StatusLineNC", { bg = "#0a0a0a", fg = "#6272a4" })
+            hl(0, "TabLineFill", { bg = "none" })
+
+            -- Functional Overrides
             hl(0, "SignColumn", { bg = "none" })
-            hl(0, "ColorColumn", { ctermbg = 0, bg = "#555555" })
+            hl(0, "ColorColumn", { ctermbg = 0, bg = "#333333" })
             hl(0, "CursorLine", { bg = "#0F0F0F" })
-            hl(0, "CursorLineNr", { bg = "none" })
-            hl(0, "Normal", { bg = "none" })
-            hl(0, "LineNr", { fg = "#5eacd3" })
-            hl(0, "netrwDir", { fg = "#5eacd3" })
-            hl(0, "WinSeparator", { bg = "none" })
+            hl(0, "CursorLineNr", { bg = "none", fg = "#bcbcbc" })
+            hl(0, "LineNr", { fg = "#44475a" }) -- More subtle line numbers
+            hl(0, "WinSeparator", { bg = "none", fg = bar_bg })
 
             -- DiffView readability
             hl(0, "DiffAdd", { bg = "#375c41" })
             hl(0, "diffAdded", { bg = "#375c41" })
         end
     },
-
-    -- 2. Catppuccin
+     -- 2. Catppuccin
     {
         "catppuccin/nvim",
         name = "catppuccin",
@@ -95,10 +102,30 @@ return {
             vim.opt.background = "dark"
             vim.cmd.colorscheme("catppuccin")
 
-            -- Apply same highlight overrides for consistency if needed
+            -- Custom Highlight Overrides
             local hl = vim.api.nvim_set_hl
-            hl(0, "Normal", { bg = "none" })
+            local bar_bg = "#111111"
+
+            -- O(1) Color Overrides
+            hl(0, "Normal", { bg = "none", fg = "#bcbcbc" })
+            hl(0, "EndOfBuffer", { fg = "#3b4252" })
+
+            -- UI Elements
+            hl(0, "StatusLine", { bg = bar_bg, fg = "#f8f8f2" })
+            hl(0, "StatusLineNC", { bg = "#0a0a0a", fg = "#6272a4" })
+            hl(0, "TabLineFill", { bg = "none" })
+
+            -- Functional Overrides
             hl(0, "SignColumn", { bg = "none" })
+            hl(0, "ColorColumn", { ctermbg = 0, bg = "#333333" })
+            hl(0, "CursorLine", { bg = "#0F0F0F" })
+            hl(0, "CursorLineNr", { bg = "none", fg = "#bcbcbc" })
+            hl(0, "LineNr", { fg = "#44475a" })
+            hl(0, "WinSeparator", { bg = "none", fg = bar_bg })
+
+            -- DiffView readability
+            hl(0, "DiffAdd", { bg = "#375c41" })
+            hl(0, "diffAdded", { bg = "#375c41" })
         end
     },
 }

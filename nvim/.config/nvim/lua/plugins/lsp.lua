@@ -24,17 +24,12 @@ return {
 
             lsp_zero.extend_lspconfig()
 
-            -- 1. LSP Handlers & Diagnostics Configuration
-            vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
-                vim.lsp.diagnostic.on_publish_diagnostics, {
-                    underline = true,
-                    virtual_text = { spacing = 5, severity = { min = vim.diagnostic.severity.WARN } },
-                    update_in_insert = true
-                }
-            )
-
+            -- 1. Global Diagnostics Configuration
             vim.diagnostic.config({
-                virtual_text = true,
+                virtual_text = {
+                    spacing = 5,
+                    severity = { min = vim.diagnostic.severity.WARN }
+                },
                 signs = true,
                 underline = true,
                 update_in_insert = false,
@@ -106,15 +101,13 @@ return {
             require('mason').setup({})
             require('mason-lspconfig').setup({
                 ensure_installed = {
-                    'intelephense',    -- PHP/Laravel
-                    'phpcs',           -- The linter
-                    'phpcbf',          -- The formatter
-                    'gopls',           -- Go
-                    'tsserver',        -- JS/TS/Vue
-                    'lua_ls',          -- Neovim config and lua
-                    'tailwindcss',     -- Tailwind
-                    'emmet_ls',        -- HTML/CSS shortcuts
-                    'rust_analyzer',   -- Rust
+                    'intelephense',  -- PHP/Laravel
+                    'gopls',         -- Go
+                    'ts_ls',         -- JS/TS/Vue
+                    'lua_ls',        -- Neovim config and lua
+                    'tailwindcss',   -- Tailwind
+                    'emmet_ls',      -- HTML/CSS shortcuts
+                    'rust_analyzer', -- Rust
                 },
                 handlers = {
                     lsp_zero.default_setup,

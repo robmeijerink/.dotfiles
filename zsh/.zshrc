@@ -1,6 +1,7 @@
 #!/bin/zsh
 # =========================================================
 # ZSH Configuration - Rob Meijerink
+# Finalized for Path Reliability and Plugin Performance
 # =========================================================
 
 # --- 1. Plugin Manager (Zap) ---
@@ -10,20 +11,13 @@
 HISTFILE=~/.zsh_history
 [ -r "$HOME/.profile" ] && source "$HOME/.profile"
 
-# --- 3. Modular Config Sourcing ---
-# Exports first to ensure PATH is correctly built
-plug "$HOME/.config/zsh/exports.zsh"
-plug "$HOME/.config/zsh/aliases.zsh"
-
-
-# --- 4. Plugins (Zap) ---
-
+# --- 3. Plugins (Zap) ---
 # Core Extensions
 plug "zap-zsh/supercharge"
 plug "zap-zsh/zap-prompt"
 plug "zsh-users/zsh-completions"
 
-# Local Logic (Solvalutions specific)
+# Local Logic & Custom Scripts
 plug "$HOME/.config/zsh/plugins/dirpersist.zsh"
 plug "$HOME/.config/zsh/plugins/ssh-load.zsh"
 
@@ -39,22 +33,21 @@ plug "jeffreytse/zsh-vi-mode"
 # UI & Feedback (Always load these last)
 plug "zsh-users/zsh-syntax-highlighting"
 
+# --- 4. Modular Config Sourcing ---
+# CRITICAL: We source exports LAST to ensure it overrides any PATH
+# pollution introduced by Zap or other plugins during the boot sequence.
+source "$HOME/.config/zsh/aliases.zsh"
+source "$HOME/.config/zsh/exports.zsh"
 
-# --- 5. Fast Node Manager (FNM) ---
-# High-performance Node version management (Rust-based)
-if command -v fnm &> /dev/null; then
-  # --use-on-cd: Automatically switches node version based on .node-version or .nvmrc
-  eval "$(fnm env --use-on-cd)"
-fi
-
-# --- 6. Keybindings & Productivity ---
+# --- 5. Keybindings & Productivity ---
 # Accept autosuggestion with Ctrl + Space
 bindkey '^ ' autosuggest-accept
 
 # Fast project switching via tmux-sessionizer (Fzf-powered)
-bindkey -s '^f' "tmux-sessionizer\n"
+# Using 'tmux-sessionizer' directly as it is now guaranteed in $PATH
+bindkey -s '^f' "$HOME/.local/scripts/tmux-sessionizer\n"
 
-# Standard FZF integration
+# Standard FZF integration (if present)
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # Fancy-ctrl-z: Toggle between backgrounded process and shell
@@ -69,3 +62,8 @@ fancy-ctrl-z () {
 }
 zle -N fancy-ctrl-z
 bindkey '^Z' fancy-ctrl-z
+
+# --- 6. Final Cleanup ---
+# Ensure completions are up to date after all plugins are loaded
+autoload -Uz compinit
+compinit

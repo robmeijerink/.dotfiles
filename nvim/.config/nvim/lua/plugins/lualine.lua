@@ -1,68 +1,96 @@
 -- =========================================================
--- Plugin: Lualine (Rob Meijerink)
+-- Plugin: Bufferline
 -- =========================================================
 return {
-    'nvim-lualine/lualine.nvim',
+    'akinsho/bufferline.nvim',
+    version = "*",
     dependencies = { 'nvim-tree/nvim-web-devicons' },
+    lazy = false,
+    priority = 900,
     config = function()
-        require("lualine").setup({
+        require('bufferline').setup({
             options = {
-                icons_enabled = true,
-                section_separators = { left = "", right = "" },
-                component_separators = { left = "│", right = "│" },
-                globalstatus = true,
-                theme = {
-                    normal = {
-                        a = 'StatusLine',
-                        b = 'StatusLine',
-                        c = 'StatusLine',
+                indicator = {
+                    icon = ' ',
+                },
+                show_close_icon = false,
+                tab_size = 0,
+                max_name_length = 25,
+                offsets = {
+                    {
+                        filetype = 'NvimTree',
+                        text = '  Files',
+                        highlight = 'StatusLine',
+                        text_align = 'left',
                     },
+                },
+                separator_style = 'slant',
+                modified_icon = '',
+                custom_areas = {
+                    left = function()
+                        return {
+                            { text = '     ', fg = '#8fff6d' },
+                        }
+                    end,
                 },
             },
-            sections = {
-                lualine_a = { "mode" },
-                lualine_b = {
-                    "branch",
-                    {
-                        "diff",
-                        symbols = {
-                            added = " ",
-                            modified = " ",
-                            removed = " ",
-                        },
-                    },
-                    {
-                        "diagnostics",
-                        symbols = {
-                            error = " ",
-                            warn = " ",
-                            info = " ",
-                            hint = "󰌶 ",
-                        },
-                    }
+            highlights = {
+                buffer_selected = {
+                    underline = false,
+                    undercurl = false,
+                    italic = true,
                 },
-                lualine_c = {
-                    {
-                        "filetype",
-                        icon_only = true,
-                        padding = { left = 1, right = 0 },
-                        separator = { right = "" },
-                    },
-                    "filename",
+                fill = {
+                    bg = { attribute = 'bg', highlight = 'StatusLine' },
                 },
-                lualine_x = {
-                    'encoding',
-                    'fileformat',
-                    -- Custom logic for indent display from your config
-                    function()
-                        local space = vim.bo.expandtab and "·" or "⇥"
-                        return space .. " " .. vim.bo.shiftwidth
-                    end
+                background = {
+                    bg = { attribute = 'bg', highlight = 'StatusLine' },
                 },
-                lualine_y = { "location" },
-                lualine_z = { "progress" },
+                tab = {
+                    bg = { attribute = 'bg', highlight = 'StatusLine' },
+                },
+                tab_close = {
+                    bg = { attribute = 'bg', highlight = 'StatusLine' },
+                },
+                close_button = {
+                    bg = { attribute = 'bg', highlight = 'StatusLine' },
+                    fg = { attribute = 'fg', highlight = 'StatusLineNonText' },
+                },
+                close_button_visible = {
+                    bg = { attribute = 'bg', highlight = 'StatusLine' },
+                    fg = { attribute = 'fg', highlight = 'StatusLineNonText' },
+                },
+                close_button_selected = {
+                    fg = { attribute = 'fg', highlight = 'StatusLineNonText' },
+                },
+                buffer_visible = {
+                    bg = { attribute = 'bg', highlight = 'StatusLine' },
+                },
+                modified = {
+                    bg = { attribute = 'bg', highlight = 'StatusLine' },
+                },
+                modified_visible = {
+                    bg = { attribute = 'bg', highlight = 'StatusLine' },
+                },
+                duplicate = {
+                    bg = { attribute = 'bg', highlight = 'StatusLine' },
+                },
+                duplicate_visible = {
+                    bg = { attribute = 'bg', highlight = 'StatusLine' },
+                },
+                separator = {
+                    fg = { attribute = 'bg', highlight = 'StatusLine' },
+                    bg = { attribute = 'bg', highlight = 'StatusLine' },
+                },
+                separator_selected = {
+                    fg = { attribute = 'bg', highlight = 'StatusLine' },
+                    bg = { attribute = 'bg', highlight = 'Normal' }
+                },
+                separator_visible = {
+                    fg = { attribute = 'bg', highlight = 'StatusLine' },
+                    bg = { attribute = 'bg', highlight = 'StatusLine' },
+                },
             },
-            extensions = { "nvim-tree" }
         })
     end
 }

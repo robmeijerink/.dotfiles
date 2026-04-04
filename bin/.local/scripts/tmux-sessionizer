@@ -1,37 +1,38 @@
 #!/usr/bin/env bash
 
-# Select the target directory
+# =========================================================
+# Tool: tmux-sessionizer (Solvalutions Edition)
+# Engine: fd (Rust-based parallel directory scanner)
+# =========================================================
+
+# 1. Select the target directory
 if [[ $# -eq 1 ]]; then
     selected="$1"
 else
-    # Performance fix: Only scan specific project roots to avoid O(n) home-dir lag
-    # Adjust the paths below to your actual project locations
-    selected=$(find ~/projects ~/.dotfiles -mindepth 1 -maxdepth 1 -type d 2>/dev/null | fzf)
+    selected=$(fd --min-depth 1 --max-depth 1 --type d . ~/projects ~/Projects ~/.dotfiles 2>/dev/null | fzf)
 fi
 
-# Exit if no selection was made (e.g., pressed ESC in fzf)
-if [[ -z "$selected" ]]; then
-    exit 0
-fi
+# Exit if no selection was made (ESC)
+[[ -z "$selected" ]] && exit 0
 
-# Technical fix: handle dots and special characters in session names
-selected_name=$(basename "$selected" | tr . _)
+# 2. Prepare session name (Sanitize for Tmux)
+selected_name=$(basename "$selected" | tr . _ | tr ' ' _)
 
-# Logic to check if session already exists (O(1) tmux lookup)
+# 3. Execution Logic
 tmux_running=$(pgrep tmux)
 
+# Start tmux if not running at all
 if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
-    # Start tmux if not running
     tmux new-session -s "$selected_name" -c "$selected"
     exit 0
 fi
 
+# Create session in background if it doesn't exist
 if ! tmux has-session -t="$selected_name" 2> /dev/null; then
-    # Create session in background if it doesn't exist
     tmux new-session -ds "$selected_name" -c "$selected"
 fi
 
-# Switch to the session
+# 4. Attachment Logic (Smart Switch)
 if [[ -z $TMUX ]]; then
     tmux attach-session -t "$selected_name"
 else
