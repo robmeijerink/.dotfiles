@@ -14,12 +14,12 @@ return {
                 icons_enabled = true,
                 theme = {
                     normal = {
-                        a = { bg = "#98c379", fg = "#282a36", gui = "bold" },
+                        a = { bg = "#61afef", fg = "#282a36", gui = "bold" },
                         b = "StatusLine",
                         c = "StatusLine",
                     },
                     insert = {
-                        a = { bg = "#61afef", fg = "#282a36", gui = "bold" },
+                        a = { bg = "#e06c75", fg = "#282a36", gui = "bold" },
                         b = "StatusLine",
                         c = "StatusLine",
                     },
@@ -34,7 +34,7 @@ return {
                         c = "StatusLine",
                     },
                     replace = {
-                        a = { bg = "#e06c75", fg = "#282a36", gui = "bold" },
+                        a = { bg = "#ff5c00", fg = "#282a36", gui = "bold" },
                         b = "StatusLine",
                         c = "StatusLine",
                     },
