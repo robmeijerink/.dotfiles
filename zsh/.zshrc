@@ -1,6 +1,6 @@
 #!/bin/zsh
 # =========================================================
-# ZSH Configuration - Rob Meijerink 
+# ZSH Configuration - Rob Meijerink
 # =========================================================
 
 # --- 1. Plugin Manager (Zap) ---
@@ -15,16 +15,30 @@ HISTFILE=~/.zsh_history
 plug "$HOME/.config/zsh/exports.zsh"
 plug "$HOME/.config/zsh/aliases.zsh"
 
+
 # --- 4. Plugins (Zap) ---
-plug "$HOME/.config/zsh/plugins/dirpersist.zsh"
-plug "$HOME/.config/zsh/plugins/ssh-load.zsh"
-plug "zsh-users/zsh-autosuggestions"
-plug "hlissner/zsh-autopair"
+
+# Core Extensions
 plug "zap-zsh/supercharge"
 plug "zap-zsh/zap-prompt"
+plug "zsh-users/zsh-completions"
+
+# Local Logic (Solvalutions specific)
+plug "$HOME/.config/zsh/plugins/dirpersist.zsh"
+plug "$HOME/.config/zsh/plugins/ssh-load.zsh"
+
+# Productivity & Search
 plug "zap-zsh/fzf"
-plug "zap-zsh/exa"
+plug "zsh-users/zsh-autosuggestions"
+plug "zsh-users/zsh-history-substring-search"
+plug "hlissner/zsh-autopair"
+
+# The "Vim-Feel" (Crucial for Neovim users)
+plug "jeffreytse/zsh-vi-mode"
+
+# UI & Feedback (Always load these last)
 plug "zsh-users/zsh-syntax-highlighting"
+
 
 # --- 5. Fast Node Manager (FNM) ---
 # High-performance Node version management (Rust-based)
