@@ -4,7 +4,7 @@
 return {
     {
         "nvim-treesitter/nvim-treesitter",
-        enabled = false,
+        -- enabled = false,
         build = ":TSUpdate",
         event = { "BufReadPost", "BufNewFile" },
         dependencies = {
@@ -25,7 +25,7 @@ return {
                     "dockerfile", "yaml", "toml", "http", "json", "diff",
                     "vim", "vimdoc",
                 },
-                sync_installed = true,
+                sync_installed = false,
                 auto_install = true,
 
                highlight = {
