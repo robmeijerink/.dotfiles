@@ -30,7 +30,7 @@ return {
         -- NEW: Find files strictly in the current buffer's directory
         -- =========================================================
         {
-            "<leader>ee",
+            "<leader>E",
             function()
                 require('telescope.builtin').find_files({
                     cwd = vim.fn.expand("%:p:h"),
