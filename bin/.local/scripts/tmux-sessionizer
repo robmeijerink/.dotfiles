@@ -1,40 +1,31 @@
 #!/usr/bin/env bash
 
-# =========================================================
-# Tool: tmux-sessionizer (Solvalutions Edition)
-# Engine: fd (Rust-based parallel directory scanner)
-# =========================================================
-
 # 1. Select the target directory
 if [[ $# -eq 1 ]]; then
     selected="$1"
 else
-    selected=$(fd --min-depth 1 --max-depth 1 --type d . ~/projects ~/.dotfiles 2>/dev/null | fzf)
+    selected=$({
+        printf "%s\n" "$HOME/projects" "$HOME/.dotfiles"
+        fd --min-depth 1 --max-depth 1 --type d --hidden . ~/projects ~/.dotfiles 2>/dev/null
+    } | fzf)
 fi
 
-# Exit if no selection was made (ESC)
 [[ -z "$selected" ]] && exit 0
 
-# 2. Prepare session name (Sanitize for Tmux)
-selected_name=$(basename "$selected" | tr . _ | tr ' ' _)
+selected="${selected%/}"
+
+# 2. Prepare session name (O(1) - No forks)
+name="${selected##*/}"
+selected_name="${name//[ .:]/_}"
 
 # 3. Execution Logic
-tmux_running=$(pgrep tmux)
-
-# Start tmux if not running at all
-if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
-    tmux new-session -s "$selected_name" -c "$selected"
-    exit 0
-fi
-
-# Create session in background if it doesn't exist
-if ! tmux has-session -t="$selected_name" 2> /dev/null; then
+if ! tmux has-session -t "=$selected_name" 2> /dev/null; then
     tmux new-session -ds "$selected_name" -c "$selected"
 fi
 
-# 4. Attachment Logic (Smart Switch)
-if [[ -z $TMUX ]]; then
-    tmux attach-session -t "$selected_name"
+# 4. Attachment Logic
+if [[ -z "$TMUX" ]]; then
+    exec tmux attach-session -t "=$selected_name"
 else
-    tmux switch-client -t "$selected_name"
+    tmux switch-client -t "=$selected_name"
 fi
