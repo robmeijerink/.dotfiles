@@ -24,8 +24,10 @@ map('n', '<C-Up>', '<cmd>resize -2<CR>', opts)
 map('n', '<C-Down>', '<cmd>resize +2<CR>', opts)
 map('n', '<C-Right>', '<cmd>vertical resize -2<CR>', opts)
 map('n', '<C-Left>', '<cmd>vertical resize +2<CR>', opts)
-map('n', '<S-l>', '<cmd>bnext<CR>', opts)
-map('n', '<S-h>', '<cmd>bprevious<CR>', opts)
+
+-- use vim-impaired, [b and next is ]b.
+-- map('n', '<S-l>', '<cmd>bnext<CR>', opts)
+-- map('n', '<S-h>', '<cmd>bprevious<CR>', opts)
 
 -- 3. Clipboard & Editing Logic (Senior Dev Shortcuts)
 map('v', 'y', 'myy`y', opts)            -- Maintain position when yanking
