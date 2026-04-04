@@ -18,29 +18,29 @@ return {
     opts = {
         formatters_by_ft = {
             lua = { "stylua" },
-            -- Sequence: Try Laravel Pint first. If it fails/not found, use phpcbf with custom ruleset.
-            php = { "pint", "phpcbf" },
+            php = { { "pint", "phpcbf" } },
             blade = { "blade-formatter" },
-            javascript = { "prettierd", "prettier", stop_after_first = true },
-            typescript = { "prettierd", "prettier", stop_after_first = true },
-            vue = { "prettierd", "prettier", stop_after_first = true },
+            javascript = { { "prettierd", "prettier" } },
+            typescript = { { "prettierd", "prettier" } },
+            vue = { { "prettierd", "prettier" } },
             go = { "gofmt", "goimports" },
             rust = { "rustfmt" },
             python = { "isort", "black" },
-            css = { "prettier" },
-            html = { "prettier" },
-            json = { "prettierd", "prettier", stop_after_first = true },
+            css = { { "prettierd", "prettier" } },
+            html = { { "prettierd", "prettier" } },
+            json = { { "prettierd", "prettier" } },
         },
         formatters = {
             phpcbf = {
-                -- Pointing to the personal standard defined in your dotfiles
                 args = { "--standard=" .. vim.fn.expand("~/.dotfiles/codestyle/php/phpcs.xml"), "-" },
             },
         },
-        format_on_save = {
-            timeout_ms = 1000,
+        -- Save Async
+        format_after_save = {
             lsp_fallback = true,
+        },
+        default_format_opts = {
+            timeout_ms = 500,
         },
     },
 }
-

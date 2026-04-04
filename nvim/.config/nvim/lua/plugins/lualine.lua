@@ -47,6 +47,11 @@ return {
                 component_separators = { left = '', right = '' },
                 section_separators = { left = '', right = '' },
                 globalstatus = true,
+                refresh = {
+                    statusline = 1000,
+                    tabline = 1000,
+                    winbar = 200,
+                }
             },
 
             -- =============================================
@@ -73,14 +78,29 @@ return {
             sections = {
                 lualine_a = { "mode" },
                 lualine_b = {
-                    "branch",
+                    {
+                        "branch",
+                        fmt = function(str) return str == "" and "" or " " .. str end,
+                        icon = "",
+                    },
                     {
                         "diff",
                         symbols = { added = " ", modified = " ", removed = " " },
+                        source = function()
+                            local gitsigns = vim.b.gitsigns_status_dict
+                            if gitsigns then
+                                return {
+                                    added = gitsigns.added,
+                                    modified = gitsigns.changed,
+                                    removed = gitsigns.removed
+                                }
+                            end
+                        end,
                     },
                     {
                         "diagnostics",
                         symbols = { error = " ", warn = " ", info = " ", hint = "󰌶 " },
+                        update_in_insert = false,
                     },
                 },
                 lualine_c = {

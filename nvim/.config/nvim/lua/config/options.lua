@@ -7,12 +7,13 @@ local g = vim.g
 -- 1. General & Performance
 opt.encoding = 'utf-8'
 opt.history = 1000
-opt.updatetime = 50    -- Faster completion and diagnostic updates
 opt.redrawtime = 10000 -- Allow more time for redrawing large files
-opt.timeoutlen = 850   -- Mapping wait time
-opt.ttimeoutlen = 800
-opt.synmaxcol = 300    -- Stop syntax highlight after 300 chars (performance)
-opt.confirm = true     -- Ask for confirmation instead of erroring
+opt.updatetime = 250
+opt.timeoutlen = 300
+opt.ttimeoutlen = 10
+opt.redrawtime = 2000
+opt.synmaxcol = 300
+opt.confirm = true
 
 -- 2. Display & UI
 opt.termguicolors = true

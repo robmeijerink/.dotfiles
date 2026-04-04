@@ -8,6 +8,7 @@ return {
         event = { "BufReadPre", "BufNewFile" },
         config = function()
             require('gitsigns').setup({
+                update_debounce = 250,
                 current_line_blame = true,
                 sign_priority = 20,
                 on_attach = function(bufnr)
@@ -19,16 +20,16 @@ return {
                         vim.keymap.set(mode, l, r, opts)
                     end
 
-                    -- Navigation: Hunk jumping (from your old config)
+                    -- Navigation: Hunk jumping
                     map('n', ']h', function()
                         if vim.wo.diff then return ']c' end
-                        vim.schedule(GS_NEXT_HUNK)
+                        vim.schedule(function() gs.next_hunk() end)
                         return '<Ignore>'
                     end, { expr = true, desc = "Next Hunk" })
 
                     map('n', '[h', function()
                         if vim.wo.diff then return '[c' end
-                        vim.schedule(GS_PREV_HUNK)
+                        vim.schedule(function() gs.prev_hunk() end)
                         return '<Ignore>'
                     end, { expr = true, desc = "Prev Hunk" })
                 end
@@ -45,7 +46,6 @@ return {
             "LazyGitFilterCurrentFile",
             "LazyGitConfig",
         },
-        -- Keybinding from your old keymaps logic
         keys = {
             { "<leader>gg", "<cmd>LazyGit<CR>", desc = "Toggle LazyGit" },
         },
