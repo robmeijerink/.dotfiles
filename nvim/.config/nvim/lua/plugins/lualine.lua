@@ -14,12 +14,12 @@ return {
                 icons_enabled = true,
                 theme = {
                     normal = {
-                        a = { bg = "#61afef", fg = "#282a36", gui = "bold" },
+                        a = { bg = "#98c379", fg = "#282a36", gui = "bold" },
                         b = "StatusLine",
                         c = "StatusLine",
                     },
                     insert = {
-                        a = { bg = "#e06c75", fg = "#282a36", gui = "bold" },
+                        a = { bg = "#61afef", fg = "#282a36", gui = "bold" },
                         b = "StatusLine",
                         c = "StatusLine",
                     },
@@ -34,7 +34,7 @@ return {
                         c = "StatusLine",
                     },
                     replace = {
-                        a = { bg = "#bc6f09", fg = "#282a36", gui = "bold" },
+                        a = { bg = "#e06c75", fg = "#282a36", gui = "bold" },
                         b = "StatusLine",
                         c = "StatusLine",
                     },
@@ -50,27 +50,26 @@ return {
             },
 
             -- =============================================
-            -- Breadcrumbs
+            -- Breadcrumbs (Direct API call to omit filename)
             -- =============================================
             winbar = {
                 lualine_a = {
                     {
-                        "navic",
+                        function()
+                            local navic = require("nvim-navic")
+                            if navic.is_available() then
+                                return navic.get_location()
+                            end
+                            return ""
+                        end,
                         padding = { left = 6, right = 1 },
-                        color_correction = "nil",
-                    },
-                },
-            },
-            inactive_winbar = {
-                lualine_a = {
-                    {
-                        "filename",
-                        path = 1,
-                        padding = { left = 4, right = 1 },
                     },
                 },
             },
 
+            -- =============================================
+            -- Statusline Bottom
+            -- =============================================
             sections = {
                 lualine_a = { "mode" },
                 lualine_b = {
@@ -105,7 +104,7 @@ return {
             },
 
             extensions = {
-                "nvim-tree",
+                -- "nvim-tree", Not needed for now.
             },
         })
     end,

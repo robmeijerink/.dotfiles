@@ -33,8 +33,8 @@ return {
         },
         formatters = {
             phpcbf = {
-                -- Pointing to the Solvalutions standard defined in your dotfiles
-                args = { "--standard=" .. vim.fn.expand("~/.config/php/phpcs.xml"), "-" },
+                -- Pointing to the personal standard defined in your dotfiles
+                args = { "--standard=" .. vim.fn.expand("~/.dotfiles/codestyle/php/phpcs.xml"), "-" },
             },
         },
         format_on_save = {
@@ -43,3 +43,4 @@ return {
         },
     },
 }
+
