@@ -9,7 +9,7 @@
 if [[ $# -eq 1 ]]; then
     selected="$1"
 else
-    selected=$(fd --min-depth 1 --max-depth 1 --type d . ~/projects ~/Projects ~/.dotfiles 2>/dev/null | fzf)
+    selected=$(fd --min-depth 1 --max-depth 1 --type d . ~/projects ~/.dotfiles 2>/dev/null | fzf)
 fi
 
 # Exit if no selection was made (ESC)
