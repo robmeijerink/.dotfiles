@@ -21,11 +21,23 @@ return {
                 require('telescope.builtin').find_files({
                     no_ignore = true,
                     hidden = true,
-                    prompt_title =
-                    'All Files'
+                    prompt_title = 'All Files'
                 })
             end,
             desc = "All Files"
+        },
+        -- =========================================================
+        -- NEW: Find files strictly in the current buffer's directory
+        -- =========================================================
+        {
+            "<leader>ee",
+            function()
+                require('telescope.builtin').find_files({
+                    cwd = vim.fn.expand("%:p:h"),
+                    prompt_title = "Current Directory"
+                })
+            end,
+            desc = "Find in current directory"
         },
         { "<leader>fg", function() require('telescope').extensions.live_grep_args.live_grep_args() end,                 desc = "Live Grep (Args)" },
         { "<leader>fw", "<cmd>Telescope grep_string<CR>",                                                               desc = "Grep Word" },
@@ -35,7 +47,6 @@ return {
         { "<leader>fx", "<cmd>Telescope buffers show_all_buffers=true<CR>",                                             desc = "Telescope Buffers" },
         { "<leader>fd", "<cmd>Telescope diagnostics<CR>",                                                               desc = "Diagnostics" },
         { "<leader>fs", "<cmd>Telescope lsp_document_symbols<CR>",                                                      desc = "Document Symbols" },
-        -- Added the ones from your source
         { "<leader>fm", "<cmd>Telescope harpoon marks<CR>",                                                             desc = "Harpoon Marks" },
         { "<leader>fc", "<cmd>Telescope commands<CR>",                                                                  desc = "Telescope Commands" },
         { "<leader>fk", "<cmd>Telescope keymaps<CR>",                                                                   desc = "Keymaps" },
