@@ -4,6 +4,7 @@
 return {
     {
         "nvim-treesitter/nvim-treesitter",
+        enabled = false,
         build = ":TSUpdate",
         event = { "BufReadPost", "BufNewFile" },
         dependencies = {
@@ -27,13 +28,16 @@ return {
                 sync_installed = true,
                 auto_install = true,
 
-                highlight = {
+               highlight = {
                     enable = true,
                     additional_vim_regex_highlighting = false,
-                    disable = { 'NvimTree' },
+                    disable = { 'NvimTree', 'bash' },
                 },
 
-                indent = { enable = true },
+                indent = {
+                    enable = true,
+                    disable = { 'bash' }
+                },
 
                 autotag = { enable = true },
 
@@ -50,6 +54,7 @@ return {
                 textobjects = {
                     select = {
                         enable = true,
+                        disable = { "bash" },
                         lookahead = true,
                         keymaps = {
                             ['af'] = '@function.outer',

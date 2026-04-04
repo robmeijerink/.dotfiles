@@ -11,7 +11,6 @@ return {
     {
         'neovim/nvim-lspconfig',
         dependencies = {
-            { 'folke/neodev.nvim', opts = {} }, -- Lua development helper
             { 'williamboman/mason.nvim', opts = {} },
             'williamboman/mason-lspconfig.nvim',
             'j-hui/fidget.nvim',

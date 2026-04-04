@@ -5,10 +5,10 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
--- Load core options
+-- Load core options (Rob Meijerink Baseline)
 require('config.options')
 
--- Load global keymaps
+-- Load global keymaps & autocmds with protective calls
 pcall(require, 'config.keymaps')
 pcall(require, 'config.autocmds')
 
@@ -22,7 +22,7 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
     "clone",
     "--filter=blob:none",
     "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", -- Fetch the latest stable release
+    "--branch=stable",
     lazypath,
   })
 end
@@ -31,13 +31,18 @@ vim.opt.rtp:prepend(lazypath)
 -- =========================================================
 -- 3. Start Lazy and load all plugins
 -- =========================================================
--- Automatically loads everything in the lua/plugins/ directory
-require("lazy").setup("plugins")
+require("lazy").setup("plugins", {
+  rocks = {
+    enabled = false,
+  },
+  ui = {
+    border = "rounded",
+  },
+})
 
 -- =========================================================
--- 4. Project Specific Configuration (Rob Meijerink)
+-- 4. Project Specific Configuration
 -- =========================================================
--- Retain the ability for project-local overrides
 local f = io.open('./init_local.lua', 'r')
 if f ~= nil then
     io.close(f)

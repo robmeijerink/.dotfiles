@@ -15,16 +15,21 @@ return {
         },
     },
 
-    -- 2. Colorizer (Hex color previews)
     {
-        'norcalli/nvim-colorizer.lua',
-        event = "BufRead",
+        "NvChad/nvim-colorizer.lua",
+        -- Explicitly set the name to avoid collisions with the old dir
+        name = "nvim-colorizer",
+        event = { "BufReadPost", "BufNewFile" },
         config = function()
             require("colorizer").setup({
-                filetypes = {
-                    "*",
-                    css = { rgb_fn = true },
-                    html = { names = false },
+                user_default_options = {
+                    -- Performance: disable names to avoid O(L*W) string lookups
+                    names = false,
+                    RRGGBBAA = true,
+                    rgb_fn = true,
+                    hsl_fn = true,
+                    css = true,
+                    mode = "background",
                 },
             })
         end,
