@@ -1,96 +1,112 @@
 -- =========================================================
--- Plugin: Bufferline
+-- Plugin: lualine.nvim
+-- Focus: Unified B2B Statusline & Navic Breadcrumbs
 -- =========================================================
 return {
-    'akinsho/bufferline.nvim',
-    version = "*",
-    dependencies = { 'nvim-tree/nvim-web-devicons' },
-    lazy = false,
-    priority = 900,
+    "nvim-lualine/lualine.nvim",
+    dependencies = {
+        "nvim-tree/nvim-web-devicons",
+        "SmiteshP/nvim-navic", -- Used for Breadcrumbs
+    },
     config = function()
-        require('bufferline').setup({
+        require("lualine").setup({
             options = {
-                indicator = {
-                    icon = ' ',
-                },
-                show_close_icon = false,
-                tab_size = 0,
-                max_name_length = 25,
-                offsets = {
-                    {
-                        filetype = 'NvimTree',
-                        text = '  Files',
-                        highlight = 'StatusLine',
-                        text_align = 'left',
+                icons_enabled = true,
+                theme = {
+                    normal = {
+                        a = { bg = "#61afef", fg = "#282a36", gui = "bold" },
+                        b = "StatusLine",
+                        c = "StatusLine",
+                    },
+                    insert = {
+                        a = { bg = "#e06c75", fg = "#282a36", gui = "bold" },
+                        b = "StatusLine",
+                        c = "StatusLine",
+                    },
+                    visual = {
+                        a = { bg = "#c678dd", fg = "#282a36", gui = "bold" },
+                        b = "StatusLine",
+                        c = "StatusLine",
+                    },
+                    command = {
+                        a = { bg = "#e5c07b", fg = "#282a36", gui = "bold" },
+                        b = "StatusLine",
+                        c = "StatusLine",
+                    },
+                    replace = {
+                        a = { bg = "#bc6f09", fg = "#282a36", gui = "bold" },
+                        b = "StatusLine",
+                        c = "StatusLine",
+                    },
+                    inactive = {
+                        a = "StatusLine",
+                        b = "StatusLine",
+                        c = "StatusLine",
                     },
                 },
-                separator_style = 'slant',
-                modified_icon = '',
-                custom_areas = {
-                    left = function()
-                        return {
-                            { text = '     ', fg = '#8fff6d' },
-                        }
+                component_separators = { left = '', right = '' },
+                section_separators = { left = '', right = '' },
+                globalstatus = true,
+            },
+
+            -- =============================================
+            -- Breadcrumbs
+            -- =============================================
+            winbar = {
+                lualine_a = {
+                    {
+                        "navic",
+                        padding = { left = 6, right = 1 },
+                        color_correction = "nil",
+                    },
+                },
+            },
+            inactive_winbar = {
+                lualine_a = {
+                    {
+                        "filename",
+                        path = 1,
+                        padding = { left = 4, right = 1 },
+                    },
+                },
+            },
+
+            sections = {
+                lualine_a = { "mode" },
+                lualine_b = {
+                    "branch",
+                    {
+                        "diff",
+                        symbols = { added = " ", modified = " ", removed = " " },
+                    },
+                    {
+                        "diagnostics",
+                        symbols = { error = " ", warn = " ", info = " ", hint = "󰌶 " },
+                    },
+                },
+                lualine_c = {
+                    {
+                        "filetype",
+                        icon_only = true,
+                        padding = { left = 1, right = 0 },
+                        separator = { right = "" },
+                    },
+                    "filename",
+                },
+                lualine_x = {
+                    "encoding",
+                    "fileformat",
+                    function()
+                        return (vim.bo.expandtab and "·" or "⇥") .. " " .. vim.bo.shiftwidth
                     end,
                 },
+                lualine_y = { "location" },
+                lualine_z = { "progress" },
             },
-            highlights = {
-                buffer_selected = {
-                    underline = false,
-                    undercurl = false,
-                    italic = true,
-                },
-                fill = {
-                    bg = { attribute = 'bg', highlight = 'StatusLine' },
-                },
-                background = {
-                    bg = { attribute = 'bg', highlight = 'StatusLine' },
-                },
-                tab = {
-                    bg = { attribute = 'bg', highlight = 'StatusLine' },
-                },
-                tab_close = {
-                    bg = { attribute = 'bg', highlight = 'StatusLine' },
-                },
-                close_button = {
-                    bg = { attribute = 'bg', highlight = 'StatusLine' },
-                    fg = { attribute = 'fg', highlight = 'StatusLineNonText' },
-                },
-                close_button_visible = {
-                    bg = { attribute = 'bg', highlight = 'StatusLine' },
-                    fg = { attribute = 'fg', highlight = 'StatusLineNonText' },
-                },
-                close_button_selected = {
-                    fg = { attribute = 'fg', highlight = 'StatusLineNonText' },
-                },
-                buffer_visible = {
-                    bg = { attribute = 'bg', highlight = 'StatusLine' },
-                },
-                modified = {
-                    bg = { attribute = 'bg', highlight = 'StatusLine' },
-                },
-                modified_visible = {
-                    bg = { attribute = 'bg', highlight = 'StatusLine' },
-                },
-                duplicate = {
-                    bg = { attribute = 'bg', highlight = 'StatusLine' },
-                },
-                duplicate_visible = {
-                    bg = { attribute = 'bg', highlight = 'StatusLine' },
-                },
-                separator = {
-                    fg = { attribute = 'bg', highlight = 'StatusLine' },
-                    bg = { attribute = 'bg', highlight = 'StatusLine' },
-                },
-                separator_selected = {
-                    fg = { attribute = 'bg', highlight = 'StatusLine' },
-                    bg = { attribute = 'bg', highlight = 'Normal' }
-                },
-                separator_visible = {
-                    fg = { attribute = 'bg', highlight = 'StatusLine' },
-                    bg = { attribute = 'bg', highlight = 'StatusLine' },
-                },
+
+            extensions = {
+                "nvim-tree",
             },
         })
-    end
+    end,
 }

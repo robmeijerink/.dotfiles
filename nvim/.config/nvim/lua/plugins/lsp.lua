@@ -34,7 +34,7 @@ return {
                 severity_sort = true,
                 float = {
                     border = 'rounded',
-                    source = 'always',
+                    source = 'if_many',
                     focusable = false,
                 },
                 text = {
@@ -114,11 +114,36 @@ return {
                 },
             })
 
-            -- 5. LSPSaga Setup
-            require('lspsaga').setup({
-                border_style = "single",
-                code_action_icon = " ",
-                diagnostic_header_icon = "   ",
+            -- 5. LSPSaga Setup (Moderne API)
+            require("lspsaga").setup({
+                ui = {
+                    border = "single",
+                    code_action = " ",
+                    kind = {
+                        Folder = { "  📂 ", "@comment" },
+                        File   = { "  📄 ", "@comment" },
+                    }
+                },
+
+                diagnostic = {
+                    show_code_action = true,
+                    show_source = true,
+                    jump_num_shortcut = true,
+                },
+
+                lightbulb = {
+                    enable = true,
+                    sign = true,
+                    virtual_text = false,
+                },
+
+                symbol_in_winbar = {
+                    enable = false,
+                    separator = " › ",
+                    hide_keyword = true,
+                    show_file = true,
+                    folder_level = 2,
+                },
             })
         end
     },
