@@ -1,5 +1,5 @@
 -- =========================================================
--- Plugin: UI Addons (Rob Meijerink Architecture)
+-- Plugin: UI Addons (Rob Meijerink)
 -- =========================================================
 return {
     -- 1. Indent Blankline (Visual indent guides)

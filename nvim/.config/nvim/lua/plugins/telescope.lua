@@ -1,5 +1,5 @@
 -- =========================================================
--- Plugin: Telescope (Rob Meijerink Architecture)
+-- Plugin: Telescope (Rob Meijerink)
 -- =========================================================
 return {
     'nvim-telescope/telescope.nvim',

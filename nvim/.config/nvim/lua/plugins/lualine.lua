@@ -1,5 +1,5 @@
 -- =========================================================
--- Plugin: Lualine (Rob Meijerink Architecture)
+-- Plugin: Lualine (Rob Meijerink)
 -- =========================================================
 return {
     'nvim-lualine/lualine.nvim',

@@ -1,5 +1,5 @@
 -- =========================================================
--- Plugin: LSP Suite (Rob Meijerink Architecture)
+-- Plugin: LSP Suite (Rob Meijerink)
 -- =========================================================
 return {
     {
@@ -108,13 +108,17 @@ return {
             require('mason').setup({})
             require('mason-lspconfig').setup({
                 ensure_installed = {
-                    'intelephense', 'rust_analyzer', 'gopls', 'tsserver',
-                    'lua_ls', 'tailwindcss', 'emmet_ls',
+                    'intelephense',    -- PHP/Laravel
+                    'gopls',           -- Go
+                    'tsserver',        -- JS/TS/Vue
+                    'lua_ls',          -- Neovim config zelf
+                    'tailwindcss',     -- Tailwind
+                    'emmet_ls',        -- HTML/CSS shortcuts
+                    'rust_analyzer',   -- Rust (indien nodig)
                 },
                 handlers = {
                     lsp_zero.default_setup,
                     lua_ls = function()
-                        -- Gebruik de stabiele v3 helper voor Lua development
                         require('lspconfig').lua_ls.setup(lsp_zero.nvim_lua_ls())
                     end,
                 },

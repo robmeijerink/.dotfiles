@@ -1,5 +1,5 @@
 -- =========================================================
--- Plugin: Completion Stack (Rob Meijerink Architecture)
+-- Plugin: Completion Stack (Rob Meijerink)
 -- =========================================================
 return {
     'hrsh7th/nvim-cmp',

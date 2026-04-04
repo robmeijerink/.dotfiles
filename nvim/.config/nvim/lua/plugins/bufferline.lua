@@ -1,5 +1,5 @@
 -- =========================================================
--- Plugin: Bufferline (Rob Meijerink Architecture)
+-- Plugin: Bufferline (Rob Meijerink)
 -- =========================================================
 return {
     'akinsho/bufferline.nvim',

@@ -1,5 +1,5 @@
 -- =========================================================
--- Plugin: REST Client (Rob Meijerink Architecture)
+-- Plugin: REST Client (Rob Meijerink)
 -- =========================================================
 return {
     {

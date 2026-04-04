@@ -1,5 +1,5 @@
 -- =========================================================
--- Core Autocommands (Rob Meijerink Architecture)
+-- Core Autocommands (Rob Meijerink)
 -- =========================================================
 local autocmd = vim.api.nvim_create_autocmd
 local augroup = vim.api.nvim_create_augroup

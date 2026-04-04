@@ -1,5 +1,5 @@
 -- =========================================================
--- Plugin: Nvim-Tree (Rob Meijerink Architecture)
+-- Plugin: Nvim-Tree (Rob Meijerink)
 -- =========================================================
 return {
     "nvim-tree/nvim-tree.lua",

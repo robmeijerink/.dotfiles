@@ -1,5 +1,5 @@
 -- =========================================================
--- Plugin: Productivity Suite (Rob Meijerink Architecture)
+-- Plugin: Productivity Suite (Rob Meijerink)
 -- =========================================================
 return {
     -- 1. Harpoon (Quick file switching)

@@ -1,5 +1,5 @@
 -- =========================================================
--- Plugin: Git Suite (Rob Meijerink Architecture)
+-- Plugin: Git Suite (Rob Meijerink)
 -- =========================================================
 return {
     -- 1. Gitsigns (Live indicators in the gutter)

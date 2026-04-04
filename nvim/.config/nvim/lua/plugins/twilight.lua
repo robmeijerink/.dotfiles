@@ -1,5 +1,5 @@
 -- =========================================================
--- Plugin: Twilight (Rob Meijerink Architecture)
+-- Plugin: Twilight (Rob Meijerink)
 -- =========================================================
 return {
     "folke/twilight.nvim",

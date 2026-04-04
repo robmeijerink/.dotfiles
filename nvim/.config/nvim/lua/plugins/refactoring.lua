@@ -1,5 +1,5 @@
 -- =========================================================
--- Plugin: Refactoring (Rob Meijerink Architecture)
+-- Plugin: Refactoring (Rob Meijerink)
 -- =========================================================
 return {
     "ThePrimeagen/refactoring.nvim",

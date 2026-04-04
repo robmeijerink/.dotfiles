@@ -1,5 +1,5 @@
 -- =========================================================
--- Plugin: Theme Manager (Rob Meijerink Architecture)
+-- Plugin: Theme Manager (Rob Meijerink)
 -- =========================================================
 return {
     -- 1. Dracula (Currently Active)

@@ -1,5 +1,5 @@
 -- =========================================================
--- Plugin: Treesitter (Rob Meijerink Architecture)
+-- Plugin: Treesitter (Rob Meijerink)
 -- =========================================================
 return {
     {

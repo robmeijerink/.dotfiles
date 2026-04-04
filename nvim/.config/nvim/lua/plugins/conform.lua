@@ -26,7 +26,7 @@ return {
             python = { "isort", "black" },
             css = { "prettier" },
             html = { "prettier" },
-            json = { "jq" },
+            json = { "prettierd", "prettier", stop_after_first = true },
         },
         format_on_save = {
             timeout_ms = 1000,

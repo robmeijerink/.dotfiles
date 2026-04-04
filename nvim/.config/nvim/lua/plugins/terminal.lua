@@ -1,5 +1,5 @@
 -- =========================================================
--- Plugin: Toggleterm (Rob Meijerink Architecture)
+-- Plugin: Toggleterm (Rob Meijerink)
 -- =========================================================
 return {
     "akinsho/toggleterm.nvim",

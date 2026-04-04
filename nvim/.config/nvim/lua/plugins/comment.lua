@@ -1,5 +1,5 @@
 -- =========================================================
--- Plugin: Comment.nvim (Rob Meijerink Architecture)
+-- Plugin: Comment.nvim (Rob Meijerink)
 -- =========================================================
 return {
     'numToStr/Comment.nvim',

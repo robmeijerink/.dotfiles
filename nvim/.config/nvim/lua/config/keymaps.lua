@@ -1,5 +1,5 @@
 -- =========================================================
--- Core Keymaps (Rob Meijerink Architecture)
+-- Core Keymaps (Rob Meijerink)
 -- =========================================================
 local map = vim.keymap.set
 local opts = { noremap = true, silent = true }

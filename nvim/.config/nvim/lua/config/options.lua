@@ -1,5 +1,5 @@
 -- =========================================================
--- Core Options (Rob Meijerink Architecture)
+-- Core Options (Rob Meijerink)
 -- =========================================================
 local opt = vim.opt
 local g = vim.g

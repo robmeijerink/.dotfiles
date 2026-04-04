@@ -1,5 +1,5 @@
 -- =========================================================
--- Plugin: Debugger (DAP) - Rob Meijerink Architecture
+-- Plugin: Debugger (DAP) - Rob Meijerink
 -- =========================================================
 return {
     "mfussenegger/nvim-dap",

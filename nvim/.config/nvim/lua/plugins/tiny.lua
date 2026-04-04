@@ -1,5 +1,5 @@
 -- =========================================================
--- Plugin: Tiny Utilities (Rob Meijerink Architecture)
+-- Plugin: Tiny Utilities (Rob Meijerink)
 -- =========================================================
 return {
     -- Tim Pope Essentials
