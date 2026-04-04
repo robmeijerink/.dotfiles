@@ -94,3 +94,17 @@ g.netrw_winsize = 25
 
 -- Vue specific from legacy vue.lua
 g.vue_pre_processors = 'detect_on_enter'
+
+-- =========================================================
+-- Optimization: Disable legacy providers
+-- =========================================================
+
+-- Disable providers to shave off startup milliseconds
+vim.g.loaded_perl_provider = 0
+vim.g.loaded_ruby_provider = 0
+vim.g.loaded_node_provider = 0
+vim.g.loaded_python3_provider = 0
+
+-- Optional: If you ever NEED python for a specific plugin,
+-- set the path explicitly to avoid $PATH scanning:
+-- vim.g.python3_host_prog = '/usr/bin/python3'

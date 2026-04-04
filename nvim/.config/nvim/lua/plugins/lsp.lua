@@ -13,7 +13,6 @@ return {
         dependencies = {
             { 'williamboman/mason.nvim', opts = {} },
             'williamboman/mason-lspconfig.nvim',
-            'j-hui/fidget.nvim',
             'glepnir/lspsaga.nvim',
             'ray-x/lsp_signature.nvim',
             'onsails/lspkind.nvim',
@@ -96,7 +95,6 @@ return {
             end)
 
             -- 4. Server Management (Mason)
-            require('fidget').setup({})
             require('mason').setup({})
             require('mason-lspconfig').setup({
                 ensure_installed = {
