@@ -66,16 +66,3 @@ alias -- -='cd -'
 # --- 7. Utility ---
 alias myip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias pwgen="openssl rand -base64 256 | tr -dc '[:print:]' | head -c 32"
-
-# --- 8. OS Specific ---
-case "$(uname -s)" in
-  Darwin)
-    # macOS specific logic
-    ;;
-  Linux)
-    # Linux specific logic (FZF bindings)
-    current_dir=$(dirname "$0")
-    [[ -f "$current_dir/fzf/completion.zsh" ]] && source "$current_dir/fzf/completion.zsh"
-    [[ -f "$current_dir/fzf/key-bindings.zsh" ]] && source "$current_dir/fzf/key-bindings.zsh"
-    ;;
-esac

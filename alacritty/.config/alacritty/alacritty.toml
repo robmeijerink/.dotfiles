@@ -30,7 +30,7 @@ unfocused_hollow = true
 # SHELL SETTINGS
 # =========================================================
 [shell]
-program = "/usr/bin/tmux"
+program = "/usr/local/bin/tmux"
 args = ["new-session", "-A", "-s", "main"]
 
 # =========================================================
