@@ -1,6 +1,6 @@
 -- =========================================================
--- Plugin: telescope.nvim
--- Focus: Fuzzy finding and project navigation
+-- Plugin: telescope.nvim (Refined Solvalutions Edition)
+-- Focus: Deep project search, LGA integration, and Trouble bridge
 -- =========================================================
 return {
     "nvim-telescope/telescope.nvim",
@@ -9,53 +9,45 @@ return {
         { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
         "nvim-telescope/telescope-live-grep-args.nvim",
         "folke/trouble.nvim",
+        -- Optional: add these if you use the extensions
+        "kdheepak/lazygit.nvim",
+        "mfussenegger/nvim-dap",
     },
     keys = {
-        -- Basic File Pickers
-        { "<leader>ff", "<cmd>Telescope find_files<CR>",                                                                   desc = "Find Files" },
-        { "<leader>fa", function() require('telescope.builtin').find_files({ no_ignore = true, hidden = true }) end,       desc = "All Files" },
-        { "<leader>fo", "<cmd>Telescope oldfiles<CR>",                                                                     desc = "Recent Files" },
-        { "<leader>?",  "<cmd>Telescope oldfiles<CR>",                                                                     desc = "Recent Files (Quick)" },
-
-        -- Search / Grep Logic (Optimized for performance)
-        { "<leader>fg", function() require('telescope').extensions.live_grep_args.live_grep_args() end,                    desc = "Live Grep (Args)" },
-        { "<leader>fw", "<cmd>Telescope grep_string<CR>",                                                                  desc = "Grep Word under Cursor" },
-        { "<leader>fv", function() require('telescope.builtin').grep_string({ search = vim.fn.input('Grep For > ') }) end, desc = "Grep manual input" },
-
-        -- Navigation & Refactoring
-        { "<leader>fx", "<cmd>Telescope buffers show_all_buffers=true<CR>",                                                desc = "Telescope Buffers" },
-        { "<leader>fr", "<cmd>Telescope resume<CR>",                                                                       desc = "Resume Search" },
-        { "<leader>fd", "<cmd>Telescope diagnostics<CR>",                                                                  desc = "LSP Diagnostics" },
-        { "<leader>fs", "<cmd>Telescope lsp_document_symbols<CR>",                                                         desc = "Document Symbols" },
-        { "<leader>fS", "<cmd>Telescope lsp_dynamic_workspace_symbols<CR>",                                                desc = "Workspace Symbols" },
-
-        -- Meta / UI Pickers
-        { "<leader>fh", "<cmd>Telescope help_tags<CR>",                                                                    desc = "Help Tags" },
-        { "<leader>fk", "<cmd>Telescope keymaps<CR>",                                                                      desc = "Keymaps" },
-        { "<leader>fc", "<cmd>Telescope commands<CR>",                                                                     desc = "Commands" },
-        { "<leader>fm", "<cmd>Telescope harpoon marks<CR>",                                                                desc = "Harpoon Marks" },
-
-        -- PERF NOTE: <leader>ft (tmux-sessionizer) is handled in keymaps.lua to avoid loading Telescope.
+        { "<leader>ff", "<cmd>Telescope find_files<CR>",                                                                desc = "Find Files" },
+        {
+            "<leader>fa",
+            function()
+                require('telescope.builtin').find_files({
+                    no_ignore = true,
+                    hidden = true,
+                    prompt_title =
+                    'All Files'
+                })
+            end,
+            desc = "All Files"
+        },
+        { "<leader>fg", function() require('telescope').extensions.live_grep_args.live_grep_args() end,                 desc = "Live Grep (Args)" },
+        { "<leader>fw", "<cmd>Telescope grep_string<CR>",                                                               desc = "Grep Word" },
+        { "<leader>fv", function() require('telescope.builtin').grep_string({ search = vim.fn.expand('<cword>') }) end, desc = "Find word under cursor" },
+        { "<leader>fo", "<cmd>Telescope oldfiles<CR>",                                                                  desc = "Recent Files" },
+        { "<leader>fr", "<cmd>Telescope resume<CR>",                                                                    desc = "Resume Search" },
+        { "<leader>fx", "<cmd>Telescope buffers show_all_buffers=true<CR>",                                             desc = "Telescope Buffers" },
+        { "<leader>fd", "<cmd>Telescope diagnostics<CR>",                                                               desc = "Diagnostics" },
+        { "<leader>fs", "<cmd>Telescope lsp_document_symbols<CR>",                                                      desc = "Document Symbols" },
+        -- Added the ones from your source
+        { "<leader>fm", "<cmd>Telescope harpoon marks<CR>",                                                             desc = "Harpoon Marks" },
+        { "<leader>fc", "<cmd>Telescope commands<CR>",                                                                  desc = "Telescope Commands" },
+        { "<leader>fk", "<cmd>Telescope keymaps<CR>",                                                                   desc = "Keymaps" },
     },
     config = function()
         local actions = require("telescope.actions")
+        local lga_actions = require("telescope-live-grep-args.actions")
 
-        -- 1. Safe require for Trouble integration
+        -- Safe require for Trouble
         local has_trouble, trouble = pcall(require, "trouble.sources.telescope")
 
-        local custom_mappings = {
-            i = {
-                ["<c-j>"] = actions.move_selection_next,
-                ["<c-k>"] = actions.move_selection_previous,
-                ["<c-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
-                ["<esc>"] = actions.close,
-                ["<CR>"]  = actions.select_default + actions.center,
-            }
-        }
-
-        if has_trouble then
-            custom_mappings.i["<c-t>"] = trouble.open
-        end
+        local grep_args = { '--hidden', '--glob', '!**/.git/*' }
 
         require("telescope").setup({
             defaults = {
@@ -66,18 +58,68 @@ return {
                     horizontal = { mirror = false },
                     vertical = { mirror = false },
                 },
-                sorting_strategy = "ascending",
-                prompt_prefix = "   ",
-                selection_caret = " ",
+                find_command = {
+                    'rg', '--no-heading', '--with-filename', '--line-number', '--column', '--smart-case', '--iglob',
+                    '!.git', '--hidden', '--no-ignore-vcs'
+                },
+                prompt_prefix = " 󰍉 ",
+                selection_caret = " ",
+                entry_prefix = "  ",
+                initial_mode = "insert",
+                selection_strategy = "reset",
+                sorting_strategy = "descending",
+                layout_strategy = "horizontal",
+                file_ignore_patterns = { ".git", ".idea", ".vscode", "htdocs" },
                 path_display = { "truncate" },
-                file_ignore_patterns = { ".git/", ".idea/", ".vscode/", "htdocs/" },
-                mappings = custom_mappings,
+                winblend = 0,
+                color_devicons = true,
+                set_env = { ['COLORTERM'] = 'truecolor' },
+
+                mappings = {
+                    i = {
+                        ["<C-j>"] = actions.move_selection_next,
+                        ["<C-k>"] = actions.move_selection_previous,
+                        ["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
+                        ["<esc>"] = actions.close,
+                        ["<CR>"]  = actions.select_default + actions.center,
+                        ["<C-t>"] = has_trouble and trouble.open or nil,
+                    },
+                    n = {
+                        ["<C-j>"] = actions.move_selection_next,
+                        ["<C-k>"] = actions.move_selection_previous,
+                        ["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
+                        ["<C-t>"] = has_trouble and trouble.open or nil,
+                    }
+                },
             },
+            pickers = {
+                find_files = {
+                    find_command = { 'fd', '--type', 'f', '--hidden', '--exclude', '.git' }
+                },
+                live_grep = {
+                    additional_args = function() return grep_args end
+                },
+                grep_string = {
+                    additional_args = function() return grep_args end
+                },
+            },
+            extensions = {
+                live_grep_args = {
+                    auto_quoting = true,
+                    mappings = {
+                        i = {
+                            ["<C-k>"] = lga_actions.quote_prompt({ postfix = " --hidden --no-ignore" }),
+                            ["<C-i>"] = lga_actions.quote_prompt({ postfix = " --iglob --hidden --no-ignore" }),
+                        },
+                    },
+                }
+            }
         })
 
-        -- 2. Safely load extensions
+        -- Load extensions
         pcall(require("telescope").load_extension, "fzf")
         pcall(require("telescope").load_extension, "live_grep_args")
-        pcall(require("telescope").load_extension, "harpoon")
+        pcall(require("telescope").load_extension, "lazygit")
+        pcall(require("telescope").load_extension, "dap")
     end,
 }
