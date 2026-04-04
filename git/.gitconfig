@@ -1,101 +1,77 @@
 [user]
-	name = Rob Meijerink
-	email = rob.meijerink@gmail.com
-	# Generate a key with gpg.
-	signingkey = rob.meijerink@gmail.com
+    name = Rob Meijerink
+    email = rob.meijerink@gmail.com
+    signingkey = rob.meijerink@gmail.com
 [alias]
-	s  = status
-	c  = commit
-	p  = pull
-	ms = merge --ff --squash
-	uncommit = reset --soft HEAD~1
-	unmerge  = reset --hard ORIG_HEAD
-	gone = ! git fetch -p && git for-each-ref --format '%(refname:short) %(upstream:track)' | awk '$2 == \"[gone]\" {print $1}' | xargs -r git branch -D
+    s  = status
+    c  = commit
+    p  = pull
+    ms = merge --ff --squash
+    uncommit = reset --soft HEAD~1
+    unmerge  = reset --hard ORIG_HEAD
+    gone = !git fetch -p && git for-each-ref --format '%(refname:short) %(upstream:track)' | awk '$2 == \"[gone]\" {print $1}' | xargs -r git branch -D
 [core]
-	# Setting for macOS / Linux
-	autocrlf = input
-	# Use delta for git diff by default
-	pager = delta
-	# Use text editor
-	editor = nvim
-	# Don't consider trailing space change as a cause for merge conflicts
-	whitespace = -trailing-space
-	# Use a gitignore file to always ignore certain files
-	excludesfile = ~/.gitignore_global
-# [credential]
- 	# Credential store
-    # helper = store
+    autocrlf = input
+    pager = delta
+    editor = nvim
+    whitespace = trailing-space,space-before-tab
+    excludesfile = ~/.gitignore_global
 [diff]
-	# Show moved code in diff
-	colorMoved = zebra
-	algorithm = patience
-	compactionHeuristic = true
-	tool = nvimdiff
+    colorMoved = zebra
+    algorithm = patience
+    compactionHeuristic = true
+    tool = nvimdiff
 [difftool "nvimdiff"]
-	cmd = nvim -d \"$LOCAL\" \"$REMOTE\" -c \"wincmd w\" -c \"wincmd L\"
+    cmd = nvim -d \"$LOCAL\" \"$REMOTE\" -c \"wincmd w\" -c \"wincmd L\"
 [merge]
-	# Disable fast-forward merges as default merge strategy.
-	# Force explicit call of `git merge --ff …`.
-	ff = false
-	conflictstyle = diff3
-	tool = nvimdiff4
-	prompt = false
+    ff = false
+    conflictstyle = diff3
+    tool = nvimdiff4
+    prompt = false
 [mergetool]
-	keepBackup = false
+    keepBackup = false
 [mergetool "nvimdiff4"]
-	cmd = nvim -d $LOCAL $BASE $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
+    cmd = nvim -d \"$LOCAL\" \"$BASE\" \"$REMOTE\" \"$MERGED\" -c \"wincmd w\" -c \"wincmd J\"
 [rebase]
-	autoStash = true
+    autoStash = true
 [delta]
-	features = side-by-side line-numbers decorations
-	navigate = true
-	whitespace-error-style = 22 reverse
-	line-numbers = true
+    features = side-by-side line-numbers decorations
+    navigate = true
+    whitespace-error-style = 22 reverse
+    line-numbers = true
 [delta "decorations"]
-	commit-decoration-style = bold yellow box ul
-	file-style = bold yellow ul
-	file-decoration-style = none
+    commit-decoration-style = bold yellow box ul
+    file-style = bold yellow ul
+    file-decoration-style = none
 [delta "interactive"]
-	keep-plus-minus-markers = true
+    keep-plus-minus-markers = true
 [interactive]
-	diffFilter = delta --color-only --features=interactive
+    diffFilter = delta --color-only --features=interactive
 [pull]
-	# Rebase when pulling
-	rebase = true
-	# Fast Forward on Pull to prevent a merge commit.
-	ff = true
+    rebase = true
+    ff = true
 [fetch]
-	# Clean up local branches on fetch
-	prune = true
+    prune = true
 [push]
-	# Default push should only push the current branch to its push target, regardless of its remote name
-	default = upstream
-	# When pushing, also push tags whose commit-ishs are now reachable upstream
-	followTags = true
+    default = upstream
+    followTags = true
 [status]
-	# Show a short status message by default.
-	short = true
-	# Display submodule rev change summaries in status
-	submoduleSummary = true
-	# Recursively traverse untracked directories to display all contents
-	showUntrackedFiles = all
+    short = true
+    submoduleSummary = true
+    showUntrackedFiles = all
 [color "branch"]
-	# Blue on black is hard to read in git branch -vv: use cyan instead
-	upstream = cyan
+    upstream = cyan
 [commit]
-	gpgsign = true
+    gpgsign = true
 [tag]
-	gpgSign = true
+    gpgsign = true
 [gpg]
-	program = gpg
-
+    program = gpg
 [include]
-
 	# Load local configs.
 	# https://git-scm.com/docs/git-config#_includes
 	#
 	# [!] The following needs to remain at the end of this file in
 	#     order to allow any of the above configs to be overwritten
 	#     by the local one. For example the signingkey.
-
-	path = ~/.gitconfig.local
+    path = ~/.gitconfig.local
