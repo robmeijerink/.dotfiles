@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # =========================================================
-# Tool: sd - Interactive Search & Replace
+# Tool: sdr - Interactive Search & Replace
 # Author: Rob Meijerink (Solvalutions)
 # Performance: O(n) file discovery, O(m) replacement
 # =========================================================
@@ -20,7 +20,6 @@ FIND=$(gum input --placeholder "String to find (regex supported)")
 [[ -z "$FIND" ]] && exit 0
 
 REPLACE=$(gum input --placeholder "Replace with")
-# REPLACE kan leeg zijn (verwijderen), dus we checken alleen op afbreken (Ctrl+C)
 [[ $? -ne 0 ]] && exit 0
 
 WHERE=$(gum input --placeholder "Directory to search (default: .)")
