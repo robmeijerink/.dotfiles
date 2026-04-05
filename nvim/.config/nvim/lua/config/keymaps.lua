@@ -58,9 +58,6 @@ map('i', '<C-c>', '<Esc>', opts) -- Quick escape
 
 -- 5. Search & Replace (Native & Spectre)
 map('n', '<leader>s', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = "Replace Word" })
-map('n', '<leader>SS', "<cmd>lua require('spectre').open()<CR>", { desc = "Spectre" })
-map('n', '<leader>SW', "<cmd>lua require('spectre').open_visual({select_word=true})<CR>", { desc = "Spectre Word" })
-map('n', '<leader>SP', "viw:lua require('spectre').open_file_search()<CR>", { desc = "Spectre in File" })
 
 -- 6. Quickfix & Location List
 map('n', '<C-J>', '<cmd>cnext<CR>zz', opts)

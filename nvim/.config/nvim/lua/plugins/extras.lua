@@ -50,12 +50,4 @@ return {
             events = { update_on_nvim_resize = true },
         }
     },
-
-    -- 5. Search & Replace (Spectre)
-    {
-        'windwp/nvim-spectre',
-        keys = {
-            { "<leader>S", function() require("spectre").toggle() end, desc = "Toggle Spectre" },
-        }
-    }
 }
