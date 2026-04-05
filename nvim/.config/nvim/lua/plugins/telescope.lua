@@ -39,6 +39,7 @@ return {
             end,
             desc = "Find in current directory"
         },
+        -- Quick tip for livegrep (ripgrep): use -uuu to search all, like "computer" -uuu, -w is word boundary etc.
         { "<leader>fg", function() require('telescope').extensions.live_grep_args.live_grep_args() end,                 desc = "Live Grep (Args)" },
         { "<leader>fw", "<cmd>Telescope grep_string<CR>",                                                               desc = "Grep Word" },
         { "<leader>fv", function() require('telescope.builtin').grep_string({ search = vim.fn.expand('<cword>') }) end, desc = "Find word under cursor" },
