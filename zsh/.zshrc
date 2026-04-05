@@ -1,44 +1,56 @@
-#!/bin/sh
+#!/bin/zsh
+# =========================================================
+# ZSH Configuration - Rob Meijerink
+# Finalized for Path Reliability and Plugin Performance
+# =========================================================
+
+# --- 1. Plugin Manager (Zap) ---
 [ -f "$HOME/.local/share/zap/zap.zsh" ] && source "$HOME/.local/share/zap/zap.zsh"
 
-# history
+# --- 2. Environment & History ---
 HISTFILE=~/.zsh_history
-
-# File with custom aliases specific to your PC.
 [ -r "$HOME/.profile" ] && source "$HOME/.profile"
 
-# source
-plug "$HOME/.config/zsh/aliases.zsh"
-plug "$HOME/.config/zsh/exports.zsh"
+# --- 3. Plugins (Zap) ---
+# Core Extensions
+plug "zap-zsh/supercharge"
+plug "zap-zsh/zap-prompt"
+plug "zsh-users/zsh-completions"
 
-# plugins
+# Local Logic & Custom Scripts
 plug "$HOME/.config/zsh/plugins/dirpersist.zsh"
 plug "$HOME/.config/zsh/plugins/ssh-load.zsh"
 
-# plug "esc/conda-zsh-completion"
-plug "zsh-users/zsh-autosuggestions"
-plug "hlissner/zsh-autopair"
-plug "zap-zsh/supercharge"
-# plug "zap-zsh/vim"
-plug "zap-zsh/zap-prompt"
+# Productivity & Search
 plug "zap-zsh/fzf"
-plug "zap-zsh/exa"
+plug "zsh-users/zsh-autosuggestions"
+plug "zsh-users/zsh-history-substring-search"
+plug "hlissner/zsh-autopair"
+
+# The "Vim-Feel" (Crucial for Neovim users)
+plug "jeffreytse/zsh-vi-mode"
+
+# UI & Feedback (Always load these last)
 plug "zsh-users/zsh-syntax-highlighting"
 
-# keybinds
+# --- 4. Modular Config Sourcing ---
+# CRITICAL: We source exports LAST to ensure it overrides any PATH
+# pollution introduced by Zap or other plugins during the boot sequence.
+source "$HOME/.config/zsh/aliases.zsh"
+source "$HOME/.config/zsh/exports.zsh"
+
+# --- 5. Keybindings & Productivity ---
+# Accept autosuggestion with Ctrl + Space
 bindkey '^ ' autosuggest-accept
 
-# Fuzzy Finder with Ctrl + f
-bindkey -s '^f' "tmux-sessionizer\n"
+# Fast project switching via tmux-sessionizer (Fzf-powered)
+# Using 'tmux-sessionizer' directly as it is now guaranteed in $PATH
+bindkey -s '^f' "$HOME/.local/scripts/tmux-sessionizer\n"
 
+# Standard FZF integration (if present)
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-if command -v bat &> /dev/null; then
-  alias cat="bat -pp --theme \"Dracula\""
-  alias catt="bat --theme \"Dracula\""
-fi
-
-# CTRL-Z to fg back in suspended process
+# Fancy-ctrl-z: Toggle between backgrounded process and shell
 fancy-ctrl-z () {
   if [[ $#BUFFER -eq 0 ]]; then
     BUFFER="fg"
@@ -51,7 +63,7 @@ fancy-ctrl-z () {
 zle -N fancy-ctrl-z
 bindkey '^Z' fancy-ctrl-z
 
-# Other
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# --- 6. Final Cleanup ---
+# Ensure completions are up to date after all plugins are loaded
+autoload -Uz compinit
+compinit

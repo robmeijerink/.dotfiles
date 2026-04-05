@@ -1,31 +1,31 @@
 #!/usr/bin/env bash
 
+# 1. Select the target directory
 if [[ $# -eq 1 ]]; then
-    # Adding support for simply passing the current working directory or a specified path
-    selected="$1" && [[ "$selected" == '.' ]] && selected="$PWD"
+    selected="$1"
 else
-    selected=$(echo -e "./\n$(find ~/projects ~/ -mindepth 1 -maxdepth 1 -type d)" | fzf)
+    selected=$({
+        printf "%s\n" "$HOME/projects" "$HOME/.dotfiles"
+        fd --min-depth 1 --max-depth 1 --type d --hidden . ~/projects ~/.dotfiles 2>/dev/null
+    } | fzf)
 fi
 
-if [[ $selected == './' ]]; then
-    # Adding support for simply passing the current working directory or a specified path
-    selected="$(pwd)"
+[[ -z "$selected" ]] && exit 0
+
+selected="${selected%/}"
+
+# 2. Prepare session name (O(1) - No forks)
+name="${selected##*/}"
+selected_name="${name//[ .:]/_}"
+
+# 3. Execution Logic
+if ! tmux has-session -t "=$selected_name" 2> /dev/null; then
+    tmux new-session -ds "$selected_name" -c "$selected"
 fi
 
-if [[ -z $selected ]]; then
-    exit 0
-fi
-
-selected_name=$(basename "$selected" | tr . _)
-
-# This works in all situations.
-# If you are in a tmux session, and the selected session does exist, switch to it; if not, create a new one and then switch to it.
-if [[ -n $TMUX ]]; then
-  tmux switch-client -t "$selected_name" \
-  || tmux new-session -ds "$selected_name" -c "$selected" \
-  && tmux switch-client -t "$selected_name"
-# If outside of a tmux session, try to create a new session; if it fails, it attaches to the selected session
-elif [[ -z $TMUX ]]; then
-  tmux new-session -s "$selected_name" -c "$selected" \
-  || tmux attach -t "$selected_name"
+# 4. Attachment Logic
+if [[ -z "$TMUX" ]]; then
+    exec tmux attach-session -t "=$selected_name"
+else
+    tmux switch-client -t "=$selected_name"
 fi

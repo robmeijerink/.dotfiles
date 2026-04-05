@@ -1,10 +1,50 @@
-require('robmeijerink.plugins')
-require('robmeijerink.settings')
-require('robmeijerink.debugger')
+-- =========================================================
+-- 1. Core Settings & Keymaps
+-- =========================================================
+-- Note: Mapleader MUST be set before lazy.nvim loads!
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
--- Require local config file if the file exists
+-- Load core options (Rob Meijerink Baseline)
+require('config.options')
+
+-- Load global keymaps & autocmds with protective calls
+pcall(require, 'config.keymaps')
+pcall(require, 'config.autocmds')
+
+-- =========================================================
+-- 2. Bootstrap lazy.nvim
+-- =========================================================
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable",
+    lazypath,
+  })
+end
+vim.opt.rtp:prepend(lazypath)
+
+-- =========================================================
+-- 3. Start Lazy and load all plugins
+-- =========================================================
+require("lazy").setup("plugins", {
+  rocks = {
+    enabled = false,
+  },
+  ui = {
+    border = "rounded",
+  },
+})
+
+-- =========================================================
+-- 4. Project Specific Configuration
+-- =========================================================
 local f = io.open('./init_local.lua', 'r')
 if f ~= nil then
     io.close(f)
-    require('init_local')
+    pcall(require, 'init_local')
 end

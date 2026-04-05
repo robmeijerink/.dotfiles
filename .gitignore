@@ -6,7 +6,4 @@ alacritty/.config/alacritty/*
 lazygit/.config/lazygit/*
 !lazygit/.config/lazygit/config.yml
 
-nvm/.nvm/*
-!nvm/.nvm/default-packages
-
 nvim/.config/nvim/init_local.lua

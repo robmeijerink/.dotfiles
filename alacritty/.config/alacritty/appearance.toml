@@ -1,56 +1,55 @@
-[colors.bright]
-black = "0x6f6f6f"
-blue = "0xc2e3ff"
-cyan = "0xc0e9f8"
-green = "0xd6fcba"
-magenta = "0xffc6ff"
-red = "0xfe978b"
-white = "0xffffff"
-yellow = "0xfffed5"
+# =========================================================
+# Alacritty Appearance - Rob Meijerink
+# =========================================================
 
-[colors.cursor]
-background = "0xf0f0f0"
-cursor = "#ECEFF4"
-foreground = "0x26282a"
-text = "#3B4252"
-
-[colors.normal]
-black = "0x26282a"
-blue = "0x8bbce5"
-cyan = "0xa2e1f8"
-green = "0xb4fb73"
-magenta = "0xffb2fe"
-red = "0xff8878"
-white = "0xf1f1f1"
-yellow = "0xfffcb7"
-
-[colors.primary]
-background = "0x000000"
-foreground = "0xeaeaea"
+[window]
+opacity = 0.95
+decorations = "None"
 
 [font]
 size = 10.0
+
+[font.normal]
+family = "FiraCode Nerd Font"
 
 [font.bold]
 family = "FiraCode Nerd Font"
 style = "Bold"
 
-[font.bold_italic]
-family = "FiraCode Nerd Font"
-style = "Bold Italic"
-
 [font.italic]
 family = "FiraCode Nerd Font"
 style = "Italic"
 
-[font.normal]
+[font.bold_italic]
 family = "FiraCode Nerd Font"
-style = "Regular"
+style = "Bold Italic"
 
-[window]
-decorations = "None"
-opacity = 0.95
+[colors.primary]
+background = "#000000"
+foreground = "#eaeaea"
 
-[window.padding]
-x = 5
-y = 5
+[colors.cursor]
+background = "#f0f0f0"
+foreground = "#26282a"
+cursor = "#ECEFF4"
+text = "#3B4252"
+
+[colors.normal]
+black   = "#26282a"
+red     = "#ff8878"
+green   = "#b4fb73"
+yellow  = "#fffcb7"
+blue    = "#8bbce5"
+magenta = "#ffb2fe"
+cyan    = "#a2e1f8"
+white   = "#f1f1f1"
+
+[colors.bright]
+black   = "#6f6f6f"
+red     = "#fe978b"
+green   = "#d6fcba"
+yellow  = "#fffed5"
+blue    = "#c2e3ff"
+cyan    = "#c0e9f8"
+magenta = "#ffc6ff"
+white   = "#ffffff"

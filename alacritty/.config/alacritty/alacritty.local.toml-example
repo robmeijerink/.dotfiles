@@ -1,27 +1,43 @@
+# =========================================================
+# Alacritty Local Overrides - Rob Meijerink
+# This file is machine-specific (macOS / Ubuntu)
+# =========================================================
+
 [font]
-family = "FiraCode Nerd Font"
-# Mac-only
-style = "Retina"
 size = 11.5
 
-# Mac-only
+[font.normal]
+family = "FiraCode Nerd Font"
+style = "Retina" # macOS optimized
+
 [window]
-decorations = Buttonless
+# "Buttonless" gives a clean look on macOS while keeping window dragging
+decorations = "Buttonless"
 
-[[keyboard.bindings]]
-# --- OPTION 1: UBUNTU (Wayland) ---
-# key = "Slash"
-# mods = "Control"
-# action = "Spawn"
-# command = { program = "sh", args = ["-c", "bw get password 'GitHub Vault PAT' | wl-copy"] }
+# =========================================================
+# KEYBINDINGS (Local & Security)
+# =========================================================
 
-# --- OPTION 2: MACOS (pbcopy) ---
+# --- GitHub PAT Vault (Bitwarden Integration) ---
+
+# macOS Version (Uncomment on MacBook)
+# [[keyboard.bindings]]
 # key = "Slash"
 # mods = "Control"
 # action = "Spawn"
 # command = { program = "sh", args = ["-c", "bw get password 'GitHub Vault PAT' | pbcopy"] }
 
-# Fixes tmux C-Space in MS Windows
-# chars = "\x00"
+# Ubuntu Wayland Version (Uncomment on PC)
+# [[keyboard.bindings]]
+# key = "Slash"
+# mods = "Control"
+# action = "Spawn"
+# command = { program = "sh", args = ["-c", "bw get password 'GitHub Vault PAT' | wl-copy"] }
+
+# --- Legacy / Windows Fixes ---
+
+# Fixes tmux C-Space in MS Windows environments
+# [[keyboard.bindings]]
 # key = "Space"
 # mods = "Control"
+# chars = "\x00"

@@ -1,57 +1,51 @@
 #!/usr/bin/env bash
-# Description: Unified maintenance routine for Linux and macOS.
-# Usage: Execute directly. Will ask for sudo if required.
-
 set -e
 
 # Detect Operating System
 OS="$(uname -s)"
+echo "--- Starting full maintenance for $OS ---"
 
-echo "Starting system maintenance for $OS..."
+# Keep-alive sudo: update the timestamp and keep it fresh
+sudo -v
+while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 if [ "$OS" = "Linux" ]; then
-    # Ubuntu / Debian architecture
-    echo "Running APT and Snap updates..."
-    sudo apt-get update
-    sudo apt-get upgrade
+    echo "Updating System Packages (APT & Snap)..."
+    sudo apt update && sudo apt upgrade -y
     sudo snap refresh
-    sudo apt-get autoremove --purge
-    sudo apt-get clean
-
-    if command -v brew >/dev/null 2>&1; then
-        echo "Running Homebrew on Linux updates..."
-        brew update
-        brew upgrade
-        brew cleanup
-    else
-        echo "Warning: Homebrew on Linux not found."
-    fi
+    sudo apt autoremove -y && sudo apt clean
 
 elif [ "$OS" = "Darwin" ]; then
-    # macOS architecture
-    if command -v brew >/dev/null 2>&1; then
-        echo "Running Homebrew updates..."
-        brew update
-        brew upgrade
-        brew cleanup
-    else
-        echo "Warning: Homebrew not found."
-    fi
-
-    # Check for available App Store updates without installing them
-    if command -v mas >/dev/null 2>&1; then
-        # brew install mas
-        echo "Checking Mac App Store updates..."
-        # List outdated apps
-        mas outdated
-
-        # Example of targeted updating:
-        # Only update specific, low-risk tools by their Apple ID
-        # mas upgrade 1480068668 # Messenger
-    fi
-else
-    echo "Unsupported OS: $OS"
-    exit 1
+    echo "Updating macOS App Store apps..."
+    if command -v mas >/dev/null; then mas upgrade; fi
 fi
 
-echo "Maintenance completed successfully."
+# 1. Homebrew (Common for both OS)
+if command -v brew >/dev/null; then
+    echo "Updating Homebrew & Casks..."
+    brew update && brew upgrade && brew cleanup
+    # Optional: brew cu -a -y (if brew-cask-upgrade is installed)
+fi
+
+# 2. Neovim Headless Update (The "Deep" update)
+if command -v nvim >/dev/null; then
+    echo "Updating Neovim Plugins & Mason Binaries..."
+    # Update Lazy.nvim plugins
+    nvim --headless "+Lazy! sync" +qa
+    # Update Mason binaries (LSP, Linters, Formatters)
+    nvim --headless -c "MasonUpdate" -c "qa"
+fi
+
+# 3. Zsh Plugins (Zap)
+if [ -f "$HOME/.local/share/zap/zap.zsh" ]; then
+    echo "Updating Zsh plugins (Zap)..."
+    zsh -c "source $HOME/.local/share/zap/zap.zsh && zap update"
+fi
+
+# 4. Firmware (Linux only)
+if [ "$OS" = "Linux" ] && command -v fwupdmgr >/dev/null; then
+    echo "Checking for firmware updates..."
+    sudo fwupdmgr get-updates || true
+fi
+
+echo "--- Maintenance completed successfully ---"

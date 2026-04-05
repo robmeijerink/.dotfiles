@@ -1,16 +1,15 @@
 #!/usr/bin/env bash
+# =========================================================
+# Setup/Bootstrap - Rob Meijerink (Solvalutions)
+# Optimized for Headless Ansible Execution
+# =========================================================
 
-# ---------------------------------------------------------
-# 1. Prepare Required Directories
-# ---------------------------------------------------------
-# Ensure Neovim/Vim swap and backup directories exist
-mkdir -p ~/.vim/tmp/undo
-mkdir -p ~/.vim/tmp/backup
-mkdir -p ~/.vim/tmp/swap
+set -e
 
-# ---------------------------------------------------------
-# 2. Stow Configurations
-# ---------------------------------------------------------
+# 1. Ensure directories exist (O(1) complexity)
+mkdir -p ~/.vim/tmp/{undo,backup,swap}
+
+# 2. Configurable folder list
 STOW_FOLDERS=(
     "alacritty"
     "bin"
@@ -23,13 +22,22 @@ STOW_FOLDERS=(
     "zsh"
 )
 
-# Navigate to the directory where this script is located
-cd "$(dirname "$0")" || exit 1
+# Navigate to the repo root (where this script lives)
+cd "$(dirname "$0")"
 
-for f in "${STOW_FOLDERS[@]}"; do
-    echo "Stowing: ${f}..."
-    # --restow ensures idempotency (updates existing links without failing)
-    stow --restow "${f}"
+for folder in "${STOW_FOLDERS[@]}"; do
+    if [ -d "$folder" ]; then
+        find "$folder" -maxdepth 1 -not -path "$folder" | while read -r src; do
+            filename=$(basename "$src")
+            target="$HOME/$filename"
+
+            if [ -e "$target" ] && [ ! -L "$target" ]; then
+                mv "$target" "$target.bak"
+            fi
+        done
+
+        stow -t ~ --restow "$folder"
+    fi
 done
 
-echo "Configuration applied successfully."
+echo "OK: Dotfiles synchronized via Stow."
