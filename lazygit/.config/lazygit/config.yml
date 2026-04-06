@@ -1,4 +1,9 @@
+# =========================================================
+# Lazygit Configuration
+# =========================================================
+
 gui:
+  language: "en"
   nerdFontsVersion: "3"
   showIcons: true
   theme:
@@ -9,29 +14,34 @@ gui:
       - "#333333"
     searchingActiveBorderColor:
       - "#ffb86c" # Dracula orange
+
 git:
   disableForcePushing: true
   parseEmoji: true
-  paging:
-    colorArg: always
-    pager: delta --dark --paging=never --hyperlinks --line-numbers --syntax-theme=Dracula
+
+  pagers:
+    - colorArg: "always"
+      pager: "delta --dark --paging=never --hyperlinks --line-numbers --syntax-theme=Dracula"
+
   commit:
-    signOff: false # Set true if clients require DCO (Developer Certificate of Origin)
-  allBranchesLogCmd: "git log --graph --all --color=always --abbrev-commit --date=relative --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'"
+    signOff: false
+
+  # Optimized log view
+  allBranchesLogCmds:
+    - "git log --graph --all --color=always --abbrev-commit --date=relative --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'"
 
 os:
-  edit: 'nvim {{filename}}'
-  editAtLine: 'nvim +{{line}} -- {{filename}}'
-  editAtLineWait: 'nvim +{{line}} -- {{filename}}'
+  edit: "nvim {{filename}}"
+  editAtLine: "nvim +{{line}} {{filename}}"
 
 customCommands:
-  - key: 'F'
+  - key: "F"
     command: "git commit --fixup {{.SelectedLocalCommit.Hash}}"
-    context: 'commits'
-    description: 'Fixup commit (auto-squash ready)'
-    loadingText: 'Fixing up...'
-  - key: 'L'
+    context: "commits"
+    description: "Fixup commit (auto-squash ready)"
+    loadingText: "Fixing up..."
+  - key: "L"
     command: "git push --force-with-lease"
-    context: 'global'
-    description: 'Safe force push (with lease)'
-    loadingText: 'Pushing safely...'
+    context: "global"
+    description: "Safe force push (with lease)"
+    loadingText: "Pushing safely..."
