@@ -99,11 +99,21 @@ map('n', '<leader>bc', '<cmd>enew<cr>', { desc = "Buffer New (Create Empty)" })
 map('n', '<leader>x', '<cmd>Bdelete<CR>', { desc = "Close Buffer" })
 map('n', '<C-f>', '<cmd>silent !tmux neww tmux-sessionizer<CR>', opts) -- Tmux magic
 
-map('n', '<leader>u', vim.cmd.UndotreeToggle, { desc = "Toggle Undotree" })
-
 map("n", "<leader>cf", function()
     require("conform").format({ async = true, lsp_fallback = true })
 end, { desc = "Code Format" })
+
+-- =========================================================
+-- Native Built-in Plugins (Lazy Loaded)
+-- =========================================================
+
+vim.keymap.set("n", "<leader>u", function()
+    -- 1. Load the builtin plugin into memory (Zero startup overhead)
+    vim.cmd("packadd nvim.undotree")
+
+    -- 2. Toggle the native visual tree window
+    vim.cmd("Undotree")
+end, { desc = "Toggle Undotree" })
 
 -- =========================================================
 -- Debugging (DAP) Keymaps

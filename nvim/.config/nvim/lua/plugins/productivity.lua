@@ -2,27 +2,19 @@
 -- Plugin: Productivity Suite (Rob Meijerink)
 -- =========================================================
 return {
-    -- 1. Harpoon (Quick file switching)
+    -- Harpoon (Quick file switching)
     {
         "ThePrimeagen/harpoon",
         dependencies = { "nvim-lua/plenary.nvim" },
         keys = {
-            { "<leader>ha", function() require("harpoon.mark").add_file() end, desc = "Harpoon Mark" },
-            { "<C-e>", function() require("harpoon.ui").toggle_quick_menu() end, desc = "Harpoon Menu" },
-            { "<leader>h1", function() require("harpoon.ui").nav_file(1) end, desc = "Harpoon 1" },
-            { "<leader>h2", function() require("harpoon.ui").nav_file(2) end, desc = "Harpoon 2" },
+            { "<leader>ha", function() require("harpoon.mark").add_file() end,        desc = "Harpoon Mark" },
+            { "<C-e>",      function() require("harpoon.ui").toggle_quick_menu() end, desc = "Harpoon Menu" },
+            { "<leader>h1", function() require("harpoon.ui").nav_file(1) end,         desc = "Harpoon 1" },
+            { "<leader>h2", function() require("harpoon.ui").nav_file(2) end,         desc = "Harpoon 2" },
         },
     },
 
-    -- 2. Undotree (Visual undo history)
-    {
-        'mbbill/undotree',
-        keys = {
-            { "<leader>u", vim.cmd.UndotreeToggle, desc = "Toggle Undotree" },
-        },
-    },
-
-    -- 3. TreeSJ (Split/Join code blocks)
+    -- TreeSJ (Split/Join code blocks)
     {
         'Wansmer/treesj',
         dependencies = { 'nvim-treesitter/nvim-treesitter' },
@@ -37,7 +29,7 @@ return {
         }
     },
 
-    -- 4. Neoscroll (Smooth scrolling)
+    -- Neoscroll (Smooth scrolling)
     {
         'karb94/neoscroll.nvim',
         event = "WinScrolled",
@@ -51,6 +43,6 @@ return {
         end,
     },
 
-    -- 5. Tmux Navigator (Seamless navigation)
+    -- Tmux Navigator (Seamless navigation)
     { 'christoomey/vim-tmux-navigator', lazy = false },
 }
