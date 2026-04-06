@@ -54,6 +54,9 @@ export PATH
 export HISTFILE="$HOME/.zsh_history"
 export HISTSIZE=1000000
 export SAVEHIST=1000000
+setopt appendhistory
+setopt sharehistory
+setopt histignorealldups
 
 # --- 5. Default Applications ---
 export EDITOR="nvim"

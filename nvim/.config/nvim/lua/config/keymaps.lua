@@ -92,6 +92,7 @@ map('n', '<leader>**', '<cmd>Neogen<CR>', { desc = "Generate Docs" })
 
 -- 10. Workspace & Files
 map('n', '<leader>w', '<cmd>w<CR>', { desc = "Save" })
+map('n', '<leader>bn', '<cmd>enew<cr>', { desc = "Buffer New (Empty)" })
 map('n', '<leader>x', '<cmd>Bdelete<CR>', { desc = "Close Buffer" })
 map('n', '<C-f>', '<cmd>silent !tmux neww tmux-sessionizer<CR>', opts) -- Tmux magic
 

@@ -63,6 +63,18 @@ fancy-ctrl-z () {
 zle -N fancy-ctrl-z
 bindkey '^Z' fancy-ctrl-z
 
+# ============================================================================
+# Command History & Fuzzy Search (fzf)
+# ============================================================================
+
+# 1. Activate fzf keybindings (including Ctrl+R and Ctrl+T)
+if command -v fzf >/dev/null 2>&1; then
+  eval "$(fzf --zsh)"
+fi
+
+# 2. Forceer Ctrl+R terug, óók als Vi-mode het probeert te overschrijven
+bindkey '^r' fzf-history-widget
+
 # --- 6. Final Cleanup ---
 # Ensure completions are up to date after all plugins are loaded
 autoload -Uz compinit
