@@ -72,7 +72,7 @@ if command -v fzf >/dev/null 2>&1; then
   eval "$(fzf --zsh)"
 fi
 
-# 2. Forceer Ctrl+R terug, óók als Vi-mode het probeert te overschrijven
+# 2. Force Ctrl+R back, if vim mode tries to override it
 bindkey '^r' fzf-history-widget
 
 # --- 6. Final Cleanup ---
