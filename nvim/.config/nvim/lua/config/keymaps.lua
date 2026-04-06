@@ -90,9 +90,12 @@ map('n', '<leader>zz', '<cmd>ZenMode<CR>', { desc = "Zen Mode" })
 map('n', '<leader>zt', '<cmd>Twilight<CR>', { desc = "Twilight" })
 map('n', '<leader>**', '<cmd>Neogen<CR>', { desc = "Generate Docs" })
 
+-- Block Ex. mode
+map('n', 'Q', '<cmd>q<cr>', { desc = "Close current window/split" })
+
 -- 10. Workspace & Files
 map('n', '<leader>w', '<cmd>w<CR>', { desc = "Save" })
-map('n', '<leader>bn', '<cmd>enew<cr>', { desc = "Buffer New (Empty)" })
+map('n', '<leader>bc', '<cmd>enew<cr>', { desc = "Buffer New (Create Empty)" })
 map('n', '<leader>x', '<cmd>Bdelete<CR>', { desc = "Close Buffer" })
 map('n', '<C-f>', '<cmd>silent !tmux neww tmux-sessionizer<CR>', opts) -- Tmux magic
 
