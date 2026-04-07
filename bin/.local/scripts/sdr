@@ -13,7 +13,7 @@ for tool in gum fd sad rg; do
     fi
 done
 
-gum style --foreground 4 "--- Solvalutions Global Search & Replace ---"
+gum style --foreground 4 "--- Global Search & Replace ---"
 
 # 1. Inputs with validation
 FIND=$(gum input --placeholder "String to find (regex supported)")

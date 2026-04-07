@@ -7,13 +7,6 @@ import = [
     "~/.config/alacritty/alacritty.local.toml"
 ]
 
-[window]
-padding = { x = 2, y = 2 }
-# dynamic_padding = true
-decorations = "full"
-startup_mode = "Maximized"
-dynamic_title = true
-
 [scrolling]
 history = 10000
 multiplier = 3
@@ -29,6 +22,7 @@ unfocused_hollow = true
 # =========================================================
 # SHELL SETTINGS
 # =========================================================
+
 [shell]
 program = "/usr/local/bin/tmux"
 args = ["new-session", "-A", "-s", "main"]
@@ -60,6 +54,7 @@ action = "SpawnNewInstance"
 # =========================================================
 # HINTS
 # =========================================================
+
 [[hints.enabled]]
 command = "xdg-open"
 hyperlinks = true

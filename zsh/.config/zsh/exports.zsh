@@ -78,3 +78,26 @@ fi
 # --- 7. Pager & Documentation ---
 export MANPAGER='nvim +Man!'
 export MANWIDTH=999
+
+# =========================================================
+# OS-Specific Variables
+# =========================================================
+
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+    # ---------------------------------------------------------
+    # Ubuntu Server (Sway/Wayland)
+    # ---------------------------------------------------------
+
+    # Force Qt apps to Wayland
+    export QT_QPA_PLATFORM="wayland;xcb"
+
+    # Headless GNOME Keyring unlocker for Sway
+    if [ -n "$DESKTOP_SESSION" ]; then
+        eval $(gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
+        export SSH_AUTH_SOCK
+    fi
+
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+    # (Optional) Add macOS specific paths
+    # export PATH="/usr/local/bin:$PATH"
+fi

@@ -1,5 +1,5 @@
 # =========================================================
-# Lazygit Configuration
+# Lazygit Configuration - Updated for v0.40+
 # =========================================================
 
 gui:
@@ -19,9 +19,10 @@ git:
   disableForcePushing: true
   parseEmoji: true
 
-  pagers:
-    - colorArg: "always"
-      pager: "delta --dark --paging=never --hyperlinks --line-numbers --syntax-theme=Dracula"
+  # NEW SYNTAX: Replaces 'pagers'
+  paging:
+    colorArg: always
+    pager: delta --dark --paging=never --hyperlinks --line-numbers --syntax-theme=Dracula
 
   commit:
     signOff: false

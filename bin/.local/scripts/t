@@ -17,7 +17,7 @@ unformat_path() {
 }
 
 # --- 1. Header & UI Setup ---
-BORDER_LABEL=" t - Solvalutions Session Manager "
+BORDER_LABEL=" t - Session Manager "
 HEADER=" ctrl-s: sessions / ctrl-x: zoxide / ctrl-d: directory"
 
 # --- 2. Bindings & Logic ---

@@ -1,0 +1,10 @@
+/* =========================================================
+   Waybar Theme - Rob Meijerink
+   ========================================================= */
+
+* {
+    font-family: "FiraCode Nerd Font", "Fira Code", monospace;
+    font-size: 13px;
+    border: none;
+    border-radius: 0;
+}

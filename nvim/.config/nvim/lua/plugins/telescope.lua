@@ -1,5 +1,5 @@
 -- =========================================================
--- Plugin: telescope.nvim (Refined Solvalutions Edition)
+-- Plugin: telescope.nvim
 -- Focus: Deep project search, LGA integration, and Trouble bridge
 -- =========================================================
 return {

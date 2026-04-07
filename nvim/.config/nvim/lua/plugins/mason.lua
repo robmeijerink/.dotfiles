@@ -1,5 +1,5 @@
 -- =========================================================
--- Plugin: Mason & Tool Installer (Solvalutions Standard)
+-- Plugin: Mason & Tool Installer
 -- Focus: Self-bootstrapping dependencies
 -- =========================================================
 return {

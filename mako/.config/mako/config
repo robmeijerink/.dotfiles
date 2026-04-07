@@ -1,0 +1,33 @@
+# =========================================================
+# Mako Configuration - Rob Meijerink
+# =========================================================
+
+# --- Layout & Appearance ---
+font=FiraCode Nerd Font 10
+background-color=#1e1e2e
+text-color=#cdd6f4
+border-color=#5eacd3
+border-size=2
+border-radius=0
+padding=15
+margin=20
+
+# --- Behavior ---
+default-timeout=5000
+group-by=app-name
+max-history=5
+sort=-time
+
+# --- Hooks (Wayland Specific) ---
+# Ensure notifications don't steal focus
+anchor=top-right
+layer=overlay
+
+# --- Colors for specific urgencies ---
+[urgency=high]
+border-color=#f38ba8
+default-timeout=0
+
+[urgency=low]
+border-color=#313244
+default-timeout=2000

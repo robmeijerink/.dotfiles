@@ -1,81 +1,111 @@
 #!/bin/zsh
 # =========================================================
 # ZSH Configuration - Rob Meijerink
-# Finalized for Path Reliability and Plugin Performance
 # =========================================================
 
-# --- 1. Plugin Manager (Zap) ---
+# --- 1. Environment & Exports (CRITICAL: Load first) ---
+# Load your paths and env vars so all subsequent tools see them
+[ -f "$HOME/.config/zsh/exports.zsh" ] && source "$HOME/.config/zsh/exports.zsh"
+
+# Linuxbrew Path Injection
+if [[ "$OSTYPE" == "linux-gnu"* && -d "/home/linuxbrew/.linuxbrew" ]]; then
+    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+fi
+
+# Pre-init asdf
+if [ -f "$HOME/.asdf/asdf.sh" ]; then
+    ASDF_SH="$HOME/.asdf/asdf.sh"
+elif [ -f "/opt/homebrew/opt/asdf/libexec/asdf.sh" ]; then
+    ASDF_SH="/opt/homebrew/opt/asdf/libexec/asdf.sh"
+elif [ -f "/home/linuxbrew/.linuxbrew/opt/asdf/libexec/asdf.sh" ]; then
+    ASDF_SH="/home/linuxbrew/.linuxbrew/opt/asdf/libexec/asdf.sh"
+fi
+
+if [[ -n "$ASDF_SH" ]]; then
+    . "$ASDF_SH"
+    # Inject completions before compinit
+    [[ -n "$ASDF_DIR" ]] && fpath=(${ASDF_DIR}/completions $fpath)
+fi
+
+# --- 2. Plugin Manager (Zap) ---
 [ -f "$HOME/.local/share/zap/zap.zsh" ] && source "$HOME/.local/share/zap/zap.zsh"
 
-# --- 2. Environment & History ---
-HISTFILE=~/.zsh_history
-[ -r "$HOME/.profile" ] && source "$HOME/.profile"
+# --- 3. VI-Mode Hook (Must be defined BEFORE the plugin is loaded) ---
+function zvm_after_init() {
+    # Substring Search Bindings
+    zvm_bindkey vicmd 'k' history-substring-search-up
+    zvm_bindkey vicmd 'j' history-substring-search-down
 
-# --- 3. Plugins (Zap) ---
-# Core Extensions
+    # FZF & Custom logic
+    bindkey '^r' fzf-history-widget
+    bindkey '^ ' autosuggest-accept
+}
+
+# --- 4. Plugins ---
 plug "zap-zsh/supercharge"
 plug "zap-zsh/zap-prompt"
 plug "zsh-users/zsh-completions"
 
-# Local Logic & Custom Scripts
+# --- RESTORED: Local Logic & Custom Scripts ---
 plug "$HOME/.config/zsh/plugins/dirpersist.zsh"
 plug "$HOME/.config/zsh/plugins/ssh-load.zsh"
 
 # Productivity & Search
 plug "zap-zsh/fzf"
 plug "zsh-users/zsh-autosuggestions"
-plug "zsh-users/zsh-history-substring-search"
 plug "hlissner/zsh-autopair"
-
-# The "Vim-Feel" (Crucial for Neovim users)
 plug "jeffreytse/zsh-vi-mode"
-
-# UI & Feedback (Always load these last)
 plug "zsh-users/zsh-syntax-highlighting"
+plug "zsh-users/zsh-history-substring-search"
 
-# --- 4. Modular Config Sourcing ---
-# CRITICAL: We source exports LAST to ensure it overrides any PATH
-# pollution introduced by Zap or other plugins during the boot sequence.
-source "$HOME/.config/zsh/aliases.zsh"
-source "$HOME/.config/zsh/exports.zsh"
+# --- 5. History & Behavior ---
+export HISTFILE=~/.zsh_history
+export HISTSIZE=50000
+export SAVEHIST=50000
+setopt SHARE_HISTORY
+setopt HIST_IGNORE_DUPS
+setopt HIST_REDUCE_BLANKS
 
-# --- 5. Keybindings & Productivity ---
-# Accept autosuggestion with Ctrl + Space
-bindkey '^ ' autosuggest-accept
+# Source .profile for any legacy environment variables
+[ -r "$HOME/.profile" ] && source "$HOME/.profile"
 
-# Fast project switching via tmux-sessionizer (Fzf-powered)
-# Using 'tmux-sessionizer' directly as it is now guaranteed in $PATH
+# --- 6. Version Managers & Logic ---
+if command -v fnm &> /dev/null; then
+    eval "$(fnm env --use-on-cd)"
+fi
+
+# FZF initialization (Modern way)
+if command -v fzf >/dev/null 2>&1; then
+    eval "$(fzf --zsh)"
+fi
+
+# Keybindings
 bindkey -s '^f' "$HOME/.local/scripts/tmux-sessionizer\n"
 
-# Standard FZF integration (if present)
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# Fancy-ctrl-z: Toggle between backgrounded process and shell
 fancy-ctrl-z () {
-  if [[ $#BUFFER -eq 0 ]]; then
-    BUFFER="fg"
-    zle accept-line
-  else
-    zle push-input
-    zle clear-screen
-  fi
+    if [[ $#BUFFER -eq 0 ]]; then
+        BUFFER="fg"
+        zle accept-line
+    else
+        zle push-input
+        zle clear-screen
+    fi
 }
 zle -N fancy-ctrl-z
 bindkey '^Z' fancy-ctrl-z
 
-# ============================================================================
-# Command History & Fuzzy Search (fzf)
-# ============================================================================
+# Aliases
+[ -f "$HOME/.config/zsh/aliases.zsh" ] && source "$HOME/.config/zsh/aliases.zsh"
 
-# 1. Activate fzf keybindings (including Ctrl+R and Ctrl+T)
-if command -v fzf >/dev/null 2>&1; then
-  eval "$(fzf --zsh)"
+# --- 7. Final Cleanup (O(1) cached startup) ---
+autoload -Uz compinit
+if [[ -n ${ZDOTDIR:-$HOME}/.zcompdump(N.m-1) ]]; then
+    compinit -C
+else
+    compinit -i
 fi
 
-# 2. Force Ctrl+R back, if vim mode tries to override it
-bindkey '^r' fzf-history-widget
-
-# --- 6. Final Cleanup ---
-# Ensure completions are up to date after all plugins are loaded
-autoload -Uz compinit
-compinit
+# Behavior tweaks
+unsetopt MENU_COMPLETE
+setopt AUTO_MENU
+setopt COMPLETE_IN_WORD

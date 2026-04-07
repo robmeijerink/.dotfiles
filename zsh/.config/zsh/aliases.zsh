@@ -1,16 +1,13 @@
 #!/usr/bin/env zsh
 # =========================================================
-# Solvalutions - Shell Aliases & Configuration
-# Optimized for Senior B2B Tech Partner Workflow
+# Rob Meijerink - Shell Aliases & Configuration
 # =========================================================
 
 # --- 1. Core & Navigation ---
 alias vi="nvim"
-alias v="nvim"
 alias g="lazygit"
+alias k="kubectl"
 alias nvimrc="cd ~/.config/nvim && nvim"
-alias md="mkdir -p"
-alias rd="rmdir"
 
 # --- 2. Security & Confirmation (Safety First) ---
 # Prevents accidental overwrites and deletions
@@ -51,11 +48,8 @@ alias drmall="docker ps -aq | xargs -r docker rm -f"
 alias dgetip="docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}'"
 
 # --- 5. System & Performance Monitoring ---
-alias df="df -h"
-alias free="free -m"
 alias psmem="ps auxf | sort -nr -k 4 | head -5"
 alias pscpu="ps auxf | sort -nr -k 3 | head -5"
-alias grep='grep --color=auto'
 alias ff='find . -type f -name'
 
 # --- 6. Navigation Logic & Directory Stack ---

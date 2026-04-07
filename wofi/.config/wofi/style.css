@@ -1,0 +1,11 @@
+/* =========================================================
+   Wofi Theme - Rob Meijerinkk
+   ========================================================= */
+
+window {
+    margin: 0px;
+    border: 2px solid #5eacd3;
+    background-color: #1e1e2e;
+    font-family: "FiraCode Nerd Font";
+    font-size: 16px;
+}

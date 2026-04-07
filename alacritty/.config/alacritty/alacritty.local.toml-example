@@ -11,8 +11,7 @@ family = "FiraCode Nerd Font"
 style = "Retina" # macOS optimized
 
 [window]
-# "Buttonless" gives a clean look on macOS while keeping window dragging
-decorations = "Buttonless"
+decorations = "None"
 
 # =========================================================
 # KEYBINDINGS (Local & Security)
