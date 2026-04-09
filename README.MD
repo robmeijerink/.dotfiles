@@ -5,6 +5,8 @@
 - Snippets of my Terminal profile / aliases for usage in Docker containers
 - .vimrc with basic settings for regular vim
 - Neovim .lua config files with more advanced settings and plugins
+- Window tiling manager configurations of Aerospace (macOS) and Sway (Wayland / Ubuntu)
+- Sway extension configurations: waybar, wofi, mako etc.
 - tmux configuration
 - tmux-sessionizer
 - fzf bindings for fuzzy finding in the terminal
