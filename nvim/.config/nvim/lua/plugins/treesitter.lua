@@ -1,24 +1,22 @@
 -- =========================================================
--- Plugin: Treesitter (Rob Meijerink)
+-- Plugin: Treesitter Configuration
 -- =========================================================
 return {
     {
         "nvim-treesitter/nvim-treesitter",
-        -- enabled = false,
         build = ":TSUpdate",
         event = { "BufReadPost", "BufNewFile" },
         dependencies = {
             "nvim-treesitter/nvim-treesitter-textobjects",
-            "nvim-treesitter/nvim-treesitter-context",
-            "JoosepAlviste/nvim-ts-context-commentstring",
-            "windwp/nvim-ts-autotag",
         },
         config = function()
-            -- Set up context commentstring first
-            require('ts_context_commentstring').setup({})
-            vim.g.skip_ts_context_commentstring_module = true
+            -- Prevent fatal crashes if the plugin is not yet installed
+            local status_ok, configs = pcall(require, "nvim-treesitter.configs")
+            if not status_ok then
+                return
+            end
 
-            require('nvim-treesitter.configs').setup({
+            configs.setup({
                 ensure_installed = {
                     "bash", "html", "css", "scss", "javascript", "typescript",
                     "vue", "lua", "luadoc", "php", "go", "gomod", "rust",
@@ -28,7 +26,7 @@ return {
                 sync_installed = false,
                 auto_install = true,
 
-               highlight = {
+                highlight = {
                     enable = true,
                     additional_vim_regex_highlighting = false,
                     disable = { 'NvimTree', 'bash' },
@@ -38,8 +36,6 @@ return {
                     enable = true,
                     disable = { 'bash' }
                 },
-
-                autotag = { enable = true },
 
                 incremental_selection = {
                     enable = true,
@@ -82,6 +78,30 @@ return {
             })
         end,
     },
+
+    -- =========================================================
+    -- Standalone Plugins (Decoupled for parallel loading)
+    -- =========================================================
+
+    -- Context Commentstring
+    {
+        "JoosepAlviste/nvim-ts-context-commentstring",
+        event = "VeryLazy",
+        config = function()
+            vim.g.skip_ts_context_commentstring_module = true
+            require('ts_context_commentstring').setup({})
+        end
+    },
+
+    -- Autotag
+    {
+        "windwp/nvim-ts-autotag",
+        event = "InsertEnter",
+        config = function()
+            require('nvim-ts-autotag').setup()
+        end
+    },
+
     -- Context (Sticky Headers)
     {
         "nvim-treesitter/nvim-treesitter-context",

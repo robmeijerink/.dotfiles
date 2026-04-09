@@ -97,6 +97,7 @@ map('n', 'Q', '<cmd>q<cr>', { desc = "Close current window/split" })
 map('n', '<leader>w', '<cmd>w<CR>', { desc = "Save" })
 map('n', '<leader>bc', '<cmd>enew<cr>', { desc = "Buffer New (Create Empty)" })
 map('n', '<leader>x', '<cmd>Bdelete<CR>', { desc = "Close Buffer" })
+map('n', '<leader>X', '<cmd>Bdelete!<CR>', { desc = "Force Close Buffer (Lose Changes)" })
 map('n', '<C-f>', '<cmd>silent !tmux neww tmux-sessionizer<CR>', opts) -- Tmux magic
 
 map("n", "<leader>cf", function()
@@ -107,7 +108,7 @@ end, { desc = "Code Format" })
 -- Native Built-in Plugins (Lazy Loaded)
 -- =========================================================
 
-vim.keymap.set("n", "<leader>u", function()
+vim.keymap.set("n", "<leader>U", function()
     -- 1. Load the builtin plugin into memory (Zero startup overhead)
     vim.cmd("packadd nvim.undotree")
 
