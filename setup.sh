@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 # =========================================================
 # Setup/Bootstrap - Rob Meijerink
-# OS-Aware Dotfile Synchronization
 # =========================================================
 
 set -e
@@ -27,30 +26,37 @@ LINUX_FOLDERS=(
     "wofi"
 )
 
+# 3. Folders exclusive to macOS
+MAC_FOLDERS=(
+    "aerospace"
+)
+
 # Initialize final list with common folders
 STOW_FOLDERS=("${COMMON_FOLDERS[@]}")
 
-# 3. OS Detection Logic
+# 4. OS Detection Logic
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
     echo "OS: Linux detected. Adding Wayland-specific folders..."
     STOW_FOLDERS+=("${LINUX_FOLDERS[@]}")
 elif [[ "$OSTYPE" == "darwin"* ]]; then
-    echo "OS: macOS detected. Skipping Wayland-specific folders."
+    echo "OS: macOS detected. Adding macOS-specific folders..."
+    STOW_FOLDERS+=("${MAC_FOLDERS[@]}")
 fi
 
 # Navigate to the repo root
 cd "$(dirname "$0")"
 
-# 4. Synchronization Process
+# 5. Synchronization Process
 for folder in "${STOW_FOLDERS[@]}"; do
     if [ -d "$folder" ]; then
-        # Check for existing real files and backup
+        # Check for existing real files and backup (O(1) safety check per file)
         find "$folder" -maxdepth 1 -not -path "$folder" | while read -r src; do
             filename=$(basename "$src")
             target="$HOME/$filename"
 
             if [ -e "$target" ] && [ ! -L "$target" ]; then
                 mv "$target" "$target.bak"
+                echo "Backup created: $target.bak"
             fi
         done
 

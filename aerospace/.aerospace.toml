@@ -1,0 +1,72 @@
+# =========================================================
+# AeroSpace Configuration (macOS)
+# =========================================================
+
+# --- Root Settings (Must be at the top) ---
+start-at-login = true
+enable-normalization-flatten-containers = true
+enable-normalization-opposite-orientation-for-nested-containers = true
+
+# --- Appearance & Gaps ---
+[gaps]
+inner.horizontal = 2
+inner.vertical   = 2
+outer.left       = 2
+outer.bottom     = 2
+outer.top        = 2
+outer.right      = 2
+
+# --- Keybindings: Main Mode ---
+[mode.main.binding]
+
+# --- Applications ---
+alt-enter = 'exec-and-forget open -n -a Alacritty'
+alt-shift-q = 'close'
+
+# --- Movement (Vim Style) ---
+alt-h = 'focus left'
+alt-j = 'focus down'
+alt-k = 'focus up'
+alt-l = 'focus right'
+
+alt-shift-h = 'move left'
+alt-shift-j = 'move down'
+alt-shift-k = 'move up'
+alt-shift-l = 'move right'
+
+# --- Layout Controls (Senior Tiling Logic) ---
+# We use 'join-with' to avoid conflicts with normalization
+alt-b = 'join-with right'
+alt-v = 'join-with down'
+alt-f = 'fullscreen'
+
+# Toggle Floating
+alt-shift-space = 'layout floating tiling'
+
+# Toggle Tiling Layouts
+alt-s = 'layout accordion horizontal vertical'
+alt-e = 'layout tiles horizontal vertical'
+
+# --- Workspaces (1-9) ---
+alt-1 = 'workspace 1'
+alt-2 = 'workspace 2'
+alt-3 = 'workspace 3'
+alt-4 = 'workspace 4'
+alt-5 = 'workspace 5'
+alt-6 = 'workspace 6'
+alt-7 = 'workspace 7'
+alt-8 = 'workspace 8'
+alt-9 = 'workspace 9'
+
+alt-shift-1 = 'move-node-to-workspace 1'
+alt-shift-2 = 'move-node-to-workspace 2'
+alt-shift-3 = 'move-node-to-workspace 3'
+alt-shift-4 = 'move-node-to-workspace 4'
+alt-shift-5 = 'move-node-to-workspace 5'
+alt-shift-6 = 'move-node-to-workspace 6'
+alt-shift-7 = 'move-node-to-workspace 7'
+alt-shift-8 = 'move-node-to-workspace 8'
+alt-shift-9 = 'move-node-to-workspace 9'
+
+# --- Reload Configuration ---
+alt-shift-c = 'reload-config'
