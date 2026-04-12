@@ -3,6 +3,7 @@
 -- =========================================================
 return {
     -- Tim Pope Essentials
+    { "tpope/vim-sleuth",                       event = "VeryLazy" }, -- Auto-detect indent (spaces / tabs)
     { "tpope/vim-surround",                     event = "VeryLazy" },
     { "tpope/vim-repeat",                       event = "VeryLazy" },
     { "tpope/vim-eunuch",                       cmd = { "Rename", "SudoWrite", "Delete", "Chmod" } },
