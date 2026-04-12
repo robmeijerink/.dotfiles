@@ -67,6 +67,9 @@ opt.writebackup = false
 opt.swapfile = false -- Swap is usually annoying with modern SSDs
 opt.undofile = true  -- Persistent undo history
 
+-- Disable bufferline
+opt.showtabline = 0
+
 local home = os.getenv('HOME')
 local undo_dir = home .. '/.vim/tmp/undo//'
 local backup_dir = home .. '/.vim/tmp/backup//'

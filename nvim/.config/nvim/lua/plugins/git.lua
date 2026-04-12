@@ -8,7 +8,6 @@ return {
         event = { "BufReadPre", "BufNewFile" },
         config = function()
             require('gitsigns').setup({
-                -- during rapid O(N) scrolling while keeping the live blame feature active.
                 update_debounce = 500,
                 current_line_blame = true,
                 sign_priority = 20,
@@ -36,7 +35,7 @@ return {
 
                     -- Manual triggers for deep inspection
                     map('n', '<leader>gb', function() gs.blame_line { full = true } end, { desc = "Git blame line full" })
-                    map('n', '<leader>gp', gs.preview_hunk, { desc = "Preview git hunk" })
+                    map('n', '<leader>hp', gs.preview_hunk, { desc = "Preview git hunk" })
                 end
             })
         end
@@ -55,14 +54,10 @@ return {
             { "<leader>gg", "<cmd>LazyGit<CR>",                  desc = "Toggle LazyGit" },
             { "<leader>gf", "<cmd>LazyGitFilterCurrentFile<CR>", desc = "LazyGit File History" },
         },
-        -- CRITICAL: 'init' block ensures globals are loaded BEFORE the plugin starts
         init = function()
             vim.g.lazygit_floating_window_winblend = 0
             vim.g.lazygit_floating_window_scaling_factor = 0.9
             vim.g.lazygit_floating_window_use_plenary = 0
-
-            -- Security/Workflow fix: Prevents nested Neovim instances (Inception)
-            -- when editing a file directly from the LazyGit UI.
             vim.g.lazygit_use_neovim_remote = 1
         end,
     },
@@ -73,7 +68,11 @@ return {
         cmd = { "Git", "G", "Gdiffsplit", "Gread", "Gwrite", "Ggrep", "GMove", "GDelete", "GBrowse" },
         dependencies = { "tpope/vim-rhubarb" },
         keys = {
-            { "<leader>G", ":Git ", desc = "Git (Fugitive) prompt" },
+            { "<leader>G",  ":Git ",                desc = "Git (Fugitive) prompt" },
+            { "<leader>gp", "<cmd>Git pull<CR>",    desc = "Git Pull" },
+            { "<leader>gP", "<cmd>Git push<CR>",    desc = "Git Push" },
+            { "gh",         "<cmd>diffget //2<CR>", desc = "Diffget Target (Left)" },
+            { "gl",         "<cmd>diffget //3<CR>", desc = "Diffget Merge (Right)" },
         }
     },
 
@@ -84,7 +83,7 @@ return {
         config = true,
         keys = {
             { "<leader>gd", "<cmd>DiffviewOpen<CR>",  desc = "Open Diffview" },
-            { "<leader>gx", "<cmd>DiffviewClose<CR>", desc = "Close Diffview" },
+            { "<leader>gq", "<cmd>DiffviewClose<CR>", desc = "Close Diffview" },
         }
     }
 }

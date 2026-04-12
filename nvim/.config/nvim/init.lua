@@ -5,12 +5,10 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
--- Load core options (Rob Meijerink Baseline)
+-- Load core options
 require('config.options')
-
--- Load global keymaps & autocmds with protective calls
-pcall(require, 'config.keymaps')
-pcall(require, 'config.autocmds')
+require('config.keymaps')
+require('config.autocmds')
 
 -- =========================================================
 -- 2. Bootstrap lazy.nvim
@@ -43,8 +41,7 @@ require("lazy").setup("plugins", {
 -- =========================================================
 -- 4. Project Specific Configuration
 -- =========================================================
-local f = io.open('./init_local.lua', 'r')
-if f ~= nil then
-    io.close(f)
-    pcall(require, 'init_local')
+local local_config = vim.fn.getcwd() .. '/init_local.lua'
+if (vim.uv or vim.loop).fs_stat(local_config) then
+    dofile(local_config)
 end

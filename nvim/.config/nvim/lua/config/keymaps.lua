@@ -65,14 +65,6 @@ map('n', '<C-K>', '<cmd>cprev<CR>zz', opts)
 map('n', '<leader>k', '<cmd>lnext<CR>zz', opts)
 map('n', '<leader>j', '<cmd>lprev<CR>zz', opts)
 
--- 7. Git (Fugitive & Diffview)
-map('n', 'gh', '<cmd>diffget //2<CR>', opts)
-map('n', 'gl', '<cmd>diffget //3<CR>', opts)
-map('n', '<leader>gp', '<cmd>Git pull<CR>', { desc = "Git Pull" })
-map('n', '<leader>gP', '<cmd>Git push<CR>', { desc = "Git Push" })
-map('n', '<leader>gd', '<cmd>DiffviewOpen<CR>', { desc = "Git Diff" })
-map('n', '<leader>gq', '<cmd>DiffviewClose<CR>', { desc = "Close Diffview" })
-
 -- 8. Telescope (Essential Pickers)
 map('n', '<C-p>', "<cmd>lua require('telescope.builtin').git_files()<CR>", opts)
 map('n', '<leader>?', "<cmd>lua require('telescope.builtin').oldfiles()<CR>", { desc = "Recent Files" })
@@ -84,12 +76,6 @@ map('n', '<leader>/', function()
     })
 end, { desc = "Search in Buffer" })
 
--- 9. Productivity (Harpoon, Treesj, Zen)
-map('n', '<leader>J', '<cmd>TSJToggle<CR>', { desc = "Split/Join" })
-map('n', '<leader>zz', '<cmd>ZenMode<CR>', { desc = "Zen Mode" })
-map('n', '<leader>zt', '<cmd>Twilight<CR>', { desc = "Twilight" })
-map('n', '<leader>**', '<cmd>Neogen<CR>', { desc = "Generate Docs" })
-
 -- Block Ex. mode
 map('n', 'Q', '<cmd>q<cr>', { desc = "Close current window/split" })
 
@@ -98,11 +84,25 @@ map('n', '<leader>w', '<cmd>w<CR>', { desc = "Save" })
 map('n', '<leader>bc', '<cmd>enew<cr>', { desc = "Buffer New (Create Empty)" })
 map('n', '<leader>x', '<cmd>Bdelete<CR>', { desc = "Close Buffer" })
 map('n', '<leader>X', '<cmd>Bdelete!<CR>', { desc = "Force Close Buffer (Lose Changes)" })
-map('n', '<C-f>', '<cmd>silent !tmux neww tmux-sessionizer<CR>', opts) -- Tmux magic
 
-map("n", "<leader>cf", function()
-    require("conform").format({ async = true, lsp_fallback = true })
-end, { desc = "Code Format" })
+-- Close all buffers except the current active one
+vim.keymap.set("n", "<leader>bo", function()
+    local current_buf = vim.api.nvim_get_current_buf()
+    local all_bufs = vim.api.nvim_list_bufs()
+
+    for _, buf in ipairs(all_bufs) do
+        -- Check if it is not the current buffer, is valid, and is actually a listed file
+        if buf ~= current_buf and vim.api.nvim_buf_is_valid(buf) and vim.api.nvim_get_option_value("buflisted", { buf = buf }) then
+            -- Delete the buffer securely. Protected call prevents crash on unsaved files.
+            pcall(vim.api.nvim_buf_delete, buf, { force = false })
+        end
+    end
+
+    vim.notify("Cleaned up background buffers", vim.log.levels.INFO)
+end, { desc = "Close all OTHER buffers" })
+
+
+map('n', '<C-f>', '<cmd>silent !tmux neww tmux-sessionizer<CR>', opts) -- Tmux magic
 
 -- =========================================================
 -- Native Built-in Plugins (Lazy Loaded)
@@ -115,18 +115,3 @@ vim.keymap.set("n", "<leader>U", function()
     -- 2. Toggle the native visual tree window
     vim.cmd("Undotree")
 end, { desc = "Toggle Undotree" })
-
--- =========================================================
--- Debugging (DAP) Keymaps
--- =========================================================
-local dap = require("dap")
-local dapui = require("dapui")
-
-map("n", "<F5>", dap.continue, { desc = "Debug: Start/Continue" })
-map("n", "<F10>", dap.step_over, { desc = "Debug: Step Over" })
-map("n", "<F11>", dap.step_into, { desc = "Debug: Step Into" })
-map("n", "<F12>", dap.step_out, { desc = "Debug: Step Out" })
-map("n", "<leader>b", dap.toggle_breakpoint, { desc = "Debug: Toggle Breakpoint" })
-map("n", "<leader>B", function() dap.set_breakpoint(vim.fn.input("Breakpoint condition: ")) end,
-    { desc = "Debug: Conditional Breakpoint" })
-map("n", "<leader>du", dapui.toggle, { desc = "Debug: Toggle UI" })

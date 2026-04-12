@@ -114,6 +114,10 @@ return {
                 grep_string = {
                     additional_args = function() return grep_args end
                 },
+                buffers = {
+                    sort_mru = true,
+                    ignore_current_buffer = true,
+                }
             },
             extensions = {
                 live_grep_args = {

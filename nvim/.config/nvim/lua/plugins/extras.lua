@@ -1,28 +1,8 @@
 -- =========================================================
--- Plugin: Extra Features (Zen, Trouble, Neogen, Chafa)
+-- Plugin: Extra Features
 -- =========================================================
 return {
-    -- 1. Zen Mode (Focus)
-    {
-        "folke/zen-mode.nvim",
-        cmd = "ZenMode",
-        opts = {
-            window = {
-                backdrop = 0.95,
-                width = 100,
-                height = 0.8,
-                options = { signcolumn = "no", number = false, cursorline = false }
-            },
-            plugins = {
-                options = { enabled = true, ruler = false, showcmd = false },
-                twilight = { enabled = true },
-                gitsigns = { enabled = false },
-                tmux = { enabled = false }
-            }
-        }
-    },
-
-    -- 2. Trouble (Diagnostic list)
+    -- 1. Trouble (Diagnostic list)
     {
         "folke/trouble.nvim",
         cmd = "Trouble",
@@ -32,15 +12,7 @@ return {
         }
     },
 
-    -- 3. Neogen (Docblock generator)
-    {
-        "danymat/neogen",
-        cmd = "Neogen",
-        dependencies = "nvim-treesitter/nvim-treesitter",
-        opts = { snippet_engine = "luasnip" },
-    },
-
-    -- 4. Chafa (Image viewer)
+    -- 2. Chafa (Image viewer)
     {
         "princejoogie/chafa.nvim",
         cmd = "ViewImage",
