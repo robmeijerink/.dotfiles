@@ -2,7 +2,7 @@
 -- Plugin: Neogen (Annotation & Docstring Generator)
 -- =========================================================
 return {
-    "danym/neogen",
+    "danymat/neogen",
     dependencies = {
         "nvim-treesitter/nvim-treesitter"
     },

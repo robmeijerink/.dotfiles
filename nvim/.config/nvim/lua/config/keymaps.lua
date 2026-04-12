@@ -82,8 +82,8 @@ map('n', 'Q', '<cmd>q<cr>', { desc = "Close current window/split" })
 -- 10. Workspace & Files
 map('n', '<leader>w', '<cmd>w<CR>', { desc = "Save" })
 map('n', '<leader>bc', '<cmd>enew<cr>', { desc = "Buffer New (Create Empty)" })
-map('n', '<leader>x', '<cmd>Bdelete<CR>', { desc = "Close Buffer" })
-map('n', '<leader>X', '<cmd>Bdelete!<CR>', { desc = "Force Close Buffer (Lose Changes)" })
+map('n', '<leader>x', '<cmd>bd<CR>', { desc = "Close Buffer" })
+map('n', '<leader>X', '<cmd>bd!<CR>', { desc = "Force Close Buffer (Lose Changes)" })
 
 -- Close all buffers except the current active one
 vim.keymap.set("n", "<leader>bo", function()

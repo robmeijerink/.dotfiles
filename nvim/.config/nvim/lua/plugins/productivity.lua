@@ -47,7 +47,4 @@ return {
             })
         end,
     },
-
-    -- Tmux Navigator (Seamless navigation)
-    { 'christoomey/vim-tmux-navigator', lazy = false },
 }
