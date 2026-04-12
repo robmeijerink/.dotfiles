@@ -86,7 +86,7 @@ return {
         -- Executed strictly when an LSP attaches to the current buffer
         -- =========================================================
         vim.api.nvim_create_autocmd("LspAttach", {
-            group = vim.api.nvim_create_augroup("solvalutions_lsp_attach", { clear = true }),
+            group = vim.api.nvim_create_augroup("robmeijerink_lsp_attach", { clear = true }),
             callback = function(event)
                 local map = function(keys, func, desc)
                     vim.keymap.set("n", keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
