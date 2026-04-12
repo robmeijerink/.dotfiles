@@ -107,6 +107,9 @@ g.loaded_ruby_provider = 0
 g.loaded_node_provider = 0
 g.loaded_python3_provider = 0
 
+-- Tell integrations that a Nerd Font is used
+g.have_nerd_font = true
+
 -- Optional: If you ever NEED python for a specific plugin,
 -- set the path explicitly to avoid $PATH scanning:
 -- vim.g.python3_host_prog = '/usr/bin/python3'
