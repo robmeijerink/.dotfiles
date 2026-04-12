@@ -18,17 +18,19 @@ return {
     opts = {
         formatters_by_ft = {
             lua = { "stylua" },
-            php = { { "pint", "phpcbf" } },
+            -- Fallback configurations (Run first available)
+            php = { "pint", "phpcbf", stop_after_first = true },
+            javascript = { "prettierd", "prettier", stop_after_first = true },
+            typescript = { "prettierd", "prettier", stop_after_first = true },
+            vue = { "prettierd", "prettier", stop_after_first = true },
+            css = { "prettierd", "prettier", stop_after_first = true },
+            html = { "prettierd", "prettier", stop_after_first = true },
+            json = { "prettierd", "prettier", stop_after_first = true },
             blade = { "blade-formatter" },
-            javascript = { { "prettierd", "prettier" } },
-            typescript = { { "prettierd", "prettier" } },
-            vue = { { "prettierd", "prettier" } },
+            -- Sequential configurations (Run all in order)
             go = { "gofmt", "goimports" },
             rust = { "rustfmt" },
             python = { "isort", "black" },
-            css = { { "prettierd", "prettier" } },
-            html = { { "prettierd", "prettier" } },
-            json = { { "prettierd", "prettier" } },
         },
         formatters = {
             phpcbf = {
