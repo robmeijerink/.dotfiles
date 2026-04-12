@@ -14,6 +14,7 @@ map('n', 'N', 'Nzzzv', opts)
 map('n', '<CR>', '<cmd>noh<CR><CR>', opts) -- Clear search highlight
 map('n', 'Q', '<nop>', opts)               -- Disable accidental Ex-mode
 map('n', 'q:', ':q<CR>', opts)             -- Fix for common typo
+map("n", "x", '"_x', opts)                 -- Using x don't add to clipboard
 
 -- 2. Window & Buffer Management
 map('n', '<C-h>', '<C-w>h', opts)
