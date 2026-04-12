@@ -68,11 +68,14 @@ return {
         cmd = { "Git", "G", "Gdiffsplit", "Gread", "Gwrite", "Ggrep", "GMove", "GDelete", "GBrowse" },
         dependencies = { "tpope/vim-rhubarb" },
         keys = {
-            { "<leader>G",  ":Git ",                desc = "Git (Fugitive) prompt" },
-            { "<leader>gp", "<cmd>Git pull<CR>",    desc = "Git Pull" },
-            { "<leader>gP", "<cmd>Git push<CR>",    desc = "Git Push" },
-            { "gh",         "<cmd>diffget //2<CR>", desc = "Diffget Target (Left)" },
-            { "gl",         "<cmd>diffget //3<CR>", desc = "Diffget Merge (Right)" },
+            { "<leader>G",  ":Git ",                 desc = "Git (Fugitive) prompt" },
+            { "<leader>gp", "<cmd>Git pull<CR>",     desc = "Git Pull" },
+            { "<leader>gP", "<cmd>Git push<CR>",     desc = "Git Push" },
+
+            -- 3 way Merge Screen
+            { "<leader>gm", "<cmd>Gvdiffsplit!<CR>", desc = "Git Merge Conflict (3-way)" },
+            { "gh",         "<cmd>diffget //2<CR>",  desc = "Diffget Target (Left)" },
+            { "gl",         "<cmd>diffget //3<CR>",  desc = "Diffget Merge (Right)" },
         }
     },
 
