@@ -72,6 +72,32 @@ bindsym $mod+Shift+7 move container to workspace number 7
 bindsym $mod+Shift+8 move container to workspace number 8
 bindsym $mod+Shift+9 move container to workspace number 9
 
+
+
+# =========================================================
+# Additional Startup Daemons
+# =========================================================
+# NetworkManager applet for Waybar system tray
+exec nm-applet --indicator
+
+# =========================================================
+# System Administration Keybindings
+# =========================================================
+# Hot-reload the configuration file in O(1) time
+bindsym $mod+Shift+c reload
+
+# Lock the screen securely
+bindsym $mod+Escape exec swaylock -c 000000
+
+# =========================================================
+# Screenshot Workflow (Wayland Native)
+# =========================================================
+# Select an area and copy it directly to the clipboard
+bindsym $mod+Shift+s exec grim -g "$(slurp)" - | wl-copy
+
+# Take a full screen screenshot and save it to the Pictures folder
+bindsym Print exec grim ~/Pictures/screenshot_$(date +'%Y%m%d_%H%M%S').png
+
 # --- Layout Controls ---
 bindsym $mod+b splith
 bindsym $mod+v splitv
@@ -89,3 +115,31 @@ bindsym XF86AudioMute exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
 default_border pixel 0
 gaps inner 10
 gaps outer 5
+
+# Resize Mode
+# =========================================================
+mode "resize" {
+    # Vim-style resizing
+    bindsym $left resize shrink width 10px
+    bindsym $down resize grow height 10px
+    bindsym $up resize shrink height 10px
+    bindsym $right resize grow width 10px
+
+    # Return to default mode
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+# =========================================================
+# Scratchpad Workflow
+# =========================================================
+# Move the currently focused window to the scratchpad
+bindsym $mod+Shift+minus move scratchpad
+
+# Show the next scratchpad window or hide the current floating scratchpad
+bindsym $mod+minus scratchpad show
+
+# Load machine-specific hardware overrides (Optional)
+include ~/.config/sway/conf.d/*.conf
