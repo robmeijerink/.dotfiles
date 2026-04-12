@@ -18,7 +18,6 @@ return {
             window = {
                 winblend = 0,
                 border = "none",
-                avoid = { "NvimTree" },
             },
         },
     },

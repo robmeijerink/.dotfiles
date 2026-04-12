@@ -5,7 +5,7 @@ return {
     "RRethy/vim-illuminate",
     event = { "BufReadPost", "BufNewFile" },
     init = function()
-        vim.g.illuminate_ft_denylist = { "sh", "bash", "zsh", "NvimTree" }
+        vim.g.illuminate_ft_denylist = { "sh", "bash", "zsh" }
     end,
     config = function()
         require("illuminate").configure({
@@ -15,3 +15,4 @@ return {
         })
     end,
 }
+

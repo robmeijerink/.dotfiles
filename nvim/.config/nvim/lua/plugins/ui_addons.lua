@@ -10,7 +10,7 @@ return {
         opts = {
             exclude = {
                 buftypes = { "terminal" },
-                filetypes = { "dashboard", "NvimTree", "packer", "lsp-installer" },
+                filetypes = { "dashboard", "packer", "lsp-installer" },
             },
         },
     },
