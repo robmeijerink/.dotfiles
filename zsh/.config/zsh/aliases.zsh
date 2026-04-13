@@ -5,7 +5,7 @@
 
 # --- 1. Core & Navigation ---
 alias vi="nvim"
-alias g="lazygit"
+alias lg="lazygit"
 alias k="kubectl"
 alias nvimrc="cd ~/.config/nvim && nvim"
 
