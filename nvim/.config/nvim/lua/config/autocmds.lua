@@ -63,3 +63,36 @@ autocmd({ "WinLeave", "InsertEnter" }, {
         vim.opt_local.cursorline = false
     end,
 })
+
+-- =========================================================
+-- Dynamic Whitespace Warnings
+-- Only show tabs if indents is spaces and vice versa
+-- =========================================================
+vim.api.nvim_create_autocmd({
+    "BufEnter",
+    "FileType",
+    -- "OptionSet", Disable for now to reduce overhead, but used when changing setting in open file
+}, {
+    group = vim.api.nvim_create_augroup("DynamicIndentWarnings", { clear = true }),
+    pattern = "*",
+    callback = function(args)
+        if vim.bo[args.buf].buftype ~= "" then return end
+        local wants_spaces = vim.bo[args.buf].expandtab
+
+        vim.opt_local.list = true
+
+        if wants_spaces then
+            vim.opt_local.listchars = {
+                tab = "» ",
+                lead = " ",
+                trail = "•",
+            }
+        else
+            vim.opt_local.listchars = {
+                tab = "  ",
+                lead = "·",
+                trail = "•",
+            }
+        end
+    end,
+})
