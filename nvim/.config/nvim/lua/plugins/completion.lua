@@ -16,6 +16,7 @@ return {
             "garymjr/nvim-snippets",
             opts = {
                 friendly_snippets = true,
+                ignored_filetypes = { "php" }, -- Ignore PHP for now becuase it gives an error when using a snippet
             }
         }
     },
