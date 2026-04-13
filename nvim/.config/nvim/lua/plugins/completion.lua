@@ -20,6 +20,8 @@ return {
                 fetching_timeout = 200,
                 confirm_resolve_timeout = 80,
                 max_view_entries = 20,
+                async_budget = 1,
+                filtering_context_budget = 3,
             },
 
             -- Use native Neovim snippet engine
@@ -34,7 +36,7 @@ return {
                 ["<C-f>"] = cmp.mapping.scroll_docs(4),
                 ["<C-Space>"] = cmp.mapping.complete(),
 
-                ["<CR>"] = cmp.mapping.confirm({ select = true }),
+                ["<CR>"] = cmp.mapping.confirm({ select = false }),
 
                 -- Native Snippet Jumping
                 ["<Tab>"] = cmp.mapping(function(fallback)

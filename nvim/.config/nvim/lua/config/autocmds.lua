@@ -115,3 +115,25 @@ autocmd({ "BufEnter", "BufWinEnter" }, {
         vim.opt_local.expandtab = false
     end,
 })
+
+-- =========================================================
+-- Native Treesitter Attachment (Neovim 0.10+)
+-- =========================================================
+vim.api.nvim_create_autocmd("FileType", {
+    group = vim.api.nvim_create_augroup("RobMeijerinkTreesitter", { clear = true }),
+    desc = "Start native Treesitter highlighting automatically",
+    callback = function(args)
+        -- Load treesitter for file type and disable vim highlights if it can be
+        -- overwritten by Treeitter highlighting. Fixes php hightlighting nvim 0.10+
+        local ft = vim.bo[args.buf].filetype
+        local lang = vim.treesitter.language.get_lang(ft)
+
+        if lang then
+            local ok = pcall(vim.treesitter.start, args.buf, lang)
+
+            if ok then
+                vim.bo[args.buf].syntax = "off"
+            end
+        end
+    end,
+})
