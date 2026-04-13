@@ -9,6 +9,15 @@ return {
         "hrsh7th/cmp-nvim-lsp",
         "hrsh7th/cmp-buffer",
         "hrsh7th/cmp-path",
+
+        -- Snippets
+        "rafamadriz/friendly-snippets",
+        {
+            "garymjr/nvim-snippets",
+            opts = {
+                friendly_snippets = true,
+            }
+        }
     },
     config = function()
         local cmp = require("cmp")
@@ -61,6 +70,7 @@ return {
             }),
 
             sources = cmp.config.sources({
+                { name = "snippets" },
                 { name = "nvim_lsp", max_item_count = 50 },
             }, {
                 { name = "buffer", keyword_length = 3 },
