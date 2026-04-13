@@ -1,5 +1,6 @@
 -- =========================================================
 -- Native Treesitter Attachment (Neovim 0.10+)
+-- Focus: This was added mainly because highlighting in blade files did not work
 -- =========================================================
 vim.api.nvim_create_autocmd("FileType", {
     group = vim.api.nvim_create_augroup("RobMeijerinkTreesitter", { clear = true }),
@@ -42,7 +43,8 @@ return {
 
                 auto_install = true,
 
-                highlight = { enable = true },
+                highlight = { enable = false }, -- Enabled by autocmd on top.
+
                 indent = {
                     enable = true,
                     disable = { "php", "blade" }, -- Native nvim engine handles php
