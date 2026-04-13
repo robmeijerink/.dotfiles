@@ -74,7 +74,7 @@ local home = os.getenv('HOME')
 local undo_dir = home .. '/.vim/tmp/undo//'
 local backup_dir = home .. '/.vim/tmp/backup//'
 
--- Ensure directories exist (Nuchtere check)
+-- Ensure directories exist
 for _, dir in ipairs({ undo_dir, backup_dir }) do
     if vim.fn.isdirectory(dir) == 0 then
         vim.fn.mkdir(dir, 'p')

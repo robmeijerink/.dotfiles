@@ -10,43 +10,51 @@ return {
             local dracula = require("dracula")
 
             dracula.setup({
-                colors = {
-                    bg = "none",
-                },
+                colors = { bg = "none" },
                 transparent_bg = true,
                 show_end_of_buffer = true,
             })
 
+            vim.api.nvim_create_autocmd("ColorScheme", {
+                pattern = "dracula",
+                callback = function()
+                    local hl = vim.api.nvim_set_hl
+                    local bar_bg = "#111111"
+
+                    hl(0, "Normal", { bg = "none", fg = "#bcbcbc" })
+                    hl(0, "EndOfBuffer", { fg = "#3b4252" })
+                    hl(0, "StatusLine", { bg = bar_bg, fg = "#f8f8f2" })
+                    hl(0, "StatusLineNC", { bg = "#0a0a0a", fg = "#6272a4" })
+                    hl(0, "TabLineFill", { bg = "none" })
+                    hl(0, "SignColumn", { bg = "none" })
+                    hl(0, "ColorColumn", { ctermbg = 0, bg = "#333333" })
+                    hl(0, "CursorLine", { bg = "#0F0F0F" })
+                    hl(0, "CursorLineNr", { bg = "none", fg = "#bcbcbc" })
+                    hl(0, "LineNr", { fg = "#44475a" })
+                    hl(0, "WinSeparator", { bg = "none", fg = bar_bg })
+                    hl(0, "DiffAdd", { bg = "#375c41" })
+                    hl(0, "diffAdded", { bg = "#375c41" })
+
+                    -- Core theme colors ===
+                    local dracula_pink = "#ff79c6"
+                    local dracula_green = "#50fa7b"
+                    -- local dracula_purple = "#bd93f9"
+                    -- local dracula_orange = "#ffb86c"
+                    -- local dracula_cyan = "#8be9fd"
+
+                    -- Blade Fixes
+                    hl(0, "@tag.delimiter.blade", { fg = "#ffffff", bold = false })
+                    hl(0, "@tag.blade", { fg = dracula_pink, bold = false })
+                    hl(0, "@tag.attribute.blade", { fg = dracula_green, italic = false })
+                end,
+            })
+
             vim.opt.background = "dark"
             vim.cmd.colorscheme("dracula")
-
-            -- Custom Highlight Overrides
-            local hl = vim.api.nvim_set_hl
-            local bar_bg = "#111111"
-
-            -- O(1) Color Overrides
-            hl(0, "Normal", { bg = "none", fg = "#bcbcbc" })
-            hl(0, "EndOfBuffer", { fg = "#3b4252" })
-
-            -- UI Elements
-            hl(0, "StatusLine", { bg = bar_bg, fg = "#f8f8f2" })
-            hl(0, "StatusLineNC", { bg = "#0a0a0a", fg = "#6272a4" })
-            hl(0, "TabLineFill", { bg = "none" })
-
-            -- Functional Overrides
-            hl(0, "SignColumn", { bg = "none" })
-            hl(0, "ColorColumn", { ctermbg = 0, bg = "#333333" })
-            hl(0, "CursorLine", { bg = "#0F0F0F" })
-            hl(0, "CursorLineNr", { bg = "none", fg = "#bcbcbc" })
-            hl(0, "LineNr", { fg = "#44475a" }) -- More subtle line numbers
-            hl(0, "WinSeparator", { bg = "none", fg = bar_bg })
-
-            -- DiffView readability
-            hl(0, "DiffAdd", { bg = "#375c41" })
-            hl(0, "diffAdded", { bg = "#375c41" })
         end
     },
-     -- 2. Catppuccin
+
+    -- 2. Catppuccin
     {
         "catppuccin/nvim",
         name = "catppuccin",

@@ -1,4 +1,25 @@
 -- =========================================================
+-- Native Treesitter Attachment (Neovim 0.10+)
+-- =========================================================
+vim.api.nvim_create_autocmd("FileType", {
+    group = vim.api.nvim_create_augroup("RobMeijerinkTreesitter", { clear = true }),
+    desc = "Start native Treesitter highlighting automatically",
+    pattern = "*",
+    callback = function(args)
+        local ft = vim.bo[args.buf].filetype
+        local lang = vim.treesitter.language.get_lang(ft)
+
+        if lang then
+            local ok = pcall(vim.treesitter.start, args.buf, lang)
+
+            if ok then
+                vim.bo[args.buf].syntax = "off"
+            end
+        end
+    end,
+})
+
+-- =========================================================
 -- Plugin: Treesitter Configuration
 -- =========================================================
 return {
@@ -8,15 +29,14 @@ return {
         lazy = false,
         build = ":TSUpdate",
         priority = 1000,
-
         dependencies = {
-            { "nvim-treesitter/nvim-treesitter-textobjects", branch = "main" }, -- ook main branch!
+            { "nvim-treesitter/nvim-treesitter-textobjects", branch = "main" },
         },
         config = function()
             require("nvim-treesitter").setup({
                 ensure_installed = {
                     "bash", "html", "css", "scss", "javascript", "typescript",
-                    "vue", "lua", "luadoc", "php", "go", "rust",
+                    "vue", "lua", "luadoc", "php", "go", "rust", "blade",
                     "dockerfile", "yaml", "toml", "json", "vim", "vimdoc",
                 },
 
