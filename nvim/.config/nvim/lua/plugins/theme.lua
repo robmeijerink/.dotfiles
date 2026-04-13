@@ -36,16 +36,30 @@ return {
                     hl(0, "diffAdded", { bg = "#375c41" })
 
                     -- Core theme colors ===
+                    local white = "#ffffff"
                     local dracula_pink = "#ff79c6"
                     local dracula_green = "#50fa7b"
                     -- local dracula_purple = "#bd93f9"
-                    -- local dracula_orange = "#ffb86c"
+                    local dracula_orange = "#ffb86c"
                     -- local dracula_cyan = "#8be9fd"
 
+                    -- General Fixes
+                    hl(0, "@keyword.function", { fg = dracula_pink, bold = false })
+                    hl(0, "@variable.parameter", { fg = white, bold = false })
+                    hl(0, "@markup.heading", { fg = dracula_orange, bold = false })
+                    hl(0, "@markup.strong", { fg = white, bold = false })
+                    hl(0, "@markup.link", { fg = white, bold = false })
+
                     -- Blade Fixes
-                    hl(0, "@tag.delimiter.blade", { fg = "#ffffff", bold = false })
+                    hl(0, "@tag.delimiter.blade", { fg = white, bold = false })
                     hl(0, "@tag.blade", { fg = dracula_pink, bold = false })
                     hl(0, "@tag.attribute.blade", { fg = dracula_green, italic = false })
+
+                    -- HTML Fixes
+                    hl(0, "@tag.delimiter.html", { fg = white, bold = false })
+                    hl(0, "@tag.builtin.html", { fg = dracula_pink, bold = false })
+                    hl(0, "@tag.html", { fg = dracula_pink, bold = false })
+                    hl(0, "@tag.attribute.html", { fg = dracula_green, italic = false })
                 end,
             })
 
