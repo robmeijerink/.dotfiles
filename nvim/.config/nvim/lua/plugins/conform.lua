@@ -18,7 +18,6 @@ return {
     opts = {
         formatters_by_ft = {
             lua = { "stylua" },
-            -- Fallback configurations (Run first available)
             php = { "pint", "phpcbf", stop_after_first = true },
             javascript = { "prettierd", "prettier", stop_after_first = true },
             typescript = { "prettierd", "prettier", stop_after_first = true },
@@ -27,7 +26,6 @@ return {
             html = { "prettierd", "prettier", stop_after_first = true },
             json = { "prettierd", "prettier", stop_after_first = true },
             blade = { "blade-formatter" },
-            -- Sequential configurations (Run all in order)
             go = { "gofmt", "goimports" },
             rust = { "rustfmt" },
             python = { "isort", "black" },
@@ -36,8 +34,12 @@ return {
             phpcbf = {
                 args = { "--standard=" .. vim.fn.expand("~/.dotfiles/codestyle/php/phpcs.xml"), "-" },
             },
+            prettierd = {
+                env = {
+                    PRETTIERD_DEFAULT_CONFIG = vim.fn.expand("~/.dotfiles/codestyle/js/prettier.config.cjs"),
+                },
+            },
         },
-        -- Save Async
         format_after_save = {
             lsp_fallback = true,
         },
