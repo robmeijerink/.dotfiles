@@ -105,6 +105,20 @@ end, { desc = "Close all OTHER buffers" })
 
 map('n', '<C-f>', '<cmd>silent !tmux neww tmux-sessionizer<CR>', opts) -- Tmux magic
 
+-- Toggle line wrap using the window-local options API
+vim.keymap.set("n", "<leader>W", function()
+    -- Directly toggle the window-local wrap property
+    vim.wo.wrap = not vim.wo.wrap
+
+    if vim.wo.wrap then
+        vim.wo.linebreak = true
+        print("Line wrap: ENABLED (Word-aware)")
+    else
+        vim.wo.linebreak = false
+        print("Line wrap: DISABLED")
+    end
+end, { desc = "Toggle line wrap for current window" })
+
 -- =========================================================
 -- Native Built-in Plugins (Lazy Loaded)
 -- =========================================================
