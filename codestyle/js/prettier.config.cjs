@@ -10,7 +10,7 @@ module.exports = {
     arrowParens: 'always',
     singleAttributePerLine: true,
     vueIndentScriptAndStyle: false,
-    htmlWhitespaceSensitivity: 'ignore',
+    htmlWhitespaceSensitivity: 'strict',
     // require.resolve searches for the plugin dynamically in my .dotfiles
     plugins: [require.resolve('prettier-plugin-tailwindcss')],
 }

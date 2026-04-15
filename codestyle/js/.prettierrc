@@ -9,6 +9,6 @@
     "arrowParens": "always",
     "singleAttributePerLine": true,
     "vueIndentScriptAndStyle": false,
-    "htmlWhitespaceSensitivity": "ignore",
+    "htmlWhitespaceSensitivity": "strict",
     "plugins": ["prettier-plugin-tailwindcss"]
 }

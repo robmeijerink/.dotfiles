@@ -38,6 +38,9 @@ return {
                 env = {
                     PRETTIERD_DEFAULT_CONFIG = vim.fn.expand("~/.dotfiles/codestyle/js/prettier.config.cjs"),
                 },
+                prepend_args = {
+                    "--html-whitespace-sensitivity", "strict",
+                },
             },
         },
         format_after_save = {
