@@ -10,18 +10,20 @@ return {
     dependencies = {
         "nvim-lua/plenary.nvim",
     },
+    -- =========================================================
+    -- Wake up plugin globally when these commands are triggered
+    -- =========================================================
+    cmd = {
+        "ObsidianQuickSwitch",
+        "ObsidianSearch",
+        "ObsidianNew",
+        "ObsidianTemplate",
+    },
     opts = {
         workspaces = {
             {
                 name = "global_vault",
                 path = "~/Dropbox/Obsidian/RobMainVault",
-            },
-            {
-                name = "project_docs",
-                path = function()
-                    -- Falls back to the current working directory (useful for project /docs)
-                    return assert(vim.fn.getcwd())
-                end,
             },
         },
 

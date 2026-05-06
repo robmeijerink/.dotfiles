@@ -130,3 +130,11 @@ vim.keymap.set("n", "<leader>U", function()
     -- 2. Toggle the native visual tree window
     vim.cmd("Undotree")
 end, { desc = "Toggle Undotree" })
+
+-- =========================================================
+-- Obsidian Search
+-- =========================================================
+map('n', '<leader>oo', '<cmd>ObsidianQuickSwitch<CR>', { desc = "Obsidian Open (Title/Alias)" })
+map('n', '<leader>og', '<cmd>ObsidianSearch<CR>', { desc = "Obsidian Grep - Search Text" })
+map('n', '<leader>on', '<cmd>ObsidianNew<CR>', { desc = "Obsidian New Note" })
+map('n', '<leader>ot', '<cmd>ObsidianTemplate<CR>', { desc = "Obsidian Insert Template" })
