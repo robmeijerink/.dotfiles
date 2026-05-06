@@ -7,7 +7,6 @@
 alias vi="nvim"
 alias lg="lazygit"
 alias k="kubectl"
-alias nvimrc="cd ~/.config/nvim && nvim"
 
 # --- 2. Security & Confirmation (Safety First) ---
 # Prevents accidental overwrites and deletions
