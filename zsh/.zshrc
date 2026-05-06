@@ -49,6 +49,7 @@ plug "zsh-users/zsh-completions"
 # --- RESTORED: Local Logic & Custom Scripts ---
 plug "$HOME/.config/zsh/plugins/dirpersist.zsh"
 plug "$HOME/.config/zsh/plugins/ssh-load.zsh"
+plug "$HOME/.config/zsh/plugins/zet.zsh"
 
 # Productivity & Search
 plug "zap-zsh/fzf"

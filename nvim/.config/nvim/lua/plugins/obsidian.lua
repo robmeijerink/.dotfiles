@@ -14,7 +14,7 @@ return {
         workspaces = {
             {
                 name = "global_vault",
-                path = "~/Dropbox/Obsidian",
+                path = "~/Dropbox/Obsidian/RobMainVault",
             },
             {
                 name = "project_docs",
@@ -43,7 +43,7 @@ return {
         disable_frontmatter = false,
 
         templates = {
-            folder = "templates",
+            folder = "98_Templates",
             date_format = "%Y-%m-%d",
             time_format = "%H:%M",
         },
@@ -63,4 +63,20 @@ return {
             },
         },
     },
+
+    -- =========================================================
+    -- The config function loads the opts AND applies the autocmd
+    -- =========================================================
+    config = function(_, opts)
+        -- 1. Setup the plugin with the opts defined above
+        require("obsidian").setup(opts)
+
+        -- 2. Force conceallevel=2 only for markdown files
+        vim.api.nvim_create_autocmd("FileType", {
+            pattern = { "markdown" },
+            callback = function()
+                vim.opt_local.conceallevel = 2
+            end,
+        })
+    end,
 }
