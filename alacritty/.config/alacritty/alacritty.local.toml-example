@@ -1,6 +1,6 @@
 # =========================================================
 # Alacritty Local Overrides - Rob Meijerink
-# This file is machine-specific (macOS / Ubuntu)
+# This file is machine-specific (macOS / Fedora)
 # =========================================================
 
 [font]
@@ -26,7 +26,7 @@ decorations = "None"
 # action = "Spawn"
 # command = { program = "sh", args = ["-c", "bw get password 'GitHub Vault PAT' | pbcopy"] }
 
-# Ubuntu Wayland Version (Uncomment on PC)
+# Fedora Wayland Version (Uncomment on PC)
 # [[keyboard.bindings]]
 # key = "Slash"
 # mods = "Control"

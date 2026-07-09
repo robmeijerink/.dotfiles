@@ -10,10 +10,10 @@ sudo -v
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 if [ "$OS" = "Linux" ]; then
-    echo "Updating System Packages (APT & Snap)..."
-    sudo apt update && sudo apt upgrade -y
-    sudo snap refresh
-    sudo apt autoremove -y && sudo apt clean
+    echo "Updating System Packages (DNF & Flatpak)..."
+    sudo dnf upgrade --refresh -y
+    if command -v flatpak >/dev/null; then flatpak update -y; fi
+    sudo dnf autoremove -y
 
 elif [ "$OS" = "Darwin" ]; then
     echo "Updating macOS App Store apps..."

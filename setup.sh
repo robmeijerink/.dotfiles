@@ -5,7 +5,7 @@
 
 set -e
 
-# 1. Folders shared by both macOS and Ubuntu
+# 1. Folders shared by both macOS and Fedora
 COMMON_FOLDERS=(
     "alacritty"
     "bin"
@@ -18,7 +18,7 @@ COMMON_FOLDERS=(
     "zsh"
 )
 
-# 2. Folders exclusive to the Ubuntu Wayland setup
+# 2. Folders exclusive to the Fedora Wayland setup
 LINUX_FOLDERS=(
     "mako"
     "sway"

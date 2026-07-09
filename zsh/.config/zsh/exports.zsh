@@ -85,7 +85,7 @@ export MANWIDTH=999
 
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
     # ---------------------------------------------------------
-    # Ubuntu Server (Sway/Wayland)
+    # Fedora (Sway/Wayland)
     # ---------------------------------------------------------
 
     # Force Qt apps to Wayland

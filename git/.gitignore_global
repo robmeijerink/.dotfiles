@@ -22,3 +22,5 @@ vendor-tags
 
 # NPM
 .npmrc
+
+**/.claude/settings.local.json

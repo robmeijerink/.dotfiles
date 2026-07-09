@@ -1,5 +1,5 @@
 # =========================================================
-# Sway Core Configuration (Ubuntu)
+# Sway Core Configuration (Fedora)
 # =========================================================
 
 # --- Variables ---
@@ -28,7 +28,7 @@ exec mako
 exec waybar
 
 # UI for sudo-prompts in graphical applications
-exec /usr/lib/x86_64-linux-gnu/libexec/polkit-kde-authentication-agent-1
+exec /usr/libexec/polkit-kde-authentication-agent-1
 
 # Automatic mount for USB-sticks (show in tray / Waybar)
 exec udiskie --tray
