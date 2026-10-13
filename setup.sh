@@ -29,6 +29,7 @@ LINUX_FOLDERS=(
 # 3. Folders exclusive to macOS
 MAC_FOLDERS=(
     "aerospace"
+    "karabiner"
 )
 
 # Initialize final list with common folders
