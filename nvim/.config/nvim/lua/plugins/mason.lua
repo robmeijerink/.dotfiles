@@ -15,6 +15,12 @@ return {
 
         require("mason-tool-installer").setup({
             ensure_installed = {
+                -- Rust (rustup's rust-analyzer component is not installed)
+                "rust-analyzer",
+
+                -- Lua
+                "lua-language-server",
+
                 -- Go
                 "gopls",
                 "delve",

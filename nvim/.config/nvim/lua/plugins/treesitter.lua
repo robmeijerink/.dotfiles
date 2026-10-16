@@ -15,6 +15,11 @@ vim.api.nvim_create_autocmd("FileType", {
 
             if ok then
                 vim.bo[args.buf].syntax = "off"
+
+                -- Treesitter indent (native nvim engine handles php/blade)
+                if lang ~= "php" and lang ~= "blade" then
+                    vim.bo[args.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+                end
             end
         end
     end,
@@ -34,54 +39,51 @@ return {
             { "nvim-treesitter/nvim-treesitter-textobjects", branch = "main" },
         },
         config = function()
-            require("nvim-treesitter").setup({
-                ensure_installed = {
-                    "bash", "html", "css", "scss", "javascript", "typescript",
-                    "vue", "lua", "luadoc", "php", "go", "rust", "blade",
-                    "dockerfile", "yaml", "toml", "json", "vim", "vimdoc",
-                },
-
-                auto_install = true,
-
-                highlight = { enable = false }, -- Enabled by autocmd on top.
-
-                indent = {
-                    enable = true,
-                    disable = { "php", "blade" }, -- Native nvim engine handles php
-                },
-
-                textobjects = {
-                    select = {
-                        enable = true,
-                        lookahead = true,
-                        keymaps = {
-                            ["af"] = "@function.outer",
-                            ["if"] = "@function.inner",
-                            ["ac"] = "@class.outer",
-                            ["ic"] = "@class.inner",
-                            ["ia"] = "@parameter.inner",
-                            ["aa"] = "@parameter.outer",
-                        },
-                    },
-                    move = {
-                        enable = true,
-                        set_jumps = true,
-                        goto_next_start = {
-                            ["]m"] = "@function.outer",
-                            ["]]"] = "@class.outer",
-                        },
-                        goto_previous_start = {
-                            ["[m"] = "@function.outer",
-                            ["[["] = "@class.outer",
-                        },
-                    },
-                    swap = {
-                        enable = true,
-                        swap_next = { ["<leader>a"] = "@parameter.inner" },
-                        swap_previous = { ["<leader>A"] = "@parameter.inner" },
-                    },
-                },
+            -- The main branch no longer supports ensure_installed/highlight/indent/textobjects
+            -- in setup(). Parsers are installed explicitly (no-op when already present).
+            require("nvim-treesitter").install({
+                "bash", "html", "css", "scss", "javascript", "typescript",
+                "vue", "lua", "luadoc", "php", "go", "rust", "blade",
+                "dockerfile", "yaml", "toml", "json", "vim", "vimdoc",
             })
+
+            -- Textobjects (main branch: setup + explicit keymaps)
+            require("nvim-treesitter-textobjects").setup({
+                select = { lookahead = true },
+                move = { set_jumps = true },
+            })
+
+            local select = require("nvim-treesitter-textobjects.select")
+            for keys, query in pairs({
+                ["af"] = "@function.outer",
+                ["if"] = "@function.inner",
+                ["ac"] = "@class.outer",
+                ["ic"] = "@class.inner",
+                ["ia"] = "@parameter.inner",
+                ["aa"] = "@parameter.outer",
+            }) do
+                vim.keymap.set({ "x", "o" }, keys, function()
+                    select.select_textobject(query, "textobjects")
+                end, { desc = "TS: " .. query })
+            end
+
+            local move = require("nvim-treesitter-textobjects.move")
+            for keys, args in pairs({
+                ["]m"] = { move.goto_next_start, "@function.outer" },
+                ["]]"] = { move.goto_next_start, "@class.outer" },
+                ["[m"] = { move.goto_previous_start, "@function.outer" },
+                ["[["] = { move.goto_previous_start, "@class.outer" },
+            }) do
+                vim.keymap.set({ "n", "x", "o" }, keys, function()
+                    args[1](args[2], "textobjects")
+                end, { desc = "TS: " .. args[2] })
+            end
+
+            local swap = require("nvim-treesitter-textobjects.swap")
+            vim.keymap.set("n", "<leader>a", function() swap.swap_next("@parameter.inner") end,
+                { desc = "TS: Swap next parameter" })
+            vim.keymap.set("n", "<leader>A", function() swap.swap_previous("@parameter.inner") end,
+                { desc = "TS: Swap previous parameter" })
         end,
     },
 

@@ -59,7 +59,7 @@ opt.showbreak = '↪'
 
 -- 6. Folding (Treesitter integration)
 opt.foldmethod = "expr"
-opt.foldexpr = "nvim_treesitter#foldexpr()"
+opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 
 -- 7. Files, Backups & Undo
 opt.backup = true

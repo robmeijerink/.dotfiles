@@ -11,38 +11,39 @@ return {
         "ray-x/lsp_signature.nvim",
     },
     config = function()
-        local lspconfig = require("lspconfig")
-        local mason_lspconfig = require("mason-lspconfig")
         local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
-        local capabilities = vim.tbl_deep_extend(
-            "force",
-            vim.lsp.protocol.make_client_capabilities(),
-            cmp_nvim_lsp.default_capabilities()
-        )
+        -- Native Neovim 0.11+ API: defaults for every server, then per-server overrides.
+        -- mason-lspconfig (v2) calls vim.lsp.enable() for every installed server.
+        vim.lsp.config("*", {
+            capabilities = cmp_nvim_lsp.default_capabilities(),
+        })
 
-        require("mason").setup()
-
-        mason_lspconfig.setup({
-            handlers = {
-                function(server_name)
-                    lspconfig[server_name].setup({
-                        capabilities = capabilities,
-                    })
-                end,
-
-                ["lua_ls"] = function()
-                    lspconfig.lua_ls.setup({
-                        capabilities = capabilities,
-                        settings = {
-                            Lua = {
-                                workspace = { checkThirdParty = false },
-                                completion = { callSnippet = "Replace" },
-                            }
-                        }
-                    })
-                end,
+        vim.lsp.config("lua_ls", {
+            settings = {
+                Lua = {
+                    workspace = { checkThirdParty = false },
+                    completion = { callSnippet = "Replace" },
+                    hint = { enable = true },
+                }
             }
+        })
+
+        vim.lsp.config("rust_analyzer", {
+            settings = {
+                ["rust-analyzer"] = {
+                    check = { command = "clippy" }, -- Clippy diagnostics on save
+                    cargo = { allFeatures = true },
+                    inlayHints = {
+                        closureReturnTypeHints = { enable = "with_block" },
+                        lifetimeElisionHints = { enable = "skip_trivial" },
+                    },
+                },
+            },
+        })
+
+        require("mason-lspconfig").setup({
+            automatic_enable = true,
         })
 
         -- =========================================================
@@ -108,6 +109,16 @@ return {
                 -- Diagnostics navigation
                 map("[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", "Previous Diagnostic")
                 map("]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", "Next Diagnostic")
+
+                -- Inlay hints (on by default, <leader>th toggles)
+                local client = vim.lsp.get_client_by_id(event.data.client_id)
+                if client and client:supports_method("textDocument/inlayHint") then
+                    vim.lsp.inlay_hint.enable(true, { bufnr = event.buf })
+                    map("<leader>th", function()
+                        vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf }),
+                            { bufnr = event.buf })
+                    end, "Toggle Inlay Hints")
+                end
             end,
         })
     end,
