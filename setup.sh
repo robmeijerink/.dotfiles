@@ -9,6 +9,7 @@ set -e
 COMMON_FOLDERS=(
     "alacritty"
     "bin"
+    "claude"
     "git"
     "lazygit"
     "nvim"
@@ -50,12 +51,13 @@ cd "$(dirname "$0")"
 # 5. Synchronization Process
 for folder in "${STOW_FOLDERS[@]}"; do
     if [ -d "$folder" ]; then
-        # Check for existing real files and backup (O(1) safety check per file)
-        find "$folder" -maxdepth 1 -not -path "$folder" | while read -r src; do
-            filename=$(basename "$src")
-            target="$HOME/$filename"
+        # Back up real files that would block a link. Checked per file, not per
+        # top-level folder, so shared folders like ~/.config are never moved;
+        # -ef skips files already reached through a stowed (folded) link.
+        find "$folder" -type f | while read -r src; do
+            target="$HOME/${src#"$folder"/}"
 
-            if [ -e "$target" ] && [ ! -L "$target" ]; then
+            if [ -e "$target" ] && [ ! -L "$target" ] && [ ! "$target" -ef "$src" ]; then
                 mv "$target" "$target.bak"
                 echo "Backup created: $target.bak"
             fi
@@ -67,5 +69,10 @@ for folder in "${STOW_FOLDERS[@]}"; do
         echo "Warning: Folder $folder not found, skipping..."
     fi
 done
+
+# 6. rust-analyzer for Claude Code's LSP plugin (Neovim uses Mason's copy)
+if command -v rustup >/dev/null; then
+    rustup component add rust-analyzer
+fi
 
 echo "OK: Dotfiles synchronized for $OSTYPE."

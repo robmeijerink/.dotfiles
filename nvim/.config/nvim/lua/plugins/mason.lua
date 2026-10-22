@@ -15,7 +15,7 @@ return {
 
         require("mason-tool-installer").setup({
             ensure_installed = {
-                -- Rust (rustup's rust-analyzer component is not installed)
+                -- Rust (Mason's copy, independent of each project's pinned toolchain)
                 "rust-analyzer",
 
                 -- Lua
