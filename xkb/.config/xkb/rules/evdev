@@ -1,0 +1,4 @@
+! include %S/evdev
+
+! layout = types
+  numswap = +numswap

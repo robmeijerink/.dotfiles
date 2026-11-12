@@ -1,0 +1,20 @@
+// US (AltGr dead keys) with the number row swapped:
+// symbols without Shift, digits with Shift. AltGr levels are unchanged.
+// Ctrl/Alt/Super+digit are NOT swapped (see ../types/numswap), like the Karabiner rule.
+// Use in sway: xkb_layout numswap (no xkb_variant).
+default partial alphanumeric_keys
+xkb_symbols "basic" {
+    include "us(altgr-intl)"
+    name[Group1] = "English (US, numbers on Shift)";
+
+    key <AE01> { type[Group1] = "NUMSWAP", [ exclam,      1, onesuperior,        exclamdown          ] };
+    key <AE02> { type[Group1] = "NUMSWAP", [ at,          2, twosuperior,        dead_doubleacute    ] };
+    key <AE03> { type[Group1] = "NUMSWAP", [ numbersign,  3, threesuperior,      dead_macron         ] };
+    key <AE04> { type[Group1] = "NUMSWAP", [ dollar,      4, currency,           sterling            ] };
+    key <AE05> { type[Group1] = "NUMSWAP", [ percent,     5, EuroSign,           dead_cedilla        ] };
+    key <AE06> { type[Group1] = "NUMSWAP", [ asciicircum, 6, onequarter,         dead_circumflex     ] };
+    key <AE07> { type[Group1] = "NUMSWAP", [ ampersand,   7, onehalf,            dead_horn           ] };
+    key <AE08> { type[Group1] = "NUMSWAP", [ asterisk,    8, threequarters,      dead_ogonek         ] };
+    key <AE09> { type[Group1] = "NUMSWAP", [ parenleft,   9, leftsinglequotemark, dead_breve         ] };
+    key <AE10> { type[Group1] = "NUMSWAP", [ parenright,  0, rightsinglequotemark, dead_abovering    ] };
+};

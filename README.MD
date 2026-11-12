@@ -29,6 +29,30 @@ I use Neovim daily for web development at work and side-projects in PHP, Rust, G
 
 A special thanks to [ThePrimeagen](https://github.com/ThePrimeagen/) for getting me into Vim, improving my terminal workflow and boosting my productivity!
 
+### Num row swap (optional)
+
+Optional: types the symbols (`! @ # $ % ^ & * ( )`) on the number row without Shift and the digits with Shift. Ctrl/Alt/Cmd/Super + digit are not swapped (shortcuts like Ctrl+1 keep working). `setup.sh` does **not** enable this, follow the steps below.
+
+**macOS (Karabiner-Elements)**
+1. Stow the `karabiner` folder (`setup.sh` already does this); it only makes the rules available.
+2. Open Karabiner-Elements > Complex Modifications > Add predefined rule.
+3. Enable the "Swap ... " rules for 1-9 and 0 (use "Enable all").
+4. To undo: remove the rules in the same screen.
+
+**Fedora (Sway)**
+1. Stow the layout: `stow xkb` (installs `~/.config/xkb/{symbols,types,rules}`).
+2. Create `~/.config/sway/conf.d/numswap.conf` (git-ignored) with:
+   ```
+   input "type:keyboard" {
+       xkb_layout numswap
+   }
+   ```
+   Do not set `xkb_variant`: `numswap` already includes `us(altgr-intl)`, so AltGr characters (e.g. AltGr+5 = Euro) keep working.
+3. Run `swaymsg reload` and check `swaymsg -t get_inputs`.
+4. To undo: delete `numswap.conf` and run `swaymsg reload`.
+
+The Sway workspace bindings use `bindcode`, so they work with and without the swap.
+
 ### ZSH
 
 I stopped using OhMyZSH, because I wanted something leaner and snappier. I don't use most of the stuff OhMyZSH offers, so I started using this simple ZSH configuration. This config also supports plugins and has the zsh aliases I use most. It is much less code and has all the things I wanted from OhMyZSH. It supports auto-complete, syntax highlighting and better formatting. The performance of this setup in my Alacritty terminal is great!

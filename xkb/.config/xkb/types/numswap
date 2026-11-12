@@ -1,0 +1,31 @@
+// Key type for the swapped number row.
+// Plain / Shift: swapped (level1 = symbol, level2 = digit).
+// With Control, Alt or Super (no Shift): digit, with Shift: symbol -> same as
+// the physical US keys, so shortcuts like Ctrl+1 / Alt+1 / Super+1 are not swapped.
+default partial xkb_types "basic" {
+    type "NUMSWAP" {
+        modifiers = Shift+Control+Mod1+Mod4+LevelThree;
+        map[None] = Level1;
+        map[Shift] = Level2;
+        map[LevelThree] = Level3;
+        map[Shift+LevelThree] = Level4;
+        map[Control] = Level2;
+        map[Shift+Control] = Level1;
+        map[Mod1] = Level2;
+        map[Shift+Mod1] = Level1;
+        map[Mod4] = Level2;
+        map[Shift+Mod4] = Level1;
+        map[Control+Mod1] = Level2;
+        map[Shift+Control+Mod1] = Level1;
+        map[Control+Mod4] = Level2;
+        map[Shift+Control+Mod4] = Level1;
+        map[Mod1+Mod4] = Level2;
+        map[Shift+Mod1+Mod4] = Level1;
+        map[Control+Mod1+Mod4] = Level2;
+        map[Shift+Control+Mod1+Mod4] = Level1;
+        level_name[Level1] = "Base";
+        level_name[Level2] = "Shift";
+        level_name[Level3] = "AltGr";
+        level_name[Level4] = "Shift AltGr";
+    };
+};
