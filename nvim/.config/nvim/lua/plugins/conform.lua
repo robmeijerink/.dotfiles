@@ -28,7 +28,7 @@ return {
             blade = { "blade-formatter" },
             go = { "gofmt", "goimports" },
             rust = { "rustfmt" },
-            python = { "isort", "black" },
+            python = { "ruff_organize_imports", "ruff_format" },
         },
         formatters = {
             phpcbf = {

@@ -21,6 +21,10 @@ return {
                 -- Lua
                 "lua-language-server",
 
+                -- Python (ruff = lint + format + imports)
+                "basedpyright",
+                "ruff",
+
                 -- Go
                 "gopls",
                 "delve",

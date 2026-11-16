@@ -43,7 +43,7 @@ return {
             -- in setup(). Parsers are installed explicitly (no-op when already present).
             require("nvim-treesitter").install({
                 "bash", "html", "css", "scss", "javascript", "typescript",
-                "vue", "lua", "luadoc", "php", "go", "rust", "blade",
+                "vue", "lua", "luadoc", "php", "go", "rust", "python", "blade",
                 "dockerfile", "yaml", "toml", "json", "vim", "vimdoc",
             })
 
